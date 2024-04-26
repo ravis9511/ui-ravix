@@ -1,0 +1,95 @@
+---
+import DarkModeButton from "./DarkModeButton.svelte"
+import AstroImage from "../assets/astroImage.astro"
+import HTML from "../assets/html.astro"
+import Tailwind from "../assets/tailwind.astro"
+import Svelte from "../assets/svelte.astro"
+import View from "../assets/view.astro"
+
+interface Props {
+    tabs: Array<{
+        id: string
+        name: string
+        icon: string
+    }>
+}
+const { tabs } = Astro.props
+---
+
+<tabs-list>
+    <div class="font-display mb-12">
+    <nav
+        class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+        role="tablist">
+        {
+            tabs.map((tab, index) => (
+                <button
+                    role="tab"
+                    aria-selected={
+                        index === 0 ? "true" : "false"
+                    }
+                    aria-controls={tab.id}
+                    id={tab.id}
+                    class="cursor-pointer w-full  px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+                    {tab.icon === "astro" && <AstroImage />}
+                    {tab.icon === "svelte" && <Svelte />}
+                    {tab.icon === "tailwind" && <Tailwind />}
+                    {tab.icon === "html" && <HTML />}
+                    {tab.icon === "view" && <View />}
+                    <span>{tab.name}</span>
+                </button>
+            ))
+        }
+        <DarkModeButton client:load />
+    </nav>
+
+    <div
+        class="not-prose max-w-3xl border border-gray-300 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar">
+        <slot />
+    </div>
+</tabs-list>
+
+<script>
+    class Tab extends HTMLElement {
+        constructor() {
+            super()
+
+            const buttons =
+                this.querySelectorAll('[role="tab"]')
+            const panels = this.querySelectorAll(
+                '[role="tabpanel"]'
+            )
+
+            buttons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    buttons.forEach((btn) =>
+                        btn.setAttribute(
+                            "aria-selected",
+                            "false"
+                        )
+                    )
+                    button.setAttribute(
+                        "aria-selected",
+                        "true"
+                    )
+
+                    panels.forEach((panel, panelIndex) => {
+                        panel.classList.toggle(
+                            "hidden",
+                            index !== panelIndex
+                        )
+                    })
+                })
+            })
+
+            panels.forEach((panel, index) => {
+                panel.classList.toggle(
+                    "hidden",
+                    index !== 0
+                )
+            })
+        }
+    }
+
+    customElements.define("tabs-list", Tab)
+</script>

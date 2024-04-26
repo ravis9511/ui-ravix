@@ -1,0 +1,74 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Navigation from "../components/Navigation.astro";
+import '@fontsource-variable/inter';
+import '@fontsource-variable/figtree';
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description?: string;
+  toc?: Array<object>;
+  keywords?: string;
+}
+
+const { title, toc, description, keywords } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Ravi Shankar" />
+    <meta property="og:site_name" content="Ravi Shankar" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document.documentElement.setAttribute("data-theme", "tokyo-night");
+        }
+      });
+      document.addEventListener("astro:before-swap", (ev) => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          ev.newDocument.documentElement.classList.add("dark");
+          document.documentElement.setAttribute("data-theme", "catppuccin-latte");
+        }
+      });
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "tokyo-night");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
+      }
+    </script>
+    <ViewTransitions fallback="animate" />
+  </head>
+  <body
+    class="w-full z-0 md:mx-auto bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 justify-center items-center"
+  >
+    <main class="justify-center z-10">
+      <div id="progress"></div>
+      <Navigation />
+      <slot />
+    </main>
+  </body>
+</html>

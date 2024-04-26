@@ -1,0 +1,35 @@
+---
+title: "Layouts"
+order: 4
+---
+
+# Layouts
+
+Out of the box, the preferred layout is the grid system. The grid system allows to have fine control over UI elements and utilize media breakpoints for responsiveness. The design guide also has layouts available for the grid system.
+
+ravixUI uses a the 12 point grid system to give fine tuned control for placing blocks on the page. The table below has the specifications used for the layout.
+
+| Breakpoint | Minimum Width | Tailwind Class                | Margins and Padding                          |
+| :--------- | :------------ | :---------------------------- | :------------------------------------------- |
+| 2xl        | 1536px        | grid grid-cols-12 gap-4 mx-40 | 160px of horizontal margin with 16px padding |
+| xl         | 1280px        | grid grid-cols-12 gap-4 mx-32 | 128px of horizontal margin with 16px padding |
+| lg         | 1024px        | grid grid-cols-12 gap-4 mx-20 | 80px of horizontal margin with 16px padding  |
+| md         | 768px         | grid grid-cols-12 gap-4 mx-12 | 48px of horizontal margin with 16px padding  |
+| sm         | 640px         | grid grid-cols-12 gap-4 mx-10 | 40px of horizontal margin with 16px padding  |
+| < 640px    | 0px           | grid grid-cols-12 gap-4 mx-4  | 16px of horizontal margin with 16px padding  |
+
+Well, that's not responsive at all, is it now? To make it responsive your code would be something like this :
+
+```html title="index.html"
+<!-- head,scripts,etc. here-->
+<body>
+    <div
+        class="mx-4 grid grid-cols-12 gap-4 sm:mx-10 md:mx-12 lg:mx-20 xl:mx-32 2xl:mx-40"
+    >
+        <!-- Your page, blocks, content, etc. here -->
+    </div>
+</body>
+<!-- footer,scripts,etc. here -->
+```
+
+And this is the pattern used to build responsiveness for all blocks available in ravixUI out of the box.

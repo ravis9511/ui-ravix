@@ -1,16 +1,104 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="ravixUI"
+  description="ravixUI is meant to be simple, lightweight and fully customizable. Like a component? Just copy and paste it into your project and its good to go. There are also hints available for every component for usage and customization. All components are designed with accessibility in mind. For the first version, there is component code available for HTML5+TailwindCSS, astrojs and svelte. Components for other JavaScript frameworks will be added in later versions."
+  keywords="TailwindCSS, Components, CSS, HTML5, Library"
+>
+  <main
+    class=" bg-fixed bg-gradient-radial min-h-[92dvh] from-gray-50/30 via-gray-50/50 to-white dark:bg-gradient-radial dark:from-indigo-600/25 dark:via-indigo-600/5 dark:to-indigo-600/0"
+  >
+    <div class="grid grid-cols-12 gap-4 self-center">
+      <div
+        class="row-start-1 col-span-8 col-start-3 items-center self-center text-center mt-24 mb-20 space-y-16"
+      >
+        <div class="flex-col flex items-center">
+          <p class="text-6xl font-display mb-8">
+            A Blocks Library and Design Guide
+          </p>
+          <p class="text-2xl text-gray-700 dark:text-gray-300 max-w-4xl font-display">
+            Fully Customizable, Responsive, Accessible and Lightweight.
+          </p>
+        </div>
+        <div class="inline-flex space-x-8 items-center justify-center">
+          <a
+            href="/components/gettingstarted"
+            class="bg-indigo-700 hover:bg-indigo-500 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center"
+            >Get Started <span
+              ><svg
+                class="rtl:rotate-180 w-5 h-5 ms-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+              </svg></span
+            ></a
+          >
+          <a
+            href="#"
+            class="bg-gray-950 dark:bg-gray-800 hover:bg-gray-700 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              viewBox="0 0 256 384"
+            >
+              <path
+                fill="#0acf83"
+                d="M64 384c35.328 0 64-28.672 64-64v-64H64c-35.328 0-64 28.672-64 64s28.672 64 64 64"
+              ></path>
+              <path
+                fill="#a259ff"
+                d="M0 192c0-35.328 28.672-64 64-64h64v128H64c-35.328 0-64-28.672-64-64"
+              ></path>
+              <path
+                fill="#f24e1e"
+                d="M0 64C0 28.672 28.672 0 64 0h64v128H64C28.672 128 0 99.328 0 64"
+              ></path>
+              <path
+                fill="#ff7262"
+                d="M128 0h64c35.328 0 64 28.672 64 64s-28.672 64-64 64h-64z"
+              ></path>
+              <path
+                fill="#1abcfe"
+                d="M256 192c0 35.328-28.672 64-64 64s-64-28.672-64-64s28.672-64 64-64s64 28.672 64 64"
+              ></path>
+            </svg>
+            &nbsp; Design Guide
+          </a>
+        </div>
+        <div
+          class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8"
+        >
+          <div
+            class="flex-col flex gap-x-6 p-6 font-normal lg:w-1/2 lg:max-w-max max-h-max dark:text-white backdrop-blur-lg border border-cyan-900/30 rounded-lg overflow-hidden text-start shadow-[0_8px_30px_rgb(0,0,0,0.12)]  dark:shadow-[0_0px_10px_rgba(99,102,241,_0.3)]"
+          >
+            <p class="text-3xl mb-4 font-display">Vision</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200">
+              ravixUI is primarily a starter kit which is supposed to help designers and developers. It is meant to be a base of blocks for TailwindCSS based projects.
+            </p>
+          </div>
+          <div
+            class="flex-col flex gap-x-6 p-6 font-normal lg:w-1/2 lg:max-w-max max-h-max dark:text-white backdrop-blur-lg border border-cyan-900/30 rounded-lg overflow-hidden text-start shadow-[0_8px_30px_rgb(0,0,0,0.12)]  dark:shadow-[0_0px_10px_rgba(99,102,241,_0.3)]"
+          >
+            <p class="text-3xl mb-4 font-display">Usage</p>
+            <p class="text-lg text-gray-800 dark:text-gray-200">
+              ravixUI can be used for quickly designing and developing highly
+              performant websites like landing pages, blogs, portfolios, product
+              catalogues, and mostly static websites with limited JavaScript.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
