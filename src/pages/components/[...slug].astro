@@ -13,8 +13,7 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const blogEntries = await getCollection("components");
-const currentSlug= entry.slug;
-const entryMap= blogEntries.map((entry => ({slug : entry.slug, title : entry.data.title, order : entry.data.order})));
+const entryMap= blogEntries.map((entry => ({slug : "/components/"+entry.slug, title : entry.data.title, order : entry.data.order})));
 entryMap.sort((a, b) => a.order - b.order);
 if (entry === undefined) {
   return Astro.redirect("/404");
@@ -31,7 +30,7 @@ const { Content, headings } = await entry.render();
       <div
         class="col-start-1 col-span-2 pl-16 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar  border-r dark:border-zinc-900 border-gray-300 "
       >
-        <Sidebar entryMap={entryMap} currentSlug={currentSlug}/>
+        <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}`/>
       </div>
       <div class="relative grid grid-cols-8 col-start-3 col-span-10 h-[92vh] px-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40 py-4">
         <div class="col-start-1 col-span-6 mt-2">
