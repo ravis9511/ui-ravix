@@ -32,13 +32,14 @@ const { Content, headings } = await entry.render();
       >
         <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}`/>
       </div>
-      <div class="relative grid grid-cols-8 col-start-3 col-span-10 h-[92vh] px-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40 py-4">
-        <div class="col-start-1 col-span-6 mt-2">
+      <div class="relative col-start-3 col-span-10 grid grid-cols-8  h-[92vh] px-6 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
+        <div class="col-start-1 col-span-6 ">
         <MarkDownLayout >
           <Content />
         </MarkDownLayout>
       </div>
-        <div class="col-start-7 col-span-2 h-[92dvh] sticky top-4 ">red</div>
+        <div class="col-start-7 col-span-2 h-[92dvh] sticky top-0 ">red</div>
+        
       </div>
       
     </div>

@@ -1,0 +1,273 @@
+---
+title: "Card"
+order: 7
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import SimpleCard from "../../components/cards/SimpleCard.astro";
+import SimpleCardCode from "../../components/cards/SimpleCard.astro?raw";
+import SimpleCardCodeAstro from "../../components/cards/SCardAstro.astro?raw";
+import HorizontalCard from "../../components/cards/HorizontalCard.astro";
+import HorizontalCardCode from "../../components/cards/HorizontalCard.astro?raw";
+import HorizontalCardCodeAstro from "../../components/cards/HCardAstro.astro?raw";
+import GradientCard from "../../components/cards/GradientCard.astro";
+import GradientCardCode from "../../components/cards/GradientCard.astro?raw";
+import GradientCardCodeAstro from "../../components/cards/GCardAstro.astro?raw";
+import GlassCard from "../../components/cards/GlassCard.astro";
+import GlassCardCode from "../../components/cards/GlassCard.astro?raw";
+import GlassCardCodeAstro from "../../components/cards/GLCardAstro.astro?raw";
+
+# Card
+
+Card is a versatile component that can be used to display
+content and information in a variety of ways and can drive users to a desired action.
+
+<Accordion
+  data={[
+    {
+      title: "Design Hints",
+      content:
+        "Used effectively, cards can drive users to a desired action. It is a simple way to group elements together. Cards can contain many different types of blocks inside like buttons, images, paragraphs, headings, lists etc. The card should also be consistent in its design and layout to maintain a cohesive user experience. Cards can bring a sense of visual interest and help emphasize important information. It is a good tool for progressive disclosure and reducing cognitive load.",
+    },
+    {
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it is important to ensure that the content inside the card is readable and understandable to all users, including those with visual impairments. This can be achieved by using appropriate color contrast, clear and concise language, and providing alternative text for images. Additionally, it is recommended to use headings and subheadings to break up the content and make it easier to scan. Links and Buttons should also have descriptive text to provide context and help users.",
+    },
+  ]}
+/>
+
+Note: All the icons used in this section are from Google
+Material Icons provided by iconify.design. The images used in this section are from Unsplash. Also this is the building block card. 
+
+## Normal Card
+
+This is a simple card that can be used to display
+information or content. It can be used for different types
+of actions, such as displaying images, items, forms,
+services, or any other type of information.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1"
+  role="tabpanel">
+  <div class="grid grid-cols-4 py-6">
+    <div class="col-span-2 col-start-2">
+      <SimpleCard />
+    </div>
+  </div>
+</section>
+
+<section id ="Tab2" role="tabpanel">
+
+<Code
+  code={SimpleCardCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3" role="tabpanel">
+
+<Code
+  code={SimpleCardCodeAstro}
+  lang="astro"
+  title="simpleCard.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** There is a grid container used as a parent to
+control the width of the card. The card itself is a flex
+container so it will occupy the full available width of its
+parent container. The internal blocks are responsive out of
+the box, but you have to use the parent container to make
+the card responsive and adapt to different screen sizes.
+
+<Accordion
+  data={[
+    {
+      title: "Design Hints",
+      content:
+        "The card uses a shadow, a lighter background inside the card and a slightly off-tone border for emphasis. Shadows may not translate well into dark mode in case there is not enough contrast between the background of the page and the color of the shadow",
+    },
+  ]}
+/>
+
+## Horizontal Card
+
+A Horizontal layout for cards. This is a simple way to show
+collections of a similar type. On smaller form factors, for
+responsive design, the card content will be stacked
+vertically.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1" role="tabpanel">
+<div class="grid  p-6">
+
+<HorizontalCard />
+
+</div>
+</section>
+
+<section id ="Tab2" role="tabpanel">
+
+<Code
+  code={HorizontalCardCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3" role="tabpanel">
+
+<Code
+  code={HorizontalCardCodeAstro}
+  lang="astro"
+  title="horizontalCard.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** There is a grid container used as a parent to
+control the width of the card. The card is responsive out of
+the box and goes from a horizontal layout to a vertical
+layout lower than the `md` breakpoint. You have to use the
+parent container to make the card adapt to different screen
+sizes.
+
+<Accordion
+  data={[
+    {
+      title: "Design Hints",
+      content:
+        "Similar to the normal card, this card uses a shadow, a lighter background inside the card and a slightly off-tone border for emphasis. Shadows may not translate well into dark mode in case there is not enough contrast between the background of the page and the color of the shadow. The horizontal card is perfect to showcase a few items in a collection like services, products,  features, projects, etc.",
+    },
+  ]}
+/>
+
+## Stylized Cards
+
+These are a set of stylized cards that can be used to add a
+bit of flair to your website. While they can be effective in
+certain situations, it is important to consider how well
+they will work with your design and layout.
+
+### Gradient Card
+
+A card with a gradient background. The gradient used is
+subtle and non distracting, making it a great choice for a
+simple and clean look.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1" role="tabpanel">
+<div class="grid  p-6">
+
+<GradientCard />
+
+</div>
+</section>
+
+<section id ="Tab2" role="tabpanel">
+
+<Code
+  code={GradientCardCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3" role="tabpanel">
+
+<Code
+  code={GradientCardCodeAstro}
+  lang="astro"
+  title="horizontalCard.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** There is a grid container used as a parent to
+control the width of the card. The card is responsive out of
+the box and goes from a horizontal layout to a vertical
+layout lower than the `md` breakpoint.
+
+<Accordion
+  data={[
+    {
+      title: "Design Hints",
+      content:
+        "While the gradient card may enhance the looks of your website, if it doesn't match the overall design of your website, it will stick out like a sore thumb and detract from the user experience. It is important to consider the design and layout of your website when choosing a card type and ensure that it complements the rest of the content on the page. If you decide to change the gradient colors, make sure to check for contrast between the background and the text to ensure readability. And since it's a large element, its recommended to keep the gradient subtle.",
+    },
+  ]}
+/>
+
+### Glass Card
+
+A card with a glass effect.
+
+**Warning:** While it may look good, it can be difficult to read the text
+on a glass card. Be sure to check the contrast between the
+background and the text to ensure readability. It can also create a lot of edge cases where the user is unable to read the content inside the card based on the page background. **Use with caution.** 
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1" role="tabpanel">
+
+
+<GlassCard />
+
+
+</section>
+
+<section id ="Tab2" role="tabpanel">
+
+<Code
+  code={GlassCardCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3" role="tabpanel">
+
+<Code
+  code={GlassCardCodeAstro}
+  lang="astro"
+  title="horizontalCard.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** A parent container is used to control the background of the card. The card itself uses ```backdrop-blur-2xl``` class to create a glass effect. The glass card maybe easier to use than a gradient card since it automatically adjusts to the background color of the website. It is important to check the contrast between the text on the card and the background to ensure that it is easy to read. If you use ```bg-fixed``` class on the background of the page, the glass card can be very distracting for a user and may create scenarios where the user is unable to read the content on the page.
+
+<Accordion
+  data={[
+    {
+      title: "Design Hints",
+      content:
+        "The glass card is a great option for websites with a light or pastel color scheme. It can add a touch of elegance and sophistication to your website without being too distracting. However, it's important to keep in mind that the glass card may not work well for all websites especially if the background color is too dark or if the text is too small. From a user experience perspective, the glass card can be very tricky to use since it's readability is effected based on the background color of the website.",
+    },
+  ]}
+/>

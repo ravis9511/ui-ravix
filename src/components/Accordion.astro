@@ -9,18 +9,18 @@ const { data } = Astro.props
 ---
 
 <div
-    class="border mb-12 border-gray-400 divide-y divide-gray-400 dark:border-0 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-[0_6px_30px_rgb(0,0,0,0.06)] dark:shadow-[0px_0px_10px_rgba(99,102,241,_0.2)]">
+    class="border mb-12 border-gray-400 divide-y divide-gray-400 dark:border-0 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-[0_6px_30px_rgb(0,0,0,0.06)] dark:shadow-[0px_0px_8px_rgba(99,102,241,_0.3)]">
     {
         data.map((item) => (
             <details
                 class="group"
                 open={false}>
                 <summary
-                    class="flex items-center justify-between px-4 py-4 cursor-pointer dark:text-indigo-400"
+                    class="flex items-center justify-between px-4 py-4 cursor-pointer text-indigo-700 dark:text-indigo-400"
                     aria-expanded={false}
                     role="button"
                     tabindex="0">
-                    <span class="text-xl font-bold ">
+                    <span class="text-xl  font-semibold ">
                         {item.title}
                     </span>
                     <svg

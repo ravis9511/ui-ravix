@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import SimpleCard from "../components/cards/GLCardAstro.astro";
+---
+
+<Layout
+  title="ravixUI"
+  description="ravixUI is meant to be simple, lightweight and fully customizable. Like a component? Just copy and paste it into your project and its good to go. There are also hints available for every component for usage and customization. All components are designed with accessibility in mind. For the first version, there is component code available for HTML5+TailwindCSS, astrojs and svelte. Components for other JavaScript frameworks will be added in later versions."
+  keywords="TailwindCSS, Components, CSS, HTML5, Library"
+>
+  <main
+    class="  min-h-[92dvh] bg-gray-100 dark:bg-zinc-950"
+  >
+  <div class="grid  self-center mx-20">
+    <div class="col-span-2 col-start-1 items-center self-center text-center mt-24 mb-20 space-y-16">
+    <SimpleCard />
+</div>
+</div>
+  </main>
+</Layout>

@@ -1,0 +1,76 @@
+---
+const post = {
+  title: "Boost your conversion rate",
+  href: "#",
+  description:
+    "The top 10 techniques for boosting your conversion rate. Use these techniques to increase your conversion rate and grow your business.",
+  date: "Mar 16, 2024",
+  datetime: "2020-03-16",
+  imageUrl:
+    "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+  readingTime: "6 min",
+  author: {
+    name: "John Doe",
+    href: "#",
+  },
+}; /* You can accept this data as props to the component like this : const { post } = Astro.props; to make it dynamic and resusable */
+---
+
+<!--Background Gradient To Show Glass Effect -->
+<div
+  class="grid p-6 bg-gradient-to-bl from-sky-200 via-sky-100 to-sky-200 dark:from-indigo-900 dark:via-indigo-950 dark:to-indigo-900">
+  <!-- Card Component Below -->
+  <div
+    class="flex flex-col md:flex-row text-start backdrop-blur-2xl border border-gray-400 dark:border-zinc-900 rounded-lg shadow-xl overflow-hidden m-6">
+    <div
+      class="flex flex-1 overflow-hidden border-b lg:border-r border-gray-300 dark:border-0">
+      <img
+        src={post.imageUrl}
+        width="600"
+        alt="A desk with PC peripherals and Stationery on it"
+        class="object-cover"
+      />
+    </div>
+    <div
+      class="px-6 py-3 flex-1 flex flex-col justify-between text-zinc-950 dark:text-zinc-300">
+      <div class="flex flex-col gap-y-1">
+        <h3
+          class="text-xl lg:text-2xl font-semibold text-black dark:text-white mt-2">
+          {post.title}
+        </h3>
+        <div
+          class="flex flex-row space-x-1 text-sm text-zinc-800 dark:text-zinc-300">
+          <a
+            href={post.author.href}
+            class="hover:underline">
+            by {post.author.name}
+          </a>
+          <span aria-hidden="true">&middot;</span>
+          <time datetime={post.datetime}>{post.date}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{post.readingTime} read</span>
+        </div>
+      </div>
+      <p class="mt-4 text-base text-black dark:text-white">
+        {post.description}
+      </p>
+      <a
+        href="#"
+        class="px-4 py-2 max-w-max mt-6 lg:mt-8 mb-2 inline-flex items-center gap-x-2 text-base lg:text-lg rounded-lg bg-indigo-800  text-white hover:bg-indigo-700">
+        <span>Read Now</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <!-- Card Component Ends Here -->
+</div>
