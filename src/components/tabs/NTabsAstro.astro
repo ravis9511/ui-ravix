@@ -1,0 +1,159 @@
+---
+const tabs = [
+  {
+    title: "Product",
+    content: "This is placeholder content for the product tab",
+  },
+  { title: "Info", content: "This is placeholder content for the info tab" },
+  {
+    title: "Compare",
+    content: "This is placeholder content for the compare tab",
+  },
+];
+
+/*
+To dynamically generate tabs with simple text content you can call this component from a page like this:
+---
+import NTabsAstro from '../components/NTabsAstro.astro';
+
+const tabsData = [
+  { title: 'Product', content: 'This is placeholder content for the product tab' },
+  { title: 'Info', content: 'This is placeholder content for the info tab' },
+  { title: 'Compare', content: 'This is placeholder content for the compare tab' },
+];
+---
+
+<NTabsAstro tabs={tabsData} />
+
+and the frontmatter for this page would look like this:
+---
+interface Props {
+  tabs: Array<{ title: string; content: string }>;
+};
+const { tabs } = Astro.props;
+---
+
+for more complex content inside the tabs you cannot dynamically generate the tab panel, but can pass the content as named slots with appropriate attributes. 
+example : 
+replace
+  {tabs.map((tab, index) => (
+        <section
+          role="tabpanel"
+          id={`tab-panel-${index + 1}`}
+          tabindex="0"
+          class={index === 0 ? '' : 'hidden'}
+        >
+          <p class="p-2">{tab.content}</p>
+        </section>
+      ))}
+  with 
+  <slot name="tab1" />
+  <slot name="tab2" />
+  <slot name="tab3" />
+  and call the component like this:
+  ---
+  import NTabsAstro from '../components/NTabsAstro.astro';
+  const tabsData = [
+  { title: 'Product', content: '' },
+  { title: 'Info', content: '' },
+  { title: 'Compare', content: '' },
+  ];      
+  ---
+  <NTabsAstro tabs={tabsData}>
+    <div slot="tab1" role="tabpanel" id="tab-panel-1" tabindex="0" >
+      <!-- content for tab 1 -->
+    </div>
+    <div slot="tab2" role="tabpanel" id="tab-panel-2" tabindex="0" class="hidden">
+      <!-- content for tab 2 -->
+    </div>
+    <div slot="tab3" role="tabpanel" id="tab-panel-3" tabindex="0" class="hidden">
+      <!-- content for tab 3 -->
+    </div>
+  </NTabsAstro>
+
+*/
+---
+
+<div id="tab-container-normal">
+  <div class="text-zinc-900 dark:text-zinc-50 mb-12">
+    <div
+      class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+      role="tablist">
+      {
+        tabs.map((tab, index) => (
+          <button
+            role="tab"
+            aria-selected={index === 0 ? "true" : "false"}
+            aria-controls={`tab-panel-${index + 1}`}
+            id={`tab-${index + 1}`}
+            class="cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+            <span>{tab.title}</span>
+          </button>
+        ))
+      }
+    </div>
+    <div
+      class="p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200">
+      {
+        tabs.map((tab, index) => (
+          <section
+            role="tabpanel"
+            id={`tab-panel-${index + 1}`}
+            tabindex="0"
+            class={index === 0 ? "" : "hidden"}>
+            <p class="p-4">{tab.content}</p>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</div>
+<script is:inline>
+  function tabs() {
+    const tabContainer = document.getElementById("tab-container-normal");
+    const tabs = tabContainer?.querySelectorAll('[role="tab"]');
+    const panels = tabContainer?.querySelectorAll('[role="tabpanel"]');
+    const tabList = tabContainer?.querySelector('[role="tablist"]');
+    let tabFocus = 0;
+    tabList?.addEventListener("keydown", (e) => {
+      if (e.key && tabs) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          tabs[tabFocus]?.setAttribute("tabindex", "-1");
+          if (e.key === "ArrowRight") {
+            tabFocus++;
+            // If we're at the end, go to the start
+            if (tabFocus >= tabs.length) {
+              tabFocus = 0;
+            }
+            // Move left
+          } else if (e.key === "ArrowLeft") {
+            tabFocus--;
+            // If we're at the start, move to the end
+            if (tabFocus < 0) {
+              tabFocus = tabs.length - 1;
+            }
+          }
+          tabs[tabFocus].setAttribute("tabindex", "0");
+          tabs[tabFocus].focus();
+        }
+      }
+    });
+    tabs?.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((tab) => tab.setAttribute("aria-selected", "false"));
+        tab.setAttribute("aria-selected", "true");
+        const selectedPanel = tab.getAttribute("aria-controls");
+        panels?.forEach((panel) => {
+          if (panel.id === selectedPanel) {
+            panel.setAttribute("tabindex", "0");
+            panel.classList.remove("hidden");
+          } else {
+            panel.classList.add("hidden");
+            panel.setAttribute("tabindex", "-1");
+          }
+        });
+      });
+    });
+  }
+  tabs();
+</script>

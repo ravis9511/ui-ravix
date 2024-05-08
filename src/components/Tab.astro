@@ -17,10 +17,10 @@ const { tabs } = Astro.props
 ---
 
 <tabs-list>
-    <div class="font-display mb-12">
-    <nav
-        class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
-        role="tablist">
+    <div class="font-display mb-12" >
+    <div
+        class="flex flex-row lg:w-[48rem] xl:w-[54rem] my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+        role="tablist" data-role="tablist">
         {
             tabs.map((tab, index) => (
                 <button
@@ -28,9 +28,10 @@ const { tabs } = Astro.props
                     aria-selected={
                         index === 0 ? "true" : "false"
                     }
-                    aria-controls={tab.id}
+                    aria-controls=`${tab.id}-panel`
+                    data-role="tab"
                     id={tab.id}
-                    class="cursor-pointer w-full  px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+                    class=" cursor-pointer w-full  px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
                     {tab.icon === "astro" && <AstroImage />}
                     {tab.icon === "svelte" && <Svelte />}
                     {tab.icon === "tailwind" && <Tailwind />}
@@ -41,10 +42,10 @@ const { tabs } = Astro.props
             ))
         }
         <DarkModeButton client:load />
-    </nav>
+    </div>
 
     <div
-        class="not-prose max-w-3xl border border-gray-300 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
+        class="not-prose lg:w-[48rem] xl:w-[54rem] border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
         <slot />
     </div>
 </tabs-list>
@@ -55,12 +56,36 @@ const { tabs } = Astro.props
             super()
 
             const buttons =
-                this.querySelectorAll('[role="tab"]')
+                this.querySelectorAll('[data-role="tab"]')
             const panels = this.querySelectorAll(
-                '[role="tabpanel"]'
+                '[data-role="tabpanel"]'
             )
-
-            buttons.forEach((button, index) => {
+            const tabList = this.querySelector('[data-role="tablist"]');
+            let tabFocus = 0;
+            tabList?.addEventListener("keydown", (keyboardEvent ) => {
+            const e = keyboardEvent as KeyboardEvent;
+            if(e.key){
+            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+            buttons[tabFocus].setAttribute("tabindex", "-1");
+            if (e.key === "ArrowRight") {
+            tabFocus++;
+            // If we're at the end, go to the start
+            if (tabFocus >= buttons.length) {
+                tabFocus = 0;
+            }
+            // Move left
+            } else if (e.key === "ArrowLeft") {
+            tabFocus--;
+            // If we're at the start, move to the end
+            if (tabFocus < 0) {
+                tabFocus = buttons.length - 1;
+            }
+            }
+            buttons[tabFocus].setAttribute("tabindex", "0");
+            (buttons[tabFocus] as HTMLButtonElement).focus();
+            }}
+            }); 
+            buttons.forEach((button) => {
                 button.addEventListener("click", () => {
                     buttons.forEach((btn) =>
                         btn.setAttribute(
@@ -72,13 +97,23 @@ const { tabs } = Astro.props
                         "aria-selected",
                         "true"
                     )
-
-                    panels.forEach((panel, panelIndex) => {
-                        panel.classList.toggle(
-                            "hidden",
-                            index !== panelIndex
+                    const selectedPanel = button.getAttribute("aria-controls");
+                    panels.forEach((panel) => {
+                        if(panel.id === selectedPanel){
+                            panel.setAttribute("tabindex", "0");
+                            panel.classList.remove(
+                                "hidden"
+                            );
+                        }
+                        else{
+                        panel.classList.add(
+                            "hidden"
                         )
+                        panel.setAttribute("tabindex", "-1");
+                    }
                     })
+                    
+                   
                 })
             })
 
@@ -87,7 +122,9 @@ const { tabs } = Astro.props
                     "hidden",
                     index !== 0
                 )
+                panel.setAttribute("tabindex", "-1");
             })
+            panels[0].setAttribute("tabindex", "0");    
         }
     }
 

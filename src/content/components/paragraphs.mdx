@@ -1,0 +1,105 @@
+---
+title: "Paragraphs"
+order: 6
+type : "Introduction"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Tab from "../../components/Tab.astro";
+import Accordion from "../../components/Accordion.astro";
+import Card from "../../components/examples/Card.astro";
+import Paragraph from "../../components/paragraphs/Paragraphs.astro";
+import ParagraphCode from "../../components/paragraphs/Paragraphs.astro?raw";
+import ParagraphCodeAstro from "../../components/paragraphs/Paragraphs.astro?raw";
+import AltParagraph from "../../components/paragraphs/AltParagraphs.astro";
+import AltParagraphCode from "../../components/paragraphs/AltParagraphs.astro?raw";
+import AltParagraphCodeAstro from "../../components/paragraphs/AltParagraphs.astro?raw";
+
+# Paragraphs
+
+Paragraphs are the building blocks of most web pages. They are used to break up text into smaller, more digestible chunks. Paragraphs can be used to introduce new sections, provide additional information, or simply to add some breathing room to the page.
+
+## General Guidelines
+
+While, there are no hard and fast rules for paragraphs, some commonly used guidelines are based on width and spacing. The sweet spot for paragraph width is between 600px and 750px for large screens, which is commonly seen in the most popular blogs, articles, content pieces, etc. For smaller screens like mobile, width doesn't matter as much, but margins and padding should be used to create white space and make the text more readable.
+
+Pro Tip: Don't justify paragraphs when it is part of body content like blogposts, articles, documentation or other similar content. Justified text may look great, but it can be very difficult to read. 
+
+## Contrast and Spacing
+
+The contrast between the text and the background is important for readability. The easiest way to ensure contrast is to go with pairs like ```bg-gray-50 text-zinc-950``` for light mode and ```dark:bg-zinc-950 dark:text-gray-50``` for dark mode for paragraphs. 
+
+Here a comparison of using pure white/black background with pure black/white text and using an off white/black background with off black/white text based on light/dark mode.
+
+<Card />
+
+Here are some pre-styled parapgraphs to get you started.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel" data-role="tabpanel">
+  
+    <Paragraph />
+  
+</section>
+
+<section id ="Tab2-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={ParagraphCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={ParagraphCodeAstro}
+  lang="astro"
+  title="Paragraph.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel" data-role="tabpanel">
+  
+    <AltParagraph />
+  
+</section>
+
+<section id ="Tab2-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={AltParagraphCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={AltParagraphCodeAstro}
+  lang="astro"
+  title="AltParagraph.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+While you can use ```font-bold``` class or ```<strong>``` tags to make the text bold, but if you want to emphasize the text to screen readers you should use the ```<strong>``` tag .

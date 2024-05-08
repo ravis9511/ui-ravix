@@ -1,0 +1,76 @@
+---
+const props = Astro.props;
+---
+<nav
+  class="flex flex-col sticky top-0 z-50 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
+  <div
+    class="container mx-auto flex p-2 flex-row items-center justify-between border-b md:border-0 border-gray-300 dark:border-zinc-800">
+    <div
+      class="inline-flex font-medium items-center text-indigo-700 dark:text-zinc-50">
+      <!-- Your logo -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66c.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21"
+        ></path>
+      </svg>
+      <!-- Your logo -->
+      <span class="ml-3 text-xl">ravixUI</span>
+    </div>
+    <div
+      class="hidden md:block items-center md:gap-x-8 md:space-x-8">
+      <a
+        href="#"
+        class="hover:text-indigo-700"
+        >About</a
+      >
+      <a
+        href="#"
+        class="hover:text-indigo-700"
+        >Products</a
+      >
+      <a
+        href="#"
+        class="hover:text-indigo-700"
+        >Services</a
+      >
+      <a
+        href="#"
+        class="hover:text-indigo-700"
+        >Support</a
+      >
+    </div>
+    <button
+      type="button"
+      class="px-4 py-2 rounded-lg font-semibold inline-flex gap-x-1 items-center disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
+      <span>Contact</span>
+    </button>
+  </div>
+  <div
+    class="flex  mx-4 m-2 md:hidden items-center justify-between gap-x-2 ">
+    <a
+      href="#"
+      class="hover:text-indigo-700"
+      >About</a
+    >
+    <a
+      href="#"
+      class="hover:text-indigo-700"
+      >Products</a
+    >
+    <a
+      href="#"
+      class="hover:text-indigo-700"
+      >Services</a
+    >
+    <a
+      href="#"
+      class="hover:text-indigo-700"
+      >Support</a
+    >
+  </div>
+</nav>

@@ -1,6 +1,7 @@
 ---
 title: "Card"
-order: 7
+order: 11
+type : "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
@@ -18,6 +19,9 @@ import GradientCardCodeAstro from "../../components/cards/GCardAstro.astro?raw";
 import GlassCard from "../../components/cards/GlassCard.astro";
 import GlassCardCode from "../../components/cards/GlassCard.astro?raw";
 import GlassCardCodeAstro from "../../components/cards/GLCardAstro.astro?raw";
+import FeaturesCard from "../../components/cards/FeaturesCard.astro";
+import FeaturesCardCode from "../../components/cards/FeaturesCard.astro?raw";
+import FeaturesCardCodeAstro from "../../components/cards/FCardAstro.astro?raw";
 
 # Card
 
@@ -26,12 +30,12 @@ content and information in a variety of ways and can drive users to a desired ac
 
 <Accordion
   data={[
-    {
+    { name : "cards1", 
       title: "Design Hints",
       content:
         "Used effectively, cards can drive users to a desired action. It is a simple way to group elements together. Cards can contain many different types of blocks inside like buttons, images, paragraphs, headings, lists etc. The card should also be consistent in its design and layout to maintain a cohesive user experience. Cards can bring a sense of visual interest and help emphasize important information. It is a good tool for progressive disclosure and reducing cognitive load.",
     },
-    {
+    { name : "cards1",
       title: "Accessiblity Hints",
       content:
         "For accessibility, it is important to ensure that the content inside the card is readable and understandable to all users, including those with visual impairments. This can be achieved by using appropriate color contrast, clear and concise language, and providing alternative text for images. Additionally, it is recommended to use headings and subheadings to break up the content and make it easier to scan. Links and Buttons should also have descriptive text to provide context and help users.",
@@ -52,8 +56,8 @@ services, or any other type of information.
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1"
-  role="tabpanel">
+  id="Tab1-panel"
+  role="tabpanel" data-role="tabpanel">
   <div class="grid grid-cols-4 py-6">
     <div class="col-span-2 col-start-2">
       <SimpleCard />
@@ -61,7 +65,7 @@ services, or any other type of information.
   </div>
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={SimpleCardCode}
@@ -71,7 +75,7 @@ services, or any other type of information.
 
 </section>
 
-<section id ="Tab3" role="tabpanel">
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={SimpleCardCodeAstro}
@@ -93,7 +97,7 @@ the card responsive and adapt to different screen sizes.
 
 <Accordion
   data={[
-    {
+    { name : "cards2",
       title: "Design Hints",
       content:
         "The card uses a shadow, a lighter background inside the card and a slightly off-tone border for emphasis. Shadows may not translate well into dark mode in case there is not enough contrast between the background of the page and the color of the shadow",
@@ -110,7 +114,7 @@ vertically.
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
 <div class="grid  p-6">
 
 <HorizontalCard />
@@ -118,7 +122,7 @@ vertically.
 </div>
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={HorizontalCardCode}
@@ -128,7 +132,7 @@ vertically.
 
 </section>
 
-<section id ="Tab3" role="tabpanel">
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={HorizontalCardCodeAstro}
@@ -150,10 +154,60 @@ sizes.
 
 <Accordion
   data={[
-    {
+    { name : "cards3",
       title: "Design Hints",
       content:
         "Similar to the normal card, this card uses a shadow, a lighter background inside the card and a slightly off-tone border for emphasis. Shadows may not translate well into dark mode in case there is not enough contrast between the background of the page and the color of the shadow. The horizontal card is perfect to showcase a few items in a collection like services, products,  features, projects, etc.",
+    },
+  ]}
+/>
+
+
+## Features Card
+
+A card for showcasing features or benefits of a product or service. Can be used to create a quick catalog of features and benefits using multiple cards.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="grid  p-6">
+
+<FeaturesCard />
+
+
+</div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={FeaturesCardCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={FeaturesCardCodeAstro}
+  lang="astro"
+  title="featuresCard.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+ 
+
+<Accordion
+  data={[
+    { name : "cards4",
+      title: "Design Hints",
+      content:
+        "Using cards for features is an effective way to reduce cognitive load while disclosing the important information required for a user to make a decision. The cards given above are different styles of cards. The recommended approach is to use only one type of card for similar information being given to a user. ",
     },
   ]}
 />
@@ -173,7 +227,7 @@ simple and clean look.
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
 <div class="grid  p-6">
 
 <GradientCard />
@@ -181,7 +235,7 @@ simple and clean look.
 </div>
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={GradientCardCode}
@@ -191,7 +245,7 @@ simple and clean look.
 
 </section>
 
-<section id ="Tab3" role="tabpanel">
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={GradientCardCodeAstro}
@@ -211,7 +265,7 @@ layout lower than the `md` breakpoint.
 
 <Accordion
   data={[
-    {
+    { name : "cards5",
       title: "Design Hints",
       content:
         "While the gradient card may enhance the looks of your website, if it doesn't match the overall design of your website, it will stick out like a sore thumb and detract from the user experience. It is important to consider the design and layout of your website when choosing a card type and ensure that it complements the rest of the content on the page. If you decide to change the gradient colors, make sure to check for contrast between the background and the text to ensure readability. And since it's a large element, its recommended to keep the gradient subtle.",
@@ -229,7 +283,7 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
 
 
 <GlassCard />
@@ -237,7 +291,7 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
 <Code
   code={GlassCardCode}
@@ -247,7 +301,7 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 </section>
 
-<section id ="Tab3" role="tabpanel">
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">  
 
 <Code
   code={GlassCardCodeAstro}
@@ -264,7 +318,7 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 <Accordion
   data={[
-    {
+    { name : "cards6",
       title: "Design Hints",
       content:
         "The glass card is a great option for websites with a light or pastel color scheme. It can add a touch of elegance and sophistication to your website without being too distracting. However, it's important to keep in mind that the glass card may not work well for all websites especially if the background color is too dark or if the text is too small. From a user experience perspective, the glass card can be very tricky to use since it's readability is effected based on the background color of the website.",

@@ -1,0 +1,172 @@
+---
+title: "Accordion"
+order: 6
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Alert from "../../components/Alert.astro";
+import Tab from "../../components/Tab.astro";
+import Tabs from "../../components/tabs/NTabsAstro.astro";
+import TabsCode from "../../components/tabs/NormalTabs.html?raw";
+import TabsAstroCode from "../../components/tabs/NTabsAstro.astro?raw";
+import NormalAccordion from "../../components/accordions/NormalAccordion.astro";
+import NormalAccordionCode from "../../components/accordions/NormalAccordion.astro?raw";
+import AnimatedAccordion from "../../components/accordions/AnimatedAccordion.astro";
+import AnimatedAccordionCode from "../../components/accordions/AnimatedAccordion.html?raw";
+import AnimatedAccordionCodeAstro from "../../components/accordions/AnimatedAccordion.astro?raw";
+import AnimatedAccordionAlt from "../../components/accordions/AAccordionAlt.astro";
+import AnimatedAccordionAltCode from "../../components/accordions/AAccordionAlt.html?raw";
+import AnimatedAccordionAltCodeAstro from "../../components/accordions/AAccordionAlt.astro?raw";
+
+# Accordion
+
+Accordion is a component that allows the user to expand and collapse sections of content. It is useful for displaying content without overwhelming the user with too much information at once. It's commonly used in FAQs, product descriptions, and other situations where content needs to be organized into easily navigable sections.
+
+
+<Accordion
+  data={[
+    {   name : "accordion1",
+      title: "Design Hints",
+      content:
+        "Accordions are a great way to progressively reveal content to the user. However, it is important to ensure that only non critical information is hidden inside the accordion.",
+    },
+  ]}
+/>
+
+## Accordion Specification
+
+An accordion consists of two main parts :
+
+- The accordion container : The container that holds multiple accordion items inside it.
+- The accordion item : The accordion item contains the accordion header and the accordion panel. It can be expanded or collapsed by clicking on the header.
+
+
+## Normal Accordion
+
+A simple accordion with which can hold multiple headers and panels. Does not require any additional javascript. 
+
+**Note:** The autoclose others when open accordions is not supported for this accordion in Firefox at the moment of puiblishing.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" class="min-h-[26rem]">
+  <div class="grid px-10 py-4">
+    <NormalAccordion />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NormalAccordionCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NormalAccordionCode}
+  lang="astro"
+  title="Accordion.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** Since we are using the details tag, the component above is accessible out of the box. We use the ```name``` attribute to control the auto closing of the accordion, but that does not work in Firefox. In case you don't want the autoclosing functionality you can just remove the name attribute .For an accordion which works in all browsers with the auto close feature and animations you can use the component below which uses javascript.
+
+
+## Accordion With Animations And Cross Browser Support
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+It is similar to the previous accordion component, but it uses JavaScript to control the accordion. Since the details tag is not used, you will need to define aria roles and attributes to make it accessible (The example below is accessible out of the box).
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" class="min-h-[30rem]">
+  <div class="grid  px-10 py-4">
+    <AnimatedAccordion />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AnimatedAccordionCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AnimatedAccordionCodeAstro}
+  lang="astro"
+  title="AnimatedAccordion.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** We use the group and peer attributes to control the autoclosing of the accordion and only have to track one state variable which is ```aria-expanded```. 
+
+## Alternate Accordion With Animations And Cross Browser Support
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+An alternate style for the accordion. Outside of the style, the functionality is the same as the previous accordion component.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" class="min-h-[30rem]">
+  <div class="grid px-10 py-4">
+    <AnimatedAccordionAlt />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AnimatedAccordionAltCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AnimatedAccordionAltCodeAstro}
+  lang="astro"
+  title="AnimatedAccordionAlt.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** We use the group and peer attributes to control the autoclosing of the accordion and only have to track one state variable which is ```aria-expanded```.

@@ -1,0 +1,155 @@
+---
+title: "Breadcrumbs"
+order: 13
+type: "Navigation"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.astro";
+import BreadcrumbsCode from "../../components/breadcrumbs/Breadcrumbs.astro?raw";
+import BreadcrumbsCodeAstro from "../../components/breadcrumbs/Breadcrumbs.astro?raw";
+import AltBreadcrumbs from "../../components/breadcrumbs/AltBreadcrumbs.astro";
+import AltBreadcrumbsCode from "../../components/breadcrumbs/AltBreadcrumbs.astro?raw";
+import AltBreadcrumbsCodeAstro from "../../components/breadcrumbs/AltBreadcrumbs.astro?raw";
+import StyledBreadcrumbs from "../../components/breadcrumbs/StyledBreadcrumbs.astro";
+import StyledBreadcrumbsCode from "../../components/breadcrumbs/StyledBreadcrumbs.astro?raw";
+import StyledBreadcrumbsCodeAstro from "../../components/breadcrumbs/StyledBreadcrumbs.astro?raw";
+
+# Breadcrumbs
+
+Breadcrumbs are a navigational element that helps users understand where they are in a website hierarchy. They are typically used as an added accessory rather than a primary navigational element. Breadcrumbs are often used in combination with other navigational elements to provide a more comprehensive navigation experience.
+
+<Accordion
+    data={[
+        {   name : "breadcrumb1",
+            title: "Design Hints",  
+            content:
+                "Breadcrumbs are low-friction navigational elements to give the user a sense of where they are in the website hierarchy. The breadcrumbs are generally placed at the top of the page. It's a powerful user experience feature when used correctly and in combination with other navigational elements.",
+        },
+        {   name : "breadcrumb1",
+            title: "Accessiblity Hints",
+            content:
+                "The nav element should be used for the breadcrumbs with aria-label attribute set to Breadcrumbs. The current page link should be at the end of the breadcrumbs with the attribute aria-current set to page.",
+        }
+    ]}
+/>
+
+## Simple Breadcrumbs
+
+Simple breadcrumbs are a basic version of breadcrumbs that only show the current page and the parent pages with links and a separator between them.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid px-10 py-6">
+    <Breadcrumbs />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={BreadcrumbsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={BreadcrumbsCodeAstro}
+  lang="astro"
+  title="Breadcrumbs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Alternate Simple Breadcrumbs
+
+An alternate style for simple breadcrumbs
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid px-10 py-6">
+    <AltBreadcrumbs />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltBreadcrumbsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltBreadcrumbsCodeAstro}
+  lang="astro"
+  title="AltBreadcrumbs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+## Styled Breadcrumbs
+
+Breadcrumbs with a visible container.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid px-10 py-6">
+    <StyledBreadcrumbs />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={StyledBreadcrumbsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={StyledBreadcrumbsCodeAstro}
+  lang="astro"
+  title="StyledBreadcrumbs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>

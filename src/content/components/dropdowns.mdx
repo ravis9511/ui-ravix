@@ -1,0 +1,117 @@
+---
+title: "Dropdown"
+order: 12
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import Dropdown from "../../components/dropdowns/Dropdown.astro";
+import DropdownCode from "../../components/dropdowns/Dropdown.html?raw"; 
+import DropdownCodeAstro from "../../components/dropdowns/Dropdown.astro?raw";
+import AltDropdown from "../../components/dropdowns/AltDropdown.astro";
+import AltDropdownCode from "../../components/dropdowns/AltDropdown.html?raw"; 
+import AltDropdownCodeAstro from "../../components/dropdowns/AltDropdown.astro?raw";
+import AnimatedDropdown from "../../components/dropdowns/AnDropdown.astro";
+import AnimatedDropdownCode from "../../components/dropdowns/AnDropdown.astro?raw"; 
+import AnimatedDropdownCodeAstro from "../../components/dropdowns/AnDropdown.astro?raw";
+
+
+# Dropdown
+
+<Alert type="info">
+  Requires Javascript to work.
+</Alert>
+
+A dropdown is a menu that appears when a user clicks on a button or link. It is a common design pattern used in websites and applications to provide additional options or functionality to the user.
+
+
+
+
+## Simple Dropdown
+
+A simple dropdown with a list of options.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex h-64 p-6 items-start justify-center">
+<Dropdown />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={DropdownCode} lang="html" title="DropdownVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={DropdownCodeAstro} lang="astro" title="DropdownVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Alternate Dropdown
+
+A different style for a simple dropdown.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex h-64 p-6 items-start justify-center">
+<AltDropdown />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AltDropdownCode} lang="html" title="AltDropdownVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AltDropdownCodeAstro} lang="astro" title="AltDropdownVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Animated Dropdown
+
+The simple dropdown with animations.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex h-64 p-6 items-start justify-center">
+<AnimatedDropdown />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AnimatedDropdownCode} lang="html" title="AnimatedDropdownVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AnimatedDropdownCodeAstro} lang="astro" title="AnimatedDropdownVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>

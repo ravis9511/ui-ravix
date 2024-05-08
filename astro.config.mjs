@@ -15,7 +15,7 @@ export default defineConfig({
     tailwind(),
     svelte(),
     expressiveCode({
-      themes: ["tokyo-night", "catppuccin-latte"],
+      themes: ["night-owl"],
     }),
     mdx()
   ],

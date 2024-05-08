@@ -1,0 +1,209 @@
+---
+title: "Avatar"
+order: 8
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Avatar from "../../components/avatar/Avatar.astro";
+import AvatarCode from "../../components/avatar/Avatar.astro?raw";
+import AvatarCodeAstro from "../../components/avatar/Avatar.astro?raw";
+import AvatarWithState from "../../components/avatar/AvatarWithState.astro";
+import AvatarWithStateCode from "../../components/avatar/AvatarWithState.astro?raw";
+import AvatarWithStateCodeAstro from "../../components/avatar/AvatarWithState.astro?raw";
+import AvatarWithRing from "../../components/avatar/AvatarWithRing.astro";
+import AvatarWithRingCode from "../../components/avatar/AvatarWithRing.astro?raw";
+import AvatarWithRingCodeAstro from "../../components/avatar/AvatarWithRing.astro?raw";
+import AvatarGroup from "../../components/avatar/AvatarGroup.astro";
+import AvatarGroupCode from "../../components/avatar/AvatarGroup.astro?raw";
+import AvatarGroupCodeAstro from "../../components/avatar/AvatarGroup.astro?raw";
+
+# Avatar
+
+Avatar is used to represent a user or group of users using an image. It can also convey additional information about the user like login status, busy, away etc. The avatar can also be used as a link to a profile page.
+
+<Accordion
+  data={[
+    {   name : "avatar1",
+      title: "Design Hints",
+      content:
+        "Avatars are a great way to personalize the user experience. Avatars can be used to convey states of the user (available, busy, away, logged out, etc.) . A common use pattern for avatar is that it acts as a link to a profile page, but new users may not be aware of this and may need hints.",
+    },
+    {   name : "avatar1",
+      title: "Accessiblity Hints",
+      content:
+        "Ensure that the avatar image has an alternative text which describes the user. If using an avatar as a link, ensure that the link has a descriptive text which can be read only by screen readers. If user state is conveyes using the avatar, ensure that the state is conveyed using sr-only text.",
+    }
+  ]} />
+
+
+**Accessibility Note:**  Pay close attention to the proper utilization of aria-label, aria-hidden, and alt attributes when working with different avatar elements. For links, you can enhance the accessibility experience by incorporating supplementary information within the aria-label attribute, effectively conveying the context of the associated image, icon, or initials and set aria-hidden="true" on the associated elements inside the link.
+
+
+## Simple Avatar
+
+A set of default avatars which can be used. The first one is a default avatar, the second one is a placeholder avatar, the third one is an avatar with name. The second row has the same types of avatars but with links.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <Avatar />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarCode}
+  lang="html"
+  wrap="true"   
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarCodeAstro}
+  lang="astro"
+  title="Avatar.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+## Avatar with State
+
+The simple avatar but with extra state information. The states available out of the box are 
+
+- Available - green
+- Busy - red
+- Away - yellow
+
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <AvatarWithState />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarWithStateCode}
+  lang="html"
+  wrap="true"   
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarWithStateCodeAstro}
+  lang="astro"
+  title="AvatarWithState.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Avatar with State And Ring
+
+These avatars are similar to the previous one, but an additional ring is added to the avatar.
+
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <AvatarWithRing />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarWithRingCode}
+  lang="html"
+  wrap="true"   
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarWithRingCodeAstro}
+  lang="astro"
+  title="AvatarWithState.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** While the above avatars use both ring and dot indicators, you may choose to use the ring only or the dot only. The choice is up to you and the design of your application.
+
+
+## Avatar Groups
+
+The avatar group allows you to show multiple avatars stacked together in a group.
+
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <AvatarGroup />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarGroupCode}
+  lang="html"
+  wrap="true"   
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AvatarGroupCodeAstro}
+  lang="astro"
+  title="AvatarWithState.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>

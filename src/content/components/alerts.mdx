@@ -1,0 +1,211 @@
+---
+title: "Alerts"
+order: 7
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alerts from "../../components/alerts/Alerts.astro";
+import AlertsCode from "../../components/alerts/Alerts.astro?raw";
+import AlertsCodeAstro from "../../components/alerts/Alerts.astro?raw";
+import AltAlerts from "../../components/alerts/AlternateAlerts.astro";
+import AltAlertsCode from "../../components/alerts/AlternateAlerts.astro?raw";
+import AltAlertsCodeAstro from "../../components/alerts/AlternateAlerts.astro?raw";
+import AlertsWithIcon from "../../components/alerts/AlertsWithIcon.astro";
+import AlertsWithIconCode from "../../components/alerts/AlertsWithIcon.astro?raw";
+import AlertsWithIconCodeAstro from "../../components/alerts/AlertsWithIcon.astro?raw";
+import ProminentAlerts from "../../components/alerts/ProminentAlerts.astro";
+import ProminentAlertsCode from "../../components/alerts/ProminentAlerts.astro?raw";
+import ProminentAlertsCodeAstro from "../../components/alerts/ProminentAlerts.astro?raw";
+
+# Alerts
+
+Alerts are a way to display important information to the user. They are typically used to give feedback to the user about an action that has been completed or an error that has occurred. It can also be used to warn or provide important extra information to the user before an action is taken.
+
+<Accordion
+  data={[
+    {   name : "alerts1",
+      title: "Design Hints",
+      content:
+        "While, alerts are a great way to provide feedback to the user, it is important to ensure that they are used appropriately and sparingly. Too many alerts can be overwhelming and distracting to the user. The less alerts the user sees, the more likely they are to pay attention to the alert.",
+    },
+     {   name : "alerts1",
+      title: "Accessiblity Hints",
+      content:
+        "The role alert is used only for information that requires a user's immediate attention. Remember, this is a very intrusive role and should be used sparingly. The alert role should not be used for alerts that are not critical to the user. The alert should contain all the information required to understand the issue in textual form. If using an icon without a text to convey alert type, ensure that the icon is hidden from screen readers using aria-hidden and use an sr-only class text to convey the alert type which is only visible to screen readers.",
+    }
+  ]}
+/>
+
+## Alerts Specification
+
+An alert contains two main parts :
+
+- The alert container : The container that holds the alert message and any additional content. This container should have a role of alert if immediate user attention is required.
+- The alert message : The message that is displayed in the alert container. This message should be informative and provide the user with a clear understanding of the issue or action that needs to be taken.
+
+Colors can be to provide more context to the alert message, but it is important to add textual messages which convey the same information. Note that ravixUI is opinionated on semantic coloring, hence green, yellow and red are reserved for success, warning and error respectively.
+
+## Simple Alerts
+
+Different types of alerts are given below. Note that the last alert doesn't have an alert role, but can be used to convey important information without interrupting the user experience.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <Alerts />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AlertsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AlertsCodeAstro}
+  lang="astro"
+  title="SimpleAlerts.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The wording inside the alert should be sufficient to convey all the information required to understand the alert. The color of the alert is only used to provide context to the user. Black text is used in particular for warning and error alerts.
+
+
+## Alternate Simple Alerts
+
+Different types of alerts are given below. Note that the last alert doesn't have an alert role, but can be used to convey important information without interrupting the user experience.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <AltAlerts />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltAlertsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltAlertsCodeAstro}
+  lang="astro"
+  title="AltSimpleAlerts.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The wording inside the alert should be sufficient to convey all the information required to understand the alert. The color of the alert is only used to provide context to the user.
+
+## Alerts with Icons
+
+A variant of alerts which uses as icon to convey the type of alert. The icon is accompanied with a label for screen readers to convey the same information.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <AlertsWithIcon />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AlertsWithIconCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AlertsWithIconCodeAstro}
+  lang="astro"
+  title="AltSimpleAlerts.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The alerts above use ```aria-hidden="true"``` to hide the icons from screen readers and a ```<span class="sr-only">``` to provide the text which is only visible to screen readers. 
+
+
+## Prominent Alerts
+
+These alerts are designed in a way to be visually prominent and grab the user's attention immediately. These only represent a higher visual prominence, not a higher semantic prominence with respect to accessibility compared to the alerts above.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel" >
+  <div class="grid  p-6">
+    <ProminentAlerts />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ProminentAlertsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ProminentAlertsCodeAstro}
+  lang="astro"
+  title="ProminentAlerts.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The maximum width of the alert is set to the maximum content width. If you want the alert to be strictly controlled by external container, you can remove the `max-w-max` class from the alert container.

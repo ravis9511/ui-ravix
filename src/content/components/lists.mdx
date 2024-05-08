@@ -1,0 +1,104 @@
+---
+title: "Lists"
+order: 13
+type: "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import UList from "../../components/lists/UList.astro";
+import UListCode from "../../components/lists/UList.astro?raw";
+import UListCodeAstro from "../../components/lists/UList.astro?raw";
+import OList from "../../components/lists/OList.astro";
+import OListCode from "../../components/lists/OList.astro?raw";
+import OListCodeAstro from "../../components/lists/OList.astro?raw";
+import CustomList from "../../components/lists/CustomList.astro";
+import CustomListCode from "../../components/lists/CustomList.astro?raw";
+import CustomListCodeAstro from "../../components/lists/CustomList.astro?raw";
+
+# Lists
+
+Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options. Lists can be ordered or unordered, and they can be displayed horizontally or vertically. Lists can be used inside content blocks like cards, paragraphs, or even inside other lists.
+
+## Unordered Lists
+
+Unordered lists are used to present a list of items in no particular order. They can be used to display a list of items, a list of tasks, or a list of options.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<UList />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={UListCode} lang="html" title="UListVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={UListCodeAstro} lang="astro" title="UListVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Ordered Lists
+
+Ordered lists are great for presenting a series of items in a particular order. It's a great way to organize information which needs to be presented in a step-by-step manner.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<OList />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={OListCode} lang="html" title="OListVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={OListCodeAstro} lang="astro" title="OListVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+## Custom Marked Lists
+
+A custom list marker can be added to `list-image-*` property using an SVG icon from a different file. The second list adds an svg inline in the list for more fine control.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<CustomList />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={CustomListCode} lang="html" title="CustomListVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={CustomListCodeAstro} lang="astro" title="CustomListVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>

@@ -1,0 +1,97 @@
+---
+title: "Loaders"
+order: 13
+type: "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Skeleton from "../../components/loaders/Skeleton.astro";
+import SkeletonCode from "../../components/loaders/Skeleton.astro?raw";
+import SkeletonCodeAstro from "../../components/loaders/Skeleton.astro?raw";
+import Spinner from "../../components/loaders/Spinner.astro";
+import SpinnerCode from "../../components/loaders/Spinner.astro?raw";
+import SpinnerCodeAstro from "../../components/loaders/Spinner.astro?raw";
+
+# Loaders
+
+Loaders are of two types:
+
+- **Skeleton** - A skeleton is a placeholder for content that hasn't loaded yet. It is used to show the user that something is loading.
+- **Spinner** - A spinner is a loading indicator that informs the user that the process is in progress.
+
+## Skeleton
+
+Skeleton is perfect for giving user an idea of what type of content they can expect to see. It's best used for loading data or content that is not yet available.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class=" p-6">
+<Skeleton />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SkeletonCode}
+  lang="html"
+  title="SkeletonVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SkeletonCodeAstro}
+  lang="astro"
+  title="SkeletonVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Spinners
+
+Spinners are used to indicate that a process is in progress. It can be enhanced with a loading text to provide more context.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class=" p-6">
+<Spinner />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SpinnerCode}
+  lang="html"
+  title="SpinnerVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SpinnerCodeAstro}
+  lang="astro"
+  title="SpinnerVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>

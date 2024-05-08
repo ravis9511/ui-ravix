@@ -35,7 +35,6 @@ const { title, toc, description, keywords } = Astro.props;
             window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
           document.documentElement.classList.add("dark");
-          document.documentElement.setAttribute("data-theme", "tokyo-night");
         }
       });
       document.addEventListener("astro:before-swap", (ev) => {
@@ -45,7 +44,6 @@ const { title, toc, description, keywords } = Astro.props;
             window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
           ev.newDocument.documentElement.classList.add("dark");
-          document.documentElement.setAttribute("data-theme", "catppuccin-latte");
         }
       });
       if (
@@ -54,18 +52,16 @@ const { title, toc, description, keywords } = Astro.props;
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");
-        document.documentElement.setAttribute("data-theme", "tokyo-night");
       } else {
         document.documentElement.classList.remove("dark");
-        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
       }
     </script>
     <ViewTransitions fallback="animate" />
   </head>
   <body
-    class="w-full z-0 md:mx-auto bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 justify-center items-center"
+    class="w-full z-0  bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 justify-center items-center"
   >
-    <main class="justify-center z-10">
+      <main class="justify-center z-10">
       <div id="progress"></div>
       <Navigation />
       <slot />

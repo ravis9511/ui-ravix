@@ -1,0 +1,168 @@
+---
+title: "Tabs"
+order: 15
+type : "Navigation"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import Navbar from "../../components/navbars/NavbarDisplay.astro";
+import NavBarCode from "../../components/navbars/Navbar.astro?raw";
+import NavBarCodeAstro from "../../components/navbars/NBarAstro.astro?raw";
+import Tabs from "../../components/tabs/NTabsAstro.astro";
+import TabsCode from "../../components/tabs/NormalTabs.html?raw";
+import TabsAstroCode from "../../components/tabs/NTabsAstro.astro?raw";
+import NormalTabsWithIcons from "../../components/tabs/NormalTabsWithIcons.astro";
+import NormalTabsWithIconsCode from "../../components/tabs/NormalTabsWithIcons.html?raw";
+import NormalTabsWithIconsCodeAstro from "../../components/tabs/NormalTabsWithIcons.astro?raw";
+import GradientTabs from "../../components/tabs/GradientTabs.astro";
+import GradientTabsCode from "../../components/tabs/GradientTabs.html?raw";
+import GradientTabsCodeAstro from "../../components/tabs/GradientTabs.astro?raw";
+
+# Tabs
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+Tabs can be used to diplay a lot of information in a single page by using progressive disclosure. The user gets control to see the content they want to see.
+
+<Accordion
+  data={[
+    { name : "tabs1", 
+      title: "Design Hints",
+      content:
+        "Tabs are powerful tools for displaying a lot of information without cognitive overload for a user. While deciding the content inside the each tab, we have to consider whether the content is relevant to the particular tab or not. Also if a tab has an action, it is recommended that all information required to complete the action is displayed in the tab. If you need more than 5 tabs, consider using other navigational elements. Tabs also may not transfer well over to smaller screens based on the number of tabs.",
+    },
+    { name : "tabs1", 
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it is important to specify the roles associated with the tabs and use `tabindex` to ensure that the tabs perform the expected functionality. Additional javascript is required to make the tabs work with keyboard events. The content inside the panels shoould also be accessible and follow best practices.",
+    },
+  ]}
+/>
+
+### Tabs Specification
+
+A tab has three main parts :
+
+- The tabs container : The container  div or section that wraps the tabs and the tab panels
+- The tabs list : The list of buttons that serve as label for the tab panels. The related roles are `tablist` and `tab` . The attributes are `aria-selected`, `aria-controls` and `tabindex`.
+- The tab panels : A set of panels that are connected to the tabs list. The related role is `tabpanel`. The attributes are `aria-labelledby` and `tabindex`.
+
+## Normal Tabs
+
+The classic tabs with a panel attached to each tab. The tabs are displayed in a horizontal list and the panels are displayed blow the tabs.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <Tabs />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={TabsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={TabsAstroCode}
+  lang="astro"
+  title="Tabs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+## Normal Tabs With Icons
+
+This adds icons to the tabs while maintaining the same functionality as the normal tabs.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <NormalTabsWithIcons />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NormalTabsWithIconsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NormalTabsWithIconsCodeAstro}
+  lang="astro"
+  title="Tabs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Gradient Tabs With Icons
+
+The selected tab is highlighted with a gradient background. Otherwise the tabs are similar to the normal tabs with icons.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <GradientTabs />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={GradientTabsCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={GradientTabsCodeAstro}
+  lang="astro"
+  title="Tabs.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The color of the gradient tabs can be changed by changing the ```from-purple-500 via-purple-800 to-purple-900``` in the ```<button>``` tag. You can generate different gradients using the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/)

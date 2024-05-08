@@ -1,0 +1,312 @@
+<div class="flex flex-col space-y-4 p-2">
+  <nav
+    class="flex flex-col sticky top-0 z-50 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
+    <div
+      class="container mx-auto flex p-2 flex-row items-center justify-between border-b md:border-0 border-gray-300 dark:border-zinc-800">
+      <div
+        class="inline-flex font-medium items-center text-indigo-700 dark:text-zinc-50">
+        <!-- Your logo -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66c.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21"
+          ></path>
+        </svg>
+        <!-- Your logo -->
+        <span class="ml-3 text-xl">ravixUI</span>
+      </div>
+      <div
+        class="hidden md:flex items-center flex-row md:space-x-6">
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >About</a
+        >
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >Products</a
+        >
+
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >Support</a
+        >
+        <button
+          aria-label="Services Menu Toggle"
+          id="service-toggle-alt"
+          type="button"
+          class="inline-flex items-center justify-center gap-x-1 hover:text-indigo-700 p-2">
+          Services <svg
+            class="w-5 h-5 shrink-0 transition duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          id="service-menu-alt"
+          aria-label="Services Menu"
+          aria-expanded="false"
+          class="hidden aria-expanded:flex text-start flex-col max-w-max absolute top-14 right-16 z-50 rounded-lg shadow-lg my-1 bg-gray-100 dark:bg-zinc-900 gap-y-2 px-8 py-3">
+          <a
+            href="#"
+            class="py-3 hover:text-indigo-700"
+            >Delivery</a
+          >
+          <a
+            href="#"
+            class="py-3 hover:text-indigo-700"
+            >Packaging</a
+          >
+          <a
+            href="#"
+            class="py-3 hover:text-indigo-700"
+            >Shipping</a
+          >
+          <a
+            href="#"
+            class="py-3 hover:text-indigo-700"
+            >Returns</a
+          >
+        </div>
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg font-semibold inline-flex gap-x-1 items-center disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
+          <span>Contact</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <nav
+    class="flex flex-col sticky max-w-[34rem] top-0 z-20 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
+    <div
+      class="container mx-auto flex p-2 flex-row items-center justify-between border-b md:border-0 border-gray-300 dark:border-zinc-800">
+      <div
+        class="inline-flex font-medium items-center text-indigo-700 dark:text-zinc-50">
+        <!-- Your logo -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66c.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21"
+          ></path>
+        </svg>
+        <!-- Your logo -->
+        <span class="ml-3 text-xl">ravixUI</span>
+      </div>
+      <div
+        class="hidden items-center flex-row md:space-x-6">
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >About</a
+        >
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >Products</a
+        >
+
+        <a
+          href="#"
+          class="hover:text-indigo-700"
+          >Support</a
+        >
+
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg font-semibold inline-flex gap-x-1 items-center disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
+          <span>Contact</span>
+        </button>
+      </div>
+
+      <button
+        aria-label="Menu Toggle With Submenu"
+        id="menu-toggle-alt"
+        type="button"
+        class="block rounded-lg font-semibold text-xl text-indigo-700 dark:text-zinc-50 mr-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+          ></path>
+        </svg>
+      </button>
+      <div
+        id="menu-alt"
+        aria-label="Menu With Submenu"
+        aria-expanded="false"
+        class="hidden aria-expanded:flex text-start font-semibold flex-col w-1/2 absolute top-14 right-0 z-50 rounded-lg shadow-lg my-1 bg-gray-100 dark:bg-zinc-900 p-3">
+        <a
+          href="#"
+          class="ml-3 py-3"
+          >About</a
+        >
+        <a
+          href="#"
+          class="ml-3 py-3"
+          >Products</a
+        >
+        <div class="ml-3 pt-3">
+          <span>Services</span>
+          <ul
+            class="ml-3 mt-3 text-sm font-normal gap-y-3 dark:divide-zinc-700">
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-2"
+                >Delivery</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-2"
+                >Packaging</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-2"
+                >Shipping</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-2"
+                >Returns</a
+              >
+            </li>
+          </ul>
+        </div>
+        <a
+          href="#"
+          class="ml-3 py-3"
+          >Support</a
+        >
+
+        <button
+          type="button"
+          class="px-4 py-2 rounded-lg font-semibold justify-center inline-flex gap-x-1 disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
+          <span>Contact</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</div>
+<script is:inline>
+  function serviceMenuAction() {
+    const serviceMenuToggle = document.getElementById(
+      "service-toggle-alt"
+    );
+    const menu = document.getElementById("service-menu-alt");
+
+    serviceMenuToggle?.addEventListener(
+      "click",
+      function () {
+        if (menu) {
+          if (
+            menu.getAttribute("aria-expanded") === "true"
+          ) {
+            menu.setAttribute("aria-expanded", "false");
+          } else {
+            menu.setAttribute("aria-expanded", "true");
+          }
+
+          document.addEventListener(
+            "click",
+            closeServiceMenu
+          );
+        }
+      }
+    );
+  }
+
+  function closeServiceMenu(e) {
+    const serviceMenuToggle = document.getElementById(
+      "service-toggle-alt"
+    );
+    const serviceMenu =
+      document.getElementById("service-menu-alt");
+
+    if (!serviceMenuToggle?.contains(e.target)) {
+        
+      if (
+        serviceMenu?.getAttribute("aria-expanded") ===
+        "true"
+      ) {
+        
+        serviceMenu.setAttribute("aria-expanded", "false");
+        document.removeEventListener(
+          "click",
+          closeServiceMenu
+        );
+      }
+    }
+  }
+
+  function menuAction() {
+    const menuToggle = document.querySelector(
+      "#menu-toggle-alt"
+    );
+    const menu = document.querySelector(
+      "#menu-alt"
+    );
+    menuToggle?.addEventListener("click", function () {
+      if (menu) {
+        menu.getAttribute("aria-expanded") === "true"
+          ? menu.setAttribute("aria-expanded", "false")
+          : menu.setAttribute("aria-expanded", "true");
+        document.addEventListener("click", closeMenu);
+      }
+    });
+  }
+
+  function closeMenu(e) {
+    const menuToggle = document.querySelector(
+      "#menu-toggle-alt"
+    );
+    const menu = document.querySelector(
+      "#menu-alt"
+    );
+    if (!menuToggle?.contains(e.target )) {
+      if (menu?.getAttribute("aria-expanded") === "true") {
+        menu.setAttribute("aria-expanded", "false");
+        document.removeEventListener("click", closeMenu);
+      }
+    }
+  }
+  document.addEventListener("astro:page-load", initializeMenuNavbar);
+  document.addEventListener("astro:before-swap", initializeMenuNavbar);
+  function initializeMenuNavbar() {
+  serviceMenuAction();
+  menuAction();
+  }
+ 
+</script>

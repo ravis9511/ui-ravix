@@ -1,0 +1,199 @@
+---
+title: "Navbar"
+order: 14
+type : "Navigation"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import Navbar from "../../components/navbars/NavbarDisplay.astro";
+import NavBarCode from "../../components/navbars/Navbar.astro?raw";
+import NavBarCodeAstro from "../../components/navbars/NBarAstro.astro?raw";
+import NavbarJS from "../../components/navbars/NavbarJSDisplay.astro";
+import NavbarJSCode from "../../components/navbars/NavbarJS.html?raw";
+import NavbarJSCodeAstro from "../../components/navbars/NbarJSAstro.astro?raw";
+import NavbarSubmenu from "../../components/navbars/NBarSubmenuDisplay.astro";
+import NavbarSubmenuCodeAstro from "../../components/navbars/NavbarSubmenu.astro?raw";
+import NavbarSubmenuCode from "../../components/navbars/NBarSubmenu.html?raw";
+
+# Navbar
+
+Navbars or navigation bars are used to provide
+actions to users within a website. They are typically
+used at the top of a page to help users navigate
+between different sections of the website. Navbars can also include search bars, logos, and other branding elements.
+
+<Accordion
+  data={[
+    { name : "navbar1",
+      title: "Design Hints",
+      content:
+        "Navbars are a great way to provide users with quick access to important information and actions on a website. They are also a tool which can be used for branding as they tend to be consistent across the website.",
+    },
+    { name : "navbar1",
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it is important to ensure that the blocks inside the navbar like links, buttons, search input etc., are accessible. This can be achieved by using appropriate color contrast, clear and concise language, and hiding the aria for logos if other branding elements like name are present.  Links and Buttons should also have descriptive text to provide context and help users.",
+    },
+  ]}
+/>
+
+
+### Navbar Specification
+
+A navbar has a few important considerations :
+- The nav container : When using `<nav>` tag, there is no need to set a `role` attribute, but if you use `<div>` or `<section>`, you can set the `role` attribute to `navigation`. Do not use `aria-label` attribute if the you are setting the role or using a `<nav>` tag.
+- The links  : The links inside the navbar should have descriptive text to provide context and help users and use `<a>` tag. If you are not using the `<a>` tag, you can set the role to `link`.
+- Menus : If you have a submenu or menu inside the navbar it should be accessible.
+
+
+Note: All the icons used in this section are from Google
+Material Icons provided by iconify.design. All the navbars are responsive and adapt to different screen sizes.
+
+## Responsive Navbar With Logo and Links
+
+This is a simple navbar. In smaller form factors (less than `md`) the links in the middle will go into the next line. There is no javascript required for this to work. In the preview below, the second navbar is just to visualize the responsive behavior.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel" data-role="tabpanel">
+  <div class="p-2 ">
+    <Navbar />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={NavBarCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel"  data-role="tabpanel">
+
+<Code
+  code={NavBarCodeAstro}
+  lang="astro"
+  title="navbar.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+<Accordion
+  data={[
+    { name : "navbar2",
+      title: "Design Hints",
+      content:
+        "While this maybe suitable for certain websites, it is important to consider that if the links go on to another line in smaller devices, you may lose a lot of space for the rest of the content on the page. Consider using a navbar with a hamburger menu for actions and links on smaller screens.",
+    },
+  ]}
+/>
+
+## Responsive Navbar With Hamburger Menu
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+The responsive navbar which retains the logo, brand and a navigation menu (hamburger) on smaller screens, which can be used to toggle the menu on and off. In the preview below, the second navbar is just to visualize the responsive behavior.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="grid  p-2 h-[32rem]">
+
+<NavbarJS />
+
+</div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NavbarJSCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NavbarJSCodeAstro}
+  lang="astro"
+  title="navbarWithJS.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+<Accordion
+  data={[
+    { name : "navbar3",
+      title: "Design Hints",
+      content:
+        "You can use icons for the items inside the hamburger menu to enhance the user experience. You can also add a link to the homepage on click of the logo and brand name. ",
+    },
+  ]}
+/>
+
+## Responsive Navbar With Submenu
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+This is a responsive navbar with a submenu on one element. The submenu is a dropdown menu which can be used to show more options for the user. In the preview below, the second navbar is just to visualize the responsive behavior.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="grid  p-2 h-[40rem]">
+
+<NavbarSubmenu />
+
+</div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NavbarSubmenuCode}
+  lang="html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={NavbarSubmenuCodeAstro}
+  lang="astro"
+  title="navbarSubmenu.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+<Accordion
+  data={[
+    { name : "navbar4",
+      title: "Design Hints",
+      content:
+        "While submenus can be used to provide more options for the user, they can also be overwhelming and distracting if not used correctly. It also becomes a limiting factor in smaller screens if there are too many options inside the submenu. You can add images and icons to the submenu to make it more visually appealing and easier to navigate. ",
+    },
+  ]}
+/>

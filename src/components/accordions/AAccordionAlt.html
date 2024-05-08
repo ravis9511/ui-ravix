@@ -1,0 +1,190 @@
+<div
+  id="accordion-container-alt"
+  class="mb-12 divide-y divide-gray-300 dark:divide-zinc-800 rounded-lg max-w-3xl overflow-hidden">
+  <div
+    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
+    <button
+      data-accordion="button"
+      type="button"
+      class="group/button peer flex items-center transition-colors ease-in justify-between px-4 py-4 cursor-pointer w-full text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      aria-expanded="false"
+      aria-controls="panel-1"
+      id="header-1">
+      <span class="text-xl font-semibold"> Accordion Header </span>
+      <svg
+        class="hidden w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:block"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          stroke="currentColor"
+          stroke-dasharray="18"
+          stroke-dashoffset="18"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M5 12H19"
+          fill="currentColor">
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            dur="0.3s"
+            values="18;0"></animate>
+        </path>
+      </svg>
+      <svg
+        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-dasharray="18"
+          stroke-dashoffset="18"
+          stroke-linecap="round"
+          stroke-width="2">
+          <path d="M12 5V19">
+            <animate
+              fill="freeze"
+              attributeName="stroke-dashoffset"
+              begin="0.4s"
+              dur="0.3s"
+              values="18;0"></animate>
+          </path>
+          <path d="M5 12H19">
+            <animate
+              fill="freeze"
+              attributeName="stroke-dashoffset"
+              dur="0.3s"
+              values="18;0"></animate>
+          </path>
+        </g>
+      </svg>
+    </button>
+
+    <div
+      id="panel-1"
+      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
+      aria-labelledby="header-1"
+      role="region">
+      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+        Panel 1 content goes here.
+      </div>
+    </div>
+  </div>
+  <div
+    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
+    <button
+      type="button"
+      data-accordion="button"
+      class="group/button peer flex items-center transition-color ease-in justify-between w-full px-4 py-4 cursor-pointer text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      aria-expanded="false"
+      aria-controls="panel-2"
+      id="header-2">
+      <span class="text-xl font-semibold"> Accordion Header </span>
+      <svg
+        class="hidden w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:block"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          stroke="currentColor"
+          stroke-dasharray="18"
+          stroke-dashoffset="18"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M5 12H19"
+          fill="currentColor">
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            dur="0.3s"
+            values="18;0"></animate>
+        </path>
+      </svg>
+      <svg
+        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-dasharray="18"
+          stroke-dashoffset="18"
+          stroke-linecap="round"
+          stroke-width="2">
+          <path d="M12 5V19">
+            <animate
+              fill="freeze"
+              attributeName="stroke-dashoffset"
+              begin="0.4s"
+              dur="0.3s"
+              values="18;0"></animate>
+          </path>
+          <path d="M5 12H19">
+            <animate
+              fill="freeze"
+              attributeName="stroke-dashoffset"
+              dur="0.3s"
+              values="18;0"></animate>
+          </path>
+        </g>
+      </svg>
+    </button>
+
+    <div
+      id="panel-2"
+      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
+      aria-labelledby="header-2"
+      role="region">
+      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+        Users can click on a panel's header to expand or collapse its content,
+        allowing for a more organized and space-efficient presentation of
+        information, especially when dealing with a lot of content on a webpage.
+        Accordions are commonly used in FAQs, product descriptions, and other
+        situations where content needs to be organized into easily navigable
+        sections.
+      </div>
+    </div>
+  </div>
+  <!-- Add more accordion items as needed -->
+</div>
+<script>
+  function setAccordion() {
+    /**
+     * Retrieves the accordion container element by its ID.
+     * @returns {HTMLElement} The accordion container element, or `null` if not found.
+     */
+    const accordion = document.getElementById("accordion-container-alt");
+    const buttons = accordion?.querySelectorAll('[data-accordion="button"]'); //To prevent buttons inside the accordion from being selected
+    /**
+     * Adds click event listeners to accordion header buttons, toggling the `aria-expanded` attribute to control the accordion's open/closed state.
+     */
+    buttons?.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.getAttribute("aria-expanded") === "true") {
+          button.setAttribute("aria-expanded", "false");
+
+          return;
+        } else {
+          buttons.forEach((button) => {
+            button.setAttribute("aria-expanded", "false");
+          });
+
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  }
+
+  setAccordion();
+</script>

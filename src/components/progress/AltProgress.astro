@@ -1,0 +1,74 @@
+<div class="flex flex-col p-6 space-y-12">
+  <div
+    class="w-full bg-gray-300 dark:bg-zinc-800 rounded-full h-3"
+    role="progressbar"
+    tabindex="0"
+    aria-valuenow="25"
+    aria-valuemin="0"
+    aria-valuemax="100">
+    <div
+      class="dark:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-indigo-700 to-indigo-900 h-3 rounded-full"
+      style="width: 25%">
+    </div>
+  </div>
+  <div class="flex flex-col items-end justify-center space-y-1">
+    <div
+      class="w-full bg-gray-300 dark:bg-zinc-800 rounded-full h-3"
+      role="progressbar"
+      tabindex="0"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      id="progress-bar-2">
+      <div
+        class="dark:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-indigo-700 to-indigo-900 h-3 rounded-full"
+        style="width: 25%">
+      </div>
+    </div>
+    <label
+      aria-hidden="true"
+      class="block text-sm text-start font-medium text-gray-700 dark:text-zinc-400">
+      25% Complete
+    </label>
+  </div>
+  <div class="flex flex-col items-end justify-center space-y-1">
+    <div
+      class="w-full bg-gray-300 dark:bg-zinc-800 rounded-full h-5"
+      role="progressbar"
+      tabindex="0"
+      aria-valuenow="50"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      id="progress-bar-3">
+      <div
+        aria-hidden="true"
+        class="dark:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-indigo-700 to-indigo-900 h-5 text-center text-white text-sm rounded-full items-center justify-center"
+        style="width: 50%">
+        50%
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-end justify-center space-y-1">
+    <div aria-hidden="true"
+      id="label-1-progress"
+      class="inline-flex w-full justify-between items-end px-1 text-gray-700 dark:text-zinc-400">
+      <span class="text-sm font-medium">Current Reading Progress</span>
+      <span class="text-sm font-medium">50%</span>
+    </div>
+    <div
+      class="w-full bg-gray-300 dark:bg-zinc-800 rounded-full h-3"
+      role="progressbar"
+      aria-labelledby="label-1-progress"
+      tabindex="0"
+      aria-valuenow="50"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      id="progress-bar-3">
+      <div
+        aria-hidden="true"
+        class="dark:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-indigo-700 to-indigo-900 h-3 text-center text-white text-sm rounded-full items-center justify-center"
+        style="width: 50%">
+      </div>
+    </div>
+  </div>
+</div>

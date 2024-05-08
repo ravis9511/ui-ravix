@@ -1,0 +1,107 @@
+---
+title: "Modal"
+order: 13
+type: "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import Modal from "../../components/modals/SimpleModal.astro";
+import ModalCode from "../../components/modals/SimpleModal.astro?raw";
+import ModalCodeAstro from "../../components/modals/SimpleModal.astro?raw";
+import InfoModal from "../../components/modals/InfoModal.astro";
+import InfoModalCode from "../../components/modals/InfoModal.astro?raw";
+import InfoModalCodeAstro from "../../components/modals/InfoModal.astro?raw";
+
+# Modal
+
+<Alert type="info">Requires JavaScript to work</Alert>
+
+Modals are used to display important information and can be used to ask users for confirmation on important actions.
+
+## Modal Specifications
+
+A modal contains the following important parts :
+
+- **Modal Activator** : The button that opens the modal
+- **Modal Dialog** : The alert window that contains a heading, a clearly defined message and action buttons. Cancel and Confirm buttons are the most common actions.
+
+**Note:** ravixUI used the `<dialog>` element with a `showModal()` which is the best practice for accessibility since it makes the rest of the page inaccessible until the modal is closed. To see the support for browsers you can [check this website](https://caniuse.com/?search=dialog).
+
+## Simple Modal
+
+This is a simple modal that displays a message on screen, with two action buttons and a close button. Click the button below to open the modal.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<Modal />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ModalCode}
+  lang="html"
+  title="ModalVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ModalCodeAstro}
+  lang="astro"
+  title="ModalVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+## Information Modal
+
+This modal type serves as a means to convey crucial information to the user. While it can accommodate actions within its confines, it is also capable of functioning without them. The modal dismisses itself when the user interacts with the area outside its boundaries or activates the designated close button.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<InfoModal />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={InfoModalCode}
+  lang="html"
+  title="InfoModalVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={InfoModalCodeAstro}
+  lang="astro"
+  title="InfoModalVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** To ensure accessibility for keyboard navigation, incorporating a close button into the modal design is an indispensable requirement; otherwise, it would be impossible to dismiss the modal through keyboard input alone.

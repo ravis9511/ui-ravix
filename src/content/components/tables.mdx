@@ -1,0 +1,225 @@
+---
+title: "Table"
+order: 15
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Alert from "../../components/Alert.astro";
+import Tab from "../../components/Tab.astro";
+import SimpleTable from "../../components/tables/SimpleTable.astro";
+import SimpleTableCode from "../../components/tables/SimpleTable.html?raw";
+import SimpleTableCodeAstro from "../../components/tables/SimpleTable.astro?raw";
+import ThemeTable from "../../components/tables/ThemeTable.astro";
+import ThemeTableCode from "../../components/tables/ThemeTable.html?raw";
+import ThemeTableCodeAstro from "../../components/tables/ThemeTable.astro?raw";
+import CellTable from "../../components/tables/CellTable.astro";
+import CellTableCode from "../../components/tables/CellTable.html?raw";
+import CellTableCodeAstro from "../../components/tables/CellTable.astro?raw";
+import CaptionTable from "../../components/tables/CaptionTable.astro";
+import CaptionTableCode from "../../components/tables/CaptionTable.html?raw";
+import CaptionTableCodeAstro from "../../components/tables/CaptionTable.astro?raw";
+import CondTable from "../../components/tables/CondTable.astro";
+import CondTableCodeAstro from "../../components/tables/CondTable.astro?raw";
+
+# Table
+
+Tables are used to display data in a structured and organized manner. It is the most common way to display a lot of structured data in a web page. The tables in ravixUI comes with striped rows out of the box to make it easier to read.
+
+
+## Table Specification
+
+A table has three main parts :
+
+- The table container : The container  div or section that wraps the table
+- The table header : The header row that contains the column names
+- The table body : The body of the table that contains the data
+
+## Simple Table 
+
+A simple table with a header and a body.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<SimpleTable />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimpleTableCode}
+  lang="html"
+  title="SimpleTableVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimpleTableCodeAstro}
+  lang="astro"
+  title="SimpleTableVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Theme Table 
+
+A variation of the simple table with more thematic colors.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<ThemeTable />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ThemeTableCode}
+  lang="html"
+  title="ThemeTableVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={ThemeTableCodeAstro}
+  lang="astro"
+  title="ThemeTableVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+## Table With Cell Borders
+
+A variation of the simple table with cell borders.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<CellTable />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CellTableCode}
+  lang="html"
+  title="CellTableVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CellTableCodeAstro}
+  lang="astro"
+  title="CellTableVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Table With A Caption
+
+A table with a caption, done semantically with the `<caption>` tag.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<CaptionTable />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CaptionTableCode}
+  lang="html"
+  title="CaptionTableVariants.html"
+  wrap="true"
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CaptionTableCodeAstro}
+  lang="astro"
+  title="CaptionTableVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+
+## Table With Conditional Styling
+
+<Alert type="info">
+Currently, only supported for Astrojs component.
+</Alert>
+
+A table with conditional styling for cells based on the value of a column. 
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex p-6 justify-center w-full">
+<CondTable />
+</div>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CondTableCodeAstro}
+  lang="astro"
+  title="CondTableVariants.astro"
+  wrap="true"
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The styling in this table is just a showcase of the different ways you can use conditional styling. In a real-world scenario, you would likely stick to one format for styling.

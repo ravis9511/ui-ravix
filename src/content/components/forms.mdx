@@ -1,0 +1,186 @@
+---
+title: "Forms"
+order: 12
+type: "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import Text from "../../components/forms/Text.astro";
+import TextCode from "../../components/forms/Text.astro?raw"; 
+import TextCodeAstro from "../../components/forms/Text.astro?raw";
+import Select from "../../components/forms/Select.astro";
+import SelectCode from "../../components/forms/Select.astro?raw";
+import SelectCodeAstro from "../../components/forms/Select.astro?raw";
+import Checkbox from "../../components/forms/Checkbox.astro";
+import CheckboxCode from "../../components/forms/Checkbox.astro?raw";
+import CheckboxCodeAstro from "../../components/forms/Checkbox.astro?raw";
+import Radio from "../../components/forms/Radio.astro";
+import RadioCode from "../../components/forms/Radio.astro?raw";
+import RadioCodeAstro from "../../components/forms/Radio.astro?raw";
+import Button from "../../components/forms/Button.astro";
+import ButtonCode from "../../components/forms/Button.astro?raw";
+import ButtonCodeAstro from "../../components/forms/Button.astro?raw";
+
+# Forms
+
+Forms are used to collect data from users. They are an essential part of any website or application, as they allow users to input and submit data. They are also used to make filters, searches, and other actions.
+
+
+## Form Components 
+
+A form is a group of labels and input fields with action buttons. Some of the commonly used form components are:
+
+- **Text Fields:**  Used to collect data in text format from users.
+- **Select Fields:** Used when you want to limit the user's input to a specific set of options.
+- **Checkbox Fields:** Used to collect user preferences or when a user can select multiple options.
+- **Radio Buttons:** Used to collect data in a radio button format from users.
+- **Buttons:** Used to submit the form or trigger an action.
+
+While input fields are a very effective tool for collecting data, you have to sanitize the data to prevent malicious attacks. You can do a primary verification at the client side and then a secondary validation at the server side.
+
+**Note: ravixUI only provides the basic form components out of the box. It does not provide any validation, sanization, or error handling. You will need to implement these yourself including connecting the form to a backend.**
+
+## Text Fields
+
+Text fields are multipurpose input fields that can be used for collecting text data from users. Some of the commonly used text fields are given below:
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex  p-6 items-start justify-center">
+<Text />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={TextCode} lang="html" title="TextVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={TextCodeAstro} lang="astro" title="TextVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Select Fields
+
+Select fields are used when you want to limit the user's input when there are multiple options to choose from.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex  p-6 items-start justify-center">
+<Select />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={SelectCode} lang="html" title="SelectVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={SelectCodeAstro} lang="astro" title="SelectVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+## Checkbox Fields
+
+Checkbox fields are used to collect user preferences or when a user can select multiple options.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex  p-6 items-start justify-center">
+<Checkbox />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={CheckboxCode} lang="html" title="CheckboxVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={CheckboxCodeAstro} lang="astro" title="CheckboxVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Radio Buttons
+
+Radio buttons are a great way to ensure the user selects only one option from a group of choices.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex  p-6 items-start justify-center">
+<Radio />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={RadioCode} lang="html" title="RadioVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={RadioCodeAstro} lang="astro" title="RadioVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+## Form Buttons
+
+A few buttons which have types assigned to them for reset and submit.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex  p-6 items-start justify-center">
+<Button />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ButtonCode} lang="html" title="ButtonVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ButtonCodeAstro} lang="astro" title="ButtonVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>

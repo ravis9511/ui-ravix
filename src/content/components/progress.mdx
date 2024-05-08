@@ -1,0 +1,88 @@
+---
+title: "Progress"
+order: 13
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Progress from "../../components/progress/Progress.astro";
+import ProgressCode from "../../components/progress/Progress.astro?raw"; 
+import ProgressCodeAstro from "../../components/progress/Progress.astro?raw";
+import ProgressAlt from "../../components/progress/AltProgress.astro";
+import ProgressAltCode from "../../components/progress/AltProgress.astro?raw";
+import ProgressAltCodeAstro from "../../components/progress/AltProgress.astro?raw";
+
+# Progress
+
+Progress bars are used to indicate the progress of a task or the completion of a process. They are commonly used in forms, such as in file uploads or in the loading of content. Progress bars can also be used to indicate reading progress for content such as blogs, articles, documentation, or other text-based content.
+
+<Accordion
+  data={[
+    { name : "progress1", 
+      title: "Design Hints",    
+      content:
+        "Progress bars are a great way to provide users with a visual representation of the progress of a task or the completion of a process. They are also a good way to make the interface more visually appealing and engaging.",
+    },
+    { name : "progress1",
+      title: "Accessiblity Hints",
+      content: "For accessibility, we assign the `progressbar` role to the div and use the `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes to indicate the current progress of the task. In the examples below, all the other elements other than the progress bar are not focusable and have aria-hidden set to true. To provide more information about the progress bar, we can use the aria-label attribute on the div to provide a description of the task or the process.",
+    },
+  ]}
+/>
+
+## Simple Progress Bars
+
+A few styles of progress bars which can be used to indicate the progress of a task or the completion of a process.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class=" p-6">
+<Progress />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ProgressCode} lang="html" title="ProgressVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ProgressCodeAstro} lang="astro" title="ProgressVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+## Alternate Progress Bars
+
+Alternate style for progress bars with a subtle gradient.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class=" p-6">
+<ProgressAlt />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ProgressAltCode} lang="html" title="ProgressAltVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={ProgressAltCodeAstro} lang="astro" title="ProgressAltVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>

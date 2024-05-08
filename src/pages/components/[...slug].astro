@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const blogEntries = await getCollection("components");
-const entryMap= blogEntries.map((entry => ({slug : "/components/"+entry.slug, title : entry.data.title, order : entry.data.order})));
+const entryMap= blogEntries.map((entry => ({slug : "/components/"+entry.slug, title : entry.data.title, order : entry.data.order, type : entry.data.type})));
 entryMap.sort((a, b) => a.order - b.order);
 if (entry === undefined) {
   return Astro.redirect("/404");
@@ -25,23 +25,23 @@ const { Content, headings } = await entry.render();
 
 <Layout title={entry.data.title}  toc={headings} >
   
-  <main class="bg-fixed  bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
+  <div class="bg-fixed  bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
     <div class="grid grid-cols-12  self-center ">
       <div
         class="col-start-1 col-span-2 pl-16 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar  border-r dark:border-zinc-900 border-gray-300 "
       >
         <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}`/>
       </div>
-      <div class="relative col-start-3 col-span-10 grid grid-cols-8  h-[92vh] px-6 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
-        <div class="col-start-1 col-span-6 ">
+      <div class="relative col-start-3 col-span-10 grid grid-cols-8  h-[92vh] justify-items-start px-6 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
+        <div class="lg:ml-24 col-start-1 col-span-7 ">
         <MarkDownLayout >
           <Content />
         </MarkDownLayout>
       </div>
-        <div class="col-start-7 col-span-2 h-[92dvh] sticky top-0 ">red</div>
+        <div class="col-start-8 col-span-1 max-h-[86dvh] sticky top-0 ">red</div>
         
       </div>
       
     </div>
-  </main>
+  </div>
 </Layout>

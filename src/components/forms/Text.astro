@@ -1,0 +1,78 @@
+<form
+  class="flex flex-col gap-4 items-start justify-start w-full p-6 text-zinc-950 dark:text-gray-50 text-base">
+  <div class="flex flex-col w-full items-start gap-y-1">
+    <label
+      for="name1"
+      class="after:content-['*'] after:ml-1 after:text-red-500"
+      >Name</label
+    >
+    <input
+      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      type="text"
+      id="name1"
+      name="name"
+      placeholder="Enter your name"
+      required
+    />
+  </div>
+  <div class="flex flex-col w-full items-start gap-y-1">
+    <label
+      for="email1"
+      class="after:content-['*'] after:ml-1 after:text-red-500"
+      >Email</label
+    >
+    <input
+      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      type="email"
+      id="email1"
+      name="email"
+      placeholder="youremail@example.com"
+      required
+    />
+  </div>
+  <div class="flex flex-col w-full items-start gap-y-1">
+    <label
+      for="password1"
+      class="after:content-['*'] after:ml-1 after:text-red-500"
+      >Password</label
+    >
+    <input
+      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      type="password"
+      id="password1"
+      name="password"
+      placeholder="•••••••••"
+      required
+    />
+  </div>
+  <div class="flex flex-col w-full items-start gap-y-1">
+    <label
+      for="age1"
+      class="after:content-['*'] after:ml-1 after:text-red-500"
+      >Age</label
+    >
+    <input
+      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-48 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      type="number"
+      id="age1"
+      name="age"
+      placeholder="Enter your age"
+      min="18"
+      max="99"
+      minlength="1"
+      maxlength="2"
+      required
+    />
+  </div>
+  <div class="flex flex-col w-full items-start gap-y-1">
+    <label for="comments1">Comments with resize disabled</label>
+    <textarea
+      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-full placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      id="comments1"
+      name="comments"
+      placeholder="Your feedback is important to us"
+      style="resize: none"
+    ></textarea>
+  </div>
+  
+</form>

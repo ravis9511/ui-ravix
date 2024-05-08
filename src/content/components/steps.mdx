@@ -1,0 +1,129 @@
+---
+title: "Steps"
+order: 13
+type: "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Steps from "../../components/steps/Steps.astro";
+import StepsCode from "../../components/steps/Steps.astro?raw";
+import StepsCodeAstro from "../../components/steps/Steps.astro?raw";
+import AltSteps from "../../components/steps/AltSteps.astro";
+import AltStepsCode from "../../components/steps/AltSteps.astro?raw";
+import AltStepsCodeAstro from "../../components/steps/AltSteps.astro?raw";
+import VerticalSteps from "../../components/steps/VerticalSteps.astro";
+import VerticalStepsCode from "../../components/steps/VerticalSteps.astro?raw";
+import VerticalStepsCodeAstro from "../../components/steps/VerticalSteps.astro?raw";
+import DynamicSteps from "../../components/steps/DynamicSteps.astro";
+import DynamicStepsCode from "../../components/steps/DynamicSteps.astro?raw";
+import DynamicStepsCodeAstro from "../../components/steps/DynamicSteps.astro?raw";
+
+# Steps
+
+Steps can be used in multiple ways, but they are most commonly used to present a series of steps that a user must finish in order to complete a task or achieve a goal. They can be used to guide users through a process, to provide feedback on their progress, or to indicate the current step in a multi-step process.
+
+<Accordion
+  data={[
+    {
+      name: "steps1",
+      title: "Design Hints",
+      content:
+        "Steps are a powerful tool for enhancing the user experience. It gives the user a clear indication of the user's progress, an approximate length of the process and a quick way to navigate back to previous steps in case they need to make changes.",
+    },
+    {
+      name: "steps1",
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it is important to ensure that the steps are keyboard accessible. This can be achieved by using the `tabindex` attribute to make the steps focusable and using the `aria-current` attribute to indicate the current step. Additionally, it is important to ensure that the steps are not used as a button element and that they are not used as an input element.",
+    },
+  ]}
+/>
+
+## Simple Static Steps
+
+A simple horizontal stepper that can be used to present a series of steps and current step.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<Steps />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={StepsCode} lang="html" title="StepsVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={StepsCodeAstro} lang="astro" title="StepsVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+
+## Alternate Static Steps
+
+An alternate style of static stepper with a bit more details.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<AltSteps />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AltStepsCode} lang="html" title="AltStepsVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={AltStepsCodeAstro} lang="astro" title="AltStepsVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+
+
+## Vertical Static Steps
+
+Static stepper with vertical orientation.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<div class="flex items-center justify-center p-6">
+<VerticalSteps />
+</div>
+
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={VerticalStepsCode} lang="html" title="VerticalStepsVariants.html" wrap="true"/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code code={VerticalStepsCodeAstro} lang="astro" title="VerticalStepsVariants.astro" wrap="true"/>
+
+</section>
+
+</Tab>
+
+

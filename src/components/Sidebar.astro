@@ -4,30 +4,76 @@ interface Props {
     slug: string;
     title: string;
     order: number;
+    type: string;
   }>;
   currentSlug: string;
 }
 const { entryMap, currentSlug } = Astro.props;
 ---
 
-<nav class="flex flex-col text-lg text-start my-8 ">
-  <div class="flex flex-col mb-12 font-display">
-    <ul class="space-y-4 text-xl">
+<nav class="flex flex-col text-lg text-start pb-4">
+  <div class="flex flex-col  font-display pb-4">
+    <h2 class="text-xl font-bold mt-8 mb-4">Getting Started</h2>
+    <ul class="ml-4 space-y-4 text-lg">
       {
-        entryMap.map((links) => (
-          <li>
-            <a
-              href={links.slug}
-              class={`${
-                currentSlug === links.slug
-                  ? "dark:text-indigo-400 text-indigo-700 font-bold"
-                  : ""
-              }`}
-            >
-              {links.title}
-            </a>
-          </li>
-        ))
+        entryMap.map(
+          (links) =>
+            links.type === "Introduction" && (
+              <li>
+                <a
+                  href={links.slug}
+                  class={`${
+                    currentSlug === links.slug
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
+                      : ""
+                  }`}>
+                  {links.title}
+                </a>
+              </li>
+            )
+        )
+      }
+    </ul>
+    <h2 class="text-xl font-bold mt-8 mb-4">Basic </h2>
+    <ul class="ml-4 space-y-4 text-lg">
+      {
+        entryMap.map(
+          (links) =>
+            links.type === "Building" && (
+              <li>
+                <a
+                  href={links.slug}
+                  class={`${
+                    currentSlug === links.slug
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
+                      : ""
+                  }`}>
+                  {links.title}
+                </a>
+              </li>
+            )
+        )
+      }
+    </ul>
+    <h2 class="text-xl font-bold mt-8 mb-4">Navigation </h2>
+    <ul class="ml-4 space-y-4 text-lg">
+      {
+        entryMap.map(
+          (links) =>
+            links.type === "Navigation" && (
+              <li>
+                <a
+                  href={links.slug}
+                  class={`${
+                    currentSlug === links.slug
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
+                      : ""
+                  }`}>
+                  {links.title}
+                </a>
+              </li>
+            )
+        )
       }
     </ul>
   </div>

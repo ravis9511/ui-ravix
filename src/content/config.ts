@@ -6,6 +6,7 @@ const componentCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         order: z.number(),
+        type: z.string(),
     }),
 })
 
