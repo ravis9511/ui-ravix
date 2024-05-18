@@ -1,7 +1,7 @@
 ---
 title: "Table"
 order: 15
-type : "Building"
+type: "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
@@ -27,26 +27,23 @@ import CondTableCodeAstro from "../../components/tables/CondTable.astro?raw";
 
 Tables are used to display data in a structured and organized manner. It is the most common way to display a lot of structured data in a web page. The tables in ravixUI comes with striped rows out of the box to make it easier to read.
 
-
 ## Table Specification
 
 A table has three main parts :
 
-- The table container : The container  div or section that wraps the table
+- The table container : The container div or section that wraps the table
 - The table header : The header row that contains the column names
 - The table body : The body of the table that contains the data
 
-## Simple Table 
+## Simple Table
 
 A simple table with a header and a body.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex p-6 justify-center w-full">
+
 <SimpleTable />
-</div>
 
 </section>
 
@@ -57,6 +54,7 @@ A simple table with a header and a body.
   lang="html"
   title="SimpleTableVariants.html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -68,24 +66,22 @@ A simple table with a header and a body.
   lang="astro"
   title="SimpleTableVariants.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-
-## Theme Table 
+## Theme Table
 
 A variation of the simple table with more thematic colors.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex p-6 justify-center w-full">
+
 <ThemeTable />
-</div>
 
 </section>
 
@@ -96,6 +92,7 @@ A variation of the simple table with more thematic colors.
   lang="html"
   title="ThemeTableVariants.html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -107,6 +104,7 @@ A variation of the simple table with more thematic colors.
   lang="astro"
   title="ThemeTableVariants.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -117,13 +115,11 @@ A variation of the simple table with more thematic colors.
 
 A variation of the simple table with cell borders.
 
-
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex p-6 justify-center w-full">
+
 <CellTable />
-</div>
 
 </section>
 
@@ -134,6 +130,7 @@ A variation of the simple table with cell borders.
   lang="html"
   title="CellTableVariants.html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -145,24 +142,22 @@ A variation of the simple table with cell borders.
   lang="astro"
   title="CellTableVariants.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-
 ## Table With A Caption
 
 A table with a caption, done semantically with the `<caption>` tag.
 
-
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex p-6 justify-center w-full">
+
 <CaptionTable />
-</div>
 
 </section>
 
@@ -173,6 +168,7 @@ A table with a caption, done semantically with the `<caption>` tag.
   lang="html"
   title="CaptionTableVariants.html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -184,28 +180,24 @@ A table with a caption, done semantically with the `<caption>` tag.
   lang="astro"
   title="CaptionTableVariants.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-
 ## Table With Conditional Styling
 
-<Alert type="info">
-Currently, only supported for Astrojs component.
-</Alert>
+<Alert type="info">Currently, only supported for Astrojs component.</Alert>
 
-A table with conditional styling for cells based on the value of a column. 
-
+A table with conditional styling for cells based on the value of a column.
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
 <section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex p-6 justify-center w-full">
+
 <CondTable />
-</div>
 
 </section>
 
@@ -216,6 +208,7 @@ A table with conditional styling for cells based on the value of a column.
   lang="astro"
   title="CondTableVariants.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>

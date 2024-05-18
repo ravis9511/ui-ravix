@@ -3,15 +3,16 @@ import { ViewTransitions } from "astro:transitions";
 import Navigation from "../components/Navigation.astro";
 import '@fontsource-variable/inter';
 import '@fontsource-variable/figtree';
+
 import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
-  toc?: Array<object>;
+  currentSlug?: string;
   keywords?: string;
 }
 
-const { title, toc, description, keywords } = Astro.props;
+const { title,  description, keywords, currentSlug } = Astro.props;
 ---
 
 <!doctype html>
@@ -58,12 +59,11 @@ const { title, toc, description, keywords } = Astro.props;
     </script>
     <ViewTransitions fallback="animate" />
   </head>
-  <body
-    class="w-full z-0  bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 justify-center items-center"
+  <body 
+    class=" z-0  bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 "
   >
-      <main class="justify-center z-10">
-      <div id="progress"></div>
-      <Navigation />
+      <main class=" z-10" >
+      <Navigation  currentSlug={currentSlug}  />
       <slot />
     </main>
   </body>

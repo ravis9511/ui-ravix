@@ -1,17 +1,17 @@
 ---
 title: "Switch"
 order: 14
-type : "Building"
+type: "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
 import Toggle from "../../components/toggles/Toggle.astro";
-import ToggleCode from "../../components/toggles/Toggle.astro?raw"; 
+import ToggleCode from "../../components/toggles/Toggle.astro?raw";
 import ToggleCodeAstro from "../../components/toggles/Toggle.astro?raw";
 import ToggleAlt from "../../components/toggles/AltToggle.astro";
-import ToggleAltCode from "../../components/toggles/AltToggle.astro?raw"; 
+import ToggleAltCode from "../../components/toggles/AltToggle.astro?raw";
 import ToggleAltCodeAstro from "../../components/toggles/AltToggle.astro?raw";
 
 # Switch
@@ -20,12 +20,14 @@ Switches or Toggles are a special type of input widget that can be used to switc
 
 <Accordion
   data={[
-    { name : "toggle1", 
-      title: "Design Hints",    
+    {
+      name: "toggle1",
+      title: "Design Hints",
       content:
         "Toggles are a great way to provide users with a quick and easy way to switch between different options or settings. They are also a good way to save space on a form and make it more visually appealing.",
     },
-    { name : "toggle1",
+    {
+      name: "toggle1",
       title: "Accessiblity Hints",
       content:
         "For accessibility, it is important to ensure that the toggles are keyboard accessible. This can be achieved by using the `tabindex` attribute to make the toggles focusable and using the `aria-pressed` attribute to indicate the current state of the toggle. Additionally, it is important to ensure that the toggles are not used as a button element and that they are not used as an input element.",
@@ -48,18 +50,29 @@ A simple switch input to toggle between two states.
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ToggleCode} lang="html" title="ToggleVariants.html" wrap="true"/>
+<Code
+  code={ToggleCode}
+  lang="html"
+  title="ToggleVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ToggleCodeAstro} lang="astro" title="ToggleVariants.astro" wrap="true"/>
+<Code
+  code={ToggleCodeAstro}
+  lang="astro"
+  title="ToggleVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 </Tab>
-
 
 ## Alternate Simple Switch
 
@@ -76,13 +89,25 @@ An alternate style for simple switches.
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ToggleAltCode} lang="html" title="ToggleAltVariants.html" wrap="true"/>
+<Code
+  code={ToggleAltCode}
+  lang="html"
+  title="ToggleAltVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ToggleAltCodeAstro} lang="astro" title="ToggleAltVariants.astro" wrap="true"/>
+<Code
+  code={ToggleAltCodeAstro}
+  lang="astro"
+  title="ToggleAltVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 

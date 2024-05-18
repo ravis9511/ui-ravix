@@ -1,7 +1,7 @@
-<div class="flex -space-x-4 my-6">
+<div class="flex -space-x-3 my-6" >
   <div
     role="img"
-    class="flex relative transition-all hover:z-20 hover:scale-110"
+    class="flex relative motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out hover:z-20 hover:scale-110 "
     aria-label="State Available for User Jane"
     title="Jane">
     <img
@@ -10,12 +10,12 @@
       height="40"
       src="/src/assets/avatar.jpg"
       aria-hidden="true"
-      alt="Display"
+      alt="Jane"
     />
   </div>
   <div
     role="img"
-    class="flex relative transition-all hover:z-20 hover:scale-110"
+    class="flex relative motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out hover:z-20 hover:scale-110"
     aria-label="State Busy for User Hari"
     title="Hari">
     <img
@@ -24,12 +24,12 @@
       height="40"
       src="/src/assets/avatar2.jpg"
       aria-hidden="true"
-      alt="Display"
+      alt="Hari"
     />
   </div>
   <div
     role="img"
-    class="flex relative transition-all hover:z-20 hover:scale-110"
+    class="flex relative motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out hover:z-20 hover:scale-110"
     aria-label="State Away for User John"
     title="John">
     <img
@@ -38,13 +38,13 @@
       height="40"
       src="/src/assets/avatar3.jpg"
       aria-hidden="true"
-      alt="Display"
+      alt="John"
     />
   </div>
   
   <div
     role="img"
-    class="flex relative transition-all hover:z-20 hover:scale-110"
+    class="flex relative motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out hover:z-20 hover:scale-110"
     aria-label="State Available for User Emily"
     title="Emily">
     <img
@@ -53,14 +53,14 @@
       height="40"
       src="/src/assets/avatar4.jpg"
       aria-hidden="true"
-      alt="Display"
+      alt="Emily"
     />
   </div>
 
   <a
-    href="#"
-    class="flex transition-all z-[1] hover:z-20 hover:scale-110 w-[42px] h-[42px] justify-center items-center rounded-full  bg-gray-400 dark:bg-gray-800 text-black dark:text-white"
-    aria-label="22 more users available">
-    +22
+    href="#" title="22 more users available"
+    class="flex motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out z-[1] hover:z-20 hover:scale-110 w-[42px] h-[42px] justify-center items-center rounded-full  bg-gray-400 dark:bg-gray-800 text-black dark:text-white focus:outline-2 outline-offset-2 outline-gray-800 dark:outline-zinc-500"
+    >
+    +22 <span class="sr-only">more users</span>
   </a>
 </div>

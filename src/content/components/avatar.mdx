@@ -1,7 +1,7 @@
 ---
 title: "Avatar"
 order: 8
-type : "Building"
+type: "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
@@ -26,54 +26,58 @@ Avatar is used to represent a user or group of users using an image. It can also
 
 <Accordion
   data={[
-    {   name : "avatar1",
+    {
+      name: "avatar1",
       title: "Design Hints",
       content:
         "Avatars are a great way to personalize the user experience. Avatars can be used to convey states of the user (available, busy, away, logged out, etc.) . A common use pattern for avatar is that it acts as a link to a profile page, but new users may not be aware of this and may need hints.",
     },
-    {   name : "avatar1",
+    {
+      name: "avatar1",
       title: "Accessiblity Hints",
       content:
-        "Ensure that the avatar image has an alternative text which describes the user. If using an avatar as a link, ensure that the link has a descriptive text which can be read only by screen readers. If user state is conveyes using the avatar, ensure that the state is conveyed using sr-only text.",
-    }
-  ]} />
+        "Ensure that the avatar image has an alternative text which describes the user. If using an avatar as a link, ensure that the link has a descriptive text which can be read only by screen readers or using proper aria-label. If user state is conveyed using the avatar, ensure that the state is also conveyed in a way that can be read by screen readers .",
+    },
+  ]}
+/>
 
-
-**Accessibility Note:**  Pay close attention to the proper utilization of aria-label, aria-hidden, and alt attributes when working with different avatar elements. For links, you can enhance the accessibility experience by incorporating supplementary information within the aria-label attribute, effectively conveying the context of the associated image, icon, or initials and set aria-hidden="true" on the associated elements inside the link.
-
+**Accessibility Note:** Pay close attention to the proper utilization of aria-label, aria-hidden, and alt attributes when working with different avatar elements. For links, you can enhance the accessibility experience by incorporating supplementary information within the aria-label attribute, effectively conveying the context of the associated image, icon, or initials and set aria-hidden="true" on the associated elements inside the link.
 
 ## Simple Avatar
 
 A set of default avatars which can be used. The first one is a default avatar, the second one is a placeholder avatar, the third one is an avatar with name. The second row has the same types of avatars but with links.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Avatar" tabs={[{ "name" : "Preview", "id" : "SA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SA-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="SA-Tab1-panel"
+  aria-labelledby="SA-Tab1"
   role="tabpanel"
-  data-role="tabpanel" >
-  <div class="grid  p-6">
+  data-role="tabpanel">
+  <div class="grid justify-center  p-6">
     <Avatar />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2">
 
 <Code
   code={AvatarCode}
   lang="html"
-  wrap="true"   
+  wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab3">
 
 <Code
   code={AvatarCodeAstro}
   lang="astro"
   title="Avatar.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -82,83 +86,84 @@ A set of default avatars which can be used. The first one is a default avatar, t
 
 ## Avatar with State
 
-The simple avatar but with extra state information. The states available out of the box are 
+The simple avatar but with extra state information. The states available out of the box are
 
 - Available - green
 - Busy - red
 - Away - yellow
 
-
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Avatar with State" tabs={[{ "name" : "Preview", "id" : "AWS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AWS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AWS-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="AWS-Tab1-panel"
+  aria-labelledby="AWS-Tab1"
   role="tabpanel"
-  data-role="tabpanel" >
-  <div class="grid  p-6">
+  data-role="tabpanel">
+  <div class="grid justify-center  p-6">
     <AvatarWithState />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AWS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWS-Tab2">
 
 <Code
   code={AvatarWithStateCode}
   lang="html"
-  wrap="true"   
+  wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AWS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWS-Tab3">
 
 <Code
   code={AvatarWithStateCodeAstro}
   lang="astro"
   title="AvatarWithState.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-
 ## Avatar with State And Ring
 
 These avatars are similar to the previous one, but an additional ring is added to the avatar.
 
-
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Avatar with State And Ring" tabs={[{ "name" : "Preview", "id" : "ASR-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ASR-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ASR-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="ASR-Tab1-panel"
+  aria-labelledby="ASR-Tab1"
   role="tabpanel"
-  data-role="tabpanel" >
-  <div class="grid  p-6">
+  data-role="tabpanel">
+  <div class="grid justify-center  p-6">
     <AvatarWithRing />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ASR-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASR-Tab2">
 
 <Code
   code={AvatarWithRingCode}
   lang="html"
-  wrap="true"   
+  wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ASR-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASR-Tab3">
 
 <Code
   code={AvatarWithRingCodeAstro}
   lang="astro"
   title="AvatarWithState.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -167,43 +172,54 @@ These avatars are similar to the previous one, but an additional ring is added t
 
 **Note:** While the above avatars use both ring and dot indicators, you may choose to use the ring only or the dot only. The choice is up to you and the design of your application.
 
-
 ## Avatar Groups
 
-The avatar group allows you to show multiple avatars stacked together in a group.
+The avatar group allows you to show multiple avatars stacked together in a group. Using every avatar in the avatar group as a link is not recommended since the clickable area is limited. The recommended approach is to show the list of people when the link/button ( the +22 link in the example below) on the avatar group is clicked from which further actions can be taken.
 
-
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Avatar Groups" tabs={[{ "name" : "Preview", "id" : "AG-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AG-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AG-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="AG-Tab1-panel"
+  aria-labelledby="AG-Tab1"
   role="tabpanel"
-  data-role="tabpanel" >
-  <div class="grid  p-6">
+  data-role="tabpanel">
+  <div class="grid justify-center  p-6">
     <AvatarGroup />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AG-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AG-Tab2">
 
 <Code
   code={AvatarGroupCode}
   lang="html"
-  wrap="true"   
+  wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AG-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AG-Tab3">
 
 <Code
   code={AvatarGroupCodeAstro}
   lang="astro"
   title="AvatarWithState.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
+
+## Accessibility Testing Status
+
+| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Avatar              | Yes  | Yes              | Yes  | Yes | Yes              |
+| Avatar with State          | Yes  | Yes              | Yes  | Yes | Yes              |
+| Avatar with State And Ring | Yes  | Yes              | Yes  | Yes | Yes              |
+| Avatar Groups              | Yes  | Yes              | Yes  | Yes | Yes              |
+
+Note that there are no clear accessibility guidelines for the avatar pattern described by WAI-ARIA, so ravixUI implements accessbility for avatars keeping in mind the patterns for the `role=img` and the accessbility patterns for `<a>` tag where appropriate.

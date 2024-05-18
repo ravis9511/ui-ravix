@@ -1,18 +1,11 @@
 ---
 import "../styles/global.css";
+
 ---
 
-<main class="grid items-start justify-items-center">
-  <div
-    class="items-center max-w-4xl px-5 py-4 prose list-disc prose-zinc prose-p:font-normal prose-p:text-zinc-900 dark:prose-p:text-zinc-200 prose-li:text-zinc-900 dark:prose-li:text-zinc-200
-        dark:prose-invert prose-h1:font-display prose-h2:mt-16 prose-h2:font-display prose-h2:text-3xl prose-p:mx-2 prose-li:mx-2
-        lg:prose-h2:text-3xl prose-h3:text-xl prose-h3:font-display lg:prose-h3:text-2xl prose-ul:max-w-[700px] 
-        prose-table:max-w-3xl prose-th:text-nowrap prose-th:pr-6 prose-tr:border-b prose-tr:border-gray-300
-       dark:prose-tr:border-gray-700 prose-h1:font-bold prose-h1:text-5xl md:px-0 marker:text-gray-500 prose-p:text-lg
-        sm:prose-p:text-lg prose-h4:text-lg prose-h4:text-center prose-h4:text-gray-800  prose-p:max-w-[700px]
-         prose-li:text-lg sm:prose-li:text-lg dark:prose-headings:text-indigo-400  prose-a:text-blue-600
-      dark:prose-a:text-blue-500 prose-p:text-start prose-img:rounded-xl prose-blockquote:border-slate-300 prose-blockquote:bg-slate-200
-      dark:prose-blockquote:border-slate-800 dark:prose-blockquote:bg-slate-950 prose-blockquote:p-3 prose-hr:border-gray-500">
-    <slot />
-  </div>
-</main>
+<section 
+  class="  prose prose-zinc  dark:prose-invert  prose-base mx-2 lg:mx-0 sm:prose-lg flex flex-col self-center max-w-3xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl prose-p:max-w-3xl xl:prose-ul:max-w-3xl xl:prose-li:marker:text-gray-400 dark:prose-li:marker:text-gray-400
+        prose-p:text-zinc-800 prose-li:text-zinc-800 dark:prose-li:text-zinc-300 dark:prose-p:text-zinc-300 prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-th:text-start prose-table:max-w-3xl prose-thead:border-zinc-400 prose-tr:border-zinc-300 dark:prose-thead:border-zinc-700 dark:prose-tr:border-zinc-800
+        sm:prose-p:my-3 pb-12">
+  <slot />
+</section>

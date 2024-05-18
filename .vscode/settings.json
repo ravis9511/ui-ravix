@@ -227,7 +227,7 @@
 					],
 					"settings": {
 						"foreground": "#0088FF",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -465,7 +465,7 @@
 					"scope": "text.html.basic entity.other",
 					"settings": {
 						"foreground": "#FFC600",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -587,7 +587,7 @@
 					"scope": "markup.quote.markdown meta.paragraph.markdown",
 					"settings": {
 						"foreground": "#9EFFFF",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -607,7 +607,7 @@
 					"scope": "markup.italic.markdown",
 					"settings": {
 						"foreground": "#9EFFFF",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -668,7 +668,7 @@
 				{
 					"scope": "text.jade entity.other.attribute-name.tag",
 					"settings": {
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -744,7 +744,7 @@
 						"entity.other.attribute-name.html"
 					],
 					"settings": {
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -753,7 +753,7 @@
 					],
 					"settings": {
 						"foreground": "#FF9D00",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{
@@ -762,7 +762,7 @@
 					],
 					"settings": {
 						"foreground": "#FF0088",
-						"fontStyle": "italic"
+						"fontStyle": ""
 					}
 				},
 				{

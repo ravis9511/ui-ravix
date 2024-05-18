@@ -1,48 +1,45 @@
 ---
 interface Props {
-    data: Array<{
-        title: string
-        content: string
-        name?: string
-    }>
+  data: Array<{
+    title: string;
+    content: string;
+    name?: string;
+  }>;
 }
-const { data } = Astro.props
+const { data } = Astro.props;
 ---
 
 <div
-    class="border mt-6 mb-12 border-gray-400 divide-y divide-gray-400 dark:border-0 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-[0_6px_30px_rgb(0,0,0,0.06)] dark:shadow-[0px_0px_8px_rgba(99,102,241,_0.3)]">
-    {
-        data.map((item) => (
-            <details
-                class="group"
-                open={false} name={item.name}>
-                <summary
-                    class="flex items-center justify-between px-4 py-4 cursor-pointer text-indigo-700 dark:text-zinc-300"
-                    
-                    role="button"
-                    tabindex="0">
-                    <span class="text-xl  font-semibold ">
-                        {item.title}
-                    </span>
-                    <svg
-                        class="w-5 h-5 shrink-0 transition duration-300 group-open:-rotate-180"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                        />
-                    </svg>
-                </summary>
+  class="border mt-6 mb-12 border-gray-400 divide-y divide-gray-400 dark:border-indigo-950 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-[0_6px_30px_rgb(0,0,0,0.06)] dark:shadow-none">
+  {
+    data.map((item) => (
+      <details
+        class="group"
+        open={false}
+        name={item.name}>
+        <summary
+          class="flex items-center justify-between px-4 py-4 cursor-pointer text-indigo-700 dark:text-zinc-300"
+          tabindex="0">
+          <span class="text-xl  font-semibold ">{item.title}</span>
+          <svg
+            class="w-5 h-5 shrink-0 transition duration-300 group-open:-rotate-180"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </summary>
 
-                <div class="not-prose px-6 text-start text-lg pb-5 pt-2 ">
-                    {item.content}
-                </div>
-            </details>
-        ))
-    }
+        <div class="not-prose  px-6 text-start text-lg pb-5  ">
+          {item.content}
+        </div>
+      </details>
+    ))
+  }
 </div>

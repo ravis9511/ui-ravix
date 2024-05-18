@@ -1,0 +1,162 @@
+---
+title: "Timeline"
+order: 15
+type : "Building"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Alert from "../../components/Alert.astro";
+import Tab from "../../components/Tab.astro";
+import SimpleTimeline from "../../components/timeline/SimpleTimeline.astro";
+import SimpleTimelineCode from "../../components/timeline/SimpleTimeline.html?raw";
+import SimpleTimelineCodeAstro from "../../components/timeline/SimpleTimeline.astro?raw";
+import CollapseTimeline from "../../components/timeline/CollapseTimeline.astro";
+import CollapseTimelineCode from "../../components/timeline/CollapseTimeline.html?raw";
+import CollapseTimelineCodeAstro from "../../components/timeline/CollapseTimeline.astro?raw";
+import AltTimeline from "../../components/timeline/AltTimeline.astro";
+import AltTimelineCode from "../../components/timeline/AltTimeline.html?raw";
+import AltTimelineCodeAstro from "../../components/timeline/AltTimeline.astro?raw";
+
+
+# Timeline
+
+Timelines can be used to display a series of events in a chronological order. They can be used to convey information about a project, a process, or a sequence of events.
+
+<Accordion
+  data={[
+    { name : "timeline1", 
+      title: "Design Hints",
+      content:
+        "Timelines are useful for displaying a series of events in a chronological order. They can be used to convey information about a project, a process, or a sequence of events. Timelines can be used to show the progress of a project, the timeline of a process, or the sequence of events that occurred over time.",
+    },
+    { name : "timeline1", 
+      title: "Accessiblity Hints",
+      content:
+        "Timelines should be designed to be accessible to all users, including those with disabilities. This includes using appropriate color contrast, providing alternative text for images, and ensuring that the timeline is navigable using keyboard controls.",
+    },
+  ]}
+/>
+
+## Simple Timeline
+
+A simple vertical time line with a list of events.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <SimpleTimeline />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimpleTimelineCode}
+  lang="html"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimpleTimelineCodeAstro}
+  lang="astro"
+  title="SimpleTimeline.astro"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Timeline with Collapsible Event Descriptions
+
+A simple timeline with collapsible event descriptions.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <CollapseTimeline />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CollapseTimelineCode}
+  lang="html"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={CollapseTimelineCodeAstro}
+  lang="astro"
+  title="CollapseTimeline.astro"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Timeline
+
+An alternate style for timelines.
+
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 ">
+    <AltTimeline />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltTimelineCode}
+  lang="html"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltTimelineCodeAstro}
+  lang="astro"
+  title="AltTimeline.astro"
+  wrap="true" 
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>

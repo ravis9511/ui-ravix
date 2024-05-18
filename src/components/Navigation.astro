@@ -1,41 +1,138 @@
 ---
 import DarkModeButton from "./DarkModeButton.svelte";
+import { getCollection } from "astro:content";
+import Hamburger from "./Hamburger.svelte";
 import { Image } from "astro:assets";
+import Search from "astro-pagefind/components/Search";
 
 import LogoDarkMode from "../assets/logoVectorLight.svg";
 import LogoLightMode from "../assets/logoVectorDark.svg";
+const blogEntries = await getCollection("components");
+const documentEntries = blogEntries.map((entry) => ({
+  slug: "/components/" + entry.slug,
+  title: entry.data.title,
+  order: entry.data.order,
+  type: entry.data.type,
+}));
+documentEntries.sort((a, b) => a.order - b.order);
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
 ---
 
-<nav class="font-display flex flex-col h-[8dvh] md:flex-row items-center justify-between  z-30 xl:px-10 px-2 sm:px-6 lg:px-10 sticky top-0 border-b border-gray-300 dark:border-zinc-900 dark:bg-zinc-950 bg-gray-100 py-2">
-  <a href="/" class="flex items-center">
-    <Image
-      src={LogoLightMode}
-      alt="Logo"
-      class="w-8 h-8 block dark:hidden mx-4"
+<nav aria-label="Site Navigation"
+  class="font-display flex md:h-[8dvh] flex-row items-center justify-between z-50 px-3 sm:px-8 md:px-10 lg:px-16 xl:px-32 sticky top-0 border-b border-gray-300 dark:border-zinc-800 dark:bg-zinc-950 bg-gray-100 py-2">
+  <div class="flex">
+    <Hamburger
+      client:load
+      entryMap={documentEntries}
+      currentSlug={currentSlug}
     />
-    <Image
-      src={LogoDarkMode}
-      alt="Logo"
-      class="w-8 h-8 hidden dark:block mx-4"
+    <a
+      href="/"
+      class="flex items-center justify-start mx-4">
+      <Image
+        src={LogoLightMode}
+        alt="Logo"
+        class="w-8 h-8 hidden sm:block dark:hidden mr-1 sm:mx-4"
+      />
+      <Image
+        src={LogoDarkMode}
+        alt="Logo"
+        class="hidden w-8 h-8 dark:sm:block mr-1 sm:mx-4"
+      />
+      <span class="text-xl sm:text-2xl">ravixUI</span>
+    </a>
+  </div>
+  <div class="hidden  sm:w-1/2 dark:block">
+    <Search
+      id="search1"
+      className="pagefind-ui dark"
+      uiOptions={{ showImages: false, excerptLength: 15 }}
     />
-    <h1 class="text-2xl">ravixUI</h1>
-  </a>
-  <div class="items-center h-full justify-center ">
-    <div class="w-full h-full inline-flex mx-3 justify-end">
-      
-      <div class="inline-flex items-center h-full space-x-4">
-        
-        <a href="/" class="p-2 text-base md:text-xl hover:text-blue-400"
-          >About</a
+  </div>
+  <div class="block sm:w-1/2  dark:hidden">
+    <Search
+      id="search2"
+      className="pagefind-ui light"
+      uiOptions={{ showImages: false, excerptLength: 15 }}
+    />
+  </div>
+  <div class="hidden lg:block items-center h-full justify-center">
+    <div class="w-full h-full inline-flex lg:mx-3 justify-end">
+      <div class="hidden lg:inline-flex items-center h-full space-x-4">
+        <a
+          href="/"
+          class="p-2 text-base lg:text-xl hover:text-blue-400"
+          >Support</a
         >
-        <a href="/components/gettingstarted" class= "p-2 text-base md:text-xl hover:text-blue-400"
+        <a
+          href="/components/gettingstarted"
+          class="p-2 text-base lg:text-xl hover:text-blue-400"
           >Docs</a
         >
-        <a href="/" class= "p-2 text-base md:text-xl hover:text-blue-400"
-        >Pricing</a
-      >             
         <DarkModeButton client:load />
       </div>
     </div>
   </div>
 </nav>
+
+<style is:global>
+  .pagefind-ui.light {
+    --pagefind-ui-scale: 0.7;
+    --pagefind-ui-primary: 12102c;
+    --pagefind-ui-text: black;
+    --pagefind-ui-border: slategrey;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0.5rem;
+    --pagefind-ui-font: "Figtree Variable", sans-serif;
+    font-weight: 400;
+  }
+  .pagefind-ui.dark {
+    --pagefind-ui-scale: 0.7;
+    --pagefind-ui-primary: #ffffff;
+    --pagefind-ui-text: #ffffff;
+    --pagefind-ui-background: #18181b;
+    --pagefind-ui-border: #29292f;
+    --pagefind-ui-tag: #152028;
+    --pagefind-ui-font: "Figtree Variable", sans-serif;
+  }
+  .pagefind-ui .pagefind-ui__search-input {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .pagefind-ui .pagefind-ui__result-title {
+    font-size: 18px !important;
+  }
+  .pagefind-ui .pagefind-ui__result-excerpt {
+    font-size: 16px !important;
+  }
+  .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 0px;
+    z-index: 9999;
+    padding: 0 2em 1em;
+    max-height: calc(100dvh - 10dvh);
+
+    overflow-y: auto;
+    box-shadow:
+      0 10px 10px -5px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: var(--pagefind-ui-border-radius);
+    border-bottom-left-radius: var(--pagefind-ui-border-radius);
+    background-color: var(--pagefind-ui-background);
+  }
+
+  .pagefind-ui .pagefind-ui__result-link {
+    color: var(--pagefind-ui-primary);
+  }
+
+  .pagefind-ui .pagefind-ui__result-excerpt {
+    color: var(--pagefind-ui-text);
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
 title: "Tabs"
 order: 15
-type : "Navigation"
+type: "Navigation"
 ---
 
 import { Code } from "astro-expressive-code/components";
@@ -29,12 +29,14 @@ Tabs can be used to diplay a lot of information in a single page by using progre
 
 <Accordion
   data={[
-    { name : "tabs1", 
+    {
+      name: "tabs1",
       title: "Design Hints",
       content:
         "Tabs are powerful tools for displaying a lot of information without cognitive overload for a user. While deciding the content inside the each tab, we have to consider whether the content is relevant to the particular tab or not. Also if a tab has an action, it is recommended that all information required to complete the action is displayed in the tab. If you need more than 5 tabs, consider using other navigational elements. Tabs also may not transfer well over to smaller screens based on the number of tabs.",
     },
-    { name : "tabs1", 
+    {
+      name: "tabs1",
       title: "Accessiblity Hints",
       content:
         "For accessibility, it is important to specify the roles associated with the tabs and use `tabindex` to ensure that the tabs perform the expected functionality. Additional javascript is required to make the tabs work with keyboard events. The content inside the panels shoould also be accessible and follow best practices.",
@@ -46,7 +48,7 @@ Tabs can be used to diplay a lot of information in a single page by using progre
 
 A tab has three main parts :
 
-- The tabs container : The container  div or section that wraps the tabs and the tab panels
+- The tabs container : The container div or section that wraps the tabs and the tab panels
 - The tabs list : The list of buttons that serve as label for the tab panels. The related roles are `tablist` and `tab` . The attributes are `aria-selected`, `aria-controls` and `tabindex`.
 - The tab panels : A set of panels that are connected to the tabs list. The related role is `tabpanel`. The attributes are `aria-labelledby` and `tabindex`.
 
@@ -71,6 +73,7 @@ The classic tabs with a panel attached to each tab. The tabs are displayed in a 
   code={TabsCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -82,6 +85,7 @@ The classic tabs with a panel attached to each tab. The tabs are displayed in a 
   lang="astro"
   title="Tabs.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -109,6 +113,7 @@ This adds icons to the tabs while maintaining the same functionality as the norm
   code={NormalTabsWithIconsCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -120,12 +125,12 @@ This adds icons to the tabs while maintaining the same functionality as the norm
   lang="astro"
   title="Tabs.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
-
 
 ## Gradient Tabs With Icons
 
@@ -148,6 +153,7 @@ The selected tab is highlighted with a gradient background. Otherwise the tabs a
   code={GradientTabsCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -159,10 +165,11 @@ The selected tab is highlighted with a gradient background. Otherwise the tabs a
   lang="astro"
   title="Tabs.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-**Note:** The color of the gradient tabs can be changed by changing the ```from-purple-500 via-purple-800 to-purple-900``` in the ```<button>``` tag. You can generate different gradients using the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/)
+**Note:** The color of the gradient tabs can be changed by changing the `from-purple-500 via-purple-800 to-purple-900` in the `<button>` tag. You can generate different gradients using the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/)

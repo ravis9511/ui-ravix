@@ -1,21 +1,18 @@
----
----
-
 <div
   id="accordion-container"
-  class="border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-md dark:shadow-black overflow-hidden">
+  class="border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none ">
   <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
+    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
     <button
       data-accordion="button"
       type="button"
-      class="group/button peer flex items-center transition-colors ease-in justify-between px-4 py-4 cursor-pointer w-full text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-3 md:py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
       aria-expanded="false"
-      aria-controls="panel-1"
-      id="header-1">
-      <span class="text-xl font-semibold"> Accordion Header </span>
+      aria-controls="acc-panel-1"
+      id="acc-header-1">
+      <h3 class="text-base md:text-lg  "> Accordion Header 1</h3>
       <svg
-        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:-rotate-180"
+        class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -25,32 +22,34 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M19 9l-7 7-7-7"></path>
+          d="M19 9l-7 7-7-7"
+        ></path>
       </svg>
     </button>
 
-    <div
-      id="panel-1"
-      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
-      aria-labelledby="header-1"
+    <section
+      id="acc-panel-1"
+      aria-hidden="true"
+      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
+      aria-labelledby="acc-header-1"
       role="region">
-      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+      <div class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
         Panel 1 content goes here.
       </div>
-    </div>
+    </section>
   </div>
   <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
+    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
     <button
       type="button"
       data-accordion="button"
-      class="group/button peer flex items-center transition-color ease-in justify-between w-full px-4 py-4 cursor-pointer text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between w-full px-4 py-3 md:py-4 cursor-pointer text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
       aria-expanded="false"
-      aria-controls="panel-2"
-      id="header-2">
-      <span class="text-xl font-semibold"> Accordion Header </span>
+      aria-controls="acc-panel-2"
+      id="acc-header-2">
+      <h3 class="text-base md:text-lg  "> Accordion Header 2</h3>
       <svg
-        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:-rotate-180"
+        class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -60,16 +59,18 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M19 9l-7 7-7-7"></path>
+          d="M19 9l-7 7-7-7"
+        ></path>
       </svg>
     </button>
 
-    <div
-      id="panel-2"
-      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
-      aria-labelledby="header-2"
+    <section
+      id="acc-panel-2"
+      aria-hidden="true"
+      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
+      aria-labelledby="acc-header-2"
       role="region">
-      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+      <div class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
         Users can click on a panel's header to expand or collapse its content,
         allowing for a more organized and space-efficient presentation of
         information, especially when dealing with a lot of content on a webpage.
@@ -77,23 +78,40 @@
         situations where content needs to be organized into easily navigable
         sections.
       </div>
-    </div>
+    </section>
   </div>
   <!-- Add more accordion items as needed -->
 </div>
 <script>
-  function setAccordion() {
+  /**
+   * Sets up the accordion functionality for an accordion container with the ID "accordion-container-alt".
+   *
+   * This function retrieves the accordion container element, the accordion buttons, and the accordion panels.
+   * It then adds a click event listener to each accordion button, which toggles the visibility of the corresponding accordion panel.
+   * All panels are initially hidden and aria-hidden is set to true.
+   */
+  function setAccordionAnimated() {
     /**
      * Retrieves the accordion container element by its ID.
-     * @returns {HTMLElement} The accordion container element, or `null` if not found.
+     *  The accordion container element, or `null` if not found.
      */
     const accordion = document.getElementById("accordion-container");
-    const buttons = accordion?.querySelectorAll('[data-accordion="button"]'); //To prevent buttons inside the accordion from being selected
+    const buttons = accordion?.querySelectorAll('[data-accordion="button"]');
+    const panels = accordion?.querySelectorAll('[data-accordion="panel"]');
+    var selectedPanel;
     /**
-     * Adds click event listeners to accordion header buttons, toggling the `aria-expanded` attribute to control the accordion's open/closed state.
+     * Adds click event listeners to accordion buttons and toggles the visibility of the corresponding accordion panels.
+     * When a button is clicked, it sets the `aria-expanded` attribute to `true` and hides all other panels.
+     * The selected panel is then shown by setting its `aria-hidden` attribute to `false`.
      */
     buttons?.forEach((button) => {
       button.addEventListener("click", () => {
+        panels?.forEach((panel) => {
+          if (panel.id === button.getAttribute("aria-controls")) {
+            selectedPanel = panel;
+          }
+          panel.setAttribute("aria-hidden", "true");
+        });
         if (button.getAttribute("aria-expanded") === "true") {
           button.setAttribute("aria-expanded", "false");
 
@@ -102,12 +120,12 @@
           buttons.forEach((button) => {
             button.setAttribute("aria-expanded", "false");
           });
-
+          selectedPanel.setAttribute("aria-hidden", "false");
           button.setAttribute("aria-expanded", "true");
         }
       });
     });
   }
 
-  setAccordion();
+  setAccordionAnimated();
 </script>

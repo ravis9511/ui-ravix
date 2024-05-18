@@ -10,13 +10,13 @@
 >
 <dialog
   id="modal-container"
-  class="fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm"
+  class="transition-all fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm"
   aria-labelledby="modal-title"
   aria-modal="true">
   <div
-    class="grid items-center justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
+    class="grid items-center   justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
     <div
-      class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-900 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      class="flex flex-col   text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <h3
         class="text-lg font-semibold  mb-4 w-full border-b border-gray-300 dark:border-zinc-700 p-4">
         Confirm Action
@@ -61,18 +61,18 @@
       "modal-open"
     ) as HTMLButtonElement;
 
-    openModalButton.addEventListener("click", () => {
+    openModalButton?.addEventListener("click", () => {
       modal.showModal();
     });
     // Open the modal
 
     // Close the modal when the confirm button is clicked
-    confirmButton.addEventListener("click", () => {
+    confirmButton?.addEventListener("click", () => {
       modal.close();
     });
 
     // Close the modal when the cancel button is clicked
-    cancelButton.addEventListener("click", () => {
+    cancelButton?.addEventListener("click", () => {
       modal.close();
     });
   }

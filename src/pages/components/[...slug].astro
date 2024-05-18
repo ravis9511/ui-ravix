@@ -1,47 +1,60 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import { fade } from "astro:transitions";
 import MarkDownLayout from "../../layouts/MarkDownLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
+import TOC from "../../components/TOC.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('components');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getCollection("components");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 const { entry } = Astro.props;
 const blogEntries = await getCollection("components");
-const entryMap= blogEntries.map((entry => ({slug : "/components/"+entry.slug, title : entry.data.title, order : entry.data.order, type : entry.data.type})));
+const entryMap = blogEntries.map((entry) => ({
+  slug: "/components/" + entry.slug,
+  title: entry.data.title,
+  order: entry.data.order,
+  type: entry.data.type,
+}));
 entryMap.sort((a, b) => a.order - b.order);
 if (entry === undefined) {
   return Astro.redirect("/404");
 }
 
 const { Content, headings } = await entry.render();
-
 ---
 
-<Layout title={entry.data.title}  toc={headings} >
-  
-  <div class="bg-fixed  bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
-    <div class="grid grid-cols-12  self-center ">
-      <div
-        class="col-start-1 col-span-2 pl-16 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar  border-r dark:border-zinc-900 border-gray-300 "
-      >
-        <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}`/>
+<Layout
+  title={entry.data.title}
+   currentSlug={`/components/${entry.slug}`} >
+  <div data-pagefind-body 
+    class="bg-fixed bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
+    <div class="  lg:grid lg:grid-cols-12 gap-4 ml-4  lg:ml-8 xl:ml-16 2xl:ml-32 ">
+      <div 
+        class="hidden lg:block lg:col-start-1 lg:col-span-2  h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar border-r dark:border-zinc-900 border-gray-300">
+        <Sidebar 
+          entryMap={entryMap}
+          currentSlug=`/components/${entry.slug}` 
+        />
       </div>
-      <div class="relative col-start-3 col-span-10 grid grid-cols-8  h-[92vh] justify-items-start px-6 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
-        <div class="lg:ml-24 col-start-1 col-span-7 ">
-        <MarkDownLayout >
-          <Content />
-        </MarkDownLayout>
+      <div 
+        class="relative lg:col-start-3 lg:col-span-10 lg:flex lg:flex-row lg:h-[92dvh] space-x-8  lg:justify-between  pr-4   lg:pr-8 xl:pr-16 2xl:pr-32 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
+        <div class="md:mx-6" >
+          <MarkDownLayout>
+            <Content />
+          </MarkDownLayout>
+        </div>
+        <div 
+          class="hidden lg:block flex-1 max-w-[200px] max-h-[86dvh] sticky top-0 items-start justify-items-start lg:mr-8 xl:mr-12">
+          <TOC pageHeadings={headings} />
+        </div>
       </div>
-        <div class="col-start-8 col-span-1 max-h-[86dvh] sticky top-0 ">red</div>
-        
-      </div>
-      
     </div>
   </div>
 </Layout>

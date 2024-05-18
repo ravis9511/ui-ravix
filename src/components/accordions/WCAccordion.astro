@@ -1,0 +1,146 @@
+---
+// Accordion.astro
+const generateUniqueId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomNum = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  return timestamp + randomNum;
+};
+
+const componentId = generateUniqueId();
+// The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
+interface AccordionPanel {
+  header: string;
+  content: string;
+}
+
+interface AccordionProps {
+  panels: AccordionPanel[];
+}
+const { panels = [] } = Astro.props as AccordionProps;
+
+/*
+To call this component, you can use the code below 
+// YourPage.astro
+---
+import Accordion from './Accordion.astro';
+
+const panels = [
+  {
+    header: 'Panel 1 Header',
+    content: 'This is the content for Panel 1.',
+  },
+  {
+    header: 'Panel 2 Header',
+    content: 'This is the content for Panel 2.You can include any HTML elements or components here.',
+  },
+  {
+    header: 'Panel 3 Header',
+    content: 'This is the content for Panel 3.',
+  },
+  // Add more panels as needed
+];
+---
+<Accordion panels={panels} />
+
+if you want more complex content, you can send the content as HTML and use a fragment to render it.
+{panel.content} will become <Fragment set:html={panel.content} /> but this is not tested and may cause unexpected behaviours.
+*/
+---
+
+<x-accordion>
+  <div data-accordion="container" id={`${componentId}-accordion`}
+    class=" border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none ">
+    {
+      panels.map((panel: AccordionPanel, index: number) => (
+        <div class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+          <button
+            data-accordion="button"
+            type="button"
+            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-3 md:py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500 "
+            aria-expanded="false"
+            id={`${componentId}-button-${index + 1}`}
+            aria-controls={`${componentId}-panel-${index + 1}`}>
+            <h3 class="text-base md:text-lg">{panel.header}</h3>
+            <svg
+              class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <section data-accordion="panel" aria-hidden="true" id={`${componentId}-panel-${index + 1}`}
+            class=" motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
+            aria-labelledby={`${componentId}-button-${index + 1}`}
+            role="region">
+            <div class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+              {panel.content}
+            </div>
+          </section>
+        </div>
+      ))
+    }
+  </div>
+</x-accordion>
+<script>
+  /**
+   * Accordion component that handles the expansion and collapse of accordion panels.
+   * The component is defined as a custom HTML element with the tag name "x-accordion".
+   * It uses data attributes to identify the accordion container, buttons, and panels.
+   * The component manages the state of the accordion panels, toggling the "aria-expanded"
+   * and "aria-hidden" attributes on the buttons and panels respectively.
+   */
+  class Accordion extends HTMLElement {
+    panels: HTMLElement[] | null | undefined = null;
+    buttons: NodeListOf<HTMLButtonElement> | null | undefined = null;
+    accordionContainer: HTMLElement | null | undefined = null;
+
+    constructor() {
+      super();
+      this.accordionContainer = this.querySelector(
+        '[data-accordion="container"]'
+      ) as HTMLElement | null;
+      this.buttons = this.accordionContainer?.querySelectorAll(
+        '[data-accordion="button"]'
+      );
+      this.panels = Array.from(
+        this.accordionContainer?.querySelectorAll('[data-accordion="panel"]') ||
+          []
+      ) as HTMLElement[];
+
+      this.buttons?.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          this.toggleAccordion(button, index);
+        });
+      });
+    }
+
+    toggleAccordion(button: HTMLButtonElement, index: number) {
+      if (button.getAttribute("aria-expanded") === "true") {
+        button.setAttribute("aria-expanded", "false");
+      } else {
+        this.buttons?.forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
+        });
+        button.setAttribute("aria-expanded", "true");
+      }
+      this.panels?.forEach((panel, i) => {
+        if (i === index && button.getAttribute("aria-expanded") === "true") {
+          panel.setAttribute("aria-hidden", "false");
+        } else {
+          panel.setAttribute("aria-hidden", "true");
+        }
+      });
+    }
+  }
+
+  customElements.define("x-accordion", Accordion);
+</script>

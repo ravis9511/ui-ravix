@@ -1,19 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-import Navbar from "../components/dropdowns/Dropdown.html";
+import Navbar from "../components/accordions/AAccordionAlt.html";
+import Accordion from "../components/accordions/AccComponent.astro";
+const data=[
+    {title:"Test Page",
+    content:"This is a test page",
+    name:"test"},
+    {title:"Test Page 2",
+    content:"This is a test page",
+    name:"test"},
+]
 ---
 
-<Layout
-  title="ravixUI"
-  description="ravixUI is meant to be simple, lightweight and fully customizable. Like a component? Just copy and paste it into your project and its good to go. There are also hints available for every component for usage and customization. All components are designed with accessibility in mind. For the first version, there is component code available for HTML5+TailwindCSS, astrojs and svelte. Components for other JavaScript frameworks will be added in later versions."
-  keywords="TailwindCSS, Components, CSS, HTML5, Library">
-  <main class="min-h-[92dvh] bg-gray-100 dark:bg-zinc-950">
-    <div class="grid self-center sm:mx-20">
+
+  <body class="min-h-[92dvh] bg-gray-100 dark:bg-zinc-950">
+    <div class="  self-center sm:mx-20">
       <div
-        class="col-span-2 col-start-1 items-center self-center  mt-24 mb-20 sm:space-y-16">
+        class=" items-center self-center  mt-24 mb-20 ">
         <Navbar />
+        <Accordion data={data} />
       </div>
     </div>
-  </main>
-</Layout>
+  </body>
+

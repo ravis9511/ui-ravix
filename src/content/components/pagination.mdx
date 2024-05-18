@@ -1,0 +1,188 @@
+---
+title: "Pagination"
+order: 15
+type: "Navigation"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import Alert from "../../components/Alert.astro";
+import SimplePagination from "../../components/pagination/SimplePagination.astro";
+import SimplePaginationCode from "../../components/pagination/SimplePagination.astro?raw";
+import SimplePaginationCodeAstro from "../../components/pagination/SimplePagination.astro?raw";
+import AltPagination from "../../components/pagination/AltPagination.astro";
+import AltPaginationCode from "../../components/pagination/AltPagination.astro?raw";
+import AltPaginationCodeAstro from "../../components/pagination/AltPagination.astro?raw";
+import GhostPagination from "../../components/pagination/GhostPagination.astro";
+import GhostPaginationCode from "../../components/pagination/GhostPagination.astro?raw";
+import GhostPaginationCodeAstro from "../../components/pagination/GhostPagination.astro?raw";
+import InputPagination from "../../components/pagination/InputPagination.astro";
+import InputPaginationCode from "../../components/pagination/InputPagination.astro?raw";
+import InputPaginationCodeAstro from "../../components/pagination/InputPagination.astro?raw";
+
+# Pagination
+
+Pagination is a navigation system that allows users to navigate through a set of content in smaller, more manageable chunks. It is commonly used in websites and applications that display large amounts of data or content.
+
+## Simple Pagination
+
+A simple pagination component that displays the current page number and the total number of pages.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 flex items-center justify-center w-full">
+    <SimplePagination />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimplePaginationCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={SimplePaginationCodeAstro}
+  lang="astro"
+  title="SimplePagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Pagination Style
+
+An alternate boxed pagination style that displays the current page number and the total number of pages.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 flex items-center justify-center w-full">
+    <AltPagination />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltPaginationCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={AltPaginationCodeAstro}
+  lang="astro"
+  title="AltPagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Ghost Pagination Style
+
+This is similar to the Simple Pagination style but uses ghost styling for the pagination buttons.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 flex items-center justify-center w-full">
+    <GhostPagination />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={GhostPaginationCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={GhostPaginationCodeAstro}
+  lang="astro"
+  title="GhostPagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Pagination With Dropdown For Pages
+
+This style of pagination allows for a dropdown menu to be used to select the page number.
+
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 flex items-start justify-center w-full h-[18rem]">
+    <InputPagination />
+  </div>
+</section>
+
+<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={InputPaginationCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={InputPaginationCodeAstro}
+  lang="astro"
+  title="PaginationDropDown.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>

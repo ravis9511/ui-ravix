@@ -11,21 +11,25 @@ interface Props {
 const { entryMap, currentSlug } = Astro.props;
 ---
 
-<nav class="flex flex-col text-lg text-start pb-4">
-  <div class="flex flex-col  font-display pb-4">
-    <h2 class="text-xl font-bold mt-8 mb-4">Getting Started</h2>
-    <ul class="ml-4 space-y-4 text-lg">
+<nav
+  aria-label="Documentation Navigation"
+  class="flex flex-col font-display text-lg text-start pb-4 w-full pr-4"
+  id="sideBar"
+  data-sidebar-currentslug={currentSlug}>
+  <div class="flex flex-col font-display pb-4 w-full">
+    <h3 class="text-xl font-bold mt-4 mb-2">Getting Started</h3>
+    <ul class="text-lg w-full">
       {
         entryMap.map(
           (links) =>
             links.type === "Introduction" && (
-              <li>
+              <li class="flex">
                 <a
                   href={links.slug}
                   class={`${
                     currentSlug === links.slug
-                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
-                      : ""
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                      : "hover:bg-indigo-100 dark:hover:bg-zinc-900 px-4 py-2 rounded-md w-full"
                   }`}>
                   {links.title}
                 </a>
@@ -34,19 +38,19 @@ const { entryMap, currentSlug } = Astro.props;
         )
       }
     </ul>
-    <h2 class="text-xl font-bold mt-8 mb-4">Basic </h2>
-    <ul class="ml-4 space-y-4 text-lg">
+    <h3 class="text-xl font-bold mt-4 mb-2">Basic</h3>
+    <ul class="text-lg w-full">
       {
         entryMap.map(
           (links) =>
             links.type === "Building" && (
-              <li>
+              <li class="flex">
                 <a
                   href={links.slug}
                   class={`${
                     currentSlug === links.slug
-                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
-                      : ""
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                      : "hover:bg-indigo-100 dark:hover:bg-zinc-900 px-4 py-2 rounded-md w-full"
                   }`}>
                   {links.title}
                 </a>
@@ -55,19 +59,19 @@ const { entryMap, currentSlug } = Astro.props;
         )
       }
     </ul>
-    <h2 class="text-xl font-bold mt-8 mb-4">Navigation </h2>
-    <ul class="ml-4 space-y-4 text-lg">
+    <h3 class="text-xl font-bold mt-4 mb-2">Navigation</h3>
+    <ul class="text-lg w-full">
       {
         entryMap.map(
           (links) =>
             links.type === "Navigation" && (
-              <li>
+              <li class="flex">
                 <a
                   href={links.slug}
                   class={`${
                     currentSlug === links.slug
-                      ? "dark:text-indigo-400 text-indigo-700 font-bold"
-                      : ""
+                      ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                      : "hover:bg-indigo-100 dark:hover:bg-zinc-900 px-4 py-2 rounded-md w-full"
                   }`}>
                   {links.title}
                 </a>
@@ -78,3 +82,30 @@ const { entryMap, currentSlug } = Astro.props;
     </ul>
   </div>
 </nav>
+
+<script>
+  function isElementVisibleInContainer(element: Element) {
+    const rect = element.getBoundingClientRect();
+
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= window.innerHeight &&
+      rect.right <= window.innerWidth
+    )
+      return true;
+    else return false;
+  }
+
+  function scrollToSelection() {
+    const sideBar = document.getElementById("sideBar");
+    const selection = sideBar?.getAttribute("data-sidebar-currentslug");
+    const element = document.querySelector(`a[href="${selection}"]`);
+    element?.setAttribute("aria-current", "page");
+    if (element && sideBar && !isElementVisibleInContainer(element)) {
+      element.scrollIntoView();
+    }
+  }
+  document.addEventListener("astro:after-swap", scrollToSelection);
+  document.addEventListener("astro:page-load", scrollToSelection);
+</script>

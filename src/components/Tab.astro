@@ -11,15 +11,17 @@ interface Props {
         id: string
         name: string
         icon: string
-    }>
+    }>,
+    name?: string
 }
-const { tabs } = Astro.props
+
+const { tabs,name } = Astro.props
 ---
 
 <tabs-list>
-    <div class="font-display mb-12" >
-    <div
-        class="flex flex-row lg:w-[48rem] xl:w-[54rem] my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+    
+    <div data-pagefind-ignore aria-label={name}
+        class="flex flex-row w-full items-center  my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 lg:gap-x-4"
         role="tablist" data-role="tablist">
         {
             tabs.map((tab, index) => (
@@ -31,23 +33,28 @@ const { tabs } = Astro.props
                     aria-controls=`${tab.id}-panel`
                     data-role="tab"
                     id={tab.id}
-                    class=" cursor-pointer w-full  px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
-                    {tab.icon === "astro" && <AstroImage />}
-                    {tab.icon === "svelte" && <Svelte />}
-                    {tab.icon === "tailwind" && <Tailwind />}
-                    {tab.icon === "html" && <HTML />}
-                    {tab.icon === "view" && <View />}
+                    class=" cursor-pointer w-full px-2 md:px-6 py-3 text-base md:text-lg rounded-lg flex justify-center flex-row items-center md:space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+                    <div class="hidden md:block" aria-hidden="true">
+                        {tab.icon === "astro" && <AstroImage />}
+                        {tab.icon === "svelte" && <Svelte />}
+                        {tab.icon === "tailwind" && <Tailwind />}
+                        {tab.icon === "html" && <HTML />}
+                        {tab.icon === "view" && <View />}
+                    </div>
+                    <span class="sr-only">{name}</span>
                     <span>{tab.name}</span>
                 </button>
             ))
         }
-        <DarkModeButton client:load />
+        
+        
     </div>
 
-    <div
-        class="not-prose lg:w-[48rem] xl:w-[54rem] border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
+    <div data-pagefind-ignore
+        class="not-prose  w-full    border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
         <slot />
     </div>
+    
 </tabs-list>
 
 <script>

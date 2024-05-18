@@ -4,157 +4,101 @@
 
 <div
   id="accordion-container-alt"
-  class="mb-12 divide-y divide-gray-300 dark:divide-zinc-800 rounded-lg max-w-3xl overflow-hidden">
+  class="mb-12 divide-y divide-gray-300 dark:divide-zinc-800 rounded-lg max-w-3xl">
   <div
     class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
     <button
       data-accordion="button"
       type="button"
-      class="group/button peer flex items-center transition-colors ease-in justify-between px-4 py-4 cursor-pointer w-full text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-3 md:py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
       aria-expanded="false"
-      aria-controls="panel-1"
-      id="header-1">
-      <span class="text-xl font-semibold"> Accordion Header </span>
+      aria-controls="alt-panel-1"
+      id="alt-header-1">
+      <h3 class="text-base md:text-lg">Alt Header 1</h3>
       <svg
-        class="hidden w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:block"
+        class="hidden w-5 h-5 shrink-0  group-aria-expanded/button:block"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
         aria-hidden="true">
         <path
-          stroke="currentColor"
-          stroke-dasharray="18"
-          stroke-dashoffset="18"
-          stroke-linecap="round"
-          stroke-width="2"
-          d="M5 12H19"
-          fill="currentColor">
-          <animate
-            fill="freeze"
-            attributeName="stroke-dashoffset"
-            dur="0.3s"
-            values="18;0"
-          ></animate>
-        </path>
+          fill="currentColor"
+          d="M19 12.998H5v-2h14z"
+        ></path>
       </svg>
       <svg
-        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:hidden"
+        class="w-5 h-5 shrink-0  group-aria-expanded/button:hidden"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
-        viewBox="0 0 24 24" aria-hidden="true">
-        <g
-          fill="none"
-          stroke="currentColor"
-          stroke-dasharray="18"
-          stroke-dashoffset="18"
-          stroke-linecap="round"
-          stroke-width="2">
-          <path d="M12 5V19">
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              begin="0.4s"
-              dur="0.3s"
-              values="18;0"
-            ></animate>
-          </path>
-          <path d="M5 12H19">
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              dur="0.3s"
-              values="18;0"
-            ></animate>
-          </path>
-        </g>
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+        ></path>
       </svg>
     </button>
 
-    <div
-      id="panel-1"
-      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
-      aria-labelledby="header-1"
+    <section
+      data-accordion="panel"
+      id="alt-panel-1"
+      aria-hidden="true"
+      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
+      aria-labelledby="alt-header-1"
       role="region">
-      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+      <div
+        class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950">
         Panel 1 content goes here.
       </div>
-    </div>
+    </section>
   </div>
   <div
     class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
     <button
       type="button"
       data-accordion="button"
-      class="group/button peer flex items-center transition-color ease-in justify-between w-full px-4 py-4 cursor-pointer text-start focus:outline-none dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200"
+      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between w-full px-4 py-3 md:py-4 cursor-pointer text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
       aria-expanded="false"
-      aria-controls="panel-2"
-      id="header-2">
-      <span class="text-xl font-semibold"> Accordion Header </span>
+      aria-controls="alt-panel-2"
+      id="alt-header-2">
+      <h3 class="text-base md:text-lg">Alt Header 2</h3>
       <svg
-        class="hidden w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:block"
+        class="hidden w-5 h-5 shrink-0  group-aria-expanded/button:block"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
         viewBox="0 0 24 24"
         aria-hidden="true">
         <path
-          stroke="currentColor"
-          stroke-dasharray="18"
-          stroke-dashoffset="18"
-          stroke-linecap="round"
-          stroke-width="2"
-          d="M5 12H19"
-          fill="currentColor">
-          <animate
-            fill="freeze"
-            attributeName="stroke-dashoffset"
-            dur="0.3s"
-            values="18;0"
-          ></animate>
-        </path>
+          fill="currentColor"
+          d="M19 12.998H5v-2h14z"
+        ></path>
       </svg>
       <svg
-        class="w-5 h-5 shrink-0 transition duration-300 group-aria-expanded/button:hidden"
+        class="w-5 h-5 shrink-0  group-aria-expanded/button:hidden"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
-        viewBox="0 0 24 24" aria-hidden="true">
-        <g
-          fill="none"
-          stroke="currentColor"
-          stroke-dasharray="18"
-          stroke-dashoffset="18"
-          stroke-linecap="round"
-          stroke-width="2">
-          <path d="M12 5V19">
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              begin="0.4s"
-              dur="0.3s"
-              values="18;0"
-            ></animate>
-          </path>
-          <path d="M5 12H19">
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              dur="0.3s"
-              values="18;0"
-            ></animate>
-          </path>
-        </g>
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
+        ></path>
       </svg>
     </button>
 
-    <div
-      id="panel-2"
-      class="transition-all opacity-30 duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
-      aria-labelledby="header-2"
+    <section
+      data-accordion="panel"
+      aria-hidden="true"
+      id="alt-panel-2"
+      class="motion-safe:transition-all delay-75 opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
+      aria-labelledby="alt-header-2"
       role="region">
-      <div class="px-6 text-start text-lg py-5 bg-gray-100 dark:bg-zinc-950">
+      <div
+        class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950">
         Users can click on a panel's header to expand or collapse its content,
         allowing for a more organized and space-efficient presentation of
         information, especially when dealing with a lot of content on a webpage.
@@ -162,23 +106,55 @@
         situations where content needs to be organized into easily navigable
         sections.
       </div>
-    </div>
+    </section>
   </div>
+
   <!-- Add more accordion items as needed -->
 </div>
-<script is:inline>
+<script>
+  /**
+   * Sets up the accordion functionality for an accordion container with the ID "accordion-container-alt".
+   *
+   * This function retrieves the accordion container element, the accordion buttons, and the accordion panels.
+   * It then adds a click event listener to each accordion button, which toggles the visibility of the corresponding accordion panel.
+   *
+   * The function is called when the "astro:after-swap" and "astro:page-load" events are triggered.
+   */
   function setAccordion() {
     /**
      * Retrieves the accordion container element by its ID.
      * @returns {HTMLElement} The accordion container element, or `null` if not found.
+     * @returns {NodeListOf<HTMLElement>} The list of accordion buttons, or an empty list if not found.
+     * @returns {NodeListOf<HTMLElement>} The list of accordion panels, or an empty list if not found.
+     * selectedPanel is an HTMLElement that represents the currently selected panel.
      */
-    const accordion = document.getElementById("accordion-container-alt");
-    const buttons = accordion?.querySelectorAll('[data-accordion="button"]'); //To prevent buttons inside the accordion from being selected
+
+    const accordion = document.getElementById(
+      "accordion-container-alt"
+    ) as HTMLElement;
+    if (!accordion) return;
+    const buttons = accordion?.querySelectorAll(
+      '[data-accordion="button"]'
+    ) as NodeListOf<HTMLElement>;
+    const panels = accordion?.querySelectorAll(
+      '[data-accordion="panel"]'
+    ) as NodeListOf<HTMLElement>;
+
+    var selectedPanel: HTMLElement;
+
     /**
-     * Adds click event listeners to accordion header buttons, toggling the `aria-expanded` attribute to control the accordion's open/closed state.
+     * Adds click event listeners to accordion buttons and toggles the visibility of the corresponding accordion panels.
+     * When a button is clicked, it sets the `aria-expanded` attribute to `true` and hides all other panels.
+     * The selected panel is then shown by setting its `aria-hidden` attribute to `false`.
      */
     buttons?.forEach((button) => {
       button.addEventListener("click", () => {
+        panels?.forEach((panel) => {
+          if (panel.id === button.getAttribute("aria-controls")) {
+            selectedPanel = panel;
+          }
+          panel.setAttribute("aria-hidden", "true");
+        });
         if (button.getAttribute("aria-expanded") === "true") {
           button.setAttribute("aria-expanded", "false");
 
@@ -188,11 +164,13 @@
             button.setAttribute("aria-expanded", "false");
           });
 
+          selectedPanel?.setAttribute("aria-hidden", "false");
           button.setAttribute("aria-expanded", "true");
+          return;
         }
       });
     });
   }
 
-  setAccordion();
+  document.addEventListener("astro:page-load", setAccordion);
 </script>

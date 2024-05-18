@@ -16,7 +16,7 @@
   <div 
     class="grid items-center justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
     <div id="modal-content-info"
-      class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-900 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <h3
         class="text-lg font-semibold  mb-4 w-full border-b border-gray-300 dark:border-zinc-700 p-4">
         Information
@@ -50,7 +50,7 @@
     ) as HTMLButtonElement;
     
 
-    openModalButton.addEventListener("click", () => {
+    openModalButton?.addEventListener("click", () => {
       modal.showModal();
       const modalArea= document.getElementById("modal-content-info") as HTMLDivElement;
       modal.addEventListener("click", (e) => {
@@ -64,7 +64,7 @@
    
 
     // Close the modal when the close button is clicked
-    closeButton.addEventListener("click", () => {
+    closeButton?.addEventListener("click", () => {
       modal.close();
     });
   }

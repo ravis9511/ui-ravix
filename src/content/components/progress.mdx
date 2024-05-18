@@ -1,14 +1,14 @@
 ---
 title: "Progress"
 order: 13
-type : "Building"
+type: "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
 import Progress from "../../components/progress/Progress.astro";
-import ProgressCode from "../../components/progress/Progress.astro?raw"; 
+import ProgressCode from "../../components/progress/Progress.astro?raw";
 import ProgressCodeAstro from "../../components/progress/Progress.astro?raw";
 import ProgressAlt from "../../components/progress/AltProgress.astro";
 import ProgressAltCode from "../../components/progress/AltProgress.astro?raw";
@@ -20,14 +20,17 @@ Progress bars are used to indicate the progress of a task or the completion of a
 
 <Accordion
   data={[
-    { name : "progress1", 
-      title: "Design Hints",    
+    {
+      name: "progress1",
+      title: "Design Hints",
       content:
         "Progress bars are a great way to provide users with a visual representation of the progress of a task or the completion of a process. They are also a good way to make the interface more visually appealing and engaging.",
     },
-    { name : "progress1",
+    {
+      name: "progress1",
       title: "Accessiblity Hints",
-      content: "For accessibility, we assign the `progressbar` role to the div and use the `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes to indicate the current progress of the task. In the examples below, all the other elements other than the progress bar are not focusable and have aria-hidden set to true. To provide more information about the progress bar, we can use the aria-label attribute on the div to provide a description of the task or the process.",
+      content:
+        "For accessibility, we assign the `progressbar` role to the div and use the `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes to indicate the current progress of the task. In the examples below, all the other elements other than the progress bar are not focusable and have aria-hidden set to true. To provide more information about the progress bar, we can use the aria-label attribute on the div to provide a description of the task or the process.",
     },
   ]}
 />
@@ -47,18 +50,29 @@ A few styles of progress bars which can be used to indicate the progress of a ta
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ProgressCode} lang="html" title="ProgressVariants.html" wrap="true"/>
+<Code
+  code={ProgressCode}
+  lang="html"
+  title="ProgressVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ProgressCodeAstro} lang="astro" title="ProgressVariants.astro" wrap="true"/>
+<Code
+  code={ProgressCodeAstro}
+  lang="astro"
+  title="ProgressVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 </Tab>
-
 
 ## Alternate Progress Bars
 
@@ -75,13 +89,25 @@ Alternate style for progress bars with a subtle gradient.
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ProgressAltCode} lang="html" title="ProgressAltVariants.html" wrap="true"/>
+<Code
+  code={ProgressAltCode}
+  lang="html"
+  title="ProgressAltVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ProgressAltCodeAstro} lang="astro" title="ProgressAltVariants.astro" wrap="true"/>
+<Code
+  code={ProgressAltCodeAstro}
+  lang="astro"
+  title="ProgressAltVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 

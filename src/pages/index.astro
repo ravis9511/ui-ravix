@@ -8,25 +8,25 @@ import "../styles/global.css";
   description="ravixUI is meant to be simple, lightweight and fully customizable. Like a component? Just copy and paste it into your project and its good to go. There are also hints available for every component for usage and customization. All components are designed with accessibility in mind. For the first version, there is component code available for HTML5+TailwindCSS, astrojs and svelte. Components for other JavaScript frameworks will be added in later versions."
   keywords="TailwindCSS, Components, CSS, HTML5, Library"
 >
-  <main
+  <div
     class=" bg-fixed bg-gradient-radial min-h-[92dvh] from-gray-50/30 via-gray-50/50 to-white dark:bg-gradient-radial dark:from-indigo-600/25 dark:via-indigo-600/5 dark:to-indigo-600/0"
   >
-    <div class="grid grid-cols-12 gap-4 self-center">
+    <div class="mx-8 h-full lg:grid lg:grid-cols-12 lg:gap-4 self-center">
       <div
         class="row-start-1 col-span-8 col-start-3 items-center self-center text-center mt-24 mb-20 space-y-16"
       >
         <div class="flex-col flex items-center">
-          <p class="text-6xl font-display mb-8">
+          <p class="text-5xl md:text-6xl font-display mb-8">
             A Blocks Library and Design Guide
           </p>
           <p class="text-2xl text-gray-700 dark:text-gray-300 max-w-4xl font-display">
             Fully Customizable, Responsive, Accessible and Lightweight.
           </p>
         </div>
-        <div class="inline-flex space-x-8 items-center justify-center">
+        <div class="flex flex-col md:flex-row  md:space-x-8 space-y-6 md:space-y-0 items-center justify-center">
           <a
             href="/components/gettingstarted"
-            class="bg-indigo-700 hover:bg-indigo-500 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center"
+            class="bg-indigo-700 hover:bg-indigo-500 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center w-3/4 md:w-auto justify-center"
             >Get Started <span
               ><svg
                 class="rtl:rotate-180 w-5 h-5 ms-2"
@@ -46,7 +46,7 @@ import "../styles/global.css";
           >
           <a
             href="#"
-            class="bg-gray-950 dark:bg-gray-800 hover:bg-gray-700 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center"
+            class="bg-gray-950 dark:bg-gray-800 hover:bg-gray-700 text-white text-xl py-3 px-6 rounded-lg inline-flex items-center w-3/4 md:w-auto justify-center"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-5 h-5"
@@ -100,5 +100,5 @@ import "../styles/global.css";
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </Layout>

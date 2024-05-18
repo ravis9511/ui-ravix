@@ -1,7 +1,7 @@
 ---
 title: "Navbar"
 order: 14
-type : "Navigation"
+type: "Navigation"
 ---
 
 import { Code } from "astro-expressive-code/components";
@@ -27,12 +27,14 @@ between different sections of the website. Navbars can also include search bars,
 
 <Accordion
   data={[
-    { name : "navbar1",
+    {
+      name: "navbar1",
       title: "Design Hints",
       content:
         "Navbars are a great way to provide users with quick access to important information and actions on a website. They are also a tool which can be used for branding as they tend to be consistent across the website.",
     },
-    { name : "navbar1",
+    {
+      name: "navbar1",
       title: "Accessiblity Hints",
       content:
         "For accessibility, it is important to ensure that the blocks inside the navbar like links, buttons, search input etc., are accessible. This can be achieved by using appropriate color contrast, clear and concise language, and hiding the aria for logos if other branding elements like name are present.  Links and Buttons should also have descriptive text to provide context and help users.",
@@ -40,14 +42,13 @@ between different sections of the website. Navbars can also include search bars,
   ]}
 />
 
-
 ### Navbar Specification
 
 A navbar has a few important considerations :
-- The nav container : When using `<nav>` tag, there is no need to set a `role` attribute, but if you use `<div>` or `<section>`, you can set the `role` attribute to `navigation`. Do not use `aria-label` attribute if the you are setting the role or using a `<nav>` tag.
-- The links  : The links inside the navbar should have descriptive text to provide context and help users and use `<a>` tag. If you are not using the `<a>` tag, you can set the role to `link`.
-- Menus : If you have a submenu or menu inside the navbar it should be accessible.
 
+- The nav container : When using `<nav>` tag, there is no need to set a `role` attribute, but if you use `<div>` or `<section>`, you can set the `role` attribute to `navigation`. Do not use `aria-label` attribute if the you are setting the role or using a `<nav>` tag.
+- The links : The links inside the navbar should have descriptive text to provide context and help users and use `<a>` tag. If you are not using the `<a>` tag, you can set the role to `link`.
+- Menus : If you have a submenu or menu inside the navbar it should be accessible.
 
 Note: All the icons used in this section are from Google
 Material Icons provided by iconify.design. All the navbars are responsive and adapt to different screen sizes.
@@ -60,7 +61,8 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
 
 <section
   id="Tab1-panel"
-  role="tabpanel" data-role="tabpanel">
+  role="tabpanel"
+  data-role="tabpanel">
   <div class="p-2 ">
     <Navbar />
   </div>
@@ -72,6 +74,7 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
   code={NavBarCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -83,6 +86,7 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
   lang="astro"
   title="navbar.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -91,7 +95,8 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
 
 <Accordion
   data={[
-    { name : "navbar2",
+    {
+      name: "navbar2",
       title: "Design Hints",
       content:
         "While this maybe suitable for certain websites, it is important to consider that if the links go on to another line in smaller devices, you may lose a lot of space for the rest of the content on the page. Consider using a navbar with a hamburger menu for actions and links on smaller screens.",
@@ -121,6 +126,7 @@ The responsive navbar which retains the logo, brand and a navigation menu (hambu
   code={NavbarJSCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -132,16 +138,17 @@ The responsive navbar which retains the logo, brand and a navigation menu (hambu
   lang="astro"
   title="navbarWithJS.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
 
 </Tab>
 
-
 <Accordion
   data={[
-    { name : "navbar3",
+    {
+      name: "navbar3",
       title: "Design Hints",
       content:
         "You can use icons for the items inside the hamburger menu to enhance the user experience. You can also add a link to the homepage on click of the logo and brand name. ",
@@ -171,6 +178,7 @@ This is a responsive navbar with a submenu on one element. The submenu is a drop
   code={NavbarSubmenuCode}
   lang="html"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -182,6 +190,7 @@ This is a responsive navbar with a submenu on one element. The submenu is a drop
   lang="astro"
   title="navbarSubmenu.astro"
   wrap="true"
+  data-pagefind-ignore
 />
 
 </section>
@@ -190,7 +199,8 @@ This is a responsive navbar with a submenu on one element. The submenu is a drop
 
 <Accordion
   data={[
-    { name : "navbar4",
+    {
+      name: "navbar4",
       title: "Design Hints",
       content:
         "While submenus can be used to provide more options for the user, they can also be overwhelming and distracting if not used correctly. It also becomes a limiting factor in smaller screens if there are too many options inside the submenu. You can add images and icons to the submenu to make it more visually appealing and easier to navigate. ",
