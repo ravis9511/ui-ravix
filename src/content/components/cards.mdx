@@ -25,8 +25,7 @@ import FeaturesCardCodeAstro from "../../components/cards/FCardAstro.astro?raw";
 
 # Card
 
-Card is a versatile component that can be used to display
-content and information in a variety of ways and can drive users to a desired action.
+Card is a versatile component that can be used to display content and information in a variety of ways and can drive users to a desired action.
 
 <Accordion
   data={[
@@ -45,30 +44,23 @@ content and information in a variety of ways and can drive users to a desired ac
   ]}
 />
 
-Note: All the icons used in this section are from Google
-Material Icons provided by iconify.design. The images used in this section are from Unsplash. Also this is the building block card.
+## Simple Card
 
-## Normal Card
+This is a simple card that can be used to display information or content. It can be used for different types of actions, such as displaying images, items, forms, services, or any other type of information.
 
-This is a simple card that can be used to display
-information or content. It can be used for different types
-of actions, such as displaying images, items, forms,
-services, or any other type of information.
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Card" tabs={[{ "name" : "Preview", "id" : "SC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SC-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="SC-Tab1-panel"
+  aria-labelledby="SC-Tab1"
   role="tabpanel"
   data-role="tabpanel">
-  <div class="grid px-[calc(100dvw/12)] sm:px-0 sm:grid-cols-4 py-6">
-    <div class="col-start-2 col-span-2 ">
-      <SimpleCard />
-    </div>
+  <div class="grid p-6 justify-center">
+    <SimpleCard />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SC-Tab2">
 
 <Code
   code={SimpleCardCode}
@@ -79,12 +71,12 @@ services, or any other type of information.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SC-Tab3">
 
 <Code
   code={SimpleCardCodeAstro}
   lang="astro"
-  title="simpleCard.astro"
+  title="SimpleCard.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -93,12 +85,7 @@ services, or any other type of information.
 
 </Tab>
 
-**Note:** There is a grid container used as a parent to
-control the width of the card. The card itself is a flex
-container so it will occupy the full available width of its
-parent container. The internal blocks are responsive out of
-the box, but you have to use the parent container to make
-the card responsive and adapt to different screen sizes.
+**Note:** The max width for the card is set with `max-w-sm` class which has to be removed in case you want the card to have a larger width.
 
 <Accordion
   data={[
@@ -113,22 +100,19 @@ the card responsive and adapt to different screen sizes.
 
 ## Horizontal Card
 
-A Horizontal layout for cards. This is a simple way to show
-collections of a similar type. On smaller form factors, for
-responsive design, the card content will be stacked
-vertically.
+A Horizontal layout for cards. This is a simple way to show collections of a similar type. On smaller form factors, for responsive design, the card content stacks vertically.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Horizontal Card" tabs={[{ "name" : "Preview", "id" : "HC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "HC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "HC-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="grid  p-6">
+<section id ="HC-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="HC-Tab1">
+<div class="grid  p-6 justify-center">
 
 <HorizontalCard />
 
 </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="HC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="HC-Tab2">
 
 <Code
   code={HorizontalCardCode}
@@ -139,12 +123,12 @@ vertically.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="HC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="HC-Tab3">
 
 <Code
   code={HorizontalCardCodeAstro}
   lang="astro"
-  title="horizontalCard.astro"
+  title="HorizontalCard.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -153,39 +137,23 @@ vertically.
 
 </Tab>
 
-**Note:** There is a grid container used as a parent to
-control the width of the card. The card is responsive out of
-the box and goes from a horizontal layout to a vertical
-layout lower than the `md` breakpoint. You have to use the
-parent container to make the card adapt to different screen
-sizes.
-
-<Accordion
-  data={[
-    {
-      name: "cards3",
-      title: "Design Hints",
-      content:
-        "Similar to the normal card, this card uses a shadow, a lighter background inside the card and a slightly off-tone border for emphasis. Shadows may not translate well into dark mode in case there is not enough contrast between the background of the page and the color of the shadow. The horizontal card is perfect to showcase a few items in a collection like services, products,  features, projects, etc.",
-    },
-  ]}
-/>
+**Note:** The card is responsive out of the box and goes from a horizontal layout to a vertical layout lower than the `md` breakpoint.
 
 ## Features Card
 
 A card for showcasing features or benefits of a product or service. Can be used to create a quick catalog of features and benefits using multiple cards.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Features Card" tabs={[{ "name" : "Preview", "id" : "FC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "FC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "FC-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="grid  p-6">
+<section id ="FC-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="FC-Tab1">
+<div class="grid  p-6 ">
 
 <FeaturesCard />
 
 </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="FC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="FC-Tab2">
 
 <Code
   code={FeaturesCardCode}
@@ -196,12 +164,12 @@ A card for showcasing features or benefits of a product or service. Can be used 
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="FC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="FC-Tab3">
 
 <Code
   code={FeaturesCardCodeAstro}
   lang="astro"
-  title="featuresCard.astro"
+  title="FeaturesCard.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -209,7 +177,6 @@ A card for showcasing features or benefits of a product or service. Can be used 
 </section>
 
 </Tab>
-
 
 <Accordion
   data={[
@@ -222,30 +189,25 @@ A card for showcasing features or benefits of a product or service. Can be used 
   ]}
 />
 
-## Stylized Cards
+### Stylized Cards
 
-These are a set of stylized cards that can be used to add a
-bit of flair to your website. While they can be effective in
-certain situations, it is important to consider how well
-they will work with your design and layout.
+These are a set of stylized cards that can be used to add a bit of flair to your website. While they can be effective in certain situations, it is important to consider how well they will work with your design and layout.
 
-### Gradient Card
+## Gradient Card
 
-A card with a gradient background. The gradient used is
-subtle and non distracting, making it a great choice for a
-simple and clean look.
+A card with a gradient background. The gradient used is subtle and non distracting, making it a great choice for a simple and clean look.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Gradient Card" tabs={[{ "name" : "Preview", "id" : "GC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "GC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "GC-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="grid  p-6">
+<section id ="GC-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GC-Tab1">
+<div class="grid  p-6 justify-center">
 
 <GradientCard />
 
 </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GC-Tab2">
 
 <Code
   code={GradientCardCode}
@@ -256,12 +218,12 @@ simple and clean look.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GC-Tab3">
 
 <Code
   code={GradientCardCodeAstro}
   lang="astro"
-  title="horizontalCard.astro"
+  title="GradientCard.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -270,10 +232,7 @@ simple and clean look.
 
 </Tab>
 
-**Note:** There is a grid container used as a parent to
-control the width of the card. The card is responsive out of
-the box and goes from a horizontal layout to a vertical
-layout lower than the `md` breakpoint.
+**Note:** There is a grid container used as a parent to control the width of the card. The card is responsive out of the box and goes from a horizontal layout to a vertical layout lower than the `md` breakpoint.
 
 <Accordion
   data={[
@@ -286,23 +245,21 @@ layout lower than the `md` breakpoint.
   ]}
 />
 
-### Glass Card
+## Glass Card
 
 A card with a glass effect.
 
-**Warning:** While it may look good, it can be difficult to read the text
-on a glass card. Be sure to check the contrast between the
-background and the text to ensure readability. It can also create a lot of edge cases where the user is unable to read the content inside the card based on the page background. **Use with caution.**
+**Warning:** While it may look good, it can be difficult to read the text on a glass card. Be sure to check the contrast between the background and the text to ensure readability. It can also create a lot of edge cases where the user is unable to read the content inside the card based on the page background. **Use with caution.**
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Glass Card" tabs={[{ "name" : "Preview", "id" : "GL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "GL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "GL-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GL-Tab1">
 
 <GlassCard />
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GL-Tab2">
 
 <Code
   code={GlassCardCode}
@@ -313,12 +270,12 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GL-Tab3">
 
 <Code
   code={GlassCardCodeAstro}
   lang="astro"
-  title="horizontalCard.astro"
+  title="GlassCard.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -327,7 +284,7 @@ background and the text to ensure readability. It can also create a lot of edge 
 
 </Tab>
 
-**Note:** A parent container is used to control the background of the card. The card itself uses `backdrop-blur-2xl` class to create a glass effect. The glass card maybe easier to use than a gradient card since it automatically adjusts to the background color of the website. It is important to check the contrast between the text on the card and the background to ensure that it is easy to read. If you use `bg-fixed` class on the background of the page, the glass card can be very distracting for a user and may create scenarios where the user is unable to read the content on the page.
+**Note:** The card itself uses `backdrop-blur-3xl` class to create a glass effect. The glass card maybe easier to use than a gradient card since it automatically adjusts to the background color of the website. It is important to check the contrast between the text on the card and the background to ensure that it is easy to read. If you use `bg-fixed` class on the background of the page, the glass card can be very distracting for a user and may create scenarios where the user is unable to read the content on the page.
 
 <Accordion
   data={[
@@ -335,7 +292,21 @@ background and the text to ensure readability. It can also create a lot of edge 
       name: "cards6",
       title: "Design Hints",
       content:
-        "The glass card is a great option for websites with a light or pastel color scheme. It can add a touch of elegance and sophistication to your website without being too distracting. However, it's important to keep in mind that the glass card may not work well for all websites especially if the background color is too dark or if the text is too small. From a user experience perspective, the glass card can be very tricky to use since it's readability is effected based on the background color of the website.",
+        "The glass card is a great option for websites with a light or pastel color scheme. It can add a touch of elegance and sophistication to your website without being too distracting. However, it's important to keep in mind that the glass card may not work well for all websites especially if the contrast between the content and the background is not high enough. From a user experience perspective, the glass card can be very tricky to use since it's readability is effected based on the background which can be difficult to predict.",
     },
   ]}
 />
+
+## Accessibility Testing Status
+
+| Component       | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Card     | Yes  | Yes              | Yes  | Yes | Yes              |
+| Horizontal Card | Yes  | Yes              | Yes  | Yes | Yes              |
+| Features Card   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Gradient Card   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Glass Card      | Yes  | Yes              | Yes  | Yes | Yes              |
+
+There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards.
+
+While the cards out of the box in ravixUI showcase action buttons inside the cards, it's possible that the card itself can act as an action button based on context, for example, catalogs having product cards that can be clicked to view the product details or genres in a music application having a card for each genre that can be clicked to view songs of the genre.

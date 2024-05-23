@@ -1,91 +1,96 @@
-<div class="flex flex-col gap-4 p-6 overflow-auto">
-    <div class="flex flex-row gap-4">
-        <button
-            type="button"
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none">
-            <span>Send Message</span>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path
-                    fill="currentColor"
-                    d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
-                ></path>
-            </svg>
-        </button>
-        <button
-            type="button"
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg dark:bg-zinc-200 dark:text-zinc-950 bg-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-50 text-gray-50"
-            ><span>Send Message</span>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path
-                    fill="currentColor"
-                    d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
-                ></path>
-            </svg></button
-        >
-        <button
-            type="button"
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg bg-gray-700 text-white hover:bg-gray-600"
-            ><span>Send Message</span>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path
-                    fill="currentColor"
-                    d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
-                ></path>
-            </svg>
-        </button>
-    </div>
-    <div class="flex flex-row gap-4">
-        <button
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg bg-green-900 hover:bg-green-800 text-white"
-            ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path
-                    fill="currentColor"
-                    d="M9 16.2L4.8 12l-1.4 1.4L9 19L21 7l-1.4-1.4z"
-                ></path>
-            </svg>
-            <span>Confirm</span></button
-        >
-        <button
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg bg-red-800 hover:bg-red-700 text-white"
-            ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path
-                    fill="currentColor"
-                    d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m3.59-13L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41z"
-                ></path>
-            </svg>
-            <span>Cancel</span></button
-        >
-        <button
-            class="px-4 py-2  rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg bg-yellow-400 hover:bg-yellow-300 text-black"
-            ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4zM18 14H6v-2h12zm0-3H6V9h12zm0-3H6V6h12z" />
-            </svg></path>
-            </svg><span>Suggest Changes</span></button
-        >
-    </div>
+<div class="flex flex-wrap gap-6 sm:gap-12 p-6 justify-center">
+  <button
+    type="button"
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base  bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none">
+    <span>Send Message</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
+      ></path>
+    </svg>
+  </button>
+  <button
+    type="button"
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base dark:bg-zinc-200 dark:text-zinc-950 bg-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-50 text-gray-50 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    ><span>Send Message</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
+      ></path>
+    </svg></button
+  >
+  <button
+    type="button"
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-gray-700 text-white hover:bg-gray-600 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    ><span>Send Message</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="m4.01 6.03l7.51 3.22l-7.52-1zm7.5 8.72L4 17.97v-2.22zM2.01 3L2 10l15 2l-15 2l.01 7L23 12z"
+      ></path>
+    </svg>
+  </button>
+
+  <button
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-green-900 hover:bg-green-800 text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M9 16.2L4.8 12l-1.4 1.4L9 19L21 7l-1.4-1.4z"
+      ></path>
+    </svg>
+    <span>Confirm</span></button
+  >
+  <button
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-red-800 hover:bg-red-700 text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m3.59-13L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41z"
+      ></path>
+    </svg>
+    <span>Cancel</span></button
+  >
+  <button
+    class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-yellow-400 hover:bg-yellow-300 text-black focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4zM18 14H6v-2h12zm0-3H6V9h12zm0-3H6V6h12z"
+      ></path>
+    </svg>
+    <span>Suggest Changes</span></button
+  >
 </div>

@@ -1,41 +1,178 @@
-<div class="flex flex-col gap-4 p-6 overflow-auto">
-    <div class="flex flex-row gap-4">
-        <button aria-label="Add to favorites" title="Add to favorites"
-            type="button"
-            class=" rounded-lg font-semibold text-xl disabled:opacity-60 text-rose-600 hover:text-rose-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z" />
-            </svg>
-        </button>
-        
-        <button aria-label="Settings" title="Settings"
-            type="button"
-            class=" rounded-lg font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6" />
-            </svg>
-        </button>
-        <button aria-label="Share this post" title="Share this post"
-            type="button"
-            class=" rounded-lg font-semibold text-xl text-blue-600 hover:text-blue-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92c1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92" />
-            </svg>
-        </button>
-        <button aria-label="Restore Defaults" title="Restore Defaults"
-            type="button"
-            class=" rounded-lg font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18m-1 5v5l4.28 2.54l.72-1.21l-3.5-2.08V8z" />
-            </svg>
-        </button>
-        <button aria-label="Save this post" title="Save this post"
-            type="button"
-            class=" rounded-lg px-3 py-2 font-semibold text-xl border border-indigo-500 hover:border-indigo-600 dark:hover:border-indigo-400 disabled:opacity-60 text-indigo-700 hover:text-indigo-500 dark:text-indigo-500 dark:hover:text-indigo-400">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2z" />
-            </svg>
-        </button>
-    </div>
+<div class="flex flex-col gap-6 p-6 overflow-auto justify-center">
+  <div class="flex flex-wrap gap-4 sm:gap-12 w-full justify-center">
+    <button
+      aria-label="Add to favorites"
+      title="Add to favorites"
+      type="button"
+      class="rounded-lg font-semibold text-xl text-rose-600 hover:text-rose-500 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"
+        ></path>
+      </svg>
+    </button>
 
+    <button
+      aria-label="Settings"
+      title="Settings"
+      type="button"
+      class="rounded-lg font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Share this post"
+      title="Share this post"
+      type="button"
+      class="rounded-lg font-semibold text-xl text-blue-600 hover:text-blue-500 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92c1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Restore Defaults"
+      title="Restore Defaults"
+      type="button"
+      class="rounded-lg font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18m-1 5v5l4.28 2.54l.72-1.21l-3.5-2.08V8z"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Save this post"
+      title="Save this post"
+      type="button"
+      class="rounded-lg p-3 font-semibold text-xl bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 hover:bg-gray-200   border border-indigo-500 hover:border-indigo-600 dark:hover:border-indigo-400 text-indigo-700 hover:text-indigo-500 dark:text-indigo-500 dark:hover:text-indigo-400 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-wrap gap-4 sm:gap-12 w-full justify-center">
+    <button
+      aria-label="Add to favorites"
+      title="Add to favorites"
+      type="button"
+      class="rounded-lg p-1 font-semibold text-xl text-rose-600 hover:text-rose-500 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="38"
+        height="38"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"
+        ></path>
+      </svg>
+    </button>
+
+    <button
+      aria-label="Settings"
+      title="Settings"
+      type="button"
+      class="rounded-lg p-1 font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="38"
+        height="38"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Share this post"
+      title="Share this post"
+      type="button"
+      class="rounded-lg p-1 font-semibold text-xl text-blue-600 hover:text-blue-500 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="38"
+        height="38"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92c1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Restore Defaults"
+      title="Restore Defaults"
+      type="button"
+      class="rounded-lg p-1 font-semibold text-xl text-zinc-950 hover:text-zinc-700 dark:text-zinc-300 dark:hover:text-zinc-50 focus:outline-2 outline-offset-2 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="38"
+        height="38"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89l.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18m-1 5v5l4.28 2.54l.72-1.21l-3.5-2.08V8z"
+        ></path>
+      </svg>
+    </button>
+    <button
+      aria-label="Save this post"
+      title="Save this post"
+      type="button"
+      class="rounded-lg p-2.5 font-semibold text-xl bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 hover:bg-gray-200   border border-indigo-500 hover:border-indigo-600 dark:hover:border-indigo-400 text-indigo-700 hover:text-indigo-500 dark:text-indigo-500 dark:hover:text-indigo-400 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7zm-6 .67l2.59-2.58L17 11.5l-5 5l-5-5l1.41-1.41L11 12.67V3h2z"
+        ></path>
+      </svg>
+    </button>
+  </div>
 </div>

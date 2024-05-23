@@ -16,8 +16,8 @@ const post = {
 }; /* You can accept this data as props to the component like this : const { post } = Astro.props; to make it dynamic and resusable */
 ---
 <div
-  class="flex flex-col md:flex-row text-start bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-gray-300 dark:border-zinc-900/50 rounded-lg shadow-xl overflow-hidden dark:shadow-black m-6">
-  <div class="flex flex-1 overflow-hidden border-b lg:border-r border-gray-300 dark:border-0">
+  class="flex flex-col md:flex-row max-w-sm md:max-w-none text-start bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 border border-gray-300 dark:border-zinc-900/50 rounded-lg shadow-xl overflow-hidden dark:shadow-black m-6">
+  <div class="flex md:flex-1 overflow-hidden border-b lg:border-r border-gray-300 dark:border-0">
     <img
       src={post.imageUrl}
       width="600"
@@ -26,44 +26,43 @@ const post = {
     />
   </div>
   <div
-    class="px-6 py-3 flex-1 flex flex-col justify-between text-zinc-950 dark:text-zinc-300">
-    <div class="flex flex-col gap-y-1">
+    class="px-6 py-3 md:flex-1 flex flex-col justify-between text-zinc-950 dark:text-zinc-300">
+    <div class="flex flex-col md:gap-y-1">
       <h3
-        class="text-xl lg:text-2xl font-semibold text-indigo-800 dark:text-white mt-2">
-        {post.title}
-      </h3>
-      <div
-        class="flex flex-row space-x-1 text-sm text-zinc-600 dark:text-zinc-400">
-        <a
-          href={post.author.href}
-          class="hover:underline">
-          by {post.author.name}
-        </a>
-        <span aria-hidden="true">&middot;</span>
-        <time datetime={post.datetime}>{post.date}</time>
-        <span aria-hidden="true">&middot;</span>
-        <span>{post.readingTime} read</span>
-      </div>
+      class="text-lg lg:text-xl font-semibold text-indigo-800 dark:text-zinc-100 mt-2">
+      {post.title}
+    </h3>
+    <div
+      class="flex flex-row mt-1 space-x-1 text-sm text-zinc-600 dark:text-zinc-400">
+      <a
+        href={post.author.href}
+        class="hover:underline">
+        by {post.author.name}
+      </a>
+      <span aria-hidden="true">&middot;</span>
+      <time datetime={post.datetime}>{post.date}</time>
+      <span aria-hidden="true">&middot;</span>
+      <span>{post.readingTime} read</span>
     </div>
-    <p
-      class="my-3 text-base text-zinc-900 dark:text-zinc-300">
-      {post.description}
-    </p>
-    <a
-      href="#"
-      class="px-4 py-2 max-w-max mt-3 mb-2 inline-flex items-center gap-x-2 text-base lg:text-lg rounded-lg bg-indigo-800 text-white hover:bg-indigo-700">
-      <span>Read Now</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"
-        ></path>
-      </svg>
-    </a>
+  </div>
+  <p class="mt-4 text-sm lg:text-base text-zinc-800 dark:text-zinc-300">
+    {post.description}
+  </p>
+  <a
+    href="#"
+    class="px-4 py-2.5 mt-4 mb-2 rounded-lg max-w-max font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+    <span>Read More</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"
+      ></path>
+    </svg>
+  </a>
   </div>
 </div>

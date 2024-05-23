@@ -26,6 +26,7 @@
   <ul
     aria-orientation="vertical"
     aria-labelledby="menu-button-2"
+    role="menu"
     class="absolute transition-all ease-in-out duration-500 right-0 max-h-0 overflow-hidden opacity-40 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100 top-8 z-10 mt-2 origin-top-right rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
     id="dropdown-menu-2"
     aria-hidden="true"
@@ -85,14 +86,23 @@
    * The function also handles closing the menu when the user clicks outside of it.
    */
   function menuInitilization() {
-    const button = document.getElementById("menu-button-2");
-    const dropdown = document.getElementById("dropdown-menu-2");
-    const dropdownItems = dropdown?.querySelectorAll("li");
-    button?.addEventListener("click", () => {
-      button.getAttribute("aria-expanded") === "true"
-        ? button.setAttribute("aria-expanded", "false")
-        : button.setAttribute("aria-expanded", "true");
-      if (dropdown?.getAttribute("aria-hidden") === "true") {
+    const button = document.getElementById(
+      "menu-button-2"
+    ) as HTMLButtonElement;
+    const dropdown = document.getElementById(
+      "dropdown-menu-2"
+    ) as HTMLUListElement;
+    const dropdownItems = dropdown?.querySelectorAll(
+      "li"
+    ) as NodeListOf<HTMLLIElement>;
+    button?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (button.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+        return;
+      }
+      button.setAttribute("aria-expanded", "true");
+      if (dropdown) {
         dropdown.setAttribute("aria-hidden", "false");
 
         /**
@@ -104,7 +114,10 @@
          * - Enter: Clicks the currently focused dropdown item
          */
         if (dropdownItems) {
-          dropdown.focus();
+          document.documentElement.addEventListener("click", closeMenu);
+          setTimeout(() => {
+            dropdownItems[0].focus();
+          }, 500);// to prevent the focus setting from causing a stutter in the animation
           let tabFocus = 0;
 
           dropdown.addEventListener("keydown", (keyboardEvent) => {
@@ -130,14 +143,12 @@
               tabFocus = tabFocus % dropdownItems.length;
               dropdownItems[tabFocus].focus();
             } else if (e.key === "Escape") {
-              dropdown.setAttribute("aria-hidden", "true");
-              button.setAttribute("aria-expanded", "false");
-              document.documentElement.removeEventListener("click", closeMenu);
+              closeMenu();
+              return;
             } else if (e.key === "Enter") {
               (dropdownItems[tabFocus].children[0] as HTMLElement)?.click();
-              dropdown.setAttribute("aria-hidden", "true");
-              button.setAttribute("aria-expanded", "false");
-              document.documentElement.removeEventListener("click", closeMenu);
+              closeMenu();
+              return;
             } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
               e.preventDefault();
 
@@ -151,23 +162,19 @@
             }
           });
         }
-      } else {
-        dropdown?.setAttribute("aria-hidden", "true");
-      }
+      } 
 
       document.documentElement.addEventListener("click", closeMenu);
-      let tabFocus = 0;
+      
     });
   }
-  function closeMenu(event: Event) {
+  function closeMenu() {
     const button = document.getElementById("menu-button-2");
     const dropdown = document.getElementById("dropdown-menu-2");
-    if (!button?.contains(event.target as Node)) {
-      button?.setAttribute("aria-expanded", "false");
-      dropdown?.setAttribute("aria-hidden", "true");
-      document.documentElement.removeEventListener("click", closeMenu);
-    }
+
+    button?.setAttribute("aria-expanded", "false");
+    dropdown?.setAttribute("aria-hidden", "true");
+    document.documentElement.removeEventListener("click", closeMenu);
   }
-  document.addEventListener("astro:before-swap", menuInitilization);
   document.addEventListener("astro:page-load", menuInitilization);
 </script>

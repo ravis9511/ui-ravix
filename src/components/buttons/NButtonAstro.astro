@@ -1,54 +1,41 @@
----
-const { props } = Astro.props;
----
+<div class="flex flex-wrap gap-6 sm:gap-12 justify-center p-6">
+  <button
+    type="button"
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
+    >Default</button
+  >
 
-<div class="flex flex-col gap-4 p-6 overflow-auto">
-  <div class="flex flex-row gap-4">
-    <button
-      type="button"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
-      >Default</button
-    >
-    <button
-      type="button"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg dark:bg-zinc-200 dark:text-zinc-950 bg-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-50 text-gray-50"
-      >Contrast</button
-    >
-    <button
-      type="button"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg bg-gray-700 text-white hover:bg-gray-600"
-      >Gray
-    </button>
-    <button
-      type="button"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-white hover:border-gray-500"
-      >Outline
-    </button>
-    <button
-      type="button"
-      disabled aria-disabled="true"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
-      >Default</button
-    >
-  </div>
-  <div class="flex flex-row gap-4">
-    <button
-      type="button"
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg disabled:opacity-60 bg-blue-800 text-gray-50 hover:bg-blue-700 disabled:pointer-events-none"
-      >Variant</button
-    >
+  <button
+    type="button"
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base dark:bg-zinc-100 dark:text-zinc-950 bg-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-300 text-gray-50 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    >High Contrast</button
+  >
+  <button
+    type="button"
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-gray-700 text-white hover:bg-gray-600 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    >Neutral
+  </button>
 
-    <button
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg bg-green-900 hover:bg-green-800 text-white"
-      >Semantic Green</button
-    >
-    <button
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg bg-red-800 hover:bg-red-700 text-white"
-      >Semantic Red</button
-    >
-    <button
-      class="px-4 py-2 rounded-lg font-semibold text-md lg:text-lg bg-yellow-400 hover:bg-yellow-300 text-black"
-      >Semantic Yellow</button
-    >
-  </div>
+  <button
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-green-900 hover:bg-green-800 text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    >Semantic Green</button
+  >
+  <button
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-red-800 hover:bg-red-700 text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    >Semantic Red</button
+  >
+  <button
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-yellow-400 hover:bg-yellow-300 text-black focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg dark:shadow-none"
+    >Semantic Yellow</button
+  >
+  <button
+    type="button"
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg  dark:shadow-none"
+    >Border
+  </button>
+  <button
+    type="button"
+    class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base text-indigo-800 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:text-indigo-400 hover:border border-indigo-600 dark:border-indigo-400 hover:bg-gray-200 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+    >Ghost
+  </button>
 </div>

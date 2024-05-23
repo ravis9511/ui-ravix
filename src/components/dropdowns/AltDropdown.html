@@ -1,13 +1,13 @@
 <div class="relative inline-flex text-left">
   <button
     type="button"
-    class="group inline-flex w-full justify-center gap-x-1.5 rounded-md bg-indigo-700 dark:bg-indigo-950 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset hover:bg-indigo-500 ring-indigo-900 dark:hover:bg-indigo-700"
+    class="group peer inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-indigo-700 dark:bg-indigo-950 px-4 py-3 lg:py-3 font-semibold text-sm lg:text-base text-white shadow-sm ring-1 ring-inset hover:bg-indigo-500 ring-indigo-900 dark:hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
     id="menu-button-alt"
     aria-expanded="false"
     aria-haspopup="true">
     Options
     <svg
-      class="-mr-1 transition h-5 w-5 text-gray-400 group-aria-expanded:-rotate-180"
+      class="-mr-1 motion-safe:transition h-5 w-5 text-gray-400 group-aria-expanded:-rotate-180"
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden="true">
@@ -19,11 +19,11 @@
   </button>
 
   <ul
-    class="absolute right-0 top-8 z-10 mt-2 min-w-max origin-top-right rounded-md bg-indigo-50 text-gray-800 dark:text-gray-200 dark:bg-indigo-950 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
+    class="hidden peer-aria-expanded:block absolute right-0 top-11 z-10 mt-2 min-w-max origin-top-right rounded-md bg-indigo-50 text-gray-800 dark:text-gray-200 dark:bg-indigo-950 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
     id="dropdown-menu-alt"
-    style="display: none"
+    role="menu"
     aria-orientation="vertical"
-    aria-labelledby="menu-button"
+    aria-labelledby="menu-button-alt"
     tabindex="-1">
     <li
       tabindex="-1"
@@ -73,79 +73,73 @@
 </div>
 
 <script>
-  function menuInitilization() {
+  function menuInitilizationalt() {
     const button = document.getElementById("menu-button-alt");
     const dropdown = document.getElementById("dropdown-menu-alt");
     const dropdownItems = dropdown?.querySelectorAll("li");
     button?.addEventListener("click", () => {
-      button.getAttribute("aria-expanded") === "true"
-        ? button.setAttribute("aria-expanded", "false")
-        : button.setAttribute("aria-expanded", "true");
+      event.stopPropagation();
+      if (button.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+        return;
+      }
+      button.setAttribute("aria-expanded", "true");
+      if (dropdown && dropdownItems) {
+        document.documentElement.addEventListener("click", closeMenu);
+        dropdownItems[0].focus();
 
-      if (dropdown) {
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
-        dropdown.focus();
-        if (dropdownItems) {
-          let tabFocus = 0;
+        let tabFocus = 0;
 
-          dropdown.addEventListener("keydown", (keyboardEvent) => {
-            const e = keyboardEvent;
+        dropdown.addEventListener("keydown", (keyboardEvent) => {
+          const e = keyboardEvent;
 
-            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-              e.preventDefault();
-              if (e.key === "ArrowDown") {
-                tabFocus++;
-                // If we're at the end, go to the start
-                if (tabFocus >= dropdownItems.length) {
-                  tabFocus = 0;
-                }
-                // Move left
-              } else if (e.key === "ArrowUp") {
-                tabFocus--;
-                // If we're at the start, move to the end
-                if (tabFocus < 0) {
-                  tabFocus = dropdownItems.length - 1;
-                }
-              }
-              tabFocus = tabFocus % dropdownItems.length;
-              dropdownItems[tabFocus].focus();
-            } else if (e.key === "Escape") {
-              dropdown.setAttribute("aria-hidden", "true");
-              button.setAttribute("aria-expanded", "false");
-              document.documentElement.removeEventListener("click", closeMenu);
-            } else if (e.key === "Enter") {
-              dropdownItems[tabFocus].children[0]?.click();
-              dropdown.setAttribute("aria-hidden", "true");
-              button.setAttribute("aria-expanded", "false");
-              document.documentElement.removeEventListener("click", closeMenu);
-            } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-              e.preventDefault();
-
-              if (e.key === "ArrowRight") {
-                tabFocus = dropdownItems.length - 1;
-              } else if (e.key === "ArrowLeft") {
+          if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+            e.preventDefault();
+            dropdownItems[tabFocus].setAttribute("tabindex", "-1");
+            if (e.key === "ArrowDown") {
+              tabFocus++;
+              // If we're at the end, go to the start
+              if (tabFocus >= dropdownItems.length) {
                 tabFocus = 0;
               }
-              tabFocus = tabFocus % dropdownItems.length;
-              dropdownItems[tabFocus].focus();
+              // Move left
+            } else if (e.key === "ArrowUp") {
+              tabFocus--;
+              // If we're at the start, move to the end
+              if (tabFocus < 0) {
+                tabFocus = dropdownItems.length - 1;
+              }
             }
-          });
-        }
+            tabFocus = tabFocus % dropdownItems.length;
+            dropdownItems[tabFocus].focus();
+          } else if (e.key === "Escape") {
+            closeMenu();
+            return;
+          } else if (e.key === "Enter") {
+            dropdownItems[tabFocus].children[0]?.click();
+            closeMenu();
+            return;
+          } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+            e.preventDefault();
+
+            if (e.key === "ArrowRight") {
+              tabFocus = dropdownItems.length - 1;
+            } else if (e.key === "ArrowLeft") {
+              tabFocus = 0;
+            }
+            tabFocus = tabFocus % dropdownItems.length;
+            dropdownItems[tabFocus].focus();
+          }
+        });
       }
       document.documentElement.addEventListener("click", closeMenu);
     });
   }
   function closeMenu(event) {
     const button = document.getElementById("menu-button-alt");
-    const menu = document.getElementById("dropdown-menu-alt");
-    if (!button?.contains(event.target)) {
-      button?.setAttribute("aria-expanded", "false");
-      if (menu) {
-        menu.style.display = "none";
-      }
-      document.documentElement.removeEventListener("click", closeMenu);
-    }
+    button?.setAttribute("aria-expanded", "false");
+
+    document.documentElement.removeEventListener("click", closeMenu);
   }
-  menuInitilization();
+  menuInitilizationalt();
 </script>

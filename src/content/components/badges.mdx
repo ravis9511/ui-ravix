@@ -206,3 +206,17 @@ Here are some examples of using badges with other elements.
 </Tab>
 
 **Accessibility Note:** The last variant uses a `motion-safe:animate-ping` class to create the pinging animation with motion-safe being a selector and animate-ping being a standard tailwind class. You can also use the `prefers-reduced-motion` media query to disable the animation if the user has reduced motion enabled.
+
+
+
+## Accessibility Testing Status
+
+| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Badge               | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Badge     | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Icon            | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Other Elements  | Yes  | Yes              | Yes  | Yes | Yes              |
+
+There are no clear accessibility guidelines for the badge pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements.
+

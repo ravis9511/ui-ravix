@@ -21,38 +21,39 @@ const post = {
   <div class="flex-0 max-h-max">
     <img
       src={post.imageUrl}
-      width="400"
+      width="600"
       alt="A desk with PC peripherals and Stationery on it"
+      class="bg-cover"
     />
   </div>
   <div
     class="px-6 py-4 flex flex-col justify-between text-zinc-950 dark:text-zinc-400">
     <div class="flex flex-col space-y-6">
-      <div><h3
-        class="text-xl lg:text-2xl font-semibold text-indigo-800 dark:text-zinc-50 mt-2">
-        {post.title}
-      </h3>
-      <div
-        class="flex flex-row mt-1 space-x-1 text-sm text-zinc-600 dark:text-zinc-500">
-        <a
-          href={post.author.href}
-          class="hover:underline">
-          by {post.author.name}
-        </a>
-        <span aria-hidden="true">&middot;</span>
-        <time datetime={post.datetime}>{post.date}</time>
-        <span aria-hidden="true">&middot;</span>
-        <span>{post.readingTime} read</span>
+      <div>
+        <h3
+          class="text-lg lg:text-xl font-semibold text-indigo-800 dark:text-zinc-100 mt-2">
+          {post.title}
+        </h3>
+        <div
+          class="flex flex-row mt-1 space-x-1 text-sm text-zinc-600 dark:text-zinc-400">
+          <a
+            href={post.author.href}
+            class="hover:underline">
+            by {post.author.name}
+          </a>
+          <span aria-hidden="true">&middot;</span>
+          <time datetime={post.datetime}>{post.date}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{post.readingTime} read</span>
+        </div>
       </div>
-    </div>
-      <p
-        class="mt-4 text-base text-zinc-800 dark:text-zinc-300">
+      <p class="mt-4 text-sm lg:text-base text-zinc-800 dark:text-zinc-300">
         {post.description}
       </p>
       <a
         href="#"
-        class="px-4 py-2 max-w-max mt-6 mb-2 inline-flex items-center gap-x-2 text-base lg:text-lg rounded-lg bg-indigo-800 text-white  hover:bg-indigo-700">
-        <span>Read Now</span>
+        class="px-4 py-2.5 mt-4 mb-2 rounded-lg max-w-max font-semibold inline-flex gap-x-2 items-center text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+        <span>Read More</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -61,7 +62,7 @@ const post = {
           aria-hidden="true">
           <path
             fill="currentColor"
-            d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"
+            d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"
           ></path>
         </svg>
       </a>
