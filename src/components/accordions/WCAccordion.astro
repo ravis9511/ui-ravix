@@ -1,9 +1,12 @@
 ---
 // Accordion.astro
+/** 
 import { randomUUID } from "node:crypto";
 const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
-/** 
+
+
  If crypto is unsupported, we can use the following code to generate unique IDs.
+ **/
  
   const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
@@ -14,7 +17,7 @@ const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
 };
 
 const componentId = generateUniqueId();
-**/
+
 // The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
 interface AccordionPanel {
   header: string;
