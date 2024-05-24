@@ -1,6 +1,6 @@
 ---
 // Accordion.astro
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
 /** 
  If crypto is unsupported, we can use the following code to generate unique IDs.
