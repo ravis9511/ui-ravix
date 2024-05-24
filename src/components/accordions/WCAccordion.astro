@@ -1,12 +1,20 @@
 ---
 // Accordion.astro
-const generateUniqueId = () => {
+import { randomUUID } from "crypto";
+const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
+/** 
+ If crypto is unsupported, we can use the following code to generate unique IDs.
+ 
+  const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
-  const randomNum = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  const randomNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
   return timestamp + randomNum;
 };
 
 const componentId = generateUniqueId();
+**/
 // The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
 interface AccordionPanel {
   header: string;
@@ -48,8 +56,10 @@ if you want more complex content, you can send the content as HTML and use a fra
 ---
 
 <x-accordion>
-  <div data-accordion="container" id={`${componentId}-accordion`}
-    class=" border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none ">
+  <div
+    data-accordion="container"
+    id={`${componentId}-accordion`}
+    class="border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none">
     {
       panels.map((panel: AccordionPanel, index: number) => (
         <div class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
@@ -77,7 +87,10 @@ if you want more complex content, you can send the content as HTML and use a fra
             </svg>
           </button>
 
-          <section data-accordion="panel" aria-hidden="true" id={`${componentId}-panel-${index + 1}`}
+          <section
+            data-accordion="panel"
+            aria-hidden="true"
+            id={`${componentId}-panel-${index + 1}`}
             class=" motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
             aria-labelledby={`${componentId}-button-${index + 1}`}
             role="region">
@@ -99,15 +112,15 @@ if you want more complex content, you can send the content as HTML and use a fra
    * and "aria-hidden" attributes on the buttons and panels respectively.
    */
   class Accordion extends HTMLElement {
-    panels: HTMLElement[] | null | undefined = null;
-    buttons: NodeListOf<HTMLButtonElement> | null | undefined = null;
-    accordionContainer: HTMLElement | null | undefined = null;
+    panels: HTMLElement[];
+    buttons: NodeListOf<HTMLButtonElement>;
+    accordionContainer: HTMLElement;
 
     constructor() {
       super();
       this.accordionContainer = this.querySelector(
         '[data-accordion="container"]'
-      ) as HTMLElement | null;
+      ) as HTMLElement;
       this.buttons = this.accordionContainer?.querySelectorAll(
         '[data-accordion="button"]'
       );

@@ -21,7 +21,7 @@ const { tabs,name } = Astro.props
 <tabs-list>
     
     <div data-pagefind-ignore aria-label={name}
-        class="flex flex-row w-full items-center  my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 lg:gap-x-4"
+        class="flex flex-row max-w-4xl   w-full items-center  my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 lg:gap-x-4"
         role="tablist" data-role="tablist">
         {
             tabs.map((tab, index) => (
@@ -51,7 +51,7 @@ const { tabs,name } = Astro.props
     </div>
 
     <div data-pagefind-ignore
-        class="not-prose  w-full    border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
+        class="not-prose  max-w-4xl   w-full    border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
         <slot />
     </div>
     

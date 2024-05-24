@@ -70,7 +70,7 @@ A simple accordion capable of containing numerous accordion items. No supplement
   </div>
 </section>
 
-<section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2">
+<section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2" class="hidden">
 
 <Code
   code={NormalAccordionCode}
@@ -81,7 +81,7 @@ A simple accordion capable of containing numerous accordion items. No supplement
 
 </section>
 
-<section id ="SA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab3">
+<section id ="SA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab3" class="hidden">
 
 <Code
   code={NormalAccordionCodeAstro}
@@ -116,7 +116,7 @@ It is similar to the previous accordion component, but it uses JavaScript to con
   </div>
 </section>
 
-<section id ="AA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab2">
+<section id ="AA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab2" class="hidden">
 
 <Code
   code={AnimatedAccordionCode}
@@ -127,7 +127,7 @@ It is similar to the previous accordion component, but it uses JavaScript to con
 
 </section>
 
-<section id ="AA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab3">
+<section id ="AA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab3" class="hidden">
 
 <Code
   code={AnimatedAccordionCodeAstro}
@@ -162,7 +162,7 @@ An alternate style for the accordion. Outside of the style, the functionality is
   </div>
 </section>
 
-<section id ="AL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab2">
+<section id ="AL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab2" class="hidden">
 
 <Code
   code={AnimatedAccordionAltCode}
@@ -173,7 +173,7 @@ An alternate style for the accordion. Outside of the style, the functionality is
 
 </section>
 
-<section id ="AL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab3">
+<section id ="AL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab3" class="hidden">
 
 <Code
   code={AnimatedAccordionAltCodeAstro}
@@ -223,7 +223,7 @@ The animated accordion is available as a web component in ravixUI. You can find 
   </div>
 </section>
 
-<section id ="WC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="WC-Tab3">
+<section id ="WC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="WC-Tab3" class="hidden">
 
 <Code
   code={WebComponentAccordionCode}
@@ -299,6 +299,8 @@ The Accordion component is styled using Tailwind CSS classes. You can customize 
 ### JavaScript Functionality
 
 The Accordion component includes a JavaScript class that handles the toggling of accordion panels. When a panel header button is clicked, the corresponding panel is expanded or collapsed, and the aria-expanded attribute is updated accordingly. Only one panel can be expanded at a time, and clicking on an expanded panel will collapse it.
+
+The component generates a 16 character unique id for the dropdown button and menu using the `randomUUID()` function from the crypto module. If crypto is not supported, an alternative unique ID generation method is provided. For checking browser compatibility of crypto module, you can check [this link which leads to caniuse.com/crypto](https://caniuse.com/crypto).
 
 ### Note
 

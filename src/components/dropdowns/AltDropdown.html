@@ -2,7 +2,7 @@
   <button
     type="button"
     class="group peer inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-indigo-700 dark:bg-indigo-950 px-4 py-3 lg:py-3 font-semibold text-sm lg:text-base text-white shadow-sm ring-1 ring-inset hover:bg-indigo-500 ring-indigo-900 dark:hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
-    id="menu-button-alt"
+    id="menu-button-althtm"
     aria-expanded="false"
     aria-haspopup="true">
     Options
@@ -20,14 +20,15 @@
 
   <ul
     class="hidden peer-aria-expanded:block absolute right-0 top-11 z-10 mt-2 min-w-max origin-top-right rounded-md bg-indigo-50 text-gray-800 dark:text-gray-200 dark:bg-indigo-950 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-    id="dropdown-menu-alt"
+    id="dropdown-menu-althtm"
     role="menu"
     aria-orientation="vertical"
-    aria-labelledby="menu-button-alt"
+    aria-labelledby="menu-button-althtm"
     tabindex="-1">
     <li
       tabindex="-1"
-      id="menu-item-0">
+      role="menuitem"
+      id="althtm-menu-item-0">
       <a
         href="#"
         tabindex="-1"
@@ -37,7 +38,8 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-1">
+      role="menuitem"
+      id="althtm-menu-item-1">
       <a
         href="#"
         tabindex="-1"
@@ -47,7 +49,8 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-2">
+      role="menuitem"
+      id="althtm-menu-item-2">
       <a
         href="#"
         tabindex="-1"
@@ -57,9 +60,11 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-3">
+      role="menuitem"
+      id="althtm-menu-item-3">
       <form
         method="POST"
+        id="althtm-menu-item-form-3"
         action="#">
         <button
           type="submit"
@@ -74,8 +79,8 @@
 
 <script>
   function menuInitilizationalt() {
-    const button = document.getElementById("menu-button-alt");
-    const dropdown = document.getElementById("dropdown-menu-alt");
+    const button = document.getElementById("menu-button-althtm");
+    const dropdown = document.getElementById("dropdown-menu-althtm");
     const dropdownItems = dropdown?.querySelectorAll("li");
     button?.addEventListener("click", () => {
       event.stopPropagation();
@@ -89,7 +94,15 @@
         dropdownItems[0].focus();
 
         let tabFocus = 0;
-
+         /**
+         * Handles keyboard navigation and interactions for a dropdown menu.
+         *
+         * When the dropdown is focused, the following keyboard interactions are supported:
+         * - Arrow Up/Down: Moves the focus to the previous/next item in the dropdown
+         * - Escape: Closes the dropdown
+         * - Enter: Clicks the currently focused dropdown item
+         * - Tab: Moves focus back to the button
+         */
         dropdown.addEventListener("keydown", (keyboardEvent) => {
           const e = keyboardEvent;
 
@@ -130,15 +143,19 @@
             tabFocus = tabFocus % dropdownItems.length;
             dropdownItems[tabFocus].focus();
           }
+          else if (e.key === "Tab" || e.key === "Shift+Tab") {
+            e.preventDefault();
+            button.focus();
+          }
         });
       }
-      document.documentElement.addEventListener("click", closeMenu);
+      
     });
   }
   function closeMenu(event) {
-    const button = document.getElementById("menu-button-alt");
+    const button = document.getElementById("menu-button-althtm");
     button?.setAttribute("aria-expanded", "false");
-
+    button?.focus();
     document.documentElement.removeEventListener("click", closeMenu);
   }
   menuInitilizationalt();

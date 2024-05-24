@@ -32,7 +32,8 @@
     tabindex="-1">
     <li
       tabindex="-1"
-      id="menu-item-0">
+      role="menuitem"
+      id="n-menu-item-0">
       <a
         href="#"
         tabindex="-1"
@@ -42,7 +43,8 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-1">
+      role="menuitem"
+      id="n-menu-item-1">
       <a
         href="#"
         tabindex="-1"
@@ -52,7 +54,8 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-2">
+      role="menuitem"
+      id="n-menu-item-2">
       <a
         href="#"
         tabindex="-1"
@@ -62,9 +65,11 @@
     </li>
     <li
       tabindex="-1"
-      id="menu-item-3">
+      role="menuitem"
+      id="n-menu-item-3">
       <form
         method="POST"
+        id="n-menu-item-form-3"
         action="#">
         <button
           type="submit"
@@ -112,7 +117,15 @@
         dropdownItems[0].focus();
 
         let tabFocus = 0;
-
+         /**
+         * Handles keyboard navigation and interactions for a dropdown menu.
+         *
+         * When the dropdown is focused, the following keyboard interactions are supported:
+         * - Arrow Up/Down: Moves the focus to the previous/next item in the dropdown
+         * - Escape: Closes the dropdown
+         * - Enter: Clicks the currently focused dropdown item
+         * - Tab: Moves focus back to the button
+         */
         dropdown.addEventListener("keydown", (keyboardEvent) => {
           const e = keyboardEvent as KeyboardEvent;
 
@@ -152,6 +165,10 @@
             tabFocus = tabFocus % dropdownItems.length;
             dropdownItems[tabFocus].focus();
           }
+          else if (e.key === "Tab" || e.key === "Shift+Tab") {
+            e.preventDefault();
+            button.focus();
+          }
         });
       }
     });
@@ -164,7 +181,7 @@
     const button = document.getElementById("menu-button") as HTMLButtonElement;
 
     button?.setAttribute("aria-expanded", "false");
-
+    button?.focus();
     document.documentElement.removeEventListener("click", closeMenu);
   }
 

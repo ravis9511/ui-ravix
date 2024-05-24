@@ -11,21 +11,25 @@
 <dialog
   id="modal-container-info"
   class="fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm"
-  aria-labelledby="modal-title"
+  aria-labelledby="modal-title-info"
   aria-modal="true">
-  <div 
+  <div
     class="grid items-center justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
-    <div id="modal-content-info"
+    <div
+      id="modal-content-info-area"
       class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <h3
-        class="text-lg font-semibold  mb-4 w-full border-b border-gray-300 dark:border-zinc-700 p-4">
+        id="modal-title-info"
+        class="text-lg font-semibold mb-4 w-full border-b border-gray-300 dark:border-zinc-700 p-4">
         Information
       </h3>
-      <p class="mx-2 mb-4 text-lg px-4">This is to inform you that the current version of the app is outdated. Please update to the latest version.</p>
-     
+      <p class="mx-2 mb-4 text-lg px-4">
+        This is to inform you that the current version of the app is outdated.
+        Please update to the latest version.
+      </p>
 
-      <div class="flex flex-row w-full items-end gap-x-4 justify-end px-4 py-4 border-t border-gray-300 dark:border-zinc-700">
-    
+      <div
+        class="flex flex-row w-full items-end gap-x-4 justify-end px-4 py-4 border-t border-gray-300 dark:border-zinc-700">
         <button
           type="button"
           class="px-4 py-2 rounded-lg font-semibold text-sm sm:text-md border border-gray-400 dark:border-zinc-700 focus:outline outline-offset-2 outline-indigo-500 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-white hover:border-gray-500"
@@ -48,26 +52,30 @@
     const openModalButton = document.getElementById(
       "modal-open-info"
     ) as HTMLButtonElement;
-    
 
-    openModalButton?.addEventListener("click", () => {
+    openModalButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
       modal.showModal();
-      const modalArea= document.getElementById("modal-content-info") as HTMLDivElement;
-      modal.addEventListener("click", (e) => {
-        if (e.target !== modalArea) {
-          modal.close();
-        }
-      });
+
+      document.addEventListener("click", closeWhenClickedOutside);
     });
     // Open the modal
-
-   
 
     // Close the modal when the close button is clicked
     closeButton?.addEventListener("click", () => {
       modal.close();
     });
   }
-  document.addEventListener("astro:before-swap", modalInitilizationInfo);
+  function closeWhenClickedOutside(event: MouseEvent) {
+    const modal = document.getElementById(
+      "modal-container-info"
+    ) as HTMLDialogElement;
+    const modalArea = document.getElementById("modal-content-info-area") as HTMLDivElement;
+    console.log(modalArea);
+    if (!modalArea?.contains(event.target as Node)) {
+      modal.close();
+      document.removeEventListener("click", closeWhenClickedOutside);
+    }
+  }
   document.addEventListener("astro:page-load", modalInitilizationInfo);
 </script>
