@@ -30,6 +30,29 @@ const timelineData = [
     ],
   },
 ];
+const timeLineName="collapseTimeline";
+/**
+To accept these as props you can use the following syntax:
+ 
+interface TimelineEntry {
+  date: string;
+  version: string;
+  changelogUrl: string;
+  changes: string[];
+  }
+  interface TimelineData {
+    timelineData: TimelineEntry[];
+    timeLineName: string;
+  }
+  const { timelineData, timeLineName } = Astro.props as TimelineData;
+
+  To call the component you can use the following syntax:
+  ---
+  import CollapseTimeline from "path/to/components/CollapseTimeline.astro";
+  // Fetch data from a file or API. Or use a static array of data similar to the one above.
+  ---
+  <CollapseTimeline timelineData={timelineData} />
+ */
 ---
 
 <div
@@ -39,7 +62,7 @@ const timelineData = [
       {
         timelineData.map((item, index) => (
           <li class="flex relative py-4 items-center justify-center">
-            <div class="w-1/6 pr-3 pl-2 text-end">
+            <div class="w-1/6 pr-3 pl-2 text-end text-sm md:text-base">
               <time datetime={item.date}>
                 {new Date(item.date).toLocaleDateString("en-US", {
                   day: "numeric",
@@ -59,11 +82,11 @@ const timelineData = [
               </div>
             )}
             <div class="w-3 h-3 rounded-full bg-indigo-400 dark:bg-indigo-900 items-center justify-center  relative z-10" />
-            <details class="group flex-grow ml-3 flex flex-col border border-gray-400 dark:border-zinc-800 rounded-lg overflow-hidden " name="collapseTimeline">
+            <details class="group flex-grow ml-3 flex flex-col border border-gray-400 dark:border-zinc-800 rounded-lg overflow-hidden " name={timeLineName}>
               <summary class="flex items-center justify-between px-3 py-3 cursor-pointer text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 dark:group-open:bg-zinc-900 group-open:bg-gray-200">
                 <span class="text-base font-semibold"> {item.version}</span>
                 <svg
-                  class="w-5 h-5 shrink-0 transition duration-300 group-open:-rotate-180"
+                  class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-open:-rotate-180"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -78,12 +101,12 @@ const timelineData = [
               </summary>
               <div class="leading-relaxed px-4 py-3">
                 
-                <ul class="list-disc list-inside mb-2">
+                <ul class="list-disc list-inside mb-2 text-sm md:text-base">
                   {item.changes.map((change) => (
                     <li>{change}</li>
                   ))}
                 </ul>
-                <a class="text-blue-600 dark:text-blue-400 hover:text-blue-700 " href={item.changelogUrl}>Full Changelogs</a>
+                <a class="text-blue-600 dark:text-blue-400 hover:text-blue-700 text-sm md:text-base" href={item.changelogUrl}>Full Changelogs</a>
               </div>
             </details>
           </li>

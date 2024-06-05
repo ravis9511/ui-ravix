@@ -10,6 +10,7 @@ const tabs = [
     content: "This is placeholder content for the compare tab",
   },
 ];
+const name="exampleTab3"; // Name for aria-labelledby
 
 /*
 To dynamically generate tabs with simple text content you can call this component from a page like this:
@@ -50,6 +51,7 @@ replace
   <slot name="tab1" />
   <slot name="tab2" />
   <slot name="tab3" />
+  <!-- Add more slots as needed -->
   and call the component like this:
   ---
   import NTabsAstro from '../components/NTabsAstro.astro';
@@ -57,18 +59,19 @@ replace
   { title: 'Product', content: '' },
   { title: 'Info', content: '' },
   { title: 'Compare', content: '' },
-  ];      
+  ]; // More tabs can be added here
   ---
   <NTabsAstro tabs={tabsData}>
-    <div slot="tab1" role="tabpanel" id="tab-panel-1" tabindex="0" >
+    <section slot="tab1" role="tabpanel" id="tab-panel-1" tabindex="-1" aria-labelledby="tab-1">
       <!-- content for tab 1 -->
-    </div>
-    <div slot="tab2" role="tabpanel" id="tab-panel-2" tabindex="0" class="hidden">
+    </section>
+    <section slot="tab2" role="tabpanel" id="tab-panel-2" tabindex="-1" class="hidden" aria-labelledby="tab-2">
       <!-- content for tab 2 -->
-    </div>
-    <div slot="tab3" role="tabpanel" id="tab-panel-3" tabindex="0" class="hidden">
+    </section>
+    <section slot="tab3" role="tabpanel" id="tab-panel-3" tabindex="-1" class="hidden" aria-labelledby="tab-3">
       <!-- content for tab 3 -->
-    </div>
+    </section>
+    <!-- Add more slots as needed -->
   </NTabsAstro>
 
 */
@@ -84,8 +87,8 @@ replace
           <button
             role="tab"
             aria-selected={index === 0 ? "true" : "false"}
-            aria-controls={`tab-panel-${index + 1}`}
-            id={`tab-${index + 1}`}
+            aria-controls={`${name}-tab-panel-${index + 1}`}
+            id={`${name}-tab-${index + 1}`}
             class="cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
             <span>{tab.title}</span>
           </button>
@@ -98,8 +101,9 @@ replace
         tabs.map((tab, index) => (
           <section
             role="tabpanel"
-            id={`tab-panel-${index + 1}`}
-            tabindex="0"
+            id={`${name}-tab-panel-${index + 1}`}
+            aria-labelledby={`${name}-tab-${index + 1}`}
+            tabindex="-1"
             class={index === 0 ? "" : "hidden"}>
             <p class="p-4">{tab.content}</p>
           </section>
@@ -108,12 +112,18 @@ replace
     </div>
   </div>
 </div>
-<script is:inline>
+<script>
+  /**
+   * Initializes and manages the tab functionality for a tab interface.
+   *
+   * This function sets up event listeners for keyboard navigation and click handling on the tab elements.
+   * It keeps track of the currently selected tab and updates the corresponding tab panel visibility accordingly.
+   */
   function tabs() {
-    const tabContainer = document.getElementById("tab-container-normal");
-    const tabs = tabContainer?.querySelectorAll('[role="tab"]');
-    const panels = tabContainer?.querySelectorAll('[role="tabpanel"]');
-    const tabList = tabContainer?.querySelector('[role="tablist"]');
+    const tabContainer = document.getElementById("tab-container-normal") as HTMLElement;
+    const tabs = tabContainer?.querySelectorAll('[role="tab"]') as NodeListOf<HTMLButtonElement>;
+    const panels = tabContainer?.querySelectorAll('[role="tabpanel"]') as NodeListOf<HTMLElement>;
+    const tabList = tabContainer?.querySelector('[role="tablist"]') as HTMLElement;
     let tabFocus = 0;
     tabList?.addEventListener("keydown", (e) => {
       if (e.key && tabs) {
@@ -136,24 +146,36 @@ replace
           tabs[tabFocus].setAttribute("tabindex", "0");
           tabs[tabFocus].focus();
         }
+        if (e.key === "Tab") {
+          tabs.forEach((tabs, index) => {
+            if (tabs.getAttribute("aria-selected") === "true") {
+              tabs.setAttribute("tabindex", "0");
+              tabFocus = index;
+            } else {
+              tabs.setAttribute("tabindex", "-1");
+            }
+          });
+        }
       }
     });
     tabs?.forEach((tab) => {
       tab.addEventListener("click", () => {
-        tabs.forEach((tab) => tab.setAttribute("aria-selected", "false"));
+        tabs.forEach((tab) => {
+          tab.setAttribute("aria-selected", "false");
+          tab.setAttribute("tabindex", "-1");
+        });
         tab.setAttribute("aria-selected", "true");
+        tab.setAttribute("tabindex", "0");
         const selectedPanel = tab.getAttribute("aria-controls");
         panels?.forEach((panel) => {
           if (panel.id === selectedPanel) {
-            panel.setAttribute("tabindex", "0");
             panel.classList.remove("hidden");
           } else {
             panel.classList.add("hidden");
-            panel.setAttribute("tabindex", "-1");
           }
         });
       });
     });
   }
-  tabs();
+  document.addEventListener("astro:page-load",tabs);
 </script>

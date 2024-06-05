@@ -29,18 +29,19 @@ Pagination is a navigation system that allows users to navigate through a set of
 
 A simple pagination component that displays the current page number and the total number of pages.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Pagination" tabs={[{ "name" : "Preview", "id" : "SP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SP-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="SP-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="SP-Tab1">
   <div class="p-2 flex items-center justify-center w-full">
     <SimplePagination />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab2" class="hidden">
 
 <Code
   code={SimplePaginationCode}
@@ -51,7 +52,7 @@ A simple pagination component that displays the current page number and the tota
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab3" class="hidden">
 
 <Code
   code={SimplePaginationCodeAstro}
@@ -69,18 +70,19 @@ A simple pagination component that displays the current page number and the tota
 
 An alternate boxed pagination style that displays the current page number and the total number of pages.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Alternate Pagination Style" tabs={[{ "name" : "Preview", "id" : "AP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AP-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="AP-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="AP-Tab1">
   <div class="p-2 flex items-center justify-center w-full">
     <AltPagination />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab2" class="hidden">
 
 <Code
   code={AltPaginationCode}
@@ -91,7 +93,7 @@ An alternate boxed pagination style that displays the current page number and th
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab3" class="hidden">
 
 <Code
   code={AltPaginationCodeAstro}
@@ -109,18 +111,19 @@ An alternate boxed pagination style that displays the current page number and th
 
 This is similar to the Simple Pagination style but uses ghost styling for the pagination buttons.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Ghost Pagination Style" tabs={[{ "name" : "Preview", "id" : "GP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "GP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "GP-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="GP-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="GP-Tab1">
   <div class="p-2 flex items-center justify-center w-full">
     <GhostPagination />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GP-Tab2" class="hidden">
 
 <Code
   code={GhostPaginationCode}
@@ -131,7 +134,7 @@ This is similar to the Simple Pagination style but uses ghost styling for the pa
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GP-Tab3" class="hidden">
 
 <Code
   code={GhostPaginationCodeAstro}
@@ -145,44 +148,12 @@ This is similar to the Simple Pagination style but uses ghost styling for the pa
 
 </Tab>
 
-## Pagination With Dropdown For Pages
+## Accessibility Testing Status
 
-This style of pagination allows for a dropdown menu to be used to select the page number.
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Pagination       | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Pagination    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Ghost Pagination        | Yes  | Yes              | Yes  | Yes | Yes              |
 
-<Alert heading="Info">Requires Javascript to work.</Alert>
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
-
-<section
-  id="Tab1-panel"
-  role="tabpanel"
-  data-role="tabpanel">
-  <div class="p-2 flex items-start justify-center w-full h-[18rem]">
-    <InputPagination />
-  </div>
-</section>
-
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
-
-<Code
-  code={InputPaginationCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
-
-</section>
-
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
-
-<Code
-  code={InputPaginationCodeAstro}
-  lang="astro"
-  title="PaginationDropDown.astro"
-  wrap="true"
-  data-pagefind-ignore
-/>
-
-</section>
-
-</Tab>
+While there are no specific patters from the ARIA Authoring Practices Guide for Pagination, the implementation of the pagination components follows best practices for navigational elements.

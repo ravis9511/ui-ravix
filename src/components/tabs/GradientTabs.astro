@@ -16,6 +16,7 @@ const tabs = [
     icon: "compare",
   },
 ];
+const name="exampleTab1"; // Name for unique aria labels
 
 /*
 This uses conditional rendering to render the SVGs, but generally you would import them from a separate file like so :
@@ -45,8 +46,9 @@ This will aid in the separation of concerns and make the code more maintainable.
           <button
             role="tab"
             aria-selected={index === 0 ? "true" : "false"}
-            aria-controls={`tab-panel-${index + 1}`}
-            id={`tab-${index + 1}`}
+            aria-controls={`${name}-tab-panel-${index + 1}`}
+            id={`${name}-tab-${index + 1}`}
+        
             class="cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l from-purple-500 via-purple-800 to-purple-900  aria-selected:text-white">
             {tab.icon === "product" && (
               <svg
@@ -99,7 +101,8 @@ This will aid in the separation of concerns and make the code more maintainable.
         tabs.map((tab, index) => (
           <section
             role="tabpanel"
-            id={`tab-panel-${index + 1}`}
+            id={`${name}-tab-panel-${index + 1}`}
+            aria-labelledby={`${name}-tab-${index + 1}`}
             tabindex="0"
             class={index === 0 ? "" : "hidden"}>
             <p class="p-4">{tab.content}</p>
@@ -109,54 +112,77 @@ This will aid in the separation of concerns and make the code more maintainable.
     </div>
   </div>
 </div>
-<script is:inline>
-   function gradientTabs() {
-  const tabContainer = document.getElementById("tab-container-gradient");
-  const tabs = tabContainer?.querySelectorAll('[role="tab"]');
-  const panels = tabContainer?.querySelectorAll('[role="tabpanel"]');
-  const tabList = tabContainer?.querySelector('[role="tablist"]');
-  let tabFocus = 0;
-  tabList?.addEventListener("keydown", (e) => {
-    
-    if (e.key && tabs) {
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        tabs[tabFocus]?.setAttribute("tabindex", "-1");
-        if (e.key === "ArrowRight") {
-          tabFocus++;
-          // If we're at the end, go to the start
-          if (tabFocus >= tabs.length) {
-            tabFocus = 0;
+<script>
+  /**
+   * Initializes the gradient tabs functionality on the page.
+   * This function sets up event listeners for keyboard navigation and click handling on the tab elements.
+   * It also manages the visibility of the tab panels based on the selected tab.
+   */
+  function gradientTabs() {
+    const tabContainer = document.getElementById(
+      "tab-container-gradient"
+    ) as HTMLElement;
+    const tabs = tabContainer?.querySelectorAll(
+      '[role="tab"]'
+    ) as NodeListOf<HTMLButtonElement>;
+    const panels = tabContainer?.querySelectorAll(
+      '[role="tabpanel"]'
+    ) as NodeListOf<HTMLElement>;
+    const tabList = tabContainer?.querySelector(
+      '[role="tablist"]'
+    ) as HTMLElement;
+    let tabFocus = 0;
+    tabList?.addEventListener("keydown", (e) => {
+      if (e.key && tabs) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          tabs[tabFocus]?.setAttribute("tabindex", "-1");
+          if (e.key === "ArrowRight") {
+            tabFocus++;
+            // If we're at the end, go to the start
+            if (tabFocus >= tabs.length) {
+              tabFocus = 0;
+            }
+            // Move left
+          } else if (e.key === "ArrowLeft") {
+            tabFocus--;
+            // If we're at the start, move to the end
+            if (tabFocus < 0) {
+              tabFocus = tabs.length - 1;
+            }
           }
-          // Move left
-        } else if (e.key === "ArrowLeft") {
-          tabFocus--;
-          // If we're at the start, move to the end
-          if (tabFocus < 0) {
-            tabFocus = tabs.length - 1;
-          }
+          tabs[tabFocus].setAttribute("tabindex", "0");
+          tabs[tabFocus].focus();
         }
-        tabs[tabFocus].setAttribute("tabindex", "0");
-        tabs[tabFocus].focus();
+        if (e.key === "Tab") {
+          tabs.forEach((tabs, index) => {
+            if (tabs.getAttribute("aria-selected") === "true") {
+              tabs.setAttribute("tabindex", "0");
+              tabFocus = index;
+            } else {
+              tabs.setAttribute("tabindex", "-1");
+            }
+          });
+        }
       }
-    }
-  });
-  tabs?.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((tab) => tab.setAttribute("aria-selected", "false"));
-      tab.setAttribute("aria-selected", "true");
-      const selectedPanel = tab.getAttribute("aria-controls");
-      panels?.forEach((panel) => {
-        if (panel.id === selectedPanel) {
-          panel.setAttribute("tabindex", "0");
-          panel.classList.remove("hidden");
-        } else {
-          panel.classList.add("hidden");
-          panel.setAttribute("tabindex", "-1");
-        }
+    });
+    tabs?.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((tab) => {
+          tab.setAttribute("aria-selected", "false");
+          tab.setAttribute("tabindex", "-1");
+        });
+        tab.setAttribute("aria-selected", "true");
+        tab.setAttribute("tabindex", "0");
+        const selectedPanel = tab.getAttribute("aria-controls");
+        panels?.forEach((panel) => {
+          if (panel.id === selectedPanel) {
+            panel.classList.remove("hidden");
+          } else {
+            panel.classList.add("hidden");
+          }
+        });
       });
     });
-  });}
-  
-  gradientTabs();
-  
+  }
+  document.addEventListener("astro:page-load", gradientTabs);
 </script>

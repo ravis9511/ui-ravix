@@ -32,7 +32,9 @@ const { Content, headings } = await entry.render();
 
 <Layout
   title={entry.data.title}
-   currentSlug={`/components/${entry.slug}`} >
+   currentSlug={`/components/${entry.slug}`} 
+   skipLinkId={headings[0].slug}>
+   
   <div data-pagefind-body 
     class="bg-fixed bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
     <div class="  lg:grid lg:grid-cols-12 gap-4 ml-4  lg:ml-8 xl:ml-16 2xl:ml-32 ">

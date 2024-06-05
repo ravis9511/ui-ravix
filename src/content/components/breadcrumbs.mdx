@@ -33,27 +33,30 @@ Breadcrumbs are a navigational element that helps users understand where they ar
       name: "breadcrumb1",
       title: "Accessiblity Hints",
       content:
-        "The nav element should be used for the breadcrumbs with aria-label attribute set to Breadcrumb. The current page link should be at the end of the breadcrumbs with the attribute aria-current set to page.",
+        "For best user experience, the nav element should be used for the breadcrumbs with aria-label attribute set to Breadcrumb. The current page link should be at the end of the breadcrumbs with the attribute aria-current set to page.",
     },
   ]}
 />
+
+**Note:** The components below have the tailwind selector `visited` set to the same color as the link color for the sake of display. In most cases you would want to use an alternate color for the `visited` selector.
 
 ## Simple Breadcrumbs
 
 Simple breadcrumbs are a basic version of breadcrumbs that only show the current page and the parent pages with links and a separator between them.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Breadcrumbs" tabs={[{ "name" : "Preview", "id" : "SB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SB-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="SB-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="SB-Tab1">
   <div class="grid px-10 py-6">
     <Breadcrumbs />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
 
 <Code
   code={BreadcrumbsCode}
@@ -64,7 +67,7 @@ Simple breadcrumbs are a basic version of breadcrumbs that only show the current
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab3" class="hidden">
 
 <Code
   code={BreadcrumbsCodeAstro}
@@ -82,18 +85,19 @@ Simple breadcrumbs are a basic version of breadcrumbs that only show the current
 
 An alternate style for simple breadcrumbs
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Alternate Simple Breadcrumbs" tabs={[{ "name" : "Preview", "id" : "ASB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ASB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ASB-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="ASB-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="ASB-Tab1">
   <div class="grid px-10 py-6">
     <AltBreadcrumbs />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ASB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab2" class="hidden">
 
 <Code
   code={AltBreadcrumbsCode}
@@ -104,7 +108,7 @@ An alternate style for simple breadcrumbs
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ASB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab3" class="hidden">
 
 <Code
   code={AltBreadcrumbsCodeAstro}
@@ -122,18 +126,19 @@ An alternate style for simple breadcrumbs
 
 Breadcrumbs with a visible container.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Styled Breadcrumbs" tabs={[{ "name" : "Preview", "id" : "ST-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ST-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ST-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="ST-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="ST-Tab1">
   <div class="grid px-10 py-6">
     <StyledBreadcrumbs />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ST-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab2" class="hidden">
 
 <Code
   code={StyledBreadcrumbsCode}
@@ -144,7 +149,7 @@ Breadcrumbs with a visible container.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ST-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab3" class="hidden">
 
 <Code
   code={StyledBreadcrumbsCodeAstro}
@@ -157,3 +162,13 @@ Breadcrumbs with a visible container.
 </section>
 
 </Tab>
+
+## Accessibility Testing Status
+
+| Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Breadcrumbs | Yes  | Yes              | Yes  | Yes | Yes              |
+| Styled Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
+
+The components above follow [WAI-ARIA APG specifications for Breadcrumb pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/). 

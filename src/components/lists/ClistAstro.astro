@@ -1,0 +1,88 @@
+---
+const generateUniqueId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  return timestamp + randomNum;
+};
+
+const componentId = generateUniqueId();
+// The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
+interface Props {
+  description: string;
+  list: Array<{ listItem: string; type: "tick" | "cross" | string; }>;
+}
+// You can add more types of list markers if you want based on your use case by adding them to the type property.
+
+const { description, list } = Astro.props as Props;
+/**  Usage in an Astro component:
+    ---
+    import Clist from './Ulist.astro';
+    const list = [
+        {
+            listItem: 'Item 1 is really long and should be wrapped. You can see how the wrapping works with this particular item.',
+            type: 'tick'
+        },
+        {
+            listItem: 'Item 2',
+            type: 'cross'
+        },
+        {
+            listItem: 'Item 3',
+            type: 'tick'
+        },
+    ]
+    const description = 'Your description here';
+    ---
+     <Clist description={description} list={list} />
+**/
+
+---
+
+<div class="text-zinc-900 dark:text-gray-100 text-base md:text-lg">
+  <p class="mx-4 my-6 max-w-2xl text-md leading-normal text-start w-full">
+    {description}
+  </p>
+  <ul class="mx-4 mb-6 list-outside list-none space-y-3 max-w-2xl">
+    {
+      list.map((item, index) => (
+        <li class="flex flex-row items-start leading-snug">
+          {item.type === "tick" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              role="img"
+              height="24"
+              viewBox="0 0 24 24"
+              class="flex-shrink-0 text-green-700 dark:text-green-400 mr-3"
+              aria-labelledby={`${componentId}-item-${index}`}>
+              <title id={`${componentId}-item-${index}`}>{item.type}</title>
+              <path
+                fill="currentColor"
+                d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z"
+              />
+            </svg>
+          )}
+          {item.type === "cross" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              role="img"
+              height="24"
+              viewBox="0 0 24 24"
+              class="flex-shrink-0 text-red-700 dark:text-red-500 mr-3"
+              aria-labelledby={`${componentId}-item-${index}`}>
+              <title id={`${componentId}-item-${index}`}>{item.type}</title>
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+              />
+            </svg>
+          )}
+          <span>{item.listItem}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

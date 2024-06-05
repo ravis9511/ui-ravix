@@ -39,6 +39,27 @@ const timelineData = [
     ]
   }
 ];
+/**
+To accept these as props you can use the following syntax:
+ 
+interface TimelineEntry {
+  date: string;
+  version: string;
+  changelogUrl: string;
+  changes: string[];
+  }
+  interface TimelineData {
+    timelineData: TimelineEntry[];
+  }
+  const { timelineData } = Astro.props as TimelineData;
+
+  To call the component you can use the following syntax:
+  ---
+  import SimpleTimeline from "path/to/components/SimpleTimeline.astro";
+  // Fetch data from a file or API. Or use a static array of data similar to the one above.
+  ---
+  <SimpleTimeline timelineData={timelineData} />
+ */
 ---
 
 <div class="px-5 py-2 w-full flex flex-wrap items-start justify-start justify-items-start text-gray-900 dark:text-gray-100">
@@ -46,7 +67,7 @@ const timelineData = [
     <ol class="w-full">
       {timelineData.map((item, index) => (
         <li class="flex relative py-4 items-center justify-center">
-          <div class="w-1/6 pr-3 pl-2 text-end">
+          <div class="w-1/6 pr-3 pl-2 text-end text-sm md:text-base">
             <time datetime={item.date}>{new Date(item.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
           </div>
           {index !== timelineData.length - 1 && (
@@ -66,7 +87,7 @@ const timelineData = [
               <a class="text-blue-600 dark:text-blue-400 hover:text-blue-700 ml-1" href={item.changelogUrl}>Full Changelogs</a>
             </h2>
             <div class="leading-relaxed">
-              <ul class="list-disc list-inside">
+              <ul class="list-disc list-inside text-sm md:text-base">
                 {item.changes.map((change) => (
                   <li>{change}</li>
                 ))}

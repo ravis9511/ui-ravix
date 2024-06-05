@@ -39,6 +39,27 @@ const timelineData = [
     ]
   }
 ];
+/**
+To accept these as props you can use the following syntax:
+ 
+interface TimelineEntry {
+  date: string;
+  version: string;
+  changelogUrl: string;
+  changes: string[];
+  }
+  interface TimelineData {
+    timelineData: TimelineEntry[];
+  }
+  const { timelineData } = Astro.props as TimelineData;
+
+  To call the component you can use the following syntax:
+  ---
+  import AltTimeline from "path/to/components/AltTimeline.astro";
+  // Fetch data from a file or API. Or use a static array of data similar to the one above.
+  ---
+  <AltTimeline timelineData={timelineData} />
+ */
 ---
 
 <div class="px-5 py-2 w-full flex flex-wrap items-start justify-start justify-items-start text-gray-900 dark:text-gray-100">
@@ -62,7 +83,7 @@ const timelineData = [
               
             </h2>
             <div class="leading-relaxed ml-6">
-              <ul class="list-disc list-inside">
+              <ul class="list-disc list-inside text-sm md:text-base">
                 {item.changes.map((change) => (
                   <li>{change}</li>
                 ))}

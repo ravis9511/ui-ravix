@@ -16,25 +16,86 @@ import SpinnerCodeAstro from "../../components/loaders/Spinner.astro?raw";
 
 # Loaders
 
-Loaders are of two types:
+Loaders are indicators which convey a busy state to the user. They are used to show the user that something is loading and can even act as a placeholder for content that hasn't loaded yet.
 
-- **Skeleton** - A skeleton is a placeholder for content that hasn't loaded yet. It is used to show the user that something is loading.
 - **Spinner** - A spinner is a loading indicator that informs the user that the process is in progress.
+- **Skeleton** - A skeleton is a placeholder for content that hasn't loaded yet. It is used to show the user that something is loading.
+
+## Spinners
+
+Spinners are used to indicate that a process is in progress.
+
+<Accordion
+  data={[
+    {
+      name: "Spinner",
+      title: "Design Hints",
+      content: "Spinners are appropriate for notifying users that a process in progress. It can be used as an overlay over all the content or as a loading indicator for a specific area of the page, such as a submitted form waiting for server response. The color of the spinner can be customized to match the branding of the application. Additional textual information can be provided to the user using a text element which can enhance the user experience even further.",
+    },
+  ]}
+/>
+
+<Tab name="Spinner" tabs={[{ "name" : "Preview", "id" : "Spinner-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Spinner-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Spinner-Tab3", "icon" : "astro"}]}>
+
+<section id ="Spinner-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Spinner-Tab1">
+<div class="flex p-6 justify-center w-full">
+<Spinner />
+</div>
+
+</section>
+
+<section id ="Spinner-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Spinner-Tab2" class="hidden">
+
+<Code
+  code={SpinnerCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="Spinner-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Spinner-Tab3" class="hidden">
+
+<Code
+  code={SpinnerCodeAstro}
+  lang="astro"
+  title="Spinner.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Accessibility Note:** We use the `role="status"` attribute to inform the user that the content is loading which implicitly sets `aria-live="polite"` and `aria-atomic="true"` and has an `aria-label` attribute to convey additional textual information. For spinners which are used to block the user from further interaction until the process is complete, you can use `aria-live="assertive"` instead of `role="status"`. The last example in the preview section uses a combination of `aria-live="assertive"` and `aria-busy="true"` to inform the user that the content is loading, useful when critical information is being loaded or if the full page is waiting for loading content. For more information about `role="status"`, refer to [this link from the MDN docs about status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role).  
 
 ## Skeleton
 
 Skeleton is perfect for giving user an idea of what type of content they can expect to see. It's best used for loading data or content that is not yet available.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Accordion
+  data={[
+    {
+      name: "Skeleton",
+      title: "Design Hints",
+      content:
+        "It is recommended to use skeletons only when the content takes time to load and a spinner is not sufficient to convey the loading state. The skeleton should resemble the visual characteristics of the content it replaces. For instance, if the content being loaded is a list of items, the skeleton should visually represent a list layout with placeholder elements resembling the individual items. Skeletons present a branding opportunity by using custom and consistently styled skeletons that can be used across the application.",
+    },
+  ]}
+/>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class=" p-6">
+<Tab name="Skeleton" tabs={[{ "name" : "Preview", "id" : "Skeleton-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Skeleton-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Skeleton-Tab3", "icon" : "astro"}]}>
+
+<section id ="Skeleton-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Skeleton-Tab1">
+<div class="grid p-6">
 <Skeleton />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="Skeleton-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Skeleton-Tab2" class="hidden">
 
 <Code
   code={SkeletonCode}
@@ -46,7 +107,7 @@ Skeleton is perfect for giving user an idea of what type of content they can exp
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="Skeleton-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="Skeleton-Tab3" class="hidden">
 
 <Code
   code={SkeletonCodeAstro}
@@ -60,41 +121,14 @@ Skeleton is perfect for giving user an idea of what type of content they can exp
 
 </Tab>
 
-## Spinners
+**Accessbility Note:** We use `aria-live="polite"` and `aria-busy="true"` to inform assistive technology that the content is being loaded and when the content is loaded you have to set `aria-busy="false"` to alert the assistive technology that the content is ready which can be then communicated to the user. If further updates aren't expected to the content, you can set the `aria-live="off"` attribute. For critical information, you can set `aria-live="assertive"` instead of `aria-live="polite"` so that the user is immediately notified of the changes. To know more about aria-live, refer to [this link from the MDN docs about aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions).
 
-Spinners are used to indicate that a process is in progress. It can be enhanced with a loading text to provide more context.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+## Accessibility Testing Status
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class=" p-6">
-<Spinner />
-</div>
+| Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Skeleton          | Yes  | Yes              | Yes  | Yes | Yes              |
+| Spinner           | Yes  | Yes              | Yes  | Yes | Yes              |
 
-</section>
-
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
-
-<Code
-  code={SpinnerCode}
-  lang="html"
-  title="SpinnerVariants.html"
-  wrap="true"
-  data-pagefind-ignore
-/>
-
-</section>
-
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
-
-<Code
-  code={SpinnerCodeAstro}
-  lang="astro"
-  title="SpinnerVariants.astro"
-  wrap="true"
-  data-pagefind-ignore
-/>
-
-</section>
-
-</Tab>
+The accessibility requirements for the loader depend on the type of content being loaded. If the content is critical, use aria-live="assertive" instead of aria-live="polite" to immediately notify the user of changes. From a user experience perspective, it's beneficial to add visible text to the loader, providing additional information to the user. For instance, if loading a list of items, the loader could display text such as "Loading items..." or "Loading more items...".

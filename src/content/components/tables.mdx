@@ -25,9 +25,9 @@ import CondTableCodeAstro from "../../components/tables/CondTable.astro?raw";
 
 # Table
 
-Tables are used to display data in a structured and organized manner. It is the most common way to display a lot of structured data in a web page. The tables in ravixUI comes with striped rows out of the box to make it easier to read.
+Tables are used to display data in a structured and organized manner. It is the most common way to display a lot of structured data in a web page. Since we use the `<table>` tag, it is accessible to the screen reader without any modification.
 
-## Table Specification
+### Table Specification
 
 A table has three main parts :
 
@@ -39,32 +39,31 @@ A table has three main parts :
 
 A simple table with a header and a body.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Table" tabs={[{ "name" : "Preview", "id" : "ST-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ST-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ST-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ST-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab1">
 
 <SimpleTable />
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ST-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab2" class="hidden">
 
 <Code
   code={SimpleTableCode}
   lang="html"
-  title="SimpleTableVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="ST-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab3" class="hidden">
 
 <Code
   code={SimpleTableCodeAstro}
   lang="astro"
-  title="SimpleTableVariants.astro"
+  title="SimpleTable.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -73,36 +72,35 @@ A simple table with a header and a body.
 
 </Tab>
 
-## Theme Table
+## Thematic Table
 
 A variation of the simple table with more thematic colors.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Thematic Table" tabs={[{ "name" : "Preview", "id" : "TT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "TT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "TT-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="TT-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TT-Tab1">
 
 <ThemeTable />
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="TT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TT-Tab2" class="hidden">
 
 <Code
   code={ThemeTableCode}
   lang="html"
-  title="ThemeTableVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="TT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TT-Tab3" class="hidden">
 
 <Code
   code={ThemeTableCodeAstro}
   lang="astro"
-  title="ThemeTableVariants.astro"
+  title="ThemeTable.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -115,32 +113,31 @@ A variation of the simple table with more thematic colors.
 
 A variation of the simple table with cell borders.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Cell Bordered Table" tabs={[{ "name" : "Preview", "id" : "CB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "CB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "CB-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CB-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CB-Tab1">
 
 <CellTable />
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CB-Tab2" class="hidden">
 
 <Code
   code={CellTableCode}
   lang="html"
-  title="CellTableVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CB-Tab3" class="hidden">
 
 <Code
   code={CellTableCodeAstro}
   lang="astro"
-  title="CellTableVariants.astro"
+  title="CellBorderTable.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -153,27 +150,26 @@ A variation of the simple table with cell borders.
 
 A table with a caption, done semantically with the `<caption>` tag.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Captioned Table" tabs={[{ "name" : "Preview", "id" : "CT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "CT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "CT-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CT-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab1">
 
 <CaptionTable />
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab2" class="hidden">
 
 <Code
   code={CaptionTableCode}
   lang="html"
-  title="CaptionTableVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab3" class="hidden">
 
 <Code
   code={CaptionTableCodeAstro}
@@ -187,21 +183,22 @@ A table with a caption, done semantically with the `<caption>` tag.
 
 </Tab>
 
+
 ## Table With Conditional Styling
 
 <Alert type="info">Currently, only supported for Astrojs component.</Alert>
 
 A table with conditional styling for cells based on the value of a column.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Table With Conditional Styling" tabs={[{ "name" : "Preview", "id" : "TCS-Tab1", "icon" : "view"},{ "name" : "Astrojs", "id" : "TCS-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="TCS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TCS-Tab1">
 
 <CondTable />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="TCS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TCS-Tab3" class="hidden">
 
 <Code
   code={CondTableCodeAstro}
@@ -215,4 +212,21 @@ A table with conditional styling for cells based on the value of a column.
 
 </Tab>
 
-**Note:** The styling in this table is just a showcase of the different ways you can use conditional styling. In a real-world scenario, you would likely stick to one format for styling.
+**Accessibility Note:** While the colors are a good visual indicator, for accessibility ravixUI has added text in the table header for both visual and screen reader users. This is just one approach, you can also add another column to represent the same. The styling in this table is just a showcase of the different ways you can use conditional styling. In a real-world scenario, you would likely stick to one format for styling.
+
+
+
+## Accessibility Testing Status
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Table            | Yes  | Yes              | Yes  | Yes | Yes              |
+| Thematic Table          | Yes  | Yes              | Yes  | Yes | Yes              |
+| Table With Cell Borders | Yes  | Yes              | Yes  | Yes | Yes              |
+| Table With A Caption    | Yes  | Yes              | Yes  | Yes | Yes              |
+
+The tables adhere to the [WAI-ARIA 1.2 specification for authoring content.](https://www.w3.org/TR/wai-aria/) 
+
+Additional manual testing maybe required to ensure the tables are accessible in your specific use case.
+
+

@@ -1,56 +1,46 @@
 <div class="flex flex-col w-full space-y-8 text-black dark:text-white">
-<ul class="flex w-full flex-row items-center justify-center space-x-2 text-black dark:text-white">
-  <li
-    class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full text-white bg-indigo-600 dark:bg-indigo-900">
-    <span class="text-lg font-semibold">Step 1</span>
-    <p class="text-sm text-start text-gray-100 font-medium">
-      Enter your payment details
-    </p>
-  </li>
-  <span></span>
-  <li
-    class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full bg-gray-200 dark:bg-zinc-800">
-    <span class="text-lg font-semibold">Step 2</span>
-    <p class="text-sm text-start text-gray-800 dark:text-gray-200 font-medium">
-      Enter your address details
-    </p>
-  </li>
-  <span></span>
-  <li
-    class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full bg-gray-200 dark:bg-zinc-800">
-    <span class="text-lg font-semibold">Step 3</span>
-    <p class="text-sm text-start text-gray-800 dark:text-gray-200 font-medium">
-      Confirm your details
-    </p>
-  </li>
-</ul>
-<ul class="flex w-full flex-row items-center justify-center space-x-2 text-black dark:text-white">
+  <ol
+    class="flex w-full flex-row items-start justify-center space-x-2 text-black dark:text-white">
     <li
-      class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full text-white bg-green-900 dark:bg-green-950">
-      
-      <span class="text-lg font-semibold inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z" />
-      </svg> Done</span>
-      <p class="text-sm text-start text-gray-200 font-medium">
-        Enter your payment details
-      </p>
+      aria-current="step"
+      class="flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
+      <span class="h-2 bg-indigo-500 dark:bg-indigo-800 w-full"> </span>
+      <span class="text-lg font-semibold">Payment Details</span>
+    </li>
+
+    <li
+      class="flex flex-col items-start space-y-1 rounded-lg w-full h-full text-gray-700 dark:text-gray-400">
+      <span class="h-1 bg-gray-500 dark:bg-gray-700 w-full"> </span>
+      <span class="text-base">Address Details</span>
+    </li>
+
+    <li
+      class="flex flex-col items-start space-y-1 rounded-lg w-full h-full text-gray-700 dark:text-gray-400">
+      <span class="h-1 bg-gray-500 dark:bg-gray-700 w-full"> </span>
+      <span class="text-base">Confirm Details</span>
+    </li>
+  </ol>
+  <ol
+    class="flex w-full flex-row items-start justify-center space-x-2 text-black dark:text-white">
+    <li
+      class="flex flex-col items-start justify-center space-y-1 rounded-lg w-full h-full text-green-700 dark:text-green-400">
+      <span class="h-1 bg-green-500 dark:bg-green-800 w-full"> </span>
+      <p class="text-base font-semibold inline-flex"
+        >Payment Details<span class="sr-only">Completed</span></p>
       
     </li>
-    <span></span>
+
     <li
-    class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full text-white bg-indigo-600 dark:bg-indigo-900">
-    <span class="text-lg font-semibold">Step 2</span>
-    <p class="text-sm text-start text-gray-100 font-medium">
-      Enter your address details
-    </p>
-  </li>
-    <span></span>
-    <li
-      class="flex-1 flex flex-col items-start space-y-2 p-4 rounded-lg w-full h-full bg-gray-200 dark:bg-zinc-800">
-      <span class="text-lg font-semibold">Step 3</span>
-      <p class="text-sm text-start text-gray-800 dark:text-gray-200 font-medium">
-        Confirm your details
-      </p>
+      aria-current="step"
+      class="flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
+      <span class="h-2 bg-indigo-500 dark:bg-indigo-800 w-full"> </span>
+      <span class="text-lg font-semibold">Address Details</span>
     </li>
-  </ul>
+
+    <li
+      class="flex flex-col items-start space-y-1 rounded-lg w-full h-full text-gray-700 dark:text-gray-400">
+      <span class="h-1 bg-gray-500 dark:bg-gray-700 w-full"> </span>
+      <span class="text-base">Confirm Details</span>
+    </li>
+  </ol>
 </div>

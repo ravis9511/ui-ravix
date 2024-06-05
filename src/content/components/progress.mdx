@@ -24,48 +24,50 @@ Progress bars are used to indicate the progress of a task or the completion of a
       name: "progress1",
       title: "Design Hints",
       content:
-        "Progress bars are a great way to provide users with a visual representation of the progress of a task or the completion of a process. They are also a good way to make the interface more visually appealing and engaging.",
+        "Progress bars are a great way to provide users with a visual representation of the progress of a task or the completion of a process. They can be used in a variety of contexts like forms, loading indicators, and progress bars for reading content. It gives the user a clear visual indication of the current progress of a task.",
     },
     {
       name: "progress1",
       title: "Accessiblity Hints",
       content:
-        "For accessibility, we assign the `progressbar` role to the div and use the `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes to indicate the current progress of the task. In the examples below, all the other elements other than the progress bar are not focusable and have aria-hidden set to true. To provide more information about the progress bar, we can use the aria-label attribute on the div to provide a description of the task or the process.",
+        "For accessibility, we assign the `progressbar` role to the div and use the `aria-valuemin`, `aria-valuemax`, and `aria-valuenow` attributes to indicate the current progress of the task. To provide more information about the progress bar, we can use the aria-label attribute on the div to provide a description of the task or the process.",
     },
   ]}
 />
+
+**Note:** While the examples below are static, you will most likely want to use javascript to update the progress bar as the task progresses.
 
 ## Simple Progress Bars
 
 A few styles of progress bars which can be used to indicate the progress of a task or the completion of a process.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Progress Bars" tabs={[{ "name" : "Preview", "id" : "SP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SP-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SP-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab1">
 <div class=" p-6">
 <Progress />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab2" class="hidden">
 
 <Code
   code={ProgressCode}
   lang="html"
-  title="ProgressVariants.html"
+  
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab3" class="hidden">
 
 <Code
   code={ProgressCodeAstro}
   lang="astro"
-  title="ProgressVariants.astro"
+  title="ProgressBar.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -78,33 +80,33 @@ A few styles of progress bars which can be used to indicate the progress of a ta
 
 Alternate style for progress bars with a subtle gradient.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Alternate Progress Bars" tabs={[{ "name" : "Preview", "id" : "AP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AP-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AP-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab1">
 <div class=" p-6">
 <ProgressAlt />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab2" class="hidden">
 
 <Code
   code={ProgressAltCode}
   lang="html"
-  title="ProgressAltVariants.html"
+  
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab3" class="hidden">
 
 <Code
   code={ProgressAltCodeAstro}
   lang="astro"
-  title="ProgressAltVariants.astro"
+  title="AltProgressBar.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -112,3 +114,14 @@ Alternate style for progress bars with a subtle gradient.
 </section>
 
 </Tab>
+
+## Accessibility Testing Status
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Progress Bars    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Progress Bars | Yes  | Yes              | Yes  | Yes | Yes              |
+
+For knowing more about the progressbar role used in the examples above, [you can read the w3c WAI-ARIA 1.3 documentation about progressbar role](https://w3c.github.io/aria/#progressbar)
+
+It is important to test the components with assistive technologies to ensure that they are accessible in the context of its usage. For example, if the progress bar is used in a form, you will have to use appropriate labels and textual information to help users understand the purpose of the progress bar and how it relates to the form.

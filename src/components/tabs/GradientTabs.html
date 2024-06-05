@@ -86,15 +86,26 @@
   </div>
 </div>
 <script>
+  /**
+   * Handles keyboard navigation and click events for a set of tabs and their corresponding panels.
+   *
+   * The tab container element must have the following structure:
+   * - A container element with `role="tablist"` that holds the tab elements.
+   * - Tab elements with `role="tab"`.
+   * - Panel elements with `role="tabpanel"` that correspond to the tabs.
+   *
+   * This function sets up the necessary event listeners and state management to ensure
+   * proper accessibility and functionality of the tabs.
+   */
   const tabContainer = document.getElementById("tab-container-gradient-alt");
   const tabs = tabContainer.querySelectorAll('[role="tab"]');
   const panels = tabContainer.querySelectorAll('[role="tabpanel"]');
   const tabList = tabContainer.querySelector('[role="tablist"]');
   let tabFocus = 0;
-  tabList.addEventListener("keydown", (e) => {
-    if (e.key) {
+  tabList?.addEventListener("keydown", (e) => {
+    if (e.key && tabs) {
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        tabs[tabFocus].setAttribute("tabindex", "-1");
+        tabs[tabFocus]?.setAttribute("tabindex", "-1");
         if (e.key === "ArrowRight") {
           tabFocus++;
           // If we're at the end, go to the start
@@ -112,20 +123,32 @@
         tabs[tabFocus].setAttribute("tabindex", "0");
         tabs[tabFocus].focus();
       }
+      if (e.key === "Tab") {
+        tabs.forEach((tabs, index) => {
+          if (tabs.getAttribute("aria-selected") === "true") {
+            tabs.setAttribute("tabindex", "0");
+            tabFocus = index;
+          } else {
+            tabs.setAttribute("tabindex", "-1");
+          }
+        });
+      }
     }
   });
-  tabs.forEach((tab) => {
+  tabs?.forEach((tab) => {
     tab.addEventListener("click", () => {
-      tabs.forEach((tab) => tab.setAttribute("aria-selected", "false"));
+      tabs.forEach((tab) => {
+        tab.setAttribute("aria-selected", "false");
+        tab.setAttribute("tabindex", "-1");
+      });
       tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
       const selectedPanel = tab.getAttribute("aria-controls");
-      panels.forEach((panel) => {
+      panels?.forEach((panel) => {
         if (panel.id === selectedPanel) {
-          panel.setAttribute("tabindex", "0");
           panel.classList.remove("hidden");
         } else {
           panel.classList.add("hidden");
-          panel.setAttribute("tabindex", "-1");
         }
       });
     });

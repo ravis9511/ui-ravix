@@ -1,20 +1,16 @@
----
-// SimpleModal.astro
----
-
 <button
-  id="modal-open"
+  id="modal-open-htm"
   type="button"
-  class=" px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
-  >Open Modal</button
->
+  class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none">
+  Open Modal
+</button>
 <dialog
-  id="modal-container"
-  class=" fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm sm:p-0 text-zinc-900 dark:text-gray-50"
+  id="modal-container-htm"
+  class="fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm"
   aria-labelledby="modal-title"
   aria-modal="true">
   <div
-    class=" grid items-center  justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
+    class="grid items-center justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
     <div
       class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <h3
@@ -36,51 +32,39 @@
         <button
           type="button"
           class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white "
-          id="modal-confirm"
-          >Confirm</button
-        >
+          id="modal-confirm-htm">
+          Confirm
+        </button>
         <button
           type="button"
           class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white "
-          id="modal-cancel"
-          >Cancel</button
-        >
+          id="modal-cancel-htm">
+          Cancel
+        </button>
       </div>
     </div>
   </div>
 </dialog>
 
-
 <script>
   function modalInitilization() {
-    const modal = document.getElementById(
-      "modal-container"
-    ) as HTMLDialogElement;
-    const confirmButton = document.getElementById(
-      "modal-confirm"
-    ) as HTMLButtonElement;
-    const cancelButton = document.getElementById(
-      "modal-cancel"
-    ) as HTMLButtonElement;
-    const openModalButton = document.getElementById(
-      "modal-open"
-    ) as HTMLButtonElement;
+    const modal = document.getElementById("modal-container-htm");
+    const confirmButton = document.getElementById("modal-confirm-htm");
+    const cancelButton = document.getElementById("modal-cancel-htm");
+    const openModalButton = document.getElementById("modal-open-htm");
 
     openModalButton?.addEventListener("click", () => {
-      modal.showModal();
+      modal?.showModal();
     });
-    // Open the modal
 
-    // Close the modal when the confirm button is clicked
     confirmButton?.addEventListener("click", () => {
-      modal.close();
+      modal?.close();
     });
 
-    // Close the modal when the cancel button is clicked
     cancelButton?.addEventListener("click", () => {
-      modal.close();
+      modal?.close();
     });
   }
 
-  document.addEventListener("astro:page-load", modalInitilization);
+  document.addEventListener("DOMContentLoaded", modalInitilization);
 </script>

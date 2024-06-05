@@ -1,0 +1,59 @@
+---
+interface Props {
+  stepTitle: string;
+  stepNumber: number;
+  stepTotal: number;
+  stepDescription: string;
+}
+/** An example implementation of the dynamic steps component.
+---
+import DynamicSteps from './DynamicSteps.astro';
+
+const stepTitle = 'Address Details';
+const stepNumber = 1;
+const stepTotal = 6;
+const stepDescription = 'Enter Your Address Details';
+---
+<DynamicSteps stepTitle={stepTitle} stepNumber={stepNumber} stepTotal={stepTotal} stepDescription={stepDescription} />
+  
+  
+  **/
+
+const { stepTitle, stepNumber, stepTotal, stepDescription } =
+  Astro.props as Props;
+---
+
+<ol
+  class="flex w-full flex-row items-start justify-center space-x-1 text-black dark:text-white mt-2 mb-4">
+  {
+    Array.from({ length: stepTotal }, (_, index) => {
+      const currentStep = index + 1;
+      return (
+        <>
+          {currentStep === stepNumber && (
+            <li
+              aria-current="step"
+              class="flex-0 flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
+              <span class="h-2 bg-indigo-500 dark:bg-indigo-900 w-full"> </span>
+              <span class="text-lg font-semibold">{stepTitle}</span>
+            </li>
+          )}
+          {currentStep < stepNumber && (
+            <li class="h-2 bg-green-500 dark:bg-green-800 w-[calc(1/4*100%)]"></li>
+          )}
+          {currentStep > stepNumber && (
+            <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+          )}
+        </>
+      );
+    })
+  }
+</ol>
+<h3 class="text-xl">
+  <span class="sr-only">Step</span>
+  <span
+    class="size-10 bg-indigo-500 dark:bg-indigo-900 inline-flex rounded-full text-center text-white justify-center items-center">
+    {stepNumber}</span
+  > of {stepTotal}
+  <span class="ml-2 text-xl sm:text-2xl font-semibold">{stepDescription}</span>
+</h3>

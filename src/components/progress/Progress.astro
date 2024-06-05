@@ -5,10 +5,17 @@
     aria-valuenow="25"
     aria-valuemin="0"
     tabindex="0"
-    aria-valuemax="100">
+    aria-valuemax="100"
+    id="progress-bar-1"
+    aria-labelledby="progress-label-1">
+    <span
+      id="progress-label-1"
+      class="sr-only"
+      >25% Complete</span
+    >
     <div
-      class="bg-indigo-600 dark:bg-indigo-500 h-3 rounded-full"
-      style="width: 25%">
+      aria-hidden="true"
+      class="bg-indigo-600 dark:bg-indigo-500 h-3 rounded-full w-[25%]">
     </div>
   </div>
   <div class="flex flex-col items-end justify-center space-y-1">
@@ -19,17 +26,19 @@
       aria-valuenow="25"
       aria-valuemin="0"
       aria-valuemax="100"
+      aria-labelledby="progress-label-2"
       id="progress-bar-2">
       <div
-        class="bg-indigo-600 dark:bg-indigo-500 h-3 rounded-full"
-        style="width: 25%">
+        aria-hidden="true"
+        class="bg-indigo-600 dark:bg-indigo-500 h-3 rounded-full w-[25%]">
       </div>
     </div>
-    <label
-      aria-hidden="true"
+    <div
+      
+      id="progress-label-2"
       class="block text-sm text-start font-medium text-gray-700 dark:text-zinc-400">
       25% Complete
-    </label>
+    </div>
   </div>
   <div class="flex flex-col items-end justify-center space-y-1">
     <div
@@ -39,35 +48,36 @@
       aria-valuenow="50"
       aria-valuemin="0"
       aria-valuemax="100"
+      aria-labelledby="progress-label-3"
       id="progress-bar-3">
       <div
-        aria-hidden="true"
-        class="bg-indigo-600 dark:bg-indigo-500 h-5 text-center text-white text-sm rounded-full items-center justify-center"
-        style="width: 50%">
+        id="progress-label-3"
+        class="bg-indigo-600 dark:bg-indigo-500 h-5 text-center text-white text-sm rounded-full items-center justify-center w-[50%]">
+        <span class="sr-only">Current Progress</span>
         50%
       </div>
     </div>
   </div>
   <div class="flex flex-col items-end justify-center space-y-1">
-    <div aria-hidden="true"
-      id="label-1-progress"
+    <div
+      
+      id="progress-label-4"
       class="inline-flex w-full justify-between items-end px-1 text-gray-700 dark:text-zinc-400">
-      <span class="text-sm font-medium">Current Reading Progress</span>
+      <span class="text-sm font-medium">Current Progress</span>
       <span class="text-sm font-medium">50%</span>
     </div>
     <div
       class="w-full bg-gray-300 dark:bg-zinc-800 rounded-full h-3"
       role="progressbar"
       tabindex="0"
-      aria-labelledby="label-1-progress"
+      aria-labelledby="progress-label-4"
       aria-valuenow="50"
       aria-valuemin="0"
       aria-valuemax="100"
-      id="progress-bar-3">
+      id="progress-bar-4">
       <div
         aria-hidden="true"
-        class="bg-indigo-600 dark:bg-indigo-500 h-3 text-center text-white text-sm rounded-full items-center justify-center"
-        style="width: 50%">
+        class="bg-indigo-600 dark:bg-indigo-500 h-3 text-center text-white text-sm rounded-full items-center justify-center w-[50%]">
       </div>
     </div>
   </div>

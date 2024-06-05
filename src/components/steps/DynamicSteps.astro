@@ -1,139 +1,51 @@
-<div
-  id="step-container"
-  class="w-full">
-  <div class="text-zinc-900 dark:text-zinc-50 mb-12">
-    <div
-      class="flex flex-row items-center w-full my-4 p-[4px]"
-      role="tablist">
-      <div class="flex flex-col text-start">
-        <button
-          role="tab"
-          aria-selected="false"
-          aria-controls="step-panel-1"
-          id="step-1"
-          class="cursor-pointer inline-flex size-10 text-lg rounded-full justify-center items-center bg-green-800 dark:hover:bg-zinc-800 aria-selected:bg-green-700 text-white">
-          <span>1</span>
-        </button>
-      </div>
+<div class="flex flex-col w-full text-black dark:text-white">
+  <ol
+    class="flex w-full flex-row items-start justify-center space-x-1 text-black dark:text-white mt-2 mb-4">
+    <li
+      aria-current="step"
+      class="flex-0 flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
+      <span class="h-2 bg-indigo-500 dark:bg-indigo-900 w-full"> </span>
+      <span class="text-lg font-semibold">Payment Details</span>
+    </li>
 
-      <span class="flex-1 mx-1 h-[2px] bg-green-800 w-full"></span>
-      <button
-        role="tab"
-        aria-selected="true"
-        aria-controls="step-panel-2"
-        id="step-2"
-        class="cursor-pointer size-10 text-lg rounded-full justify-center inline-flex items-center space-x-3 bg-gray-300 dark:hover:bg-zinc-800 aria-selected:bg-indigo-500 aria-selected:text-white">
-        <span>2</span>
-      </button>
-      <span class="flex-1 mx-1 h-[2px] bg-gray-300 dark:bg-zinc-800 w-full"
-      ></span>
-      <button
-        role="tab"
-        aria-selected="false"
-        aria-controls="step-panel-3"
-        id="step-3"
-        class="cursor-pointer size-10 text-lg rounded-full justify-center inline-flex items-center space-x-3 bg-gray-300 dark:hover:bg-zinc-800 aria-selected:bg-indigo-500 aria-selected:text-white">
-        <span>3</span>
-      </button>
-    </div>
-    <div
-      class="p-4 border border-gray-300 dark:border-zinc-800 rounded-xl text-zinc-800 dark:text-zinc-200">
-      <section
-        role="tabpanel"
-        id="step-panel-1"
-        tabindex="0"
-        class="p-4 hidden">
-        <div class="justify-between inline-flex space-x-4">
-          <span>Edit your payment details</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24">
-            <path
-              fill="currentColor"
-              d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83l3.75 3.75z"
-            ></path>
-          </svg>
-        </div>
-        <ul class="flex flex-col space-y-2 items-start justify-start w-full">
-          <li class="flex-row flex items-start w-full mt-4">
-            <label class="w-1/3 text-start">Name</label>
-            <label class="text-start">Capone</label>
-          </li>
-          <li class="flex-row flex items-start w-full mt-4">
-            <label class="w-1/3 text-start">Age</label>
-            <label class="text-start">32</label>
-          </li>
-          <li class="flex-row flex items-start w-full mt-4">
-            <label class="w-1/3 text-start">Payment Method</label>
-            <label class="text-start">Credit Card</label>
-          </li>
-          <li class="flex-row flex items-start w-full mt-4">
-            <label class="w-1/3 text-start">Card Number</label>
-            <label class="text-start">XXXX-XXXX-XXXX-1234</label>
-          </li>
-        </ul>
-      </section>
-      <section
-        role="tabpanel"
-        id="step-panel-2"
-        tabindex="0">
-        <p class="p-4">Enter your shipping details</p>
-      </section>
-      <section
-        role="tabpanel"
-        id="step-panel-3"
-        tabindex="0"
-        class="hidden">
-        <p class="p-4">Confirm your details and proceed to checkout</p>
-      </section>
-    </div>
-  </div>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+  </ol>
+  <h3 class="text-xl">
+    <span class="sr-only">Step</span>
+    <span
+      class="size-10 bg-indigo-500 dark:bg-indigo-900 inline-flex rounded-full text-center text-white justify-center items-center">
+      1</span
+    > of 6 <span class="ml-2 text-xl sm:text-2xl font-semibold"
+      >Enter Payment Details</span
+    >
+  </h3>
+
+  <ol
+    class="flex w-full flex-row items-start justify-center space-x-1 text-black dark:text-white mt-16 mb-4">
+    <li class="h-2 bg-green-500 dark:bg-green-800 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-green-500 dark:bg-green-800 w-[calc(1/4*100%)]"></li>
+    <li
+      aria-current="step"
+      class="flex-0 flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
+      <span class="h-2 bg-indigo-500 dark:bg-indigo-900 w-full"> </span>
+      <span class="text-lg font-semibold">Address Details</span>
+    </li>
+
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+    <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+  </ol>
+  <h3 class="text-xl">
+    <span class="sr-only">Step</span>
+    <span
+      class="size-10 bg-indigo-500 dark:bg-indigo-900 inline-flex rounded-full text-center text-white justify-center items-center">
+      3</span
+    > of 6 <span class="ml-2 text-xl sm:text-2xl font-semibold"
+      >Enter Address Details</span
+    >
+  </h3>
 </div>
-<script is:inline>
-  const stepContainer = document.getElementById("step-container");
-  const steps = stepContainer.querySelectorAll('[role="tab"]');
-  const panels = stepContainer.querySelectorAll('[role="tabpanel"]');
-  const stepList = stepContainer.querySelector('[role="tablist"]');
-  let tabFocus = 0;
-  stepList.addEventListener("keydown", (e) => {
-    if (e.key) {
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        steps[tabFocus].setAttribute("tabindex", "-1");
-        if (e.key === "ArrowRight") {
-          tabFocus++;
-          // If we're at the end, go to the start
-          if (tabFocus >= steps.length) {
-            tabFocus = 0;
-          }
-          // Move left
-        } else if (e.key === "ArrowLeft") {
-          tabFocus--;
-          // If we're at the start, move to the end
-          if (tabFocus < 0) {
-            tabFocus = steps.length - 1;
-          }
-        }
-        steps[tabFocus].setAttribute("tabindex", "0");
-        steps[tabFocus].focus();
-      }
-    }
-  });
-  steps.forEach((step) => {
-    step.addEventListener("click", () => {
-      steps.forEach((step) => step.setAttribute("aria-selected", "false"));
-      step.setAttribute("aria-selected", "true");
-      const selectedPanel = step.getAttribute("aria-controls");
-      panels.forEach((panel) => {
-        if (panel.id === selectedPanel) {
-          panel.setAttribute("tabindex", "0");
-          panel.classList.remove("hidden");
-        } else {
-          panel.classList.add("hidden");
-          panel.setAttribute("tabindex", "-1");
-        }
-      });
-    });
-  });
-</script>

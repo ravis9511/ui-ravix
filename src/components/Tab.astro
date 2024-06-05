@@ -43,6 +43,7 @@ const { tabs,name } = Astro.props
                     </div>
                     <span class="sr-only">{name}</span>
                     <span>{tab.name}</span>
+                    {tab.name==="Preview" ? "" : <span class="sr-only">code</span>}
                 </button>
             ))
         }
@@ -88,10 +89,24 @@ const { tabs,name } = Astro.props
                 tabFocus = buttons.length - 1;
             }
             }
-            buttons[tabFocus].setAttribute("tabindex", "0");
+            
             (buttons[tabFocus] as HTMLButtonElement).focus();
             }}
-            }); 
+            if(e.key === "Tab"  ){
+                buttons.forEach((button,index) => {
+                    if(button.getAttribute("aria-selected") === "true"){    
+                        button.setAttribute("tabindex", "0");
+                        tabFocus = index;
+                    }
+                    else{
+                        button.setAttribute("tabindex", "-1");
+                    }
+                })
+                
+
+
+            }}
+            ); 
             buttons.forEach((button) => {
                 button.addEventListener("click", () => {
                     buttons.forEach((btn) =>
@@ -107,7 +122,7 @@ const { tabs,name } = Astro.props
                     const selectedPanel = button.getAttribute("aria-controls");
                     panels.forEach((panel) => {
                         if(panel.id === selectedPanel){
-                            panel.setAttribute("tabindex", "0");
+                           
                             panel.classList.remove(
                                 "hidden"
                             );
@@ -122,6 +137,7 @@ const { tabs,name } = Astro.props
                     
                    
                 })
+                button.setAttribute("tabindex", "-1");
             })
 
             panels.forEach((panel, index) => {
@@ -131,7 +147,8 @@ const { tabs,name } = Astro.props
                 )
                 panel.setAttribute("tabindex", "-1");
             })
-            panels[0].setAttribute("tabindex", "0");    
+              
+            buttons[0].setAttribute("tabindex", "0");
         }
     }
 

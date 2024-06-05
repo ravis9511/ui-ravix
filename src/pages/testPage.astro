@@ -1,26 +1,108 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ViewTransitions from "astro/components/ViewTransitions.astro";
 import "../styles/global.css";
-import Navbar from "../components/dropdowns/Dropdown.html";
-import Accordion from "../components/accordions/AccComponent.astro";
-const data=[
-    {title:"Test Page",
-    content:"This is a test page",
-    name:"test"},
-    {title:"Test Page 2",
-    content:"This is a test page",
-    name:"test"},
-]
+import Navbar from "../components/lists/UlistAstro.astro";
+import InfoModal from "../components/modals/SimpleModal.html";
+import WCModal from "../components/modals/WCModal.astro";
+import DStepsAstro from "../components/steps/DStepsAstro.astro";
+import Tabs from "../components/tabs/WCTabs.astro";
+
+const list = ["Item 1", "Item 2", "Item 3"];
+const description = "Your description here";
 ---
 
-
+<head>
+  <ViewTransitions />
+</head>
+<Layout title="Test Page">
   <body class="min-h-[92dvh] bg-gray-100 dark:bg-zinc-950">
-    <div class="  self-center sm:mx-20">
-      <div
-        class=" items-center self-center  mt-24 mb-20 ">
-        <Navbar />
-        
+    <div class="self-center sm:mx-20">
+      <div class="items-center self-center mt-24 mb-20">
+        <Tabs
+          defaultActive="tr"
+          orientation="horizontal">
+          <div data-tab="Overview">
+            <h2>Product Overview</h2>
+            <p>This is a fantastic product that solves all your problems.</p>
+          </div>
+          <table data-tab="Details" class=" w-full text-base text-left text-gray-800 dark:text-gray-300  shadow-md rounded-lg dark:bg-black">
+            <thead class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800 ">
+              <tr >
+                <th
+                  scope="col"
+                  class="px-6 py-3">
+                  Product
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3">
+                  Color
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3">
+                  Type
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3">
+                  Stock
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 dark:divide-zinc-800">
+              <tr class="bg-white dark:bg-zinc-950">
+                <th
+                  scope="row"
+                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  T-Shirt
+                </th>
+                <td class="px-6 py-3"> Blue </td>
+                <td class="px-6 py-3"> Tops </td>
+                <td class="px-6 py-3"> 15 </td>
+              </tr>
+              <tr class=" bg-gray-100 dark:bg-zinc-900">
+                <th
+                  scope="row"
+                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  Jeans
+                </th>
+                <td class="px-6 py-3"> Black </td>
+                <td class="px-6 py-3"> Bottoms </td>
+                <td class="px-6 py-3"> 32 </td>
+              </tr>
+              <tr class="bg-white dark:bg-zinc-950">
+                <th
+                  scope="row"
+                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  Sneakers
+                </th>
+                <td class="px-6 py-3"> White </td>
+                <td class="px-6 py-3"> Shoes </td>
+                <td class="px-6 py-3"> 23 </td>
+              </tr>
+              <tr class="bg-gray-100 dark:bg-zinc-900">
+                  <th
+                    scope="row"
+                    class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                    Dress
+                  </th>
+                  <td class="px-6 py-3"> Red </td>
+                  <td class="px-6 py-3"> Dresses </td>
+                  <td class="px-6 py-3"> 11 </td>
+                </tr>
+            </tbody>
+          </table>
+          
+
+          <ul data-tab="Comments">
+            <li>Alice: Great product, would buy again!</li>
+            <li>Bob: Fast shipping, good quality.</li>
+            <li>Carol: Exactly what I needed.</li>
+          </ul>
+        </Tabs>
       </div>
     </div>
   </body>
-
+</Layout>

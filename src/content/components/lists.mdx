@@ -9,40 +9,40 @@ import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
 import UList from "../../components/lists/UList.astro";
 import UListCode from "../../components/lists/UList.astro?raw";
-import UListCodeAstro from "../../components/lists/UList.astro?raw";
+import UListCodeAstro from "../../components/lists/UlistAstro.astro?raw";
 import OList from "../../components/lists/OList.astro";
 import OListCode from "../../components/lists/OList.astro?raw";
-import OListCodeAstro from "../../components/lists/OList.astro?raw";
+import OListCodeAstro from "../../components/lists/OlistAstro.astro?raw";
 import CustomList from "../../components/lists/CustomList.astro";
 import CustomListCode from "../../components/lists/CustomList.astro?raw";
-import CustomListCodeAstro from "../../components/lists/CustomList.astro?raw";
+import CustomListCodeAstro from "../../components/lists/ClistAstro.astro?raw";
 
 # Lists
 
-Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options. Lists can be ordered or unordered, and they can be displayed horizontally or vertically. Lists can be used inside content blocks like cards, paragraphs, or even inside other lists.
+Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options.  Lists can be used inside content blocks like cards, paragraphs, or even inside other lists. They can also be nested lists inside each list item.
 
 ## Unordered Lists
 
 Unordered lists are used to present a list of items in no particular order. They can be used to display a list of items, a list of tasks, or a list of options.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Unordered Lists" tabs={[{ "name" : "Preview", "id" : "UL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "UL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "UL-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="UL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab1">
 <div class="flex items-center justify-center p-6">
 <UList />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="UL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab2" class="hidden">
 
-<Code code={UListCode} lang="html" title="UListVariants.html" wrap="true" data-pagefind-ignore/>
+<Code code={UListCode} lang="html"  wrap="true" data-pagefind-ignore/>
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="UL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab3" class="hidden">
 
-<Code code={UListCodeAstro} lang="astro" title="UListVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code code={UListCodeAstro} lang="astro" title="UList.astro" wrap="true" data-pagefind-ignore/>
 
 </section>
 
@@ -53,24 +53,24 @@ Unordered lists are used to present a list of items in no particular order. They
 
 Ordered lists are great for presenting a series of items in a particular order. It's a great way to organize information which needs to be presented in a step-by-step manner.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Ordered Lists" tabs={[{ "name" : "Preview", "id" : "OL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "OL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "OL-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="OL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab1">
 <div class="flex items-center justify-center p-6">
 <OList />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="OL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab2" class="hidden">
 
-<Code code={OListCode} lang="html" title="OListVariants.html" wrap="true" data-pagefind-ignore/>
+<Code code={OListCode} lang="html"  wrap="true" data-pagefind-ignore/>
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="OL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab3" class="hidden">
 
-<Code code={OListCodeAstro} lang="astro" title="OListVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code code={OListCodeAstro} lang="astro" title="OList.astro" wrap="true" data-pagefind-ignore/>
 
 </section>
 
@@ -78,27 +78,38 @@ Ordered lists are great for presenting a series of items in a particular order. 
 
 ## Custom Marked Lists
 
-A custom list marker can be added to `list-image-*` property using an SVG icon from a different file. The second list adds an svg inline in the list for more fine control.
+A custom list marker adds an svg inline in the list. Useful for adding a custom icon to the list.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Custom Marked Lists" tabs={[{ "name" : "Preview", "id" : "CL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "CL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "CL-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex items-center justify-center p-6">
+<section id ="CL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab1" >
+<div class="flex w-full items-center justify-center p-6">
 <CustomList />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab2" class="hidden">
 
-<Code code={CustomListCode} lang="html" title="CustomListVariants.html" wrap="true" data-pagefind-ignore/>
+<Code code={CustomListCode} lang="html"  wrap="true" data-pagefind-ignore/>
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="CL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab3" class="hidden">
 
-<Code code={CustomListCodeAstro} lang="astro" title="CustomListVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code code={CustomListCodeAstro} lang="astro" title="CustomList.astro" wrap="true" data-pagefind-ignore/>
 
 </section>
 
 </Tab>
+
+## Accessibility Testing Status
+
+| Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Unordered List              | Yes  | Yes              | Yes  | Yes | Yes              |
+| Ordered List                | Yes  | Yes              | Yes  | Yes | Yes              |
+| Custom Marked List          | Yes  | Yes              | Yes  | Yes | Yes              |
+
+Since we use the `<ul>` element for the unordered list and `<ol>` element for the ordered list, the component is accessible out of the box. However, the custom list marker uses an accessible `<svg>` element by giving it the role of `img` and aria-labelled by `title`.
+

@@ -19,7 +19,7 @@ import InfoModalCodeAstro from "../../components/modals/InfoModal.astro?raw";
 
 <Alert type="info">Requires JavaScript to work</Alert>
 
-Modals are used to display important information and can be used to ask users for confirmation on important actions.
+Modals are used to display important information and can be used to ask users for confirmation on important actions. The modals below don't use form tags, but they can be used with them.
 
 ## Modal Specifications
 
@@ -28,39 +28,38 @@ A modal contains the following important parts :
 - **Modal Activator** : The button that opens the modal
 - **Modal Dialog** : The alert window that contains a heading, a clearly defined message and action buttons. Cancel and Confirm buttons are the most common actions.
 
-**Note:** ravixUI used the `<dialog>` element with a `showModal()` which is the best practice for accessibility since it makes the rest of the page inaccessible until the modal is closed. To see the support for browsers you can [check this website](https://caniuse.com/?search=dialog).
+**Note:** ravixUI used the `<dialog>` element with a `showModal()` which is makes the rest of the page inaccessible until the modal dialog is closed. To see the support for browsers you can [check this website](https://caniuse.com/?search=dialog).
 
 ## Simple Modal
 
 This is a simple modal that displays a message on screen, with two action buttons and a close button. Click the button below to open the modal.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Modal" tabs={[{ "name" : "Preview", "id" : "SM-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SM-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SM-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SM-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab1">
 <div class="flex p-6 justify-center w-full">
 <Modal />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SM-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab2" class="hidden">
 
 <Code
   code={ModalCode}
   lang="html"
-  title="ModalVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SM-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab3" class="hidden">
 
 <Code
   code={ModalCodeAstro}
   lang="astro"
-  title="ModalVariants.astro"
+  title="SimpleModal.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -71,35 +70,34 @@ This is a simple modal that displays a message on screen, with two action button
 
 ## Information Modal
 
-This modal type serves as a means to convey crucial information to the user. While it can accommodate actions within its confines, it is also capable of functioning without them. The modal dismisses itself when the user interacts with the area outside its boundaries or activates the designated close button.
+This modal type serves as a means to convey critical information to the user. While it can accommodate actions within its confines, it is also capable of functioning without them but requires a close button to dismiss it. The modal dismisses itself when the user interacts with the area outside its boundaries or activates the designated close button.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Information Modal" tabs={[{ "name" : "Preview", "id" : "IM-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "IM-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "IM-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="IM-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab1">
 <div class="flex p-6 justify-center w-full">
 <InfoModal />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="IM-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab2" class="hidden">
 
 <Code
   code={InfoModalCode}
   lang="html"
-  title="InfoModalVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="IM-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab3" class="hidden">
 
 <Code
   code={InfoModalCodeAstro}
   lang="astro"
-  title="InfoModalVariants.astro"
+  title="InfoModal.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -109,3 +107,13 @@ This modal type serves as a means to convey crucial information to the user. Whi
 </Tab>
 
 **Note:** To ensure accessibility for keyboard navigation, incorporating a close button into the modal design is an indispensable requirement; otherwise, it would be impossible to dismiss the modal through keyboard input alone.
+
+## Accessibility Testing Status
+
+| Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Modal      | Yes  | Yes              | Yes  | Yes | Yes              |
+| Information Modal | Yes  | Yes              | Yes  | Yes | Yes              |
+
+The modals above make the content behind them inaccessible until the modal is closed and is very disruptive to the user experience, so ensure that the modal is only used when the content is critical and requires user interaction or critical information needs to be conveyed.
+

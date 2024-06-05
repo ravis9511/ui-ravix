@@ -1,0 +1,30 @@
+---
+interface Props {
+  description: string;
+  listItems: string[];
+}
+
+const { description, listItems } = Astro.props as Props;
+
+/**  Usage in an Astro component:
+ * 
+    ---
+    import Ulist from './Ulist.astro';
+    const list = ['Item 1', 'Item 2', 'Item 3'];
+    const description = 'Your description here';
+    ---
+
+     <Ulist description={description} listItems={list} />
+
+**/
+---
+
+<div class="text-zinc-900 dark:text-gray-100 text-base md:text-lg">
+  <p class="mx-4 mb-6 max-w-2xl text-md leading-normal text-start w-full">
+    {description}
+  </p>
+  <ul
+    class="mx-10 list-disc list-outside marker:text-zinc-500 max-w-2xl space-y-2 mb-6">
+    {listItems.map((item) => <li>{item}</li>)}
+  </ul>
+</div>

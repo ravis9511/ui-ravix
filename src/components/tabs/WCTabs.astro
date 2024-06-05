@@ -1,0 +1,281 @@
+---
+interface Props {
+  defaultActive?: string;
+  orientation?: "horizontal" | "vertical";
+}
+
+const { defaultActive = "0", orientation = "horizontal" } =
+  Astro.props as Props;
+---
+
+<x-tabs
+  data-default-active={defaultActive}
+  class="flex flex-col text-zinc-900 dark:text-zinc-50 gap-y-4">
+  <div
+    class="flex flex-row w-full p-1 bg-gray-50 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+    role="tablist"
+    aria-orientation={orientation}>
+  </div>
+  <slot />
+</x-tabs>
+
+<script>
+  class WCTabs extends HTMLElement {
+    static readonly ARIA = {
+      SELECTED: "aria-selected",
+      CONTROLS: "aria-controls",
+      ORIENTATION: "aria-orientation",
+    } as const;
+    static readonly ATTRIBUTES = {
+      DEFAULT_ACTIVE: "data-default-active",
+      DATA_TAB: "data-tab",
+      DATA_ICON: "data-icon",
+      DATA_BUTTON_CLASS: "data-button-class",
+      DATA_PANEL_CLASS: "data-panel-class",
+    };
+    static readonly ROLES = {
+      TAB: "tab",
+      TABLIST: "tablist",
+      TABPANEL: "tabpanel",
+      ROLE_TAB: "[role='tab']",
+      ROLE_TABLIST: "[role='tablist']",
+      ROLE_TABPANEL: "[role='tabpanel']",
+    } as const;
+    static readonly DEFAULT_STYLES = {
+      tabButton:
+        "cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white",
+      tabPanel:
+        "p-3 bg-gray-50 w-full rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto",
+    };
+    private tabList: HTMLElement;
+    private panels: HTMLElement[] = [];
+    private tabFocus = 0;
+    private uniqueId: string;
+    private defaultActiveTab = "0";
+
+    constructor() {
+      super();
+      this.uniqueId = this.generateUniqueId();
+      this.tabList =
+        this.querySelector(WCTabs.ROLES.ROLE_TABLIST) ||
+        this.appendChild(document.createElement("div"));
+      if (!this.tabList) {
+        console.error("No tablist found");
+        return;
+      }
+      this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) === "vertical"
+        ? this.tabList.setAttribute(WCTabs.ARIA.ORIENTATION, "vertical")
+        : this.tabList.setAttribute(WCTabs.ARIA.ORIENTATION, "horizontal"); // Making sure that the aria-orientation is always set to either horizontal or vertical
+    }
+
+    connectedCallback() {
+      try {
+        this.initializeTabs();
+      } catch (error) {
+        console.error("Failed to initialize tabs:", error);
+      }
+      try {
+        this.tabList.addEventListener("keydown", (e: KeyboardEvent) =>
+          this.handleKeyDown(e)
+        );
+      } catch (error) {
+        console.error("Failed to attach keydown event:", error);
+      }
+    }
+    contentStyler() {
+      const tabOrientation =
+        (this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) as
+          | "horizontal"
+          | "vertical") ?? "horizontal";
+
+      if (tabOrientation === "vertical") {
+        this.classList.add("flex-col", "md:flex-row", "gap-x-4", "md:gap-y-0");
+        this.tabList.classList.remove("w-full");
+        this.tabList.classList.add(
+          "md:flex-col",
+          "gap-y-4",
+          "h-full",
+          "md:gap-x-0"
+        );
+      }
+    }
+    generateUniqueId = () => {
+      const timestamp = Date.now().toString().slice(-6);
+      const randomNum = Math.floor(Math.random() * 10000)
+        .toString()
+        .padStart(4, "0");
+
+      return timestamp + randomNum;
+    };
+    initializeTabs() {
+      const children = Array.from(this.children).filter(
+        (child): child is HTMLElement =>
+          child instanceof HTMLElement &&
+          child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB)
+      );
+      // Next two lines are to ensure that even if random values are passed as props to the component, it will still function with default behaviour
+
+      const defaultActiveTabValue =
+        this.getAttribute(WCTabs.ATTRIBUTES.DEFAULT_ACTIVE) ?? "0";
+      if (
+        isNaN(parseInt(defaultActiveTabValue, 10)) ||
+        parseInt(defaultActiveTabValue, 10) > children.length
+      ) {
+        this.setAttribute(WCTabs.ATTRIBUTES.DEFAULT_ACTIVE, "0");
+      }
+      this.defaultActiveTab = this.getAttribute(
+        WCTabs.ATTRIBUTES.DEFAULT_ACTIVE
+      ) as string;
+      this.contentStyler();
+      children.forEach((child, index) => {
+        this.createChildTabs(child, index);
+      });
+    }
+    createChildTabs(child: Element, index: number) {
+      const tabName = child.getAttribute(WCTabs.ATTRIBUTES.DATA_TAB);
+      const tabIcon = child.getAttribute(WCTabs.ATTRIBUTES.DATA_ICON);
+      const buttonClass =
+        child.getAttribute(WCTabs.ATTRIBUTES.DATA_BUTTON_CLASS) ||
+        WCTabs.DEFAULT_STYLES.tabButton;
+      const panelClass =
+        child.getAttribute(WCTabs.ATTRIBUTES.DATA_PANEL_CLASS) ||
+        WCTabs.DEFAULT_STYLES.tabPanel;
+
+      const uniqueId = this.uniqueId + "-" + index;
+
+      const tabButton = document.createElement("button");
+      tabButton.setAttribute("role", WCTabs.ROLES.TAB);
+      tabButton.setAttribute(
+        WCTabs.ARIA.CONTROLS,
+        `${uniqueId}-${index + 1}-panel`
+      );
+      tabButton.id = `${uniqueId}-${index + 1}-tab`;
+      tabButton.classList.add(...buttonClass.split(" "));
+      tabButton.innerHTML = tabIcon
+        ? `<img src="${tabIcon}" alt="${tabName} icon" /> <span>${tabName}</span>`
+        : `<span>${tabName}</span>`;
+      tabButton.setAttribute(
+        WCTabs.ARIA.SELECTED,
+        index.toString() === this.defaultActiveTab ? "true" : "false"
+      );
+      if (index.toString() === this.defaultActiveTab) {
+        this.tabFocus = index;
+      }
+      tabButton.setAttribute(
+        "tabindex",
+        index.toString() === this.defaultActiveTab ? "0" : "-1"
+      );
+
+      this.tabList.appendChild(tabButton);
+
+      const panel = document.createElement("section");
+      panel.setAttribute("role", WCTabs.ROLES.TABPANEL);
+      panel.id = `${uniqueId}-${index + 1}-panel`;
+
+      panel.classList.add(...panelClass.split(" "));
+
+      panel.classList.toggle(
+        "hidden",
+        index.toString() !== this.defaultActiveTab
+      );
+      panel.appendChild(child.cloneNode(true)); // Remove the original content to avoid duplication
+
+      child.remove();
+
+      this.appendChild(panel);
+      this.panels.push(panel);
+
+      tabButton.addEventListener("click", this.handleTabClick(index));
+    }
+    handleTabClick(index: number) {
+      return (e: Event) => {
+        e.preventDefault();
+        this.setActiveTab(index);
+      };
+    }
+    setActiveTab(index: number) {
+      this.tabList
+        .querySelectorAll(WCTabs.ROLES.ROLE_TAB)
+        .forEach((tab, tabIndex) => {
+          tab.setAttribute(
+            WCTabs.ARIA.SELECTED,
+            tabIndex === index ? "true" : "false"
+          );
+          tab.setAttribute("tabindex", tabIndex === index ? "0" : "-1");
+        });
+
+      this.panels.forEach((panel, panelIndex) => {
+        panel.classList.toggle("hidden", panelIndex !== index);
+      });
+    }
+    handleKeyDown(e: KeyboardEvent): void {
+      const tabs = this.tabList.querySelectorAll(
+        WCTabs.ROLES.ROLE_TAB
+      ) as NodeListOf<HTMLElement>;
+
+      if (e.key && tabs.length) {
+        if (
+          this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) === "horizontal"
+        ) {
+          if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+            tabs[this.tabFocus]?.setAttribute("tabindex", "-1");
+            if (e.key === "ArrowRight") {
+              this.tabFocus++;
+              if (this.tabFocus >= tabs.length) {
+                this.tabFocus = 0;
+              }
+            } else if (e.key === "ArrowLeft") {
+              this.tabFocus--;
+              if (this.tabFocus < 0) {
+                this.tabFocus = tabs.length - 1;
+              }
+            }
+            tabs[this.tabFocus].setAttribute("tabindex", "0");
+            tabs[this.tabFocus].focus();
+          }
+        }
+        if (this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) === "vertical") {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            tabs[this.tabFocus]?.setAttribute("tabindex", "-1");
+            if (e.key === "ArrowDown") {
+              this.tabFocus++;
+              if (this.tabFocus >= tabs.length) {
+                this.tabFocus = 0;
+              }
+            } else if (e.key === "ArrowUp") {
+              this.tabFocus--;
+              if (this.tabFocus < 0) {
+                this.tabFocus = tabs.length - 1;
+              }
+            }
+            tabs[this.tabFocus].setAttribute("tabindex", "0");
+            tabs[this.tabFocus].focus();
+          }
+        }
+        if (e.key === "Tab") {
+          tabs.forEach((tab, index) => {
+            tab.blur();
+            if (tab.getAttribute(WCTabs.ARIA.SELECTED) === "true") {
+              tab.setAttribute("tabindex", "0");
+              this.tabFocus = index;
+            } else {
+              tab.setAttribute("tabindex", "-1");
+            }
+          });
+        }
+      }
+    }
+    disconnectedCallback() {
+      this.tabList.removeEventListener("keydown", this.handleKeyDown);
+      const tabs = this.tabList.querySelectorAll(
+        WCTabs.ROLES.ROLE_TAB
+      ) as NodeListOf<HTMLElement>;
+
+      tabs.forEach((tab) => {
+        tab.removeEventListener("click", this.handleTabClick(this.tabFocus));
+      });
+    }
+  }
+
+  customElements.define("x-tabs", WCTabs);
+</script>

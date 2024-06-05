@@ -18,7 +18,7 @@ import VerticalStepsCode from "../../components/steps/VerticalSteps.astro?raw";
 import VerticalStepsCodeAstro from "../../components/steps/VerticalSteps.astro?raw";
 import DynamicSteps from "../../components/steps/DynamicSteps.astro";
 import DynamicStepsCode from "../../components/steps/DynamicSteps.astro?raw";
-import DynamicStepsCodeAstro from "../../components/steps/DynamicSteps.astro?raw";
+import DynamicStepsCodeAstro from "../../components/steps/DStepsAstro.astro?raw";
 
 # Steps
 
@@ -30,48 +30,47 @@ Steps can be used in multiple ways, but they are most commonly used to present a
       name: "steps1",
       title: "Design Hints",
       content:
-        "Steps are a powerful tool for enhancing the user experience. It gives the user a clear indication of the user's progress, an approximate length of the process and a quick way to navigate back to previous steps in case they need to make changes.",
+        "Steps are a powerful tool for enhancing the user experience. It gives the user a clear indication of the user's progress, an approximate idea about the length of the process and give the user an idea of what data they will need to enter in future steps.",
     },
     {
       name: "steps1",
       title: "Accessiblity Hints",
       content:
-        "For accessibility, it is important to ensure that the steps are keyboard accessible. This can be achieved by using the `tabindex` attribute to make the steps focusable and using the `aria-current` attribute to indicate the current step. Additionally, it is important to ensure that the steps are not used as a button element and that they are not used as an input element.",
+        "For accessibility, it's important to ensure that there are proper visible labels for each step. The current step should be indicated by using aria-current=step for those who may not be able to see the visual differences between the currently active and inactive steps.",
     },
   ]}
 />
 
-## Simple Static Steps
+## Simple Steps
 
 A simple horizontal stepper that can be used to present a series of steps and current step.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Steps" tabs={[{ "name" : "Preview", "id" : "SS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SS-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
-<div class="flex items-center justify-center p-6">
+<section id ="SS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab1">
+<div class="flex flex-col items-center justify-center p-4 sm:p-12 gap-y-6">
 <Steps />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab2" class="hidden">
 
 <Code
   code={StepsCode}
   lang="html"
-  title="StepsVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="SS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab3" class="hidden">
 
 <Code
   code={StepsCodeAstro}
   lang="astro"
-  title="StepsVariants.astro"
+  title="SimpleSteps.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -80,37 +79,39 @@ A simple horizontal stepper that can be used to present a series of steps and cu
 
 </Tab>
 
-## Alternate Static Steps
+**Note:** You can enhance the stepper by adding navigation buttons to the stepper to allow the user to move between steps.
+
+## Alternate Steps
 
 An alternate style of static stepper with a bit more details.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Alternate Steps" tabs={[{ "name" : "Preview", "id" : "AS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AS-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab1">
 <div class="flex items-center justify-center p-6">
 <AltSteps />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab2" class="hidden">
 
 <Code
   code={AltStepsCode}
   lang="html"
-  title="AltStepsVariants.html"
+  
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab3" class="hidden">
 
 <Code
   code={AltStepsCodeAstro}
   lang="astro"
-  title="AltStepsVariants.astro"
+  title="AltSteps.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -119,37 +120,37 @@ An alternate style of static stepper with a bit more details.
 
 </Tab>
 
-## Vertical Static Steps
 
-Static stepper with vertical orientation.
+## Dynamic Steps
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+When there are a lot of steps or when the available space is limited, the non-active steps are represented with placeholder bars while the active step is expanded with additional information.
 
-<section id ="Tab1-panel" role="tabpanel" data-role="tabpanel">
+<Tab name="Dynamic Steps" tabs={[{ "name" : "Preview", "id" : "DS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "DS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "DS-Tab3", "icon" : "astro"}]}>
+
+<section id ="DS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab1">
 <div class="flex items-center justify-center p-6">
-<VerticalSteps />
+<DynamicSteps />
 </div>
 
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="DS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab2" class="hidden">
 
 <Code
-  code={VerticalStepsCode}
+  code={DynamicStepsCode}
   lang="html"
-  title="VerticalStepsVariants.html"
   wrap="true"
   data-pagefind-ignore
 />
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="DS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab3" class="hidden">
 
 <Code
-  code={VerticalStepsCodeAstro}
+  code={DynamicStepsCodeAstro}
   lang="astro"
-  title="VerticalStepsVariants.astro"
+  title="DynamicSteps.astro"
   wrap="true"
   data-pagefind-ignore
 />
@@ -157,3 +158,15 @@ Static stepper with vertical orientation.
 </section>
 
 </Tab>
+
+**Note:** The astrojs component dynamically generated based on the props passed to it.
+
+## Accessibility Testing Status
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Steps            | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Steps         | Yes  | Yes              | Yes  | Yes | Yes              |
+| Dynamic Steps           | Yes  | Yes              | Yes  | Yes | Yes              |
+
+Steps are effective when the order of the steps is clear and the user can easily understand the purpose of each step. 

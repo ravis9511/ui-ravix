@@ -1,5 +1,5 @@
 <nav
-  class="flex flex-col  top-0 z-50 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
+  class="flex flex-col max-h-max top-0 z-50 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
   <div
     class="container mx-auto flex p-2 flex-row items-center justify-between border-b md:border-0 border-gray-300 dark:border-zinc-800">
     <div
@@ -19,8 +19,7 @@
       <!-- Your logo -->
       <span class="ml-3 text-xl">ravixUI</span>
     </div>
-    <div
-      class="hidden md:flex items-center flex-row md:space-x-6">
+    <div class="hidden md:flex items-center flex-row md:space-x-6">
       <a
         href="#"
         class="hover:text-indigo-700"
@@ -35,11 +34,6 @@
         href="#"
         class="hover:text-indigo-700"
         >Services</a
-      >
-      <a
-        href="#"
-        class="hover:text-indigo-700"
-        >Support</a
       >
 
       <button
@@ -49,92 +43,183 @@
       </button>
     </div>
 
-    <button
-      aria-label="Menu Toggle"
-      id="menu-toggle"
-      type="button"
-      class="block md:hidden rounded-lg font-semibold text-xl text-indigo-700 dark:text-zinc-50 mr-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
-        ></path>
-      </svg>
-    </button>
-    <div
-      id="menu" aria-label="Menu" aria-expanded="false"
-      class="hidden aria-expanded:flex text-center flex-col w-1/2 absolute top-14 right-0 z-50 rounded-lg shadow-lg my-1 bg-gray-100 dark:bg-zinc-900 gap-y-2 p-3">
-      <a
-        href="#"
-        class="border-b border-gray-300 dark:border-zinc-700 py-3"
-        >About</a
-      >
-      <a
-        href="#"
-        class="border-b border-gray-300 dark:border-zinc-700 py-3"
-        >Products</a
-      >
-      <a
-        href="#"
-        class="border-b border-gray-300 dark:border-zinc-700 py-3"
-        >Services</a
-      >
-      <a
-        href="#"
-        class="border-b border-gray-300 dark:border-zinc-700 py-3"
-        >Support</a
-      >
-
+    <div class="group relative inline md:hidden text-start">
       <button
         type="button"
-        class="px-4 py-2 rounded-lg font-semibold justify-center inline-flex gap-x-1 disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
-        <span>Contact</span>
+        class="group/button peer inline-flex w-full justify-center aria-expanded:ring ring-gray-400 dark:ring-zinc-700 rounded-md p-3 font-semibold text-sm lg:text-base text-gray-900 dark:text-gray-100 hover:bg-gray-300 aria-expanded:bg-gray-200 dark:aria-expanded:bg-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+        id="navastro-menu-button-an"
+        aria-expanded="false"
+        aria-haspopup="true">
+        <span class="sr-only">Menu Toggle</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+          ></path>
+        </svg>
       </button>
+
+      <ul
+        aria-orientation="vertical"
+        aria-labelledby="navastro-menu-button-an"
+        role="menu"
+        class="absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-300 right-0 max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 peer-aria-expanded:opacity-100 top-14 p-2 z-10 mt-2 origin-top-right rounded-md bg-gray-50 text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        id="navastro-dropdown-menu-an"
+        aria-hidden="true"
+        tabindex="-1">
+        <li
+          tabindex="-1"
+          role="menuitem"
+          id="an-navmenuastro-item-0">
+          <a
+            href="#"
+            tabindex="-1"
+            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            >About</a
+          >
+        </li>
+        <li
+          tabindex="-1"
+          role="menuitem"
+          id="an-navmenuastro-item-1">
+          <a
+            href="#"
+            tabindex="-1"
+            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            >Products</a
+          >
+        </li>
+        <li
+          tabindex="-1"
+          role="menuitem"
+          id="an-navmenuastro-item-2">
+          <a
+            href="#"
+            tabindex="-1"
+            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            >Services</a
+          >
+        </li>
+        <li
+          tabindex="-1"
+          role="menuitem"
+          id="an-navmenuastro-item-3">
+          <form
+            method="POST"
+            id="an-navmenuastro-item-form-3"
+            action="#">
+            <button
+              type="submit"
+              tabindex="-1"
+              class="block w-full px-5 py-3 text-start text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+              >Contact</button
+            >
+          </form>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
-<script is:inline>
-  
-  function menuAction() {
-    const menuToggle = document.querySelector(
-      "[aria-label='Menu Toggle']"
-    );
-    const menu = document.querySelector(
-      "[aria-label='Menu']"
-    );
-    menuToggle?.addEventListener("click", function () {
-      if (menu) {
-       
-        menu.getAttribute("aria-expanded") === "true"
-          ? menu.setAttribute("aria-expanded", "false")
-          : menu.setAttribute("aria-expanded", "true");
-        document.addEventListener("click", closeMenu);
+<script>
+  function navMenuInitilizationAstro() {
+    const button = document.getElementById(
+      "navastro-menu-button-an"
+    ) as HTMLButtonElement;
+    const dropdown = document.getElementById(
+      "navastro-dropdown-menu-an"
+    ) as HTMLUListElement;
+    const dropdownItems = dropdown?.querySelectorAll(
+      "li"
+    ) as NodeListOf<HTMLLIElement>;
+    console.log(button);
+    button?.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      if (button.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+        return;
+      }
+      button.setAttribute("aria-expanded", "true");
+      if (dropdown) {
+        dropdown.setAttribute("aria-hidden", "false");
+
+        /**
+         * Handles keyboard navigation and interactions for a dropdown menu.
+         *
+         * When the dropdown is focused, the following keyboard interactions are supported:
+         * - Arrow Up/Down: Moves the focus to the previous/next item in the dropdown
+         * - Escape: Closes the dropdown
+         * - Enter: Clicks the currently focused dropdown item
+         * - Tab: Moves focus back to the button
+         */
+        if (dropdownItems) {
+          document.documentElement.addEventListener("click", closeMenu);
+          setTimeout(() => {
+            dropdownItems[0].focus();
+          }, 200); // to prevent the focus setting from causing a stutter in the animation
+          let tabFocus = 0;
+
+          dropdown.addEventListener("keydown", (keyboardEvent) => {
+            const e = keyboardEvent as KeyboardEvent;
+
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+              e.preventDefault();
+              dropdownItems[tabFocus].setAttribute("tabindex", "-1");
+              if (e.key === "ArrowDown") {
+                tabFocus++;
+                // If we're at the end, go to the start
+                if (tabFocus >= dropdownItems.length) {
+                  tabFocus = 0;
+                }
+                // Move left
+              } else if (e.key === "ArrowUp") {
+                tabFocus--;
+                // If we're at the start, move to the end
+                if (tabFocus < 0) {
+                  tabFocus = dropdownItems.length - 1;
+                }
+              }
+              tabFocus = tabFocus % dropdownItems.length;
+              dropdownItems[tabFocus].focus();
+            } else if (e.key === "Escape") {
+              closeMenu();
+              return;
+            } else if (e.key === "Enter") {
+              (dropdownItems[tabFocus].children[0] as HTMLElement)?.click();
+              closeMenu();
+              return;
+            } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+              e.preventDefault();
+
+              if (e.key === "ArrowRight") {
+                tabFocus = dropdownItems.length - 1;
+              } else if (e.key === "ArrowLeft") {
+                tabFocus = 0;
+              }
+              tabFocus = tabFocus % dropdownItems.length;
+              dropdownItems[tabFocus].focus();
+            } else if (e.key === "Tab" || e.key === "Shift+Tab") {
+              e.preventDefault();
+              button.focus();
+            }
+          });
+        }
       }
     });
   }
-  
-  function closeMenu(e) {
-    const menuToggle = document.querySelector(
-      "[aria-label='Menu Toggle']"
-    );
-    const menu = document.querySelector(
-      "[aria-label='Menu']"
-    );
-    if (!menuToggle?.contains(e.target)) {
-      if (menu?.getAttribute("aria-expanded") === "true") {
-       
-        menu.setAttribute("aria-expanded", "false");
-        document.removeEventListener("click", closeMenu);
-      }
-    }
-  }
-  document.addEventListener("astro:page-load", menuAction);
-  document.addEventListener("astro:before-swap", menuAction);
+  function closeMenu() {
+    const button = document.getElementById("navastro-menu-button-an");
+    const dropdown = document.getElementById("navastro-dropdown-menu-an");
 
-  
+    button?.setAttribute("aria-expanded", "false");
+    dropdown?.setAttribute("aria-hidden", "true");
+    button?.focus();
+    document.documentElement.removeEventListener("click", closeMenu);
+  }
+  document.addEventListener("astro:page-load", navMenuInitilizationAstro);
 </script>
