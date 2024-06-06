@@ -20,6 +20,8 @@ import NormalTabsWithIconsCodeAstro from "../../components/tabs/NormalTabsWithIc
 import GradientTabs from "../../components/tabs/GradientTabs.astro";
 import GradientTabsCode from "../../components/tabs/GradientTabs.html?raw";
 import GradientTabsCodeAstro from "../../components/tabs/GradientTabs.astro?raw";
+import WCTabs from "../../components/tabs/WCTabs.astro";
+import WCTabsCodeAstro from "../../components/tabs/WCTabs.astro?raw";
 
 # Tabs
 
@@ -173,3 +175,173 @@ The selected tab is highlighted with a gradient background. Otherwise the tabs a
 </Tab>
 
 **Note:** The color of the gradient tabs can be changed by changing the `from-purple-500 via-purple-800 to-purple-900` in the `<button>` tag. You can generate different gradients using the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/)
+
+## Astrojs Web Component Tabs
+
+<Alert heading="Info">Requires Astrojs to work.</Alert>
+
+This is an astrojs web component implementation of the tabs. It allows for any sort of content to be displayed in the tabs. It also dynamically generates the tab buttons based on the number of tabs. It has many additional features such as dynamically adding icons, allowing for custom tab buttons, tab panels. It also allows for the tabs to have vertical alignment and act like a sidebar to the panel.
+
+<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+
+<section
+  id="Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel">
+  <div class="p-2 flex flex-col space-y-4">
+     <WCTabs
+          defaultActive="0"
+          orientation="vertical">
+          <div data-tab="Overview" data-button-class="cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 dark:aria-selected:hover:bg-indigo-800 aria-selected:bg-indigo-800 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+          data-icon="/tick.svg" data-alt-text="Pen" data-panel-class="p-3 bg-indigo-100 w-full rounded-xl border-gray-300 dark:bg-indigo-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto">
+            <h2>Product Overview</h2>
+            <p>This is a fantastic product that solves all your problems.</p>
+          </div>
+          <div data-tab="Data" data-button-class="cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 dark:aria-selected:hover:bg-cyan-800 aria-selected:bg-cyan-800 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+           data-panel-class="p-3 bg-cyan-100 w-full rounded-xl border-gray-300 dark:bg-cyan-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto">
+            <h2>Data Overview</h2>
+            <p>Wow</p>
+          </div>
+
+          <ul data-tab="Comments">
+            <li>Alice: Great product, would buy again!</li>
+            <li>Bob: Fast shipping, good quality.</li>
+            <li>Carol: Exactly what I needed.</li>
+          </ul>
+        </WCTabs>
+        <WCTabs
+          defaultActive="0"
+          orientation="horizontal">
+          <div data-tab="Overview">
+            <h2>Product Overview</h2>
+            <p>This is a fantastic product that solves all your problems.</p>
+          </div>
+
+
+          <ul data-tab="Comments">
+            <li>Alice: Great product, would buy again!</li>
+            <li>Bob: Fast shipping, good quality.</li>
+            <li>Carol: Exactly what I needed.</li>
+          </ul>
+
+        </WCTabs>
+
+  </div>
+</section>
+
+<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+
+<Code
+  code={WCTabsCodeAstro}
+  lang="astro"
+  title="Tabs.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+The Tabs above are created using the Web Components API along with Astrojs. It follows the standard patterns for [tabs as defined by the WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
+
+**Note:** The styling used above is a showcase of the component and not really recommended for direct use.
+
+### Usage
+
+To use the Tabs component in your Astro project, follow these steps below after copying the code into a component file:
+
+- Import the Tab component into your Astro page.
+- Render the Tab component in your Astro page and pass the tabs as a slot. (This creates a lot of flexibility in the implementation, but remember that it can create errors if you don't follow the correct implementation)
+
+Example implementation is given below:
+
+```astro title="YourPage.astro"
+---
+import Tabs from './WCTabs.astro'; // Refer the correct location of the component in your project
+
+---
+
+<WCTabs
+  defaultActive="0"
+  orientation="vertical">
+  <div
+    data-tab="Overview"
+    data-button-class="cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 dark:aria-selected:hover:bg-indigo-800 aria-selected:bg-indigo-800 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+    data-icon="/tick.svg"
+    data-alt-text="Pen"
+    data-panel-class="p-3 bg-indigo-100 w-full rounded-xl border-gray-300 dark:bg-indigo-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto">
+    <h2>Product Overview</h2>
+    <p>This is a fantastic product that solves all your problems.</p>
+  </div>
+  <div
+    data-tab="Data"
+    data-button-class="cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 dark:aria-selected:hover:bg-cyan-800 aria-selected:bg-cyan-800 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+    data-panel-class="p-3 bg-cyan-100 w-full rounded-xl border-gray-300 dark:bg-cyan-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto">
+    <h2>Data Overview</h2>
+    <p>Wow</p>
+  </div>
+
+  <ul data-tab="Comments">
+    <li>Alice: Great product, would buy again!</li>
+    <li>Bob: Fast shipping, good quality.</li>
+    <li>Carol: Exactly what I needed.</li>
+  </ul>
+</WCTabs>
+
+```
+
+**Note:** As you may have noticed the tabs above are sent as a slot instead of a prop. While this adds a lot of flexibility to the implementation, it also means that there are added restrictions for the usage of the component. Based on the use case, this may not be the best approach for your project.
+
+### Data Attributes
+
+The data attributes for creating tabs should be applied to the root element for which the tabpanel will be created. The root elements must be direct children of the component which can be any HTMLElement, passed via the slot. This design ensures that the component interacts only with the panel elements themselves and does not traverse further into their descendants.
+
+| Attribute              | Type     | Description                                                                                                             |
+| ---------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `data-tabs` (required) | `string` | The unique identifier which names the tab button.                                                                       |
+| `data-default-active`  | `string` | The index of the default active tab. Index starts at 0. If an invalid entry is sent, it will default to 0               |
+| `data-button-class`    | `string` | Tailwind classes for the tab buttons in case you want to override base style defined in the class for a particular tab. |
+| `data-panel-class`     | `string` | Tailwind classes for the panel in case you want to override base style defined in the class for a particular tab.       |
+| `data-icon`            | `string` | Has to be in the public folder for it to be available at runtime. If not used, it will show no icon.                    |
+| `data-alt-text`        | `string` | The alternative text to be displayed for the icon. Will not have any impact if `data-icon` is not mentioned.            |
+
+**Important Note:** Remember that if you do not include `data-tabs` to all direct children of the component with a string value, it may cause unexpected behaviour. If any direct child is present without data-tabs attribute, it will be removed from the DOM as long as it does not have the `role="tablist"` attribute. Note that the panel is a separate `section` element which wraps the content of the element with the `data-tab` attribute.
+
+`data-*` attributes are used to exchange information between the DOM and the component. For more information about `data-*` attributes, you can refer to the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
+
+### Component Props
+
+The Tabs component accepts the following props
+
+- `defaultActive`: The index of the default active tab. Index starts at 0. If an invalid entry is sent, it will default to 0.
+- `orientation`: The orientation of the tabs. Possible values are `horizontal` and `vertical`. `horizontal` by default. Any invalid entry will default it to `horizontal`. This also sets the `aria-orientation` attribute of the tab list element to either `horizontal` or `vertical`.
+
+### Style Customization
+
+For individual styling you can pass tailwind classes using the data-attributes mentioned in the table above. For changing the base style of the component, in the astro component file, search for the following lines :
+
+```astro title="Tabs.astro" {4-10}
+// ... All the code above this
+
+
+    static readonly DEFAULT_STYLES = {
+      tabButton:
+        "cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white",
+      tabPanel:
+        "p-3 bg-gray-50 w-full rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto",
+    };
+
+// All the code below this
+```
+
+Changing the styles will reflect on all your tabs. Remember that we are coupling aria-selected with the tabs selection indicator, so don't forget to preserve the logic so that the tabs function as expected.
+
+### Keyboard Interaction
+
+| Keyboard Navigation                                 | Description                                                                                                   |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| <kbd>Arrow Up/Down</kbd>                            | If orientation is vertical, moves focus to next tab. Has no effect if the tabs are horizontal in orientation. |
+| <kbd>Arrow Left/Right</kbd>                         | If the tabs are horizontal, moves focus to next tab. Has no effect if the tabs are vertical in orientation    |
+| <kbd>Enter</kbd> or <kbd>Space</kbd>                | Shows the tab panel associated with the currently focused tab while hiding other tab panels                   |
+| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus out of the tablist and onto the next/previous focusable element in the DOM.                    |

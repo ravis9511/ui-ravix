@@ -20,16 +20,33 @@ const { defaultActive = "0", orientation = "horizontal" } =
 </x-tabs>
 
 <script>
+  import { A } from "../../../dist/_astro/index.DO_-7XaY";
+
   class WCTabs extends HTMLElement {
+    /**
+     * This code defines several static constants and properties for the `WCTabs` class.
+     *
+     * - `ARIA`: Defines constants for ARIA attributes used in the tabs component, such as `aria-selected`, `aria-controls`, and `aria-orientation`.
+     * - `ATTRIBUTES`: Defines constants for custom data attributes used in the tabs component, such as `data-default-active`, `data-tab`, `data-icon`, `data-alt-text`, `data-button-class`, and `data-panel-class`.
+     * - `ROLES`: Defines constants for ARIA roles used in the tabs component, such as `tab`, `tablist`, `tabpanel`, and their corresponding selector strings.
+     * - `DEFAULT_STYLES`: Defines default CSS styles for the tab buttons and tab panels.
+     * - `tabList`: Holds a reference to the tab list element.
+     * - `panels`: Holds an array of tab panel elements.
+     * - `tabFocus`: Keeps track of the currently focused tab.
+     * - `uniqueId`: Holds a unique identifier for the tabs component.
+     * - `defaultActiveTab`: Stores the default active tab index.
+     */
     static readonly ARIA = {
       SELECTED: "aria-selected",
       CONTROLS: "aria-controls",
       ORIENTATION: "aria-orientation",
+      LABELLEDBY: "aria-labelledby",
     } as const;
     static readonly ATTRIBUTES = {
       DEFAULT_ACTIVE: "data-default-active",
       DATA_TAB: "data-tab",
       DATA_ICON: "data-icon",
+      DATA_ALT_TEXT: "data-alt-text",
       DATA_BUTTON_CLASS: "data-button-class",
       DATA_PANEL_CLASS: "data-panel-class",
     };
@@ -43,7 +60,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
     } as const;
     static readonly DEFAULT_STYLES = {
       tabButton:
-        "cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white",
+        "cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white",
       tabPanel:
         "p-3 bg-gray-50 w-full rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto",
     };
@@ -52,22 +69,40 @@ const { defaultActive = "0", orientation = "horizontal" } =
     private tabFocus = 0;
     private uniqueId: string;
     private defaultActiveTab = "0";
-
+    private tabClickHandlers: Array<(e: Event) => void> = [];
+    /**
+     * The constructor for the `WCTabs` class, which is responsible for initializing the tabs component.
+     *
+     * This method performs the following tasks:
+     * - Generates a unique identifier for the tabs component using the `generateUniqueId()` method.
+     * - Retrieves the tab list element from the component, or creates a new one if it doesn't exist.
+     * - Sets the `aria-orientation` attribute of the tab list element to either "vertical" or "horizontal" based on the current value.
+     */
     constructor() {
       super();
       this.uniqueId = this.generateUniqueId();
       this.tabList =
         this.querySelector(WCTabs.ROLES.ROLE_TABLIST) ||
-        this.appendChild(document.createElement("div"));
+        this.appendChild(document.createElement("div")); // This is only a failsafe to prevent unhandled errors. Please ensure that the tablist element is present in the component before using the WCTabs component or a UI message is displayed to the user.
       if (!this.tabList) {
         console.error("No tablist found");
         return;
       }
+      // Making sure that the aria-orientation is always set to either horizontal or vertical
       this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) === "vertical"
         ? this.tabList.setAttribute(WCTabs.ARIA.ORIENTATION, "vertical")
-        : this.tabList.setAttribute(WCTabs.ARIA.ORIENTATION, "horizontal"); // Making sure that the aria-orientation is always set to either horizontal or vertical
+        : this.tabList.setAttribute(WCTabs.ARIA.ORIENTATION, "horizontal");
     }
 
+    /**
+     * The `connectedCallback()` method is called when the custom element is inserted into the DOM. It is responsible for initializing the tabs component and attaching a keydown event listener to the tab list.
+     *
+     * This method performs the following tasks:
+     * - Calls the `initializeTabs()` method to set up the tabs and panels.
+     * - Attaches a `keydown` event listener to the tab list element, which calls the `handleKeyDown()` method to handle keyboard navigation.
+     *
+     * If any errors occur during the initialization or event listener attachment, they are logged to the console. In a real scenario you would want to handle these errors in a more robust way.
+     */
     connectedCallback() {
       try {
         this.initializeTabs();
@@ -82,8 +117,13 @@ const { defaultActive = "0", orientation = "horizontal" } =
         console.error("Failed to attach keydown event:", error);
       }
     }
+    /**
+     * Applies content styling based on the orientation of the tab list.
+     *
+     * This method checks the `aria-orientation` attribute of the tab list element and applies appropriate CSS classes to the component and tab list element. If the orientation is "vertical", the component is given a flex-col layout with a gap on the x-axis, and the tab list is given a flex-col layout with a gap on the y-axis. If the orientation is "horizontal", no additional styling is applied.
+     */
     contentStyler() {
-      const tabOrientation =
+      const tabOrientation: "horizontal" | "vertical" =
         (this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) as
           | "horizontal"
           | "vertical") ?? "horizontal";
@@ -99,7 +139,14 @@ const { defaultActive = "0", orientation = "horizontal" } =
         );
       }
     }
-    generateUniqueId = () => {
+    /**
+     * Generates a unique identifier string.
+     *
+     * This function generates a unique identifier string by combining a timestamp and a random number. The timestamp is the last 6 digits of the current timestamp, and the random number is a 4-digit number.
+     *
+     * @returns {string} A unique identifier string.
+     */
+    generateUniqueId = (): string => {
       const timestamp = Date.now().toString().slice(-6);
       const randomNum = Math.floor(Math.random() * 10000)
         .toString()
@@ -107,12 +154,48 @@ const { defaultActive = "0", orientation = "horizontal" } =
 
       return timestamp + randomNum;
     };
+
+    /**
+     * Initializes the tabs component by setting up the tabs and panels.
+     *
+     * This method performs the following tasks:
+     * - Filters the children of the component to include only those that are HTML elements and have the `data-tab` attribute.
+     * - Ensures that the `data-default-active` attribute is set to a valid value. If the value is not a number or exceeds the number of children, it defaults to "0".
+     * - Sets the `defaultActiveTab` property to the value of the `data-default-active` attribute.
+     * - Calls the `contentStyler` method to apply content styling based on the orientation of the tab list.
+     * - Iterates over the filtered children and calls the `createChildTabs` method to create the tabs and panels.
+     *
+     *
+     */
     initializeTabs() {
       const children = Array.from(this.children).filter(
         (child): child is HTMLElement =>
           child instanceof HTMLElement &&
           child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB)
       );
+      const abandonedChildren = Array.from(this.children).filter(
+        (child): child is HTMLElement =>
+          child instanceof HTMLElement &&
+          !child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB) &&
+          child.getAttribute("role") !== WCTabs.ROLES.TABLIST
+      );
+      if (abandonedChildren.length > 0) {
+        abandonedChildren.forEach((abandonedChild) => {
+          console.warn(
+            `Removing child without 'data-tab' or role="tablist" attribute:`,
+            abandonedChild
+          );
+          abandonedChild.remove();
+        });
+      }
+      if (children.length === 0) {
+        console.error(
+          "No tabs found. Ensure each tab has a 'data-tab' attribute."
+        );
+
+        return;
+      }
+
       // Next two lines are to ensure that even if random values are passed as props to the component, it will still function with default behaviour
 
       const defaultActiveTabValue =
@@ -131,17 +214,42 @@ const { defaultActive = "0", orientation = "horizontal" } =
         this.createChildTabs(child, index);
       });
     }
+    /**
+     * Creates a tab and its corresponding panel for a given child element.
+     *
+     * This method performs the following tasks:
+     *
+     * - Retrieves the tab name from the `data-tab` attribute of the child element. If the attribute is not present, the child element is removed.
+     * - Retrieves optional attributes such as `data-icon`, `data-alt-text`, `data-button-class`, and `data-panel-class` from the child element.
+     * - Creates a unique identifier for the tab and panel.
+     * - Creates a button element for the tab, sets its attributes, and appends it to the tab list.
+     * - Creates a section element for the panel, sets its attributes, and appends it to the component.
+     * - Adds an event listener to the tab button to handle tab clicks.
+     *
+     * @param {Element} child - The child element for which to create a tab and panel.
+     * @param {number} index - The index of the child element.
+     */
     createChildTabs(child: Element, index: number) {
-      const tabName = child.getAttribute(WCTabs.ATTRIBUTES.DATA_TAB);
-      const tabIcon = child.getAttribute(WCTabs.ATTRIBUTES.DATA_ICON);
-      const buttonClass =
+      const tabName: string | null = child.getAttribute(
+        WCTabs.ATTRIBUTES.DATA_TAB
+      );
+      if (!tabName) {
+        child.remove();
+        return;
+      }
+      const tabIcon: string | null = child.getAttribute(
+        WCTabs.ATTRIBUTES.DATA_ICON
+      );
+      const tabAltText: string =
+        child.getAttribute(WCTabs.ATTRIBUTES.DATA_ALT_TEXT) ?? tabName;
+      const buttonClass: string =
         child.getAttribute(WCTabs.ATTRIBUTES.DATA_BUTTON_CLASS) ||
         WCTabs.DEFAULT_STYLES.tabButton;
-      const panelClass =
+      const panelClass: string =
         child.getAttribute(WCTabs.ATTRIBUTES.DATA_PANEL_CLASS) ||
         WCTabs.DEFAULT_STYLES.tabPanel;
 
-      const uniqueId = this.uniqueId + "-" + index;
+      const uniqueId = `${this.uniqueId}-${index + 1}`;
 
       const tabButton = document.createElement("button");
       tabButton.setAttribute("role", WCTabs.ROLES.TAB);
@@ -152,7 +260,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
       tabButton.id = `${uniqueId}-${index + 1}-tab`;
       tabButton.classList.add(...buttonClass.split(" "));
       tabButton.innerHTML = tabIcon
-        ? `<img src="${tabIcon}" alt="${tabName} icon" /> <span>${tabName}</span>`
+        ? `<img src="${tabIcon}" alt="${tabAltText} icon" /> <span>${tabName}</span>`
         : `<span>${tabName}</span>`;
       tabButton.setAttribute(
         WCTabs.ARIA.SELECTED,
@@ -170,6 +278,10 @@ const { defaultActive = "0", orientation = "horizontal" } =
 
       const panel = document.createElement("section");
       panel.setAttribute("role", WCTabs.ROLES.TABPANEL);
+      panel.setAttribute(
+        WCTabs.ARIA.LABELLEDBY,
+        `${uniqueId}-${index + 1}-tab`
+      );
       panel.id = `${uniqueId}-${index + 1}-panel`;
 
       panel.classList.add(...panelClass.split(" "));
@@ -185,14 +297,38 @@ const { defaultActive = "0", orientation = "horizontal" } =
       this.appendChild(panel);
       this.panels.push(panel);
 
-      tabButton.addEventListener("click", this.handleTabClick(index));
+      const clickHandler = this.handleTabClick(index);
+      this.tabClickHandlers.push(clickHandler);
+      tabButton.addEventListener("click", clickHandler);
     }
-    handleTabClick(index: number) {
+    /**
+     * Returns an event handler function for handling tab clicks.
+     *
+     * This method performs the following tasks:
+     * - Prevents the default action of the event.
+     * - Calls the `setActiveTab` method to activate the tab at the specified index.
+     *
+     * @param {number} index - The index of the tab to activate.
+     * @returns {(e: Event) => void} An event handler function for handling tab clicks.
+     */
+
+    handleTabClick(index: number): (e: Event) => void {
       return (e: Event) => {
         e.preventDefault();
         this.setActiveTab(index);
       };
     }
+
+    /**
+     * Sets the active tab and updates the corresponding panel visibility.
+     *
+     * This method performs the following tasks:
+     * - Iterates over all tabs and updates the `aria-selected` and `tabindex` attributes based on the specified index.
+     * - Iterates over all panels and toggles the `hidden` class based on the specified index.
+     *
+     * @param {number} index - The index of the tab to activate.
+     */
+
     setActiveTab(index: number) {
       this.tabList
         .querySelectorAll(WCTabs.ROLES.ROLE_TAB)
@@ -208,6 +344,18 @@ const { defaultActive = "0", orientation = "horizontal" } =
         panel.classList.toggle("hidden", panelIndex !== index);
       });
     }
+    /**
+     * Handles keyboard navigation for the tabs component.
+     *
+     * This method performs the following tasks:
+     * - Retrieves all tab elements within the tab list.
+     * - Checks the orientation of the tab list (horizontal or vertical) and handles arrow key navigation accordingly.
+     * - Updates the `tabindex` attribute and focuses the appropriate tab based on the arrow key pressed.
+     * - Handles the "Tab" key to ensure proper focus management within the tabs.
+     *
+     * @param {KeyboardEvent} e - The keyboard event object.
+     */
+
     handleKeyDown(e: KeyboardEvent): void {
       const tabs = this.tabList.querySelectorAll(
         WCTabs.ROLES.ROLE_TAB
@@ -236,6 +384,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
         }
         if (this.tabList.getAttribute(WCTabs.ARIA.ORIENTATION) === "vertical") {
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            e.preventDefault();
             tabs[this.tabFocus]?.setAttribute("tabindex", "-1");
             if (e.key === "ArrowDown") {
               this.tabFocus++;
@@ -265,14 +414,22 @@ const { defaultActive = "0", orientation = "horizontal" } =
         }
       }
     }
+    /**
+     * Called when the custom element is disconnected from the DOM.
+     *
+     * This method performs the following tasks:
+     * - Removes the keydown event listener from the tab list.
+     * - Iterates over all tabs and removes the click event listener from each tab.
+     */
+
     disconnectedCallback() {
       this.tabList.removeEventListener("keydown", this.handleKeyDown);
       const tabs = this.tabList.querySelectorAll(
         WCTabs.ROLES.ROLE_TAB
       ) as NodeListOf<HTMLElement>;
 
-      tabs.forEach((tab) => {
-        tab.removeEventListener("click", this.handleTabClick(this.tabFocus));
+      tabs.forEach((tab, index) => {
+        tab.removeEventListener("click", this.tabClickHandlers[index]);
       });
     }
   }

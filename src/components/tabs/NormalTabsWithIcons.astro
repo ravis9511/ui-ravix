@@ -48,7 +48,7 @@ This will aid in the separation of concerns and make the code more maintainable.
             aria-selected={index === 0 ? "true" : "false"}
             aria-controls={`${name}-tab-panel-${index + 1}`}
             id={`${name}-tab-${index + 1}`}
-            class="cursor-pointer w-full px-6 py-3 text-lg rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+            class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
             {tab.icon === "product" && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"

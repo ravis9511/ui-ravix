@@ -20,15 +20,18 @@ const description = "Your description here";
     <div class="self-center sm:mx-20">
       <div class="items-center self-center mt-24 mb-20">
         <Tabs
-          defaultActive="tr"
+          defaultActive="0"
           orientation="horizontal">
           <div data-tab="Overview">
             <h2>Product Overview</h2>
             <p>This is a fantastic product that solves all your problems.</p>
           </div>
-          <table data-tab="Details" class=" w-full text-base text-left text-gray-800 dark:text-gray-300  shadow-md rounded-lg dark:bg-black">
-            <thead class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800 ">
-              <tr >
+          <table
+            data-tab="Details"
+            class="w-full text-base text-left text-gray-800 dark:text-gray-300 shadow-md rounded-lg dark:bg-black">
+            <thead
+              class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800">
+              <tr>
                 <th
                   scope="col"
                   class="px-6 py-3">
@@ -62,7 +65,7 @@ const description = "Your description here";
                 <td class="px-6 py-3"> Tops </td>
                 <td class="px-6 py-3"> 15 </td>
               </tr>
-              <tr class=" bg-gray-100 dark:bg-zinc-900">
+              <tr class="bg-gray-100 dark:bg-zinc-900">
                 <th
                   scope="row"
                   class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
@@ -83,18 +86,17 @@ const description = "Your description here";
                 <td class="px-6 py-3"> 23 </td>
               </tr>
               <tr class="bg-gray-100 dark:bg-zinc-900">
-                  <th
-                    scope="row"
-                    class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                    Dress
-                  </th>
-                  <td class="px-6 py-3"> Red </td>
-                  <td class="px-6 py-3"> Dresses </td>
-                  <td class="px-6 py-3"> 11 </td>
-                </tr>
+                <th
+                  scope="row"
+                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  Dress
+                </th>
+                <td class="px-6 py-3"> Red </td>
+                <td class="px-6 py-3"> Dresses </td>
+                <td class="px-6 py-3"> 11 </td>
+              </tr>
             </tbody>
           </table>
-          
 
           <ul data-tab="Comments">
             <li>Alice: Great product, would buy again!</li>
@@ -104,5 +106,6 @@ const description = "Your description here";
         </Tabs>
       </div>
     </div>
+    
   </body>
 </Layout>
