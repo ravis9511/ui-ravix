@@ -58,18 +58,19 @@ A tab has three main parts :
 
 The classic tabs with a panel attached to each tab. The tabs are displayed in a horizontal list and the panels are displayed blow the tabs.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Normal Tabs" tabs={[{ "name" : "Preview", "id" : "NT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "NT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "NT-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="NT-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="NT-Tab1">
   <div class="p-2 ">
     <Tabs />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="NT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="NT-Tab2" class="hidden">
 
 <Code
   code={TabsCode}
@@ -80,7 +81,7 @@ The classic tabs with a panel attached to each tab. The tabs are displayed in a 
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="NT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="NT-Tab3" class="hidden">
 
 <Code
   code={TabsAstroCode}
@@ -98,18 +99,21 @@ The classic tabs with a panel attached to each tab. The tabs are displayed in a 
 
 This adds icons to the tabs while maintaining the same functionality as the normal tabs.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Normal Tabs With Icons" tabs={[{ "name" : "Preview", "id" : "NTI-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "NTI-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "NTI-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
-  role="tabpanel"
-  data-role="tabpanel">
+  id="NTI-Tab1-panel"
+
+role="tabpanel"
+data-role="tabpanel"
+aria-labelledby="NTI-Tab1">
+
   <div class="p-2 ">
     <NormalTabsWithIcons />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="NTI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="NTI-Tab2" class="hidden">
 
 <Code
   code={NormalTabsWithIconsCode}
@@ -120,7 +124,7 @@ This adds icons to the tabs while maintaining the same functionality as the norm
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="NTI-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="NTI-Tab3" class="hidden">
 
 <Code
   code={NormalTabsWithIconsCodeAstro}
@@ -138,18 +142,19 @@ This adds icons to the tabs while maintaining the same functionality as the norm
 
 The selected tab is highlighted with a gradient background. Otherwise the tabs are similar to the normal tabs with icons.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Gradient Tabs With Icons" tabs={[{ "name" : "Preview", "id" : "GTI-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "GTI-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "GTI-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="GTI-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="GTI-Tab1">
   <div class="p-2 ">
     <GradientTabs />
   </div>
 </section>
 
-<section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GTI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GTI-Tab2" class="hidden">
 
 <Code
   code={GradientTabsCode}
@@ -160,7 +165,7 @@ The selected tab is highlighted with a gradient background. Otherwise the tabs a
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="GTI-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GTI-Tab3" class="hidden">
 
 <Code
   code={GradientTabsCodeAstro}
@@ -182,12 +187,13 @@ The selected tab is highlighted with a gradient background. Otherwise the tabs a
 
 This is an astrojs web component implementation of the tabs. It allows for any sort of content to be displayed in the tabs. It also dynamically generates the tab buttons based on the number of tabs. It has many additional features such as dynamically adding icons, allowing for custom tab buttons, tab panels. It also allows for the tabs to have vertical alignment and act like a sidebar to the panel.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Astrojs Web Component Tabs" tabs={[{ "name" : "Preview", "id" : "AWC-Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "AWC-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="AWC-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="AWC-Tab1">
   <div class="p-2 flex flex-col space-y-4">
      <WCTabs
           defaultActive="0"
@@ -229,7 +235,7 @@ This is an astrojs web component implementation of the tabs. It allows for any s
   </div>
 </section>
 
-<section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
+<section id ="AWC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWC-Tab3" class="hidden">
 
 <Code
   code={WCTabsCodeAstro}
@@ -245,7 +251,7 @@ This is an astrojs web component implementation of the tabs. It allows for any s
 
 The Tabs above are created using the Web Components API along with Astrojs. It follows the standard patterns for [tabs as defined by the WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
-**Note:** The styling used above is a showcase of the component and not really recommended for direct use.
+**Note:** The styling used above is a showcase of the component's options and not really recommended for direct use.
 
 ### Usage
 
@@ -291,7 +297,7 @@ import Tabs from './WCTabs.astro'; // Refer the correct location of the componen
 
 ```
 
-**Note:** As you may have noticed the tabs above are sent as a slot instead of a prop. While this adds a lot of flexibility to the implementation, it also means that there are added restrictions for the usage of the component. Based on the use case, this may not be the best approach for your project.
+**Note:** As you may have noticed the tabs above are sent as a slot instead of a prop. While this adds a lot of flexibility to the implementation, it also means that there are added restrictions for the usage of the component. Based on the use case, this may not be the best approach for your page.
 
 ### Data Attributes
 
@@ -314,7 +320,7 @@ The data attributes for creating tabs should be applied to the root element for 
 
 The Tabs component accepts the following props
 
-- `defaultActive`: The index of the default active tab. Index starts at 0. If an invalid entry is sent, it will default to 0.
+- `defaultActive`: The index of the default active tab. Index starts at 0. If an invalid entry(not a number or greater than the number of tabs) is sent, it will default to 0.
 - `orientation`: The orientation of the tabs. Possible values are `horizontal` and `vertical`. `horizontal` by default. Any invalid entry will default it to `horizontal`. This also sets the `aria-orientation` attribute of the tab list element to either `horizontal` or `vertical`.
 
 ### Style Customization
@@ -335,13 +341,26 @@ For individual styling you can pass tailwind classes using the data-attributes m
 // All the code below this
 ```
 
-Changing the styles will reflect on all your tabs. Remember that we are coupling aria-selected with the tabs selection indicator, so don't forget to preserve the logic so that the tabs function as expected.
+Changing the styles will reflect on all your tabs. Remember that we are coupling aria-selected with the tabs selection indicator, so don't forget to preserve the `aria-selected` logic so that the tabs function as expected.
+
+Please keep in mind that the Tabs component is provided as-is and may require further testing and customization to fit your specific use case. Also it removes the original panel node and adds a duplicate panel node with the same id and properties.
+
+## Accessibility Testing Status
+
+| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | SilkTide |
+| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- | -------- |
+| Normal Tabs                | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
+| Normal Tabs With Icons     | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
+| Gradient Tabs With Icons   | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
+| Astrojs Web Component Tabs | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
+
+ravixUI follows the tabs pattern from [WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
 ### Keyboard Interaction
 
-| Keyboard Navigation                                 | Description                                                                                                   |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| <kbd>Arrow Up/Down</kbd>                            | If orientation is vertical, moves focus to next tab. Has no effect if the tabs are horizontal in orientation. |
-| <kbd>Arrow Left/Right</kbd>                         | If the tabs are horizontal, moves focus to next tab. Has no effect if the tabs are vertical in orientation    |
-| <kbd>Enter</kbd> or <kbd>Space</kbd>                | Shows the tab panel associated with the currently focused tab while hiding other tab panels                   |
-| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus out of the tablist and onto the next/previous focusable element in the DOM.                    |
+| Keyboard Navigation                                      | Description                                                                                                                                      |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <kbd>Arrow Up/Down</kbd> (Only for AstroJS Webcomponent) | If orientation is vertical, moves focus to next tab. Has no effect if the tabs are horizontal in orientation.(Available only in the AstroJS web component) |
+| <kbd>Arrow Left/Right</kbd>                              | If the tabs are horizontal, moves focus to next tab. Has no effect if the tabs are vertical in orientation                                       |
+| <kbd>Enter</kbd> or <kbd>Space</kbd>                     | Shows the tab panel associated with the currently focused tab while hiding other tab panels                                                      |
+| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd>      | Moves the focus out of the tablist and onto the next/previous focusable element in the DOM.                                                      |

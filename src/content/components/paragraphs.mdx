@@ -7,6 +7,7 @@ type: "Introduction"
 import { Code } from "astro-expressive-code/components";
 import Tab from "../../components/Tab.astro";
 import Accordion from "../../components/Accordion.astro";
+import Alerts from "../../components/Alert.astro";
 import Card from "../../components/examples/Card.astro";
 import Paragraph from "../../components/paragraphs/Paragraphs.astro";
 import ParagraphCode from "../../components/paragraphs/Paragraphs.astro?raw";
@@ -16,6 +17,10 @@ import AltParagraphCode from "../../components/paragraphs/AltParagraphs.astro?ra
 import AltParagraphCodeAstro from "../../components/paragraphs/AltParagraphs.astro?raw";
 
 # Paragraphs
+
+<Alerts type="info">
+    This is not required for any component to work. You may choose to skip this section without any issues.
+</Alerts>
 
 Paragraphs are the building blocks of most web pages. They are used to break up text into smaller, more digestible chunks. Paragraphs can be used to introduce new sections, provide additional information, or simply to add some breathing room to the page.
 

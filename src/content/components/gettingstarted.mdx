@@ -1,37 +1,36 @@
 ---
 title: "Introduction"
 order: 1
-type : "Introduction"
+type: "Introduction"
 ---
 
 # Introduction
 
-If you are an absolute beginner at web development, I would recommend learning basic HTML, CSS and JavaScript basics before starting. But if you don't have the time or just want to setup something like a portfolio or a blog or a landing screen, you can follow this guide where you can follow each step and create a website from scratch.
+ravixUI is an accessibility focused AstroJS based component starter kit which gives you all the code directly out of the box including the JavaScript implementation.
 
-## What can you expect?
+## Why is the code directly available?
 
-There are HTML and TailwindCSS wrappers for each and every building block you would need to build a page and a few examples you can copy and paste into your project. If a block cannot function with JavaScript it will be mentioned at the top of the block. Out of the box, the design guide has the specifications for all the blocks in ravixUI. For blocks which cannot function without JavaScript, there will be code blocks available in astrojs and svelte. There are hints for accessibility for every block.
+ravixUI believes that accessibility is context based and that giving the code directly allows you to edit it and fit your specific use case. Semantic HTML is used for implementation wherever possible. If certain functionalities cannot be achieved with semantic elements, the components follow the WAI-ARIA design patterns for those components with WCAG 2.1 AA level conformance. And if there are no WAI-ARIA APG patterns available, ARIA attributes are used in a way that makes sense for the particular component.
+
+The idea is to set you up with a starting point for building your own accessible website and components.
 
 ## Prerequisites
 
--   A project with TailwindCSS installed.
--   Basic HTML5, CSS and JavaScript knowledge.
+- An AstroJS project with TailwindCSS installed. For AstroJS installation, please refer to the [official documentation](https://docs.astro.build/en/install/auto/). For installation of TailwindCSS integration, please refer to the [@astrojs/tailwind integration documentation](https://docs.astro.build/en/guides/integrations-guide/tailwind/).
+- Basic HTML5, CSS, TailwindCSS and JavaScript knowledge.
+- ViewTransition for attaching event listeners to the viewport if the component uses JavaScript. For more information on ViewTransition, please refer to the [AstroJS guide on View Transitions](https://docs.astro.build/en/guides/view-transitions/).
 
-## How can I use this?
+## Limitations
 
-However you see fit. The recommended usage is to save a lot of design, documentation and development effort by using the design guide and the blocks as a starting point and build your own system and components.
+Currently the component starter kit is in the early stages of development and there are a few caveats to be aware of :
 
-An example use pattern for a designer and developer using it directly out of the box for a landing page would be something like this :
+- Code may require testing and customization to fit your specific use case.
+- The Forms components is still in a development stage and is not recommended for any usage.
+- The component starter kit does not provide unit tests and hence it is recommended to use only after thorough testing if the particular component depends on JavaScript.
 
--   Pick a layout for your web page (grid, flex or a combination of both).
--   Pick a navbar block and customize it.
--   Pick a hero block and customize it or use smaller blocks like Headings, Paragraphs, Buttons and backgrounds to make a the Hero section of your landing page.
--   Pick a feature block and customize it to describe about the product/service/project or use a card block and customize it.
--   Pick a pricing block and customize it to your requirement.
--   Pick a footer block and customize it.
+There are a few more things which are noteworthy :
 
-There are design and developer hints for every block available.
-
-## Guide
-
-There is a comprehensive guide available in both written and video format, designed specifically for beginners. This guide covers everything from setting up a code editor to deploying a fully functional website on Cloudflare using Astro.js, a modern static site generator which supports many modern JS frameworks.
+- It is built using the cloudflare integration (Shouldn't be a issue for most environments. All the pages are static in nature and should translate well regardless of the environment).
+- It is tested on Chrome, Firefox, Brave and Edge.(Not tested on Safari yet. Planned for the future)
+- It is made with astroJS in mind and uses astroJS for the build process, so it may not work with other frameworks or static site generators.
+- There is no guide available yet. (Planned for the future)

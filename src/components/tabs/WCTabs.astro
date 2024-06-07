@@ -20,8 +20,6 @@ const { defaultActive = "0", orientation = "horizontal" } =
 </x-tabs>
 
 <script>
-  import { A } from "../../../dist/_astro/index.DO_-7XaY";
-
   class WCTabs extends HTMLElement {
     /**
      * This code defines several static constants and properties for the `WCTabs` class.
@@ -70,6 +68,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
     private uniqueId: string;
     private defaultActiveTab = "0";
     private tabClickHandlers: Array<(e: Event) => void> = [];
+    private tabs: NodeListOf<HTMLElement> | null = null;
     /**
      * The constructor for the `WCTabs` class, which is responsible for initializing the tabs component.
      *
@@ -115,6 +114,13 @@ const { defaultActive = "0", orientation = "horizontal" } =
         );
       } catch (error) {
         console.error("Failed to attach keydown event:", error);
+      }
+      try {
+        this.tabs = this.tabList.querySelectorAll(
+          WCTabs.ROLES.ROLE_TAB
+        ) as NodeListOf<HTMLElement>;
+      } catch (error) {
+        console.error("Failed to query tabs:", error);
       }
     }
     /**
@@ -330,15 +336,13 @@ const { defaultActive = "0", orientation = "horizontal" } =
      */
 
     setActiveTab(index: number) {
-      this.tabList
-        .querySelectorAll(WCTabs.ROLES.ROLE_TAB)
-        .forEach((tab, tabIndex) => {
-          tab.setAttribute(
-            WCTabs.ARIA.SELECTED,
-            tabIndex === index ? "true" : "false"
-          );
-          tab.setAttribute("tabindex", tabIndex === index ? "0" : "-1");
-        });
+      this.tabs?.forEach((tab, tabIndex) => {
+        tab.setAttribute(
+          WCTabs.ARIA.SELECTED,
+          tabIndex === index ? "true" : "false"
+        );
+        tab.setAttribute("tabindex", tabIndex === index ? "0" : "-1");
+      });
 
       this.panels.forEach((panel, panelIndex) => {
         panel.classList.toggle("hidden", panelIndex !== index);
@@ -357,9 +361,8 @@ const { defaultActive = "0", orientation = "horizontal" } =
      */
 
     handleKeyDown(e: KeyboardEvent): void {
-      const tabs = this.tabList.querySelectorAll(
-        WCTabs.ROLES.ROLE_TAB
-      ) as NodeListOf<HTMLElement>;
+      const tabs = this.tabs;
+      if (!tabs) return;
 
       if (e.key && tabs.length) {
         if (
@@ -424,10 +427,8 @@ const { defaultActive = "0", orientation = "horizontal" } =
 
     disconnectedCallback() {
       this.tabList.removeEventListener("keydown", this.handleKeyDown);
-      const tabs = this.tabList.querySelectorAll(
-        WCTabs.ROLES.ROLE_TAB
-      ) as NodeListOf<HTMLElement>;
-
+      const tabs = this.tabs;
+      if (!tabs) return;
       tabs.forEach((tab, index) => {
         tab.removeEventListener("click", this.tabClickHandlers[index]);
       });
