@@ -432,6 +432,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
       tabs.forEach((tab, index) => {
         tab.removeEventListener("click", this.tabClickHandlers[index]);
       });
+      this.tabClickHandlers = [];
     }
   }
 

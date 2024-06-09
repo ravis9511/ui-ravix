@@ -10,7 +10,7 @@ const { data } = Astro.props;
 ---
 
 <div
-  class="border mt-6 mb-12 border-gray-400 divide-y divide-gray-400 dark:border-indigo-950 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-[0_6px_30px_rgb(0,0,0,0.06)] dark:shadow-none">
+  class="border mt-6 mb-12 border-gray-400 divide-y divide-gray-400 dark:border-indigo-950 dark:divide-indigo-950 rounded-lg max-w-3xl shadow-md dark:shadow-none">
   {
     data.map((item) => (
       <details
@@ -18,9 +18,9 @@ const { data } = Astro.props;
         open={false}
         name={item.name}>
         <summary
-          class="flex items-center justify-between px-4 py-4 cursor-pointer text-indigo-700 dark:text-zinc-300"
+          class="flex items-center justify-between px-4 py-4 cursor-pointer text-zinc-900 dark:text-zinc-300 bg-gray-100 rounded-lg dark:bg-zinc-950 dark:group-open:bg-zinc-900 group-open:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
           tabindex="0">
-          <span class="text-xl  font-semibold ">{item.title}</span>
+          <span class="text-lg   ">{item.title}</span>
           <svg
             class="w-5 h-5 shrink-0 transition duration-300 group-open:-rotate-180"
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const { data } = Astro.props;
           </svg>
         </summary>
 
-        <div class="not-prose  px-6 text-start text-lg pb-5  ">
+        <div class="not-prose pt-3 px-6 text-start text-base pb-5  ">
           {item.content}
         </div>
       </details>

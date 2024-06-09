@@ -1,6 +1,6 @@
 ---
 title: "Card"
-order: 11
+order: 13
 type: "Building"
 ---
 
@@ -33,7 +33,7 @@ Card is a versatile component that can be used to display content and informatio
       name: "cards1",
       title: "Design Hints",
       content:
-        "Used effectively, cards can drive users to a desired action. It is a simple way to group elements together. Cards can contain many different types of blocks inside like buttons, images, paragraphs, headings, lists etc. The card should also be consistent in its design and layout to maintain a cohesive user experience. Cards can bring a sense of visual interest and help emphasize important information. It is a good tool for progressive disclosure and reducing cognitive load.",
+        "Used effectively, cards can drive users to a desired action. It is a simple way to group elements together. Cards can contain many different types of elements inside like buttons, images, paragraphs, headings, lists etc. Cards can bring a sense of visual interest and help emphasize important information.",
     },
     {
       name: "cards1",
@@ -100,7 +100,7 @@ This is a simple card that can be used to display information or content. It can
 
 ## Horizontal Card
 
-A Horizontal layout for cards. This is a simple way to show collections of a similar type. On smaller form factors, for responsive design, the card content stacks vertically.
+Horizontal card layouts display collections of similar items efficiently, adapting to responsive design by stacking content vertically on smaller screens.
 
 <Tab name="Horizontal Card" tabs={[{ "name" : "Preview", "id" : "HC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "HC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "HC-Tab3", "icon" : "astro"}]}>
 
@@ -141,7 +141,7 @@ A Horizontal layout for cards. This is a simple way to show collections of a sim
 
 ## Features Card
 
-A card for showcasing features or benefits of a product or service. Can be used to create a quick catalog of features and benefits using multiple cards.
+A card for showcasing features or benefits of a product or service. It can be used to catch the user's attention.
 
 <Tab name="Features Card" tabs={[{ "name" : "Preview", "id" : "FC-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "FC-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "FC-Tab3", "icon" : "astro"}]}>
 
@@ -232,7 +232,7 @@ A card with a gradient background. The gradient used is subtle and non distracti
 
 </Tab>
 
-**Note:** There is a grid container used as a parent to control the width of the card. The card is responsive out of the box and goes from a horizontal layout to a vertical layout lower than the `md` breakpoint.
+
 
 <Accordion
   data={[
@@ -307,6 +307,6 @@ A card with a glass effect.
 | Gradient Card   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Glass Card      | Yes  | Yes              | Yes  | Yes | Yes              |
 
-There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards.
+There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards while adhering to the WCAG 2.1 AA standard.
 
 While the cards out of the box in ravixUI showcase action buttons inside the cards, it's possible that the card itself can act as an action button based on context, for example, catalogs having product cards that can be clicked to view the product details or genres in a music application having a card for each genre that can be clicked to view songs of the genre.

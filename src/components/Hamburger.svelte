@@ -32,7 +32,7 @@
 </script>
 
 <button
-  aria-label="MainMenu Toggle"
+  aria-label="Navigation Menu Toggle"
   on:click|stopPropagation={handleMenuOpen}
   type="button"
   class="block lg:hidden rounded-lg font-semibold text-xl text-indigo-700 dark:text-zinc-50 p-2"
@@ -53,7 +53,7 @@
 {#if menuOpen}
   <div
     transition:fade
-    class="fixed top-0 lg:hidden left-0 w-full h-full bg-black bg-opacity-70 z-40 font-display"
+    class="fixed top-0 lg:hidden left-0 w-full h-screen bg-black bg-opacity-70 z-40 font-display"
   ></div>
   <div
     in:fly={{
@@ -68,7 +68,7 @@
       opacity: 0,
       easing: quintOut,
     }}
-    class="flex flex-col fixed lg:hidden w-3/4 top-0 left-0 text-end z-50 shadow-lg bg-white dark:bg-zinc-900 p-3 justify-end justify-items-end h-screen overflow-y-auto"
+    class="flex flex-col fixed lg:hidden w-3/4 top-0 left-0 text-end z-[100] shadow-lg bg-white dark:bg-zinc-900 p-3 justify-end justify-items-end h-screen overflow-y-auto"
   >
     <nav aria-label="Documentation Navigation"
       class="flex flex-col text-lg text-start pb-4 w-full px-4 overflow-y-auto scrollbar text-nowrap"
@@ -76,23 +76,12 @@
       <div class="flex flex-col font-display pb-4 w-full">
         <button
           on:click={handleMenuClose}
-          class=" px-4 py-2 rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg justify-center bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              fill="currentColor"
-              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-            />
-          </svg><span>Close Drawer</span>
+          class=" px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg justify-center bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
+          ><span>Close Menu</span>
         </button>
         <a
           href="/"
-          class="flex flex-row items-center font-bold my-3 text-indigo-700 dark:text-indigo-100"
+          class="flex flex-row items-center font-bold my-4 text-indigo-700 dark:text-indigo-100"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -154,7 +143,7 @@
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
-                    {links.title}
+                    {links.title} {#if links.title==="Forms"} <span class="text-sm ml-2 text-yellow-700 dark:text-yellow-400">Unstable</span> {/if}
                   </a>
                 {:else}
                   <a

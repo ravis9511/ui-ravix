@@ -1,6 +1,6 @@
 ---
 title: "Tabs"
-order: 15
+order: 27
 type: "Navigation"
 ---
 
@@ -347,20 +347,20 @@ Please keep in mind that the Tabs component is provided as-is and may require fu
 
 ## Accessibility Testing Status
 
-| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | SilkTide |
-| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- | -------- |
-| Normal Tabs                | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
-| Normal Tabs With Icons     | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
-| Gradient Tabs With Icons   | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
-| Astrojs Web Component Tabs | Yes  | Yes              | Yes  | Yes | Yes              | Yes      |
+| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Normal Tabs                | Yes  | Yes              | Yes  | Yes | Yes              |
+| Normal Tabs With Icons     | Yes  | Yes              | Yes  | Yes | Yes              |
+| Gradient Tabs With Icons   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Astrojs Web Component Tabs | Yes  | Yes              | Yes  | Yes | Yes              |
 
 ravixUI follows the tabs pattern from [WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
 ### Keyboard Interaction
 
-| Keyboard Navigation                                      | Description                                                                                                                                      |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keyboard Navigation                                      | Description                                                                                                                                                |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <kbd>Arrow Up/Down</kbd> (Only for AstroJS Webcomponent) | If orientation is vertical, moves focus to next tab. Has no effect if the tabs are horizontal in orientation.(Available only in the AstroJS web component) |
-| <kbd>Arrow Left/Right</kbd>                              | If the tabs are horizontal, moves focus to next tab. Has no effect if the tabs are vertical in orientation                                       |
-| <kbd>Enter</kbd> or <kbd>Space</kbd>                     | Shows the tab panel associated with the currently focused tab while hiding other tab panels                                                      |
-| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd>      | Moves the focus out of the tablist and onto the next/previous focusable element in the DOM.                                                      |
+| <kbd>Arrow Left/Right</kbd>                              | If the tabs are horizontal, moves focus to next tab. Has no effect if the tabs are vertical in orientation                                                 |
+| <kbd>Enter</kbd> or <kbd>Space</kbd>                     | Shows the tab panel associated with the currently focused tab while hiding other tab panels                                                                |
+| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd>      | Moves the focus out of the tablist and onto the next/previous focusable element in the DOM.                                                                |

@@ -10,7 +10,7 @@ const { type, message, showIcon, prominent } = Astro.props;
 ---
 
 <div
-  class={`rounded-lg p-4 my-2 text-base md:text-lg 
+  class={`rounded-lg p-4 my-2 text-base  
     ${type === "info" ? `${prominent ? "bg-blue-800 dark:bg-blue-900 text-white " : "bg-blue-200 dark:bg-blue-950 text-blue-950 dark:text-white"}` : ""}
     ${type === "success" ? `${prominent ? "bg-green-800 dark:bg-green-900 text-white " : "bg-green-200 dark:bg-green-950 text-green-950 dark:text-white"}` : ""}
     ${type === "warning" ? `${prominent ? "bg-yellow-400 dark:bg-yellow-500 text-black " : "bg-yellow-200 dark:bg-yellow-700/50 text-black dark:text-white"}` : ""}
@@ -118,8 +118,8 @@ const { type, message, showIcon, prominent } = Astro.props;
     }
     {
       !showIcon && (
-        <span class={`font-bold mr-3 ${prominent ? "text-white" : ""}`}>
-          {type.charAt(0).toUpperCase() + type.slice(1)}:
+        <span class={`font-bold text-base md:text-lg  ${prominent ? "text-white" : ""}`}>
+          {type.charAt(0).toUpperCase() + type.slice(1)} : &nbsp;
         </span>
       )
     }

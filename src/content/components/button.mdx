@@ -1,6 +1,6 @@
 ---
 title: "Button"
-order: 11
+order: 12
 type: "Building"
 ---
 
@@ -33,7 +33,7 @@ The simple yet powerful button. ravixUI has multiple types of buttons available 
       name: "button1",
       title: "Design Hints",
       content:
-        "Buttons serve as interactive elements that allow users to engage with web pages or websites. While colors can be customized to align with a website's branding, it's important to consider the potential semantic meanings associated with certain hues. For instance, colors like yellow, green, and red can convey additional context about the action a button will perform. Incorporating icons alongside buttons can provide additional information when appropriate.Hover effects can be used to indicate button states, but it's worth noting that this functionality will not translate to touchscreen interfaces. If an action is hard to reverse or irreversible, add confirmation screens or modals to prevent accidental actions.",
+        "Buttons serve as interactive elements that allow users to engage with web pages or websites. While colors can be customized to align with a website's branding, it's important to consider the potential semantic meanings associated with certain hues. For instance, colors like yellow, green, and red can convey additional context about the action a button will perform. Incorporating icons alongside buttons can provide additional information when appropriate. Hover effects can be used to indicate button states, but it's worth noting that this functionality will not translate to touchscreen interfaces. If an action is hard to reverse or irreversible, add confirmation screens or modals to prevent accidental actions.",
     },
     {
       name: "button1",
@@ -44,7 +44,7 @@ The simple yet powerful button. ravixUI has multiple types of buttons available 
   ]}
 />
 
-**Note:** All the icons used in this section are from Google Material Icons which are [available on iconify.design](https://iconify.design/).
+**Note:** All the icons used in this section are [available in iconify.design](https://iconify.design/).
 
 ## Simple Button
 
@@ -125,7 +125,7 @@ The Simple button with icons.
 
 ## Link Button
 
-This is a tailwindCSS wrapper around `<a>` anchor tag to make it look like a button. Useful for internal navigation to different parts of a page and also between different pages in your project.
+This is a tailwindCSS wrapper on the `<a>` tag to make it look like a button. Useful for internal navigation to different parts of a page and also between different pages in your project.
 
 <Tab name="Link Button" tabs={[{ "name" : "Preview", "id" : "LB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "LB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "LB-Tab3", "icon" : "astro"}]}>
 
@@ -206,7 +206,7 @@ The accessible icon only button. Useful when dealing with limited space on a web
 
 </Tab>
 
-**Note:** We use `title=""` attribute to create a tooltip to give additional information to the user when they hover over the button and `aria-label=""` attribute for screenreaders. Most screenreaders will only callout aria-label attribute and not the title attribute . `aria-hidden=true` is added to the svg icons as an attribute to hide it from screen readers to prevent duplicate callouts.
+**Note:** We use `title=""` attribute to create a tooltip to give additional information to the user when they hover over the button and `aria-label=""` attribute for screenreaders. Most screenreaders will only callout aria-label attribute or the title attribute . `aria-hidden=true` is added to the svg icons as an attribute to hide it from screen readers to prevent duplicate callouts.
 
 <Accordion
   data={[
@@ -255,7 +255,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 
 </Tab>
 
-**Note:** The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) . For the second row buttons, the effect is produced by using the shadow property with arbitrary values.
+**Note:** The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) . 
 
 <Accordion
   data={[

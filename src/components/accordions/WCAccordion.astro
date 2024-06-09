@@ -7,8 +7,8 @@ const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
 
  If crypto is unsupported, we can use the following code to generate unique IDs.
  **/
- 
-  const generateUniqueId = () => {
+
+const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
   const randomNum = Math.floor(Math.random() * 10000)
     .toString()
@@ -42,7 +42,7 @@ const panels = [
   },
   {
     header: 'Panel 2 Header',
-    content: 'This is the content for Panel 2.You can include any HTML elements or components here.',
+    content: 'This is the content for Panel 2.',
   },
   {
     header: 'Panel 3 Header',
@@ -69,11 +69,11 @@ if you want more complex content, you can send the content as HTML and use a fra
           <button
             data-accordion="button"
             type="button"
-            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-3 md:py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500 "
+            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500 "
             aria-expanded="false"
             id={`${componentId}-button-${index + 1}`}
             aria-controls={`${componentId}-panel-${index + 1}`}>
-            <h3 class="text-base md:text-lg">{panel.header}</h3>
+            <h3 class="text-base md:text-lg font-medium">{panel.header}</h3>
             <svg
               class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
               xmlns="http://www.w3.org/2000/svg"
@@ -94,10 +94,10 @@ if you want more complex content, you can send the content as HTML and use a fra
             data-accordion="panel"
             aria-hidden="true"
             id={`${componentId}-panel-${index + 1}`}
-            class=" motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 ease-in-out"
+            class=" motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 peer-aria-expanded:overflow-visible motion-safe:ease-in-out"
             aria-labelledby={`${componentId}-button-${index + 1}`}
             role="region">
-            <div class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+            <div class="px-6 text-start text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
               {panel.content}
             </div>
           </section>
@@ -115,9 +115,18 @@ if you want more complex content, you can send the content as HTML and use a fra
    * and "aria-hidden" attributes on the buttons and panels respectively.
    */
   class Accordion extends HTMLElement {
-    panels: HTMLElement[];
-    buttons: NodeListOf<HTMLButtonElement>;
-    accordionContainer: HTMLElement;
+    
+    static readonly ARIA = {
+      EXPANDED: "aria-expanded",
+      CONTROLS: "aria-controls",
+      LABELLEDBY: "aria-labelledby",
+      HIDDEN : "aria-hidden",
+    } as const;
+   
+    private panels: HTMLElement[];
+    private buttons: NodeListOf<HTMLButtonElement>;
+    private accordionContainer: HTMLElement;
+    private buttonClickHandlers: Array<(e: Event) => void> = [];
 
     constructor() {
       super();
@@ -131,30 +140,80 @@ if you want more complex content, you can send the content as HTML and use a fra
         this.accordionContainer?.querySelectorAll('[data-accordion="panel"]') ||
           []
       ) as HTMLElement[];
-
+      if (!this.accordionContainer) {
+        console.error("Accordion container not found");
+        return;
+      }
+    }
+    /// Attaches click handlers to the accordion buttons, allowing the user to expand and collapse the accordion panels.
+    /// This method is called when the Accordion component is connected to the DOM.
+    /// If there is an error attaching the click handlers, an error message is logged to the console.
+    connectedCallback() {
+      try {
+        this.attachClickHandlers();
+      } catch (e) {
+        console.error(e);
+        console.error(
+          "Error attaching click handlers. Please check if the buttons and panels are present in the accordion container."
+        );
+      }
+    }
+    /// Attaches click handlers to the accordion buttons, allowing the user to expand and collapse the accordion panels.
+    /// Registers the click handlers in an array so that they can be removed when the component is disconnected from the DOM.
+    /// If there is an error attaching the click handlers, an error message is logged to the console.
+    attachClickHandlers() {
       this.buttons?.forEach((button, index) => {
-        button.addEventListener("click", () => {
-          this.toggleAccordion(button, index);
-        });
+        const clickHandler = this.handleButtonClick(button, index);
+        this.buttonClickHandlers.push(clickHandler);
+        button.addEventListener("click", clickHandler);
       });
     }
+    /// Handles the click event on an accordion button, toggling the expanded state of the corresponding accordion panel.
+    ///
+    /// @param button - The button element that was clicked.
+    /// @param index - The index of the button within the accordion.
+    /// @returns A function that can be used as a click event handler for the button.
+   handleButtonClick(
+      button: HTMLButtonElement,
+      index: number
+    ): (e: Event) => void {
+      return (e: Event) => {
+        e.preventDefault();
+        this.toggleAccordion(button, index);
+      };
+    }
 
+    /**
+     * Toggles the expanded state of an accordion panel.
+     *
+     * @param button - The button element that was clicked to toggle the accordion.
+     * @param index - The index of the button within the accordion.
+     */
     toggleAccordion(button: HTMLButtonElement, index: number) {
-      if (button.getAttribute("aria-expanded") === "true") {
-        button.setAttribute("aria-expanded", "false");
+      if (button.getAttribute(Accordion.ARIA.EXPANDED) === "true") {
+        button.setAttribute(Accordion.ARIA.EXPANDED, "false");
       } else {
         this.buttons?.forEach((btn) => {
-          btn.setAttribute("aria-expanded", "false");
+          btn.setAttribute(Accordion.ARIA.EXPANDED, "false");
         });
-        button.setAttribute("aria-expanded", "true");
+        button.setAttribute(Accordion.ARIA.EXPANDED, "true");
       }
       this.panels?.forEach((panel, i) => {
-        if (i === index && button.getAttribute("aria-expanded") === "true") {
-          panel.setAttribute("aria-hidden", "false");
+        if (i === index && button.getAttribute(Accordion.ARIA.EXPANDED) === "true") {
+          panel.setAttribute(Accordion.ARIA.HIDDEN, "false");
         } else {
-          panel.setAttribute("aria-hidden", "true");
+          panel.setAttribute(Accordion.ARIA.HIDDEN, "true");
         }
       });
+    }
+    /// Removes the click event handlers that were attached to the accordion buttons when the component is disconnected from the DOM.
+    /// This ensures that the component does not continue to listen for click events on buttons that are no longer part of the page.
+    /// The click handlers array is cleared and ready for attaching new click handlers when the component is reconnected to the DOM.
+    disconnectedCallback() {
+      this.buttons?.forEach((button, index) => {
+        button.removeEventListener("click", this.buttonClickHandlers[index]);
+      });
+      this.buttonClickHandlers = [];
     }
   }
 

@@ -52,7 +52,7 @@ const { entryMap, currentSlug } = Astro.props;
                       ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full my-1"
                       : "hover:bg-indigo-100 dark:hover:bg-zinc-900 px-4 py-2 rounded-md w-full my-1"
                   }`}>
-                  {links.title}
+                  {links.title}{links.title==="Forms" && <span class="text-sm ml-2 text-yellow-700 dark:text-yellow-400">Unstable</span>}
                 </a>
               </li>
             )

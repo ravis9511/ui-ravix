@@ -23,7 +23,8 @@ interface Props {
 const { currentSlug } = Astro.props;
 ---
 
-<nav aria-label="Site Navigation"
+<nav
+  aria-label="Site Navigation"
   class="font-display flex md:h-[8dvh] flex-row items-center justify-between z-50 px-3 sm:px-8 md:px-10 lg:px-16 xl:px-32 sticky top-0 border-b border-gray-300 dark:border-zinc-800 dark:bg-zinc-950 bg-gray-100 py-2">
   <div class="flex flex-row items-center justify-between">
     <Hamburger
@@ -37,24 +38,24 @@ const { currentSlug } = Astro.props;
       <Image
         src={LogoLightMode}
         alt="Logo"
-        class="w-8 h-8 hidden sm:block dark:hidden mr-1 sm:mx-4"
+        class="w-8 h-8 block dark:hidden mr-1 sm:mx-4"
       />
       <Image
         src={LogoDarkMode}
         alt="Logo"
-        class="hidden w-8 h-8 dark:sm:block mr-1 sm:mx-4"
+        class="hidden w-8 h-8 dark:block mr-1 sm:mx-4"
       />
       <span class="text-xl sm:text-2xl">ravixUI</span>
     </a>
   </div>
-  <div class="hidden  sm:w-1/2 dark:sm:block">
+  <div class="hidden sm:w-1/2 dark:sm:block">
     <Search
       id="search1"
       className="pagefind-ui dark"
       uiOptions={{ showImages: false, excerptLength: 15 }}
     />
   </div>
-  <div class="hidden sm:block sm:w-1/2  dark:hidden">
+  <div class="hidden sm:block sm:w-1/2 dark:hidden">
     <Search
       id="search2"
       className="pagefind-ui light"
@@ -64,11 +65,6 @@ const { currentSlug } = Astro.props;
   <div class="hidden lg:block items-center h-full justify-center">
     <div class="w-full h-full inline-flex lg:mx-3 justify-end">
       <div class="hidden lg:inline-flex items-center h-full space-x-4">
-        <a
-          href="/"
-          class="p-2 text-base lg:text-xl hover:text-blue-400"
-          >Support</a
-        >
         <a
           href="/components/gettingstarted"
           class="p-2 text-base lg:text-xl hover:text-blue-400"
@@ -83,7 +79,7 @@ const { currentSlug } = Astro.props;
 <style is:global>
   .pagefind-ui.light {
     --pagefind-ui-scale: 0.7;
-    --pagefind-ui-primary: 12102c;
+    --pagefind-ui-primary: #12102c;
     --pagefind-ui-text: black;
     --pagefind-ui-border: slategrey;
     --pagefind-ui-border-width: 1px;
@@ -91,6 +87,7 @@ const { currentSlug } = Astro.props;
     --pagefind-ui-font: "Figtree Variable", sans-serif;
     font-weight: 400;
   }
+
   .pagefind-ui.dark {
     --pagefind-ui-scale: 0.7;
     --pagefind-ui-primary: #ffffff;
@@ -101,8 +98,12 @@ const { currentSlug } = Astro.props;
     --pagefind-ui-font: "Figtree Variable", sans-serif;
   }
   .pagefind-ui .pagefind-ui__search-input {
+    color: var(--pagefind-ui-text);
     font-size: 18px;
     font-weight: 400;
+  }
+  .pagefind-ui__search-input.svelte-e9gkc3::placeholder {
+    opacity: 0.5;
   }
   .pagefind-ui .pagefind-ui__result-title {
     font-size: 18px !important;

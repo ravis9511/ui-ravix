@@ -1,14 +1,12 @@
 ---
-
 interface Props {
   type: "info" | "success" | "warning" | "error" | string;
 }
 const { type } = Astro.props;
-
 ---
 
 <div
-  class={`not-prose rounded-full px-4 py-3 my-2 flex flex-row items-center text-base md:text-lg max-w-max 
+  class={`not-prose rounded-full px-4 py-3 my-2 flex flex-row items-center text-base  max-w-max 
   ${type === "info" ? "bg-indigo-100 dark:bg-indigo-950 text-indigo-950 dark:text-white" : ""}
   ${type === "success" ? "bg-green-200 dark:bg-green-950 text-green-950 dark:text-white" : ""}
   ${type === "warning" ? "bg-yellow-300 dark:bg-yellow-700/50 text-black dark:text-white" : ""}
@@ -17,25 +15,25 @@ const { type } = Astro.props;
   `}>
   {
     type === "info" && (
-        <>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300">
-            <path
-              fill="currentColor"
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
-            />
-          </svg>
-          <span class="sr-only">Information :</span>
-        </>
-      )
+      <>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300">
+          <path
+            fill="currentColor"
+            d="M11 17h2v-6h-2zm1-8q.425 0 .713-.288T13 8t-.288-.712T12 7t-.712.288T11 8t.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
+          />
+        </svg>
+        <span class="sr-only">Information :</span>
+      </>
+    )
   }
   {
-     type === "success" && (
+    type === "success" && (
       <>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +52,7 @@ const { type } = Astro.props;
     )
   }
   {
-     type === "warning" && (
+    type === "warning" && (
       <>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +71,7 @@ const { type } = Astro.props;
     )
   }
   {
-     type === "error" && (
+    type === "error" && (
       <>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +90,7 @@ const { type } = Astro.props;
     )
   }
   {
-     !["info", "success", "warning", "error"].includes(type) && (
+    !["info", "success", "warning", "error"].includes(type) && (
       <>
         <svg
           xmlns="http://www.w3.org/2000/svg"

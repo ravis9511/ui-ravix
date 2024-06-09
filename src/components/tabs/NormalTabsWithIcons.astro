@@ -16,7 +16,7 @@ const tabs = [
     icon: "compare",
   },
 ];
-const name="exampleTab2";
+const name = "exampleTab2";
 
 /*
 This uses conditional rendering to render the SVGs, but generally you would import them from a separate file like so :
@@ -130,6 +130,9 @@ This will aid in the separation of concerns and make the code more maintainable.
     const tabList = tabContainer?.querySelector(
       '[role="tablist"]'
     ) as HTMLElement;
+    if (!tabContainer || !tabs || !panels || !tabList) {
+      return;
+    }
     let tabFocus = 0;
     tabList?.addEventListener("keydown", (e) => {
       if (e.key && tabs) {
@@ -183,5 +186,5 @@ This will aid in the separation of concerns and make the code more maintainable.
       });
     });
   }
-  document.addEventListener("astro:page-load",normalTabsWithIcons);
+  document.addEventListener("astro:page-load", normalTabsWithIcons);
 </script>

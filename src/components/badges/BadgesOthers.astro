@@ -2,12 +2,13 @@
   class="flex flex-wrap sm:flex-row gap-12 py-4 overflow-auto w-full justify-center">
   <button
     type="button"
-    class="px-4 py-2 relative rounded-lg font-semibold text-base disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
+    class="relative px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
     >Open Messages
     <span
-      class="absolute inline-flex items-center rounded-full -top-3 -right-5 bg-indigo-300 px-3 py-1 text-xs font-medium text-black"
+      class="absolute inline-flex items-center rounded-full -top-2 -right-2 bg-indigo-300 px-1 py-1 text-xs font-medium text-black"
       >18</span
     >
+    <span class="sr-only">messages</span>
   </button>
   <button
     type="button"
@@ -27,11 +28,12 @@
     <span
       class="absolute inline-flex items-center rounded-full -top-3 -right-3 bg-red-700 px-[9px] py-1 text-xs font-medium text-white"
       >3</span
-    ></button
+    ><span class="sr-only">Items in cart</span>
+    </button
   >
   <button
     type="button"
-    class="px-4 py-1 relative rounded-lg font-semibold text-base disabled:opacity-60 bg-gray-700 text-white hover:bg-gray-600 disabled:pointer-events-none"
+    class="relative px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
     >Fix Now
     <span
       aria-hidden="true"

@@ -131,6 +131,9 @@ This will aid in the separation of concerns and make the code more maintainable.
     const tabList = tabContainer?.querySelector(
       '[role="tablist"]'
     ) as HTMLElement;
+    if (!tabContainer || !tabs || !panels || !tabList) {
+      return;
+    }
     let tabFocus = 0;
     tabList?.addEventListener("keydown", (e) => {
       if (e.key && tabs) {

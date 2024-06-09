@@ -1,6 +1,6 @@
 ---
 title: "Avatar"
-order: 8
+order: 10
 type: "Building"
 ---
 
@@ -41,7 +41,7 @@ Avatar is used to represent a user or group of users using an image. It can also
   ]}
 />
 
-**Accessibility Note:** Pay close attention to the proper utilization of aria-label, aria-hidden, and alt attributes when working with different avatar elements. For links, you can enhance the accessibility experience by incorporating supplementary information within the aria-label attribute, effectively conveying the context of the associated image, icon, or initials and set aria-hidden="true" on the associated elements inside the link.
+
 
 ## Simple Avatar
 
@@ -170,7 +170,6 @@ These avatars are similar to the previous one, but an additional ring is added t
 
 </Tab>
 
-**Note:** While the above avatars use both ring and dot indicators, you may choose to use the ring only or the dot only. The choice is up to you and the design of your application.
 
 ## Avatar Groups
 
@@ -222,4 +221,4 @@ The avatar group allows you to show multiple avatars stacked together in a group
 | Avatar with State And Ring | Yes  | Yes              | Yes  | Yes | Yes              |
 | Avatar Groups              | Yes  | Yes              | Yes  | Yes | Yes              |
 
-Note that there are no clear accessibility guidelines for the avatar pattern described by WAI-ARIA, so ravixUI implements accessbility for avatars keeping in mind the patterns for the `role=img` and the accessbility patterns for `<a>` tag where appropriate.
+Note that there are no defined accessibility guidelines for the avatar pattern described by WAI-ARIA APG, so ravixUI implements accessbility for avatars keeping in mind the patterns for the `role=img` and the accessbility patterns for `<a>` tag where appropriate.

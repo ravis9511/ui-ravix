@@ -1,112 +1,96 @@
 ---
+const generateUniqueId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  return timestamp + randomNum;
+}; // To create a somewhat unique ID for the accordion
 
+const componentId = generateUniqueId();
+interface AccordionPanel {
+  header: string;
+  content: string;
+}
+
+interface AccordionProps {
+  panels: AccordionPanel[];
+}
+const { panels = [] } = Astro.props as AccordionProps;
+/*
+To call this component, you can use the code below 
+// YourPage.astro
+---
+import Accordion from './Accordion.astro';
+
+const panels = [
+  {
+    header: 'Panel 1 Header',
+    content: 'This is the content for Panel 1.',
+  },
+  {
+    header: 'Panel 2 Header',
+    content: 'This is the content for Panel 2.You can include any HTML elements or components here.',
+  },
+  {
+    header: 'Panel 3 Header',
+    content: 'This is the content for Panel 3.',
+  },
+  // Add more panels as needed
+];
+---
+<Accordion panels={panels} />
+
+if you want more complex content, you can send the content as HTML and use a fragment to render it.
+{panel.content} will become <Fragment set:html={panel.content} /> but this is not tested and may cause unexpected behaviours.
+*/
 ---
 
 <div
   id="accordion-container-alt"
   class="mb-12 divide-y divide-gray-300 dark:divide-zinc-800 rounded-lg max-w-3xl">
-  <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
-    <button
-      data-accordion="button"
-      type="button"
-      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-3 md:py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
-      aria-expanded="false"
-      aria-controls="alt-panel-1"
-      id="alt-header-1">
-      <h3 class="text-base md:text-lg">Alt Header 1</h3>
-      <svg
-        class="hidden w-5 h-5 shrink-0 group-aria-expanded/button:block"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M19 12.998H5v-2h14z"
-        ></path>
-      </svg>
-      <svg
-        class="w-5 h-5 shrink-0 group-aria-expanded/button:hidden"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-        ></path>
-      </svg>
-    </button>
+  
+    {
+      panels.map((panel: AccordionPanel, index: number) => (
+        <div class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 ">
+          <button
+            data-accordion="button"
+            type="button"
+            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
+            aria-expanded="false"
+            id={`${componentId}-button-${index + 1}`}
+            aria-controls={`${componentId}-panel-${index + 1}`}>
+            <h3 class="text-base md:text-lg font-medium">{panel.header}</h3>
+            <svg
+              class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
 
-    <section
-      data-accordion="panel"
-      id="alt-panel-1"
-      aria-hidden="true"
-      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
-      aria-labelledby="alt-header-1"
-      role="region">
-      <div
-        class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950">
-        Panel 1 content goes here.
-      </div>
-    </section>
-  </div>
-  <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950">
-    <button
-      type="button"
-      data-accordion="button"
-      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between w-full px-4 py-3 md:py-4 cursor-pointer text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
-      aria-expanded="false"
-      aria-controls="alt-panel-2"
-      id="alt-header-2">
-      <h3 class="text-base md:text-lg">Alt Header 2</h3>
-      <svg
-        class="hidden w-5 h-5 shrink-0 group-aria-expanded/button:block"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M19 12.998H5v-2h14z"
-        ></path>
-      </svg>
-      <svg
-        class="w-5 h-5 shrink-0 group-aria-expanded/button:hidden"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-        <path
-          fill="currentColor"
-          d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"
-        ></path>
-      </svg>
-    </button>
-
-    <section
-      data-accordion="panel"
-      aria-hidden="true"
-      id="alt-panel-2"
-      class="motion-safe:transition-all delay-75 opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
-      aria-labelledby="alt-header-2"
-      role="region">
-      <div
-        class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950">
-        Users can click on a panel's header to expand or collapse its content,
-        allowing for a more organized and space-efficient presentation of
-        information, especially when dealing with a lot of content on a webpage.
-        Accordions are commonly used in FAQs, product descriptions, and other
-        situations where content needs to be organized into easily navigable
-        sections.
-      </div>
-    </section>
+          <section
+            data-accordion="panel"
+            aria-hidden="true"
+            id={`${componentId}-panel-${index + 1}`}
+            class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
+            aria-labelledby={`${componentId}-button-${index + 1}`}
+            role="region">
+            <div class="px-6 text-start text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+              {panel.content}
+            </div>
+          </section>
+        </div>
+      ))
+    }
   </div>
 
   <!-- Add more accordion items as needed -->

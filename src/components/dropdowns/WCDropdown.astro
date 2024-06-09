@@ -6,8 +6,8 @@ const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
 
  If crypto is unsupported, we can use the following code to generate unique IDs.
  **/
- 
- const generateUniqueId = () => {
+
+const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
   const randomNum = Math.floor(Math.random() * 10000)
     .toString()
@@ -36,7 +36,6 @@ interface DropDown {
 
 const { menuLabel, menuItems } = Astro.props as DropDown;
 ---
-
 
 <x-dropdown>
   <div class="group relative inline-flex text-left">
@@ -110,13 +109,19 @@ const { menuLabel, menuItems } = Astro.props as DropDown;
    * The dropdown menu is triggered by clicking the button element with the `data-dropdown="button"` attribute.
    * The menu items are contained within a `<ul>` element with the `data-dropdown="menu"` attribute.
    *
-   * 
+   *
    */
   class XDropdown extends HTMLElement {
     menuItems: NodeListOf<HTMLLIElement>;
     button: HTMLButtonElement;
     menu: HTMLUListElement;
+    tabFocus: number = 0;
 
+    /**
+     * The constructor for the `XDropdown` custom HTML element.
+     *
+     * This constructor initializes the necessary properties for the dropdown menu functionality, including the button, menu, and menu items.
+     */
     constructor() {
       super();
 
@@ -129,95 +134,122 @@ const { menuLabel, menuItems } = Astro.props as DropDown;
       this.menuItems = this.querySelectorAll(
         '[data-dropdown="menu"] li'
       ) as NodeListOf<HTMLLIElement>;
-
-      this.button?.addEventListener("click", (event) => {
-        event.stopPropagation();
-        if (this.button?.getAttribute("aria-expanded") === "true") {
-          this.closeMenu();
-          return;
+    }
+    /**
+     * Initializes the button click handler for the dropdown menu.
+     *
+     * This method is called when the custom `XDropdown` element is connected to the DOM. It sets up the event listener for the dropdown button, which toggles the visibility of the dropdown menu.
+     */
+    connectedCallback() {
+      try {
+        this.button?.addEventListener("click", this.handleButtonClick);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+    }
+    /**
+     * Handles the click event on the dropdown button, toggling the visibility of the dropdown menu.
+     *
+     * When the button is clicked, this method checks the current state of the button's `aria-expanded` attribute. If it is "true", the method calls `closeMenu()` to hide the dropdown menu. Otherwise, it sets the `aria-expanded` attribute to "true" and shows the dropdown menu by setting the `aria-hidden` attribute of the menu element to "false". It then adds a click event listener to the document to close the menu when the user clicks outside of it, and sets the focus to the first menu item after a short delay to prevent a visual stutter.
+     *
+     * @param event - The mouse event object.
+     */
+    handleButtonClick = (event: MouseEvent) => {
+      event.stopPropagation();
+      if (this.button?.getAttribute("aria-expanded") === "true") {
+        this.closeMenu();
+        return;
+      }
+      this.button?.setAttribute("aria-expanded", "true");
+      if (this.menu) {
+        this.menu.setAttribute("aria-hidden", "false");
+        if (this.menuItems) {
+          document.documentElement.addEventListener(
+            "click",
+            this.closeMenu.bind(this)
+          );
+          setTimeout(() => {
+            this.menuItems[0].focus();
+          }, 200); // to prevent the focus setting from causing a stutter in the animation
+          this.menu.addEventListener("keydown", this.keyDownHandler);
         }
-        this.button?.setAttribute("aria-expanded", "true");
-        if (this.menu) {
-          this.menu.setAttribute("aria-hidden", "false");
-
-          /**
-           * Handles keyboard navigation and interactions for a dropdown menu.
-           *
-           * When the dropdown is focused, the following keyboard interactions are supported:
-           * - Arrow Up/Down: Moves the focus to the previous/next item in the dropdown
-           * - Escape: Closes the dropdown
-           * - Enter: Clicks the currently focused dropdown item
-           * - Tab: Moves focus back to the button
-           */
-          if (this.menuItems) {
-            document.documentElement.addEventListener("click", this.closeMenu);
-            setTimeout(() => {
-              this.menuItems[0].focus();
-            }, 200); // to prevent the focus setting from causing a stutter in the animation
-            let tabFocus = 0;
-
-            this.menu.addEventListener("keydown", (keyboardEvent) => {
-              const e = keyboardEvent as KeyboardEvent;
-
-              if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-                e.preventDefault();
-                this.menuItems[tabFocus].setAttribute("tabindex", "-1");
-                if (e.key === "ArrowDown") {
-                  tabFocus++;
-                  // If we're at the end, go to the start
-                  if (tabFocus >= this.menuItems.length) {
-                    tabFocus = 0;
-                  }
-                  // Move left
-                } else if (e.key === "ArrowUp") {
-                  tabFocus--;
-                  // If we're at the start, move to the end
-                  if (tabFocus < 0) {
-                    tabFocus = this.menuItems.length - 1;
-                  }
-                }
-                tabFocus = tabFocus % this.menuItems.length;
-                this.menuItems[tabFocus].focus();
-              } else if (e.key === "Escape") {
-                this.closeMenu();
-                return;
-              } else if (e.key === "Enter") {
-                (this.menuItems[tabFocus].children[0] as HTMLElement)?.click();
-                this.closeMenu();
-                return;
-              } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-                e.preventDefault();
-
-                if (e.key === "ArrowRight") {
-                  tabFocus = this.menuItems.length - 1;
-                } else if (e.key === "ArrowLeft") {
-                  tabFocus = 0;
-                }
-                tabFocus = tabFocus % this.menuItems.length;
-                this.menuItems[tabFocus].focus();
-              } else if (e.key === "Tab" || e.key === "Shift+Tab") {
-                e.preventDefault();
-                this.button.focus();
-              }
-            });
+      }
+    };
+    /**
+     * Handles keyboard events for the dropdown menu.
+     *
+     * This method is called when a key is pressed while the dropdown menu is open. It handles the following key events:
+     *
+     * - `ArrowUp` and `ArrowDown`: Moves the focus to the previous or next menu item, wrapping around to the beginning or end of the list.
+     * - `Escape`: Closes the dropdown menu.
+     * - `Enter`: Clicks the currently focused menu item and closes the dropdown menu.
+     * - `ArrowLeft` and `ArrowRight`: Moves the focus to the first or last menu item.
+     * - `Tab` and `Shift+Tab`: Moves the focus back to the dropdown button.
+     *
+     * @param keyboardEvent - The keyboard event object.
+     */
+    keyDownHandler = (keyboardEvent: KeyboardEvent) => {
+      const e = keyboardEvent as KeyboardEvent;
+      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+        this.menuItems[this.tabFocus].setAttribute("tabindex", "-1");
+        if (e.key === "ArrowDown") {
+          this.tabFocus++;
+          // If we're at the end, go to the start
+          if (this.tabFocus >= this.menuItems.length) {
+            this.tabFocus = 0;
+          }
+          // Move left
+        } else if (e.key === "ArrowUp") {
+          this.tabFocus--;
+          // If we're at the start, move to the end
+          if (this.tabFocus < 0) {
+            this.tabFocus = this.menuItems.length - 1;
           }
         }
+        this.tabFocus = this.tabFocus % this.menuItems.length;
+        this.menuItems[this.tabFocus].focus();
+      } else if (e.key === "Escape") {
+        this.closeMenu();
+        return;
+      } else if (e.key === "Enter") {
+        (this.menuItems[this.tabFocus].children[0] as HTMLElement)?.click();
+        this.closeMenu();
+        return;
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
 
-        document.documentElement.addEventListener("click", this.closeMenu);
-      });
-    }
+        if (e.key === "ArrowRight") {
+          this.tabFocus = this.menuItems.length - 1;
+        } else if (e.key === "ArrowLeft") {
+          this.tabFocus = 0;
+        }
+        this.tabFocus = this.tabFocus % this.menuItems.length;
+        this.menuItems[this.tabFocus].focus();
+      } else if (e.key === "Tab" || e.key === "Shift+Tab") {
+        e.preventDefault();
+        this.button.focus();
+      }
+    };
 
+    /**
+     * Closes the dropdown menu and resets the focus to the dropdown button.
+     */
     closeMenu() {
-      this.button = this.querySelector(
-        '[data-dropdown="button"]'
-      ) as HTMLButtonElement;
-      this.menu = this.querySelector(
-        '[data-dropdown="menu"]'
-      ) as HTMLUListElement;
-
+      this.tabFocus = 0;
       this.button?.setAttribute("aria-expanded", "false");
       this.menu?.setAttribute("aria-hidden", "true");
       this.button?.focus();
+      this.menu?.removeEventListener("keydown", this.keyDownHandler);
+      document.documentElement.removeEventListener("click", this.closeMenu);
+    }
+    /**
+     * Removes event listeners and cleans up the dropdown menu when the component is disconnected.
+     */
+    disconnectedCallback() {
+      this.button?.removeEventListener("click", this.handleButtonClick);
+      this.menu?.removeEventListener("keydown", this.keyDownHandler);
       document.documentElement.removeEventListener("click", this.closeMenu);
     }
   }

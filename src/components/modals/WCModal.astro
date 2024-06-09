@@ -14,9 +14,9 @@ const componentId = generateUniqueId();
 interface DialogModalProps {
   title: string;
   content: string;
-  isOpen: boolean;
+ 
 }
-const { title, content, isOpen = false } = Astro.props as DialogModalProps;
+const { title, content} = Astro.props as DialogModalProps;
 ---
 
 <dialog-modal>

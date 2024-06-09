@@ -5,18 +5,18 @@
 <button
   id="modal-open"
   type="button"
-  class=" px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
+  class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
   >Open Modal</button
 >
 <dialog
   id="modal-container"
-  class=" fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm sm:p-0 text-zinc-900 dark:text-gray-50"
+  class="group fixed z-50 inset-0 overflow-hidden w-screen h-screen bg-gray-500/0 backdrop:backdrop-blur-sm sm:p-0 text-zinc-900 dark:text-gray-50"
   aria-labelledby="modal-title"
   aria-modal="true">
   <div
-    class=" grid items-center  justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
+    class=" grid items-center justify-items-center w-full pt-4 px-4 pb-20 text-center sm:p-0 text-zinc-900 dark:text-gray-50">
     <div
-      class="flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      class=" flex flex-col text-gray-900 dark:text-white bg-gray-50 dark:bg-zinc-800 rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
       <h3
         class="text-lg font-semibold mb-4 w-full border-b border-gray-300 dark:border-zinc-700 p-4">
         Confirm Action
@@ -35,13 +35,13 @@
         class="flex flex-row w-full items-end gap-x-4 justify-end px-4 py-4 border-t border-gray-300 dark:border-zinc-700">
         <button
           type="button"
-          class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white "
+          class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
           id="modal-confirm"
           >Confirm</button
         >
         <button
           type="button"
-          class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white "
+          class="px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
           id="modal-cancel"
           >Cancel</button
         >

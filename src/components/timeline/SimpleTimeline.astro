@@ -62,13 +62,13 @@ interface TimelineEntry {
  */
 ---
 
-<div class="px-5 py-2 w-full flex flex-wrap items-start justify-start justify-items-start text-gray-900 dark:text-gray-100">
+<div class="md:px-5 py-2 w-full flex flex-wrap items-start justify-start justify-items-start text-gray-900 dark:text-gray-100">
   <div class="flex flex-wrap w-full">
     <ol class="w-full">
       {timelineData.map((item, index) => (
         <li class="flex relative py-4 items-center justify-center">
           <div class="w-1/6 pr-3 pl-2 text-end text-sm md:text-base">
-            <time datetime={item.date}>{new Date(item.date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+            <time datetime={item.date}>{new Date(item.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</time>
           </div>
           {index !== timelineData.length - 1 && (
               <div class="h-[calc(60%)] w-3 absolute left-[calc(100%/6)] top-1/2 flex items-center justify-center">
