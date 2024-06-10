@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import SimpleCard from "../../components/cards/SimpleCard.astro";
 import SimpleCardCode from "../../components/cards/SimpleCard.astro?raw";
 import SimpleCardCodeAstro from "../../components/cards/SCardAstro.astro?raw";
@@ -298,7 +299,7 @@ A card with a glass effect.
 />
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component       | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | --------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Card     | Yes  | Yes              | Yes  | Yes | Yes              |
@@ -306,7 +307,7 @@ A card with a glass effect.
 | Features Card   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Gradient Card   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Glass Card      | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards while adhering to the WCAG 2.1 AA standard.
 
 While the cards out of the box in ravixUI showcase action buttons inside the cards, it's possible that the card itself can act as an action button based on context, for example, catalogs having product cards that can be clicked to view the product details or genres in a music application having a card for each genre that can be clicked to view songs of the genre.

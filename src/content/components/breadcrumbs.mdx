@@ -7,6 +7,7 @@ type: "Navigation"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.astro";
 import BreadcrumbsCode from "../../components/breadcrumbs/Breadcrumbs.astro?raw";
 import BreadcrumbsCodeAstro from "../../components/breadcrumbs/Breadcrumbs.astro?raw";
@@ -164,11 +165,11 @@ Breadcrumbs with a visible container.
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alternate Simple Breadcrumbs | Yes  | Yes              | Yes  | Yes | Yes              |
 | Styled Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 The components above follow [WAI-ARIA APG specifications for Breadcrumb pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/). 

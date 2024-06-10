@@ -1,26 +1,36 @@
 ---
+import WCDropdown from "./WCDropDown.astro";
+import "../styles/global.css";
 interface Props {
   pageHeadings: Array<{ depth: number; text: string; slug: string }>;
+ 
 }
 const { pageHeadings } = Astro.props;
 ---
 
-
 <aside id="toc" aria-label="Table of Contents">
-  <a href={`#${pageHeadings[0].slug}`} class="font-medium text-lg my-4 hover:text-indigo-600">{pageHeadings[0].text}</a href={pageHeadings[0].slug}>
-  <ul class="ml-1 list-none space-y-4 text-gray-700 dark:text-zinc-400">
-    {
-      pageHeadings.map((heading) => (
-        <li>
-          <a
-            class={`${heading.depth === 2 ? "dark:hover:text-indigo-400 hover:text-indigo-700" : "hidden"} aria-[current=true]:text-indigo-700 aria-[current=true]:font-bold dark:aria-[current=true]:text-indigo-400`}
-            href={`#${heading.slug}`}>
-            {heading.text}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="hidden lg:block">
+    <a
+      href={`#${pageHeadings[0].slug}`}
+      class="font-medium text-lg my-4 hover:text-indigo-600"
+      >{pageHeadings[0].text}</a
+    >
+    <ul class="ml-1 list-none space-y-4 text-gray-700 dark:text-zinc-400">
+      {
+        pageHeadings.map((heading) => (
+          <li>
+            <a
+              class={`${heading.depth === 2 ? "dark:hover:text-indigo-400 hover:text-indigo-700" : "hidden"} aria-[current=true]:text-indigo-700 aria-[current=true]:font-bold dark:aria-[current=true]:text-indigo-400`}
+              href={`#${heading.slug}`}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+ 
 </aside>
 
 <script>
@@ -46,6 +56,7 @@ const { pageHeadings } = Astro.props;
 
         // add active class to the currently active entry
         tocList.setAttribute("aria-current", "true");
+        
       }
     }
   };

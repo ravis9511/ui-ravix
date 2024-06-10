@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Alert from "../../components/Alert.astro";
 import Alerts from "../../components/alerts/Alerts.astro";
 import AlertsCode from "../../components/alerts/Alerts.astro?raw";
@@ -315,7 +316,7 @@ If showIcon is false, the alert type is displayed as a bold text prefix to the m
 ## Accessibility Testing Status
 
 
-
+<TableWrapper>
 | Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Alerts           | Yes  | Yes              | Yes  | Yes | Yes              |
@@ -323,7 +324,7 @@ If showIcon is false, the alert type is displayed as a bold text prefix to the m
 | Alerts with Icons       | Yes  | Yes              | Yes  | Yes | Yes              |
 | Prominent Alerts        | Yes  | Yes              | Yes  | Yes | Yes              |
 | Astrojs Component       | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 The alerts adhere to the [WAI-ARIA 1.2 specification  ](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/) for alert patterns.
 
 Additional manual testing maybe required to ensure the alerts are accessible in your specific use case.

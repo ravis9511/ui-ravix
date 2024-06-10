@@ -1,0 +1,67 @@
+---
+import WCDropdown from "./WCDropDown.astro";
+import "../styles/global.css";
+interface Props {
+  WCDropDownContent: Array<{ label: string; type: string; href?: string }>;
+}
+const {  WCDropDownContent } = Astro.props;
+---
+
+<nav
+  id="tocBar"
+  aria-label="Table of Contents"
+  class="lg:hidden inline-flex max-h-max w-full text-xs gap-x-2 text-zinc-800 items-center dark:text-zinc-300 text-ellipsis text-pretty"
+>
+  <WCDropdown
+    menuLabel="Contents"
+    menuItems={WCDropDownContent}
+    xAlignment="left"
+    yAlignment="top"
+  />
+  <span id="currentHeader" class="text-ellipsis">{WCDropDownContent[0].label}</span>
+</nav>
+
+<script>
+  const setCurrentHeading: IntersectionObserverCallback = (entries) => {
+    // loop to each entries (headings) in the page
+    for (let entry of entries) {
+      // equivalent to the slug returned from pageHeadings
+      const { id } = entry.target;
+
+      // get the TOC link's element for the current entry
+      const tocList = document
+        .getElementById("tocBar")
+        ?.querySelector(` a[href='#${id}']`);
+
+      if (!tocList) return;
+      // check if the entry is intersecting
+      if (entry.isIntersecting) {
+        const currentHeading = document.getElementById("currentHeader");
+        // add active class to the currently active entry
+        
+        if (currentHeading && tocList.textContent) {
+          currentHeading.innerText = tocList.textContent;
+        }
+        // remove active class from all links
+        // add active class to the currently active entry
+      }
+    }
+  };
+  const observerOptions = {
+    threshold: 1,
+    rootMargin: "0px 0px -50%",
+  };
+  function setObserver() {
+    const observer = new IntersectionObserver(
+      setCurrentHeading,
+      observerOptions
+    );
+    // select all headings to observe
+    const elToObserve = document.querySelectorAll("section :is(h2,h1)");
+
+    // finally, observe the elements
+    elToObserve.forEach((el) => observer.observe(el));
+  }
+  document.addEventListener("astro:before-swap", setObserver);
+  document.addEventListener("astro:page-load", setObserver);
+</script>

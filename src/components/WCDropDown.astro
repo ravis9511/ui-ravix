@@ -7,7 +7,7 @@ const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
  If crypto is unsupported, we can use the following code to generate unique IDs.
  **/
 
-const generateUniqueId = () => {
+ const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
   const randomNum = Math.floor(Math.random() * 10000)
     .toString()
@@ -37,21 +37,21 @@ interface DropDown {
 }
 
 const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro.props as DropDown;
+
 ---
 
-<x-dropdown>
+<x-dropdown-ravix>
   <div class="group relative inline-flex text-left">
     <button
       data-dropdown="button"
       type="button"
-      class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white dark:bg-zinc-900 px-4 py-3 lg:py-2.5 font-semibold text-sm lg:text-base text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:ring-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
+      class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-50 dark:bg-zinc-900 px-4 py-1 font-semibold text-sm  text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:ring-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
       id={componentId}
       aria-expanded="false"
       aria-haspopup="true">
       {menuLabel}
       <svg
-        class={`-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 
-                ${yAlignment === "bottom" ? "-rotate-180 group-aria-expanded/button:-rotate-0" : "group-aria-expanded/button:-rotate-180"}`}
+        class="-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 -rotate-90 group-aria-expanded/button:-rotate-0"
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true">
@@ -70,7 +70,7 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       role="menu"
       class={`absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-500  max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100  z-10 mt-2  rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
       ${xAlignment === "left" ? "left-0" : "right-0"}
-      ${yAlignment === "bottom" ? "bottom-12" : "top-11"}`}
+      ${yAlignment === "top" ? "top-8" : "bottom-14"}`}
       id={`${componentId}-menu`}
       aria-hidden="true"
       tabindex="-1">
@@ -105,7 +105,7 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       }
     </ul>
   </div>
-</x-dropdown>
+</x-dropdown-ravix>
 
 <script>
   /**
@@ -258,5 +258,5 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       document.documentElement.removeEventListener("click", this.closeMenu);
     }
   }
-  customElements.define("x-dropdown", XDropdown);
+  customElements.define("x-dropdown-ravix", XDropdown);
 </script>

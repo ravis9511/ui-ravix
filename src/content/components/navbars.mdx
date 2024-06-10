@@ -7,6 +7,7 @@ type: "Navigation"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Alert from "../../components/Alert.astro";
 import Navbar from "../../components/navbars/NavbarDisplay.astro";
 import NavBarCode from "../../components/navbars/Navbar.astro?raw";
@@ -130,12 +131,12 @@ The responsive navbar which retains the logo, brand and a navigation menu (hambu
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                             | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ------------------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Responsive Navbar With Logo and Links | Yes  | Yes              | Yes  | Yes | Yes              |
 | Responsive Navbar With Hamburger Menu | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 Since we use the `<nav>` element, it is accessible out of the box. The hamburger menu component is implemented with the WAI-ARIA 1.2 design pattern. The components above implement all the required functionality mention in [WAI-ARIA APG specification for menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
 
 The menu supports the following keyboard navigation once opened:

@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Avatar from "../../components/avatar/Avatar.astro";
 import AvatarCode from "../../components/avatar/Avatar.astro?raw";
 import AvatarCodeAstro from "../../components/avatar/Avatar.astro?raw";
@@ -213,12 +214,12 @@ The avatar group allows you to show multiple avatars stacked together in a group
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Avatar              | Yes  | Yes              | Yes  | Yes | Yes              |
 | Avatar with State          | Yes  | Yes              | Yes  | Yes | Yes              |
 | Avatar with State And Ring | Yes  | Yes              | Yes  | Yes | Yes              |
 | Avatar Groups              | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 Note that there are no defined accessibility guidelines for the avatar pattern described by WAI-ARIA APG, so ravixUI implements accessbility for avatars keeping in mind the patterns for the `role=img` and the accessbility patterns for `<a>` tag where appropriate.

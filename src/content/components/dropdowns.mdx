@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Alert from "../../components/Alert.astro";
 import Dropdown from "../../components/dropdowns/Dropdown.astro";
 import DropdownCode from "../../components/dropdowns/Dropdown.html?raw";
@@ -203,7 +204,7 @@ The animated dropdown is available as a web component in ravixUI. You can find t
     type: "button",
     action: "#",
   },
-]} />
+]} xAlignment="right" yAlignment="top"/>
 </div>
 
 </section>
@@ -245,9 +246,11 @@ const menuItems = [
   { label: 'Option 2', type: 'button', action: '/handle-option2' },
   // Add more menu items as needed
 ];
+const xAlignment = 'right';
+const yAlignment = 'top';
 ---
 
-<Dropdown menuLabel={menuLabel} menuItems={menuItems} />
+<Dropdown menuLabel={menuLabel} menuItems={menuItems} xAlignment={xAlignment} yAlignment={yAlignment} />
 
 ```
 
@@ -264,6 +267,8 @@ The data-dropdown attribute is a custom attribute used to identify and control t
 The component accepts the following props:
 
 - `menuLabel` (required): The label text for the dropdown menu of type string.
+- `xAlignment` : The horizontal alignment of the dropdown menu. Can be either `left` or `right` (The default value is `right`).
+- `yAlignment` : The vertical alignment of the dropdown menu. Can be either `top` or `bottom` (The default value is `top`)
 - `menuItems` (required): An array of menu item objects. Each object should have the following properties:
 
 | Property | Type                | Description                                                                                       |
@@ -287,19 +292,18 @@ The Dropdown component follows accessibility best practices by using appropriate
 - The dropdown menu has **aria-orientation**, **aria-labelledby**, **role**, and **aria-hidden** attributes to provide semantic information to assistive technologies.
 - Each menu item has the role **menuitem**.
 
-The component generates a 16 character unique id for the dropdown button and menu using the `randomUUID()` function from the crypto module. If crypto is not supported, an alternative unique ID generation method is provided. For checking browser compatibility of crypto module, you can check [this link which leads to caniuse.com/crypto](https://caniuse.com/crypto).
 
 The component is provided as-is and may require further testing and customization to fit your specific use case.
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Dropdown             | Yes  | Yes              | Yes  | Yes | Yes              |
 | Animated Dropdown           | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alternate Animated Dropdown | Yes  | Yes              | Yes  | Yes | Yes              |
 | Astro JS Web Component      | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 The dropdown components are implemented with the WAI-ARIA 1.2 design patterns. The components above implement all the required functionality mention in [WAI-ARIA APG specification for menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
 
 The components support keyboard navigation once the dropdown is opened:

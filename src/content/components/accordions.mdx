@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Alert from "../../components/Alert.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Tab from "../../components/Tab.astro";
 import TabsAstroCode from "../../components/tabs/NTabsAstro.astro?raw";
 import NormalAccordion from "../../components/accordions/NormalAccordion.astro";
@@ -353,6 +354,7 @@ Please keep in mind that the Accordion component is provided as-is and may requi
 While every effort is made to ensure the components are accessible, it's crucial to evaluate their accessibility within the context of your specific application and use case. The current testing environment may not cover all potential scenarios, so it's recommended to conduct additional accessibility assessments tailored to your particular implementation. Except for the Astrojs Web Component which automatically assigns unique IDs for ARIA attributes, you will have to ensure that unique IDs are assigned wherever applicable.
 
 The usage of the `<details>` tag to implement an accordion-like behavior has been a subject of debate. While it provides similar functionality to an accordion, it does not strictly conform to the WAI-ARIA guidelines for the accordion pattern, but it is accessible nonetheless.
+<TableWrapper>
 
 | Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
@@ -361,6 +363,7 @@ The usage of the `<details>` tag to implement an accordion-like behavior has bee
 | Alternate Animated Accordion | Yes  | Yes              | Yes  | Yes | Yes              |
 | Web Component Accordion      | Yes  | Yes              | Yes  | Yes | Yes              |
 
+</TableWrapper>
 As mentioned in the Introduction section, the component adheres to the WAI-ARIA design patterns where possible. The Accordion components above implement all the required functionality mention in [WAI-ARIA 1.2 specification](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). Optional functionality as specified in the document such as <kbd>Up arrow</kbd>, <kbd> Down arrow</kbd>, <kbd> Home</kbd> and <kbd>End</kbd> key support is currently not implemented.
 
 The components also respect the `prefers-reduced-motion` media query implemented using the tailwind selector `motion-safe` and will not show the animations when the user has reduced motion enabled.

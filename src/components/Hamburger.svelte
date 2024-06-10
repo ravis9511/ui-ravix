@@ -12,28 +12,41 @@
   import { quintOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
   let menuOpen = false;
-
+  let currentSelected: HTMLElement;
+  let menuTimeout: NodeJS.Timeout;
   function handleMenuOpen() {
     if (menuOpen) {
       menuOpen = false;
       return;
     }
+    clearTimeout(menuTimeout);
     menuOpen = true;
-
-    document.body.addEventListener("click", handleMenuClose);
+    menuTimeout =setTimeout(() => {
+      if(currentSelected){
+      currentSelected.scrollIntoView({
+        behavior: "instant",
+        block: "center",
+        inline: "center",
+      });
+    }
+      document.body.addEventListener("click", handleMenuClose);
+    }, 1);
+    
   }
   function handleMenuClose(event: Event) {
+    clearTimeout(menuTimeout);
     menuOpen = false;
 
     document.body.removeEventListener("click", handleMenuClose);
   }
+ 
+  
 </script>
 
 <button
   aria-label="Navigation Menu Toggle"
-  on:click|stopPropagation={handleMenuOpen}
+  on:click={handleMenuOpen}
   type="button"
   class="block lg:hidden rounded-lg font-semibold text-xl text-indigo-700 dark:text-zinc-50 p-2"
 >
@@ -44,9 +57,7 @@
     viewBox="0 0 24 24"
     aria-hidden="true"
   >
-    <path
-      fill="currentColor"
-      d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+    <path fill="currentColor" d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
     ></path>
   </svg>
 </button>
@@ -58,19 +69,21 @@
   <div
     in:fly={{
       duration: 500,
+      delay : 1,
       x: "-100%",
       opacity: 0.5,
       easing: quintOut,
     }}
     out:fly={{
-      duration: 500,
+      duration: 300,
       x: "-100%",
       opacity: 0,
       easing: quintOut,
     }}
-    class="flex flex-col fixed lg:hidden w-3/4 top-0 left-0 text-end z-[100] shadow-lg bg-white dark:bg-zinc-900 p-3 justify-end justify-items-end h-screen overflow-y-auto"
+    class="flex flex-col fixed lg:hidden w-3/4 top-0 left-0 text-end z-[200] shadow-lg bg-white dark:bg-zinc-900 p-3 justify-end justify-items-end h-screen overflow-y-auto"
   >
-    <nav aria-label="Documentation Navigation"
+    <nav
+      aria-label="Documentation Navigation"
       class="flex flex-col text-lg text-start pb-4 w-full px-4 overflow-y-auto scrollbar text-nowrap"
     >
       <div class="flex flex-col font-display pb-4 w-full">
@@ -88,10 +101,7 @@
             height="24"
             viewBox="0 0 24 24"
           >
-            <path
-              fill="currentColor"
-              d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"
-            />
+            <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
           </svg><span class="text-2xl ml-2">Home</span></a
         >
         <DarkModeButton />
@@ -103,10 +113,11 @@
                 {#if links.slug === currentSlug}
                   <a
                     aria-current="page"
+                    bind:this={currentSelected}
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
@@ -117,7 +128,7 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
@@ -136,25 +147,38 @@
                 {#if links.slug === currentSlug}
                   <a
                     aria-current="page"
+                    bind:this={currentSelected}
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
-                    {links.title} {#if links.title==="Forms"} <span class="text-sm ml-2 text-yellow-700 dark:text-yellow-400">Unstable</span> {/if}
+                    {links.title}
+                    {#if links.title === "Forms"}
+                      <span
+                        class="text-sm ml-2 text-yellow-700 dark:text-yellow-400"
+                        >Unstable</span
+                      >
+                    {/if}
                   </a>
                 {:else}
                   <a
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
-                    {links.title} {#if links.title==="Forms"} <span class="text-sm ml-2 text-yellow-700 dark:text-yellow-400">Unstable</span> {/if}
+                    {links.title}
+                    {#if links.title === "Forms"}
+                      <span
+                        class="text-sm ml-2 text-yellow-700 dark:text-yellow-400"
+                        >Unstable</span
+                      >
+                    {/if}
                   </a>
                 {/if}
               </li>
@@ -169,10 +193,11 @@
                 {#if links.slug === currentSlug}
                   <a
                     aria-current="page"
+                    bind:this={currentSelected}
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
@@ -183,7 +208,7 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >

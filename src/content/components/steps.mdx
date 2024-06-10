@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Steps from "../../components/steps/Steps.astro";
 import StepsCode from "../../components/steps/Steps.astro?raw";
 import StepsCodeAstro from "../../components/steps/Steps.astro?raw";
@@ -162,11 +163,11 @@ When there are a lot of steps or when the available space is limited, the non-ac
 **Note:** The astrojs component dynamically generates the correct visuals based on the props passed to it.
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Steps            | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alternate Steps         | Yes  | Yes              | Yes  | Yes | Yes              |
 | Dynamic Steps           | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 Steps are effective when the order of the steps is clear and the user can easily understand the purpose of each step. 

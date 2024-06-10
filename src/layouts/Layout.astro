@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+
 import Navigation from "../components/Navigation.astro";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/figtree";
@@ -62,10 +63,10 @@ const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
 
     <ViewTransitions fallback="animate" />
   </head>
-  <body
+  <body 
     class="z-0 bg-fixed bg-gray-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-200"
   >
-    <main class="relative z-10">
+    <main class="relative z-0" >
       {
         skipLinkId && (
           <a

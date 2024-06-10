@@ -7,6 +7,7 @@ type: "Navigation"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Alert from "../../components/Alert.astro";
 import Navbar from "../../components/navbars/NavbarDisplay.astro";
 import NavBarCode from "../../components/navbars/Navbar.astro?raw";
@@ -346,14 +347,14 @@ Changing the styles will reflect on all your tabs. Remember that we are coupling
 Please keep in mind that the Tabs component is provided as-is and may require further testing and customization to fit your specific use case. Also it removes the original panel node and adds a duplicate panel node with the same id and properties.
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Normal Tabs                | Yes  | Yes              | Yes  | Yes | Yes              |
 | Normal Tabs With Icons     | Yes  | Yes              | Yes  | Yes | Yes              |
 | Gradient Tabs With Icons   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Astrojs Web Component Tabs | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 ravixUI follows the tabs pattern from [WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
 ### Keyboard Interaction

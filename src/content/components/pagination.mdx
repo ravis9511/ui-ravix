@@ -7,6 +7,7 @@ type: "Navigation"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Alert from "../../components/Alert.astro";
 import SimplePagination from "../../components/pagination/SimplePagination.astro";
 import SimplePaginationCode from "../../components/pagination/SimplePagination.astro?raw";
@@ -149,11 +150,11 @@ This is similar to the Simple Pagination style but uses ghost styling for the pa
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Pagination       | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alternate Pagination    | Yes  | Yes              | Yes  | Yes | Yes              |
 | Ghost Pagination        | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 While there are no specific patters from the ARIA Authoring Practices Guide for Pagination, the implementation of the pagination components follows best practices for navigational elements.

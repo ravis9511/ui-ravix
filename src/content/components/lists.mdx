@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import UList from "../../components/lists/UList.astro";
 import UListCode from "../../components/lists/UList.astro?raw";
 import UListCodeAstro from "../../components/lists/UlistAstro.astro?raw";
@@ -104,12 +105,12 @@ A custom list marker adds an svg inline in the list. Useful for adding a custom 
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Unordered List              | Yes  | Yes              | Yes  | Yes | Yes              |
 | Ordered List                | Yes  | Yes              | Yes  | Yes | Yes              |
 | Custom Marked List          | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 Since we use the `<ul>` element for the unordered list and `<ol>` element for the ordered list, the component is accessible out of the box. However, the custom list marker uses an accessible `<svg>` element by giving it the role of `img` and aria-labelled by `title`.
 

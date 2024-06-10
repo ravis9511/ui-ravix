@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import WCDropdown from "../../components/dropdowns/WCDropdown.astro";
+import TOCBar from "../../components/TOCBar.astro";
 import MarkDownLayout from "../../layouts/MarkDownLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -39,7 +39,7 @@ const nextEntry =
 
 const { Content, headings } = await entry.render();
 const WCDropDownContent = headings
-  .filter((heading) => heading.depth === 2)
+  .filter((heading) => heading.depth === 2 || heading.depth === 1)
   .map((heading) => ({
     label: heading.text,
     type: "link",
@@ -53,21 +53,24 @@ const WCDropDownContent = headings
   skipLinkId={headings[0].slug}
 >
   <div
-    class="flex mx-7 md:mx-10 z-[100] lg:hidden fixed top-[10dvh] right-0 max-w-max justify-end shadow-2xl"
+    class="lg:hidden sticky z-[80] top-[8dvh] left-0 flex w-full bg-white dark:bg-zinc-950 px-4 py-1 border-b border-gray-400 dark:border-zinc-700 "
   >
-    <WCDropdown menuLabel="Contents" menuItems={WCDropDownContent} xAlignment="right"  yAlignment="top"/>
+    {WCDropDownContent && (
+    <TOCBar WCDropDownContent={WCDropDownContent} />
+    )
+    }
   </div>
-  <div data-pagefind-body class="bg-fixed bg-gray-100 dark:bg-zinc-950">
+  <div data-pagefind-body class="bg-fixed bg-gray-100 dark:bg-zinc-950" >
     <div class="lg:grid lg:grid-cols-12 gap-4 ml-4 lg:ml-8 xl:ml-16 2xl:ml-32">
       <div
         class="hidden lg:block lg:col-start-1 lg:col-span-2 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar border-r dark:border-zinc-900 border-gray-300"
       >
         <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}` />
       </div>
-      <div
+      <div 
         class="lg:relative lg:col-start-3 lg:col-span-10 lg:flex lg:flex-row lg:h-[92dvh] lg:justify-between pr-4 lg:pr-8 xl:pr-16 2xl:pr-32 py-6 overflow-auto"
       >
-        <div class="mx-3 md:mx-6 lg:pr-8">
+        <div class="mx-3 md:mx-6 lg:pr-8" >
           <MarkDownLayout>
             <Content />
           </MarkDownLayout>
@@ -128,18 +131,12 @@ const WCDropDownContent = headings
           </div>
         </div>
         <div
-          class="hidden lg:block flex-1 max-w-[200px] max-h-[86dvh] sticky top-0 items-start justify-items-start lg:mr-8 xl:mr-12"
+          class="lg:flex-1 lg:max-w-[200px] lg:max-h-[86dvh] sticky top-0 items-start justify-items-start lg:mr-8 xl:mr-12"
         >
-          <TOC pageHeadings={headings} />
+          <TOC pageHeadings={headings}  />
         </div>
       </div>
     </div>
   </div>
 </Layout>
 
-<style>
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 12dvh;
-  }
-</style>

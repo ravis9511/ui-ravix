@@ -8,6 +8,7 @@ import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Alert from "../../components/Alert.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import SimpleTable from "../../components/tables/SimpleTable.astro";
 import SimpleTableCode from "../../components/tables/SimpleTable.html?raw";
 import SimpleTableCodeAstro from "../../components/tables/SimpleTable.astro?raw";
@@ -210,14 +211,14 @@ A table with conditional styling for cells based on the value of a column.
 
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Table            | Yes  | Yes              | Yes  | Yes | Yes              |
 | Thematic Table          | Yes  | Yes              | Yes  | Yes | Yes              |
 | Table With Cell Borders | Yes  | Yes              | Yes  | Yes | Yes              |
 | Table With A Caption    | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 The tables adhere to the [WCAG 2.1 AA standards](https://www.w3.org/TR/WCAG21/) for accessibility.
 
 Additional manual testing maybe required to ensure the tables are accessible in your specific use case.

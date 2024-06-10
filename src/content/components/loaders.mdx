@@ -5,6 +5,7 @@ type: "Building"
 ---
 
 import { Code } from "astro-expressive-code/components";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
 import Skeleton from "../../components/loaders/Skeleton.astro";
@@ -13,6 +14,7 @@ import SkeletonCodeAstro from "../../components/loaders/Skeleton.astro?raw";
 import Spinner from "../../components/loaders/Spinner.astro";
 import SpinnerCode from "../../components/loaders/Spinner.astro?raw";
 import SpinnerCodeAstro from "../../components/loaders/Spinner.astro?raw";
+
 
 # Loaders
 
@@ -125,10 +127,10 @@ Skeleton is perfect for giving user an idea of what type of content they can exp
 
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Skeleton          | Yes  | Yes              | Yes  | Yes | Yes              |
 | Spinner           | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 The accessibility requirements for the loader depend on the type of content being loaded. If the content is critical, use aria-live="assertive" instead of aria-live="polite" to immediately notify the user of changes. From a user experience perspective, it's beneficial to add visible text to the loader, providing additional information to the user. For instance, if loading a list of items, the loader could display text such as "Loading items..." or "Loading more items...".

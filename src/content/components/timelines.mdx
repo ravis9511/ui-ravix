@@ -8,6 +8,7 @@ import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Alert from "../../components/Alert.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import SimpleTimeline from "../../components/timeline/SimpleTimeline.astro";
 import SimpleTimelineCode from "../../components/timeline/SimpleTimeline.html?raw";
 import SimpleTimelineCodeAstro from "../../components/timeline/SimpleTimeline.astro?raw";
@@ -160,11 +161,11 @@ An alternate style for timelines.
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Timeline   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Collapse Timeline | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alt Timeline      | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 While there is no pattern for timelines by the authoring practice guide from w3c, the components above follow standard practices for accessibility for displaying the content.

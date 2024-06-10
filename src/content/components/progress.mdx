@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import Progress from "../../components/progress/Progress.astro";
 import ProgressCode from "../../components/progress/Progress.astro?raw";
 import ProgressCodeAstro from "../../components/progress/Progress.astro?raw";
@@ -116,12 +117,12 @@ Alternate style for progress bars with a subtle gradient.
 </Tab>
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Progress Bars    | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alternate Progress Bars | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 For knowing more about the progressbar role used in the examples above, [you can read the w3c WAI-ARIA 1.3 documentation about progressbar role](https://w3c.github.io/aria/#progressbar)
 
 It is important to test the components with assistive technologies to ensure that they are accessible in the context of its usage. For example, if the progress bar is used in a form, you will have to use appropriate labels and textual information to help users understand the purpose of the progress bar and how it relates to the form.

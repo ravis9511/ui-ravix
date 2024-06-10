@@ -7,6 +7,7 @@ type: "Building"
 import { Code } from "astro-expressive-code/components";
 import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
 import NormalButton from "../../components/buttons/NormalButton.astro";
 import NormalButtonCode from "../../components/buttons/NormalButton.astro?raw";
 import NormalButtonCodeAstro from "../../components/buttons/NButtonAstro.astro?raw";
@@ -269,7 +270,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 />
 
 ## Accessibility Testing Status
-
+<TableWrapper>
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Button              | Yes  | Yes              | Yes  | Yes | Yes              |
@@ -277,7 +278,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 | Link Button                | Yes  | Yes              | Yes  | Yes | Yes              |
 | Accessible Icon Only Button| Yes  | Yes              | Yes  | Yes | Yes              |
 | Stylized Button            | Yes  | Yes              | Yes  | Yes | Yes              |
-
+</TableWrapper>
 ravixUI uses the semantic `<button>` element for all non link buttons and `<a>` element for link buttons. The size of the buttons meet the minimum target size for interactive elements as [defined by the WCAG 2.1 specification.](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html). The minimum target size for all the buttons in this context, i.e., with the fonts used, the outer containers of the buttons etc. is 44 x 44 px. 
 
 While the 44px X 44px target size is important, another important factor to note is that there should be ample space between clickable areas of buttons placed next to each other.
