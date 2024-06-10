@@ -40,16 +40,17 @@ Here a comparison of using pure white/black background with pure black/white tex
 
 Here are some pre-styled parapgraphs to get you started.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Paragraph" tabs={[{ "name" : "Preview", "id" : "SP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SP-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="SP-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+  aria-labelledby="SP-Tab1">
   <Paragraph />
 </section>
 
-<section id ="Tab2-panel" role="tabpanel"  data-role="tabpanel">
+<section id ="SP-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="SP-Tab2" class="hidden">
 
 <Code
   code={ParagraphCode}
@@ -60,7 +61,7 @@ Here are some pre-styled parapgraphs to get you started.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel"  data-role="tabpanel">
+<section id ="SP-Tab3-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="SP-Tab3" class="hidden">
 
 <Code
   code={ParagraphCodeAstro}
@@ -74,16 +75,17 @@ Here are some pre-styled parapgraphs to get you started.
 
 </Tab>
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Paragraph With Links and Bold Text" tabs={[{ "name" : "Preview", "id" : "PWL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "PWL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "PWL-Tab3", "icon" : "astro"}]}>
 
 <section
-  id="Tab1-panel"
+  id="PWL-Tab1-panel"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+   aria-labelledby="PWL-Tab1">
   <AltParagraph />
 </section>
 
-<section id ="Tab2-panel" role="tabpanel"  data-role="tabpanel">
+<section id ="PWL-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="PWL-Tab2" class="hidden">
 
 <Code
   code={AltParagraphCode}
@@ -94,7 +96,7 @@ Here are some pre-styled parapgraphs to get you started.
 
 </section>
 
-<section id ="Tab3-panel" role="tabpanel"  data-role="tabpanel">
+<section id ="PWL-Tab3-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="PWL-Tab3" class="hidden">
 
 <Code
   code={AltParagraphCodeAstro}

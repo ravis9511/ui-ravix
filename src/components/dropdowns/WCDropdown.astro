@@ -32,9 +32,11 @@ interface DropDown {
     href?: string;
     action?: string;
   }>;
+  xAlignment?: "left" | "right";
+  yAlignment?: "top" | "bottom";
 }
 
-const { menuLabel, menuItems } = Astro.props as DropDown;
+const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro.props as DropDown;
 ---
 
 <x-dropdown>
@@ -48,7 +50,8 @@ const { menuLabel, menuItems } = Astro.props as DropDown;
       aria-haspopup="true">
       {menuLabel}
       <svg
-        class="-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 group-aria-expanded/button:-rotate-180"
+        class={`-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 
+                ${yAlignment === "bottom" ? "-rotate-180 group-aria-expanded/button:-rotate-0" : "group-aria-expanded/button:-rotate-180"}`}
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true">
@@ -65,7 +68,9 @@ const { menuLabel, menuItems } = Astro.props as DropDown;
       aria-orientation="vertical"
       aria-labelledby={componentId}
       role="menu"
-      class="absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-500 right-0 max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100 top-11 z-10 mt-2 origin-top-right rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+      class={`absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-500  max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100  z-10 mt-2  rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+      ${xAlignment === "left" ? "left-0" : "right-0"}
+      ${yAlignment === "top" ? "top-11" : "bottom-14"}`}
       id={`${componentId}-menu`}
       aria-hidden="true"
       tabindex="-1">

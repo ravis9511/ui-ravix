@@ -52,7 +52,7 @@ if you want more complex content, you can send the content as HTML and use a fra
   
     {
       panels.map((panel: AccordionPanel, index: number) => (
-        <div class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 ">
+        <div class="group text-zinc-900 dark:text-zinc-300  ">
           <button
             data-accordion="button"
             type="button"
@@ -84,7 +84,7 @@ if you want more complex content, you can send the content as HTML and use a fra
             class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
             aria-labelledby={`${componentId}-button-${index + 1}`}
             role="region">
-            <div class="px-6 text-start text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+            <div class="px-6 text-start text-base py-4 md:py-5  rounded-lg">
               {panel.content}
             </div>
           </section>

@@ -136,7 +136,7 @@
     const dropdownItems = dropdown?.querySelectorAll(
       "li"
     ) as NodeListOf<HTMLLIElement>;
-    console.log(button);
+    if(!button) return;
     button?.addEventListener("click", (event) => {
       event.stopPropagation();
 

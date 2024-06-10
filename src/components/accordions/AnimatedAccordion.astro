@@ -109,7 +109,8 @@ if you want more complex content, you can send the content as HTML and use a fra
      * @returns {HTMLElement} The accordion container element, or `null` if not found.
      */
     const accordion = document.getElementById("accordion-container") as HTMLElement | null;
-    if(!accordion) return;
+    if(!accordion){
+      return;}
     const buttons = accordion?.querySelectorAll(
       '[data-accordion="button"]'
     ) as NodeListOf<HTMLElement> | undefined;

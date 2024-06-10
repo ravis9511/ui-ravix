@@ -53,7 +53,7 @@
 {#if menuOpen}
   <div
     transition:fade
-    class="fixed top-0 lg:hidden left-0 w-full h-screen bg-black bg-opacity-70 z-40 font-display"
+    class="fixed top-0 lg:hidden left-0 w-full h-dvh bg-black bg-opacity-70 z-40 font-display"
   ></div>
   <div
     in:fly={{
@@ -154,7 +154,7 @@
                         : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
                     }`}
                   >
-                    {links.title}
+                    {links.title} {#if links.title==="Forms"} <span class="text-sm ml-2 text-yellow-700 dark:text-yellow-400">Unstable</span> {/if}
                   </a>
                 {/if}
               </li>

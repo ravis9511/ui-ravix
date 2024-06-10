@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { fade } from "astro:transitions";
+import WCDropdown from "../../components/dropdowns/WCDropdown.astro";
 import MarkDownLayout from "../../layouts/MarkDownLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -38,42 +38,56 @@ const nextEntry =
   currentIndex < entryMap.length - 1 ? entryMap[currentIndex + 1] : null;
 
 const { Content, headings } = await entry.render();
+const WCDropDownContent = headings
+  .filter((heading) => heading.depth === 2)
+  .map((heading) => ({
+    label: heading.text,
+    type: "link",
+    href: `#${heading.slug}`,
+  }));
 ---
 
 <Layout
   title={entry.data.title}
   currentSlug={`/components/${entry.slug}`}
-  skipLinkId={headings[0].slug}>
+  skipLinkId={headings[0].slug}
+>
   <div
-    data-pagefind-body
-    class="bg-fixed bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
+    class="flex mx-7 md:mx-10 z-[100] lg:hidden fixed top-[10dvh] right-0 max-w-max justify-end shadow-2xl"
+  >
+    <WCDropdown menuLabel="Contents" menuItems={WCDropDownContent} xAlignment="right"  yAlignment="top"/>
+  </div>
+  <div data-pagefind-body class="bg-fixed bg-gray-100 dark:bg-zinc-950">
     <div class="lg:grid lg:grid-cols-12 gap-4 ml-4 lg:ml-8 xl:ml-16 2xl:ml-32">
       <div
-        class="hidden lg:block lg:col-start-1 lg:col-span-2 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar border-r dark:border-zinc-900 border-gray-300">
-        <Sidebar
-          entryMap={entryMap}
-          currentSlug=`/components/${entry.slug}`
-        />
+        class="hidden lg:block lg:col-start-1 lg:col-span-2 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar border-r dark:border-zinc-900 border-gray-300"
+      >
+        <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}` />
       </div>
       <div
-        class="relative lg:col-start-3 lg:col-span-10 lg:flex lg:flex-row lg:h-[92dvh] space-x-8 lg:justify-between pr-4 lg:pr-8 xl:pr-16 2xl:pr-32 py-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40">
-        <div class="md:mx-6">
+        class="lg:relative lg:col-start-3 lg:col-span-10 lg:flex lg:flex-row lg:h-[92dvh] lg:justify-between pr-4 lg:pr-8 xl:pr-16 2xl:pr-32 py-6 overflow-auto"
+      >
+        <div class="mx-3 md:mx-6 lg:pr-8">
           <MarkDownLayout>
             <Content />
           </MarkDownLayout>
-          <div class="flex flex-row w-full justify-between pb-12">
+          <div
+            class="flex flex-row w-full justify-between space-x-8 lg:space-x-0 pb-12"
+          >
             {
               previousEntry && (
                 <a
                   href={previousEntry?.slug}
-                  class="border md:w-1/3 self-start flex flex-col items-start justify-start px-4 py-3  rounded-lg font-semibold text-base sm:text-lg gap-y-1 border-gray-400 dark:border-zinc-700 text-zinc-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-md  dark:shadow-black">
+                  class="border w-3/5 lg:w-1/3 self-start flex flex-col items-start justify-start px-4 py-3  rounded-lg font-semibold text-base sm:text-lg gap-y-1 border-gray-400 dark:border-zinc-700 text-zinc-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-md  dark:shadow-black"
+                >
                   <span class="text-gray-500 inline-flex w-full text-sm items-center justify-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
-                      aria-hidden="true">
+                      aria-hidden="true"
+                    >
                       <path
                         fill="currentColor"
                         d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z"
@@ -90,7 +104,8 @@ const { Content, headings } = await entry.render();
               nextEntry && (
                 <a
                   href={nextEntry?.slug}
-                  class="border md:w-1/3 self-end flex flex-col items-end justify-end px-4 py-3  rounded-lg font-semibold text-base sm:text-lg gap-y-1 border-gray-400 dark:border-zinc-700 text-zinc-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-md  dark:shadow-black">
+                  class="border w-3/5 lg:w-1/3 self-end flex flex-col items-end justify-end px-4 py-3  rounded-lg font-semibold text-base sm:text-lg gap-y-1 border-gray-400 dark:border-zinc-700 text-zinc-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-gray-200 hover:border-gray-500 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-md  dark:shadow-black"
+                >
                   <span class="text-gray-500 inline-flex w-full text-sm items-center justify-end">
                     Next
                     <svg
@@ -98,7 +113,8 @@ const { Content, headings } = await entry.render();
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
-                      aria-hidden="true">
+                      aria-hidden="true"
+                    >
                       <path
                         fill="currentColor"
                         d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"
@@ -112,10 +128,18 @@ const { Content, headings } = await entry.render();
           </div>
         </div>
         <div
-          class="hidden lg:block flex-1 max-w-[200px] max-h-[86dvh] sticky top-0 items-start justify-items-start lg:mr-8 xl:mr-12">
+          class="hidden lg:block flex-1 max-w-[200px] max-h-[86dvh] sticky top-0 items-start justify-items-start lg:mr-8 xl:mr-12"
+        >
           <TOC pageHeadings={headings} />
         </div>
       </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 12dvh;
+  }
+</style>

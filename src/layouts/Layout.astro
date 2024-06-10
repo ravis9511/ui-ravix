@@ -1,8 +1,8 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Navigation from "../components/Navigation.astro";
-import '@fontsource-variable/inter';
-import '@fontsource-variable/figtree';
+import "@fontsource-variable/inter";
+import "@fontsource-variable/figtree";
 
 import "../styles/global.css";
 interface Props {
@@ -11,9 +11,10 @@ interface Props {
   currentSlug?: string;
   keywords?: string;
   skipLinkId?: string;
+  
 }
 
-const { title,  description, keywords, currentSlug, skipLinkId } = Astro.props;
+const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
 ---
 
 <!doctype html>
@@ -58,15 +59,24 @@ const { title,  description, keywords, currentSlug, skipLinkId } = Astro.props;
         document.documentElement.classList.remove("dark");
       }
     </script>
-    
+
     <ViewTransitions fallback="animate" />
   </head>
-  <body 
-    class=" z-0  bg-fixed dark:bg-black bg-white  text-zinc-950 dark:text-zinc-200 "
+  <body
+    class="z-0 bg-fixed bg-gray-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-200"
   >
-      <main class=" z-10" >
-        {skipLinkId && <a class=" -z-[9999] focus:z-[9999] fixed top-3 left-2 opacity-0  focus:opacity-100 bg-indigo-400 text-black dark:text-white dark:bg-indigo-800 px-4 py-2 rounded-md text-xl font-medium" href={`#${skipLinkId}`}>Skip to main content</a>}
-      <Navigation  currentSlug={currentSlug}  />
+    <main class="relative z-10">
+      {
+        skipLinkId && (
+          <a
+            class=" -z-[9999] focus:z-[9999] fixed top-3 left-2 opacity-0  focus:opacity-100 bg-indigo-400 text-black dark:text-white dark:bg-indigo-800 px-4 py-2 rounded-md text-xl font-medium"
+            href={`#${skipLinkId}`}
+          >
+            Skip to main content
+          </a>
+        )
+      }
+      <Navigation currentSlug={currentSlug} />
       <slot />
     </main>
   </body>
