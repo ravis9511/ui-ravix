@@ -7,8 +7,7 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,svelte,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,svelte,astro}\""
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -29,8 +28,6 @@
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "@tailwindcss/typography": "^0.5.12",
-    "eslint": "^9.4.0",
-    "eslint-plugin-astro": "^1.2.2",
     "globals": "^15.4.0",
     "prettier": "^3.3.2",
     "prettier-plugin-svelte": "^3.2.4",
