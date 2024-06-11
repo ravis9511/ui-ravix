@@ -30,7 +30,7 @@ const timelineData = [
     ],
   },
 ];
-const timeLineName="collapseTimeline";
+const timeLineName = "collapseTimeline";
 /**
 To accept these as props you can use the following syntax:
  
@@ -56,13 +56,14 @@ interface TimelineEntry {
 ---
 
 <div
-  class="px-5 py-2 w-full flex flex-wrap items-start justify-start justify-items-start text-gray-900 dark:text-gray-100">
-  <div class="flex flex-wrap w-full">
+  class="flex w-full flex-wrap items-start justify-start justify-items-start px-5 py-2 text-gray-900 dark:text-gray-100"
+>
+  <div class="flex w-full flex-wrap">
     <ol class="w-full">
       {
         timelineData.map((item, index) => (
-          <li class="flex relative py-4 items-center justify-center">
-            <div class="w-1/6 pr-3 pl-2 text-end text-sm md:text-base">
+          <li class="relative flex items-center justify-center py-4">
+            <div class="w-1/6 pl-2 pr-3 text-end text-sm md:text-base">
               <time datetime={item.date}>
                 {new Date(item.date).toLocaleDateString("en-US", {
                   day: "numeric",
@@ -72,25 +73,29 @@ interface TimelineEntry {
               </time>
             </div>
             {index !== timelineData.length - 1 && (
-              <div class="h-[calc(60%)] w-3 absolute left-[calc(100%/6)] top-1/2 flex items-center justify-center">
+              <div class="absolute left-[calc(100%/6)] top-1/2 flex h-[calc(60%)] w-3 items-center justify-center">
                 <div class="h-full w-[2px] bg-indigo-400 dark:bg-indigo-900" />
               </div>
             )}
             {index !== 0 && (
-              <div class="h-[calc(60%)] w-3 absolute left-[calc(100%/6)] bottom-1/2 flex items-center justify-center">
+              <div class="absolute bottom-1/2 left-[calc(100%/6)] flex h-[calc(60%)] w-3 items-center justify-center">
                 <div class="h-full w-[2px] bg-indigo-400 dark:bg-indigo-900" />
               </div>
             )}
-            <div class="w-3 h-3 rounded-full bg-indigo-400 dark:bg-indigo-900 items-center justify-center  relative z-10" />
-            <details class="group flex-grow ml-3 flex flex-col border border-gray-400 dark:border-zinc-800 rounded-lg overflow-hidden " name={timeLineName}>
-              <summary class="flex items-center justify-between px-3 py-3 cursor-pointer text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 dark:group-open:bg-zinc-900 group-open:bg-gray-200">
+            <div class="relative z-10 h-3 w-3 items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-900" />
+            <details
+              class="group ml-3 flex flex-grow flex-col overflow-hidden rounded-lg border border-gray-400 dark:border-zinc-800"
+              name={timeLineName}
+            >
+              <summary class="flex cursor-pointer items-center justify-between bg-gray-100 px-3 py-3 text-zinc-900 group-open:bg-gray-200 dark:bg-zinc-950 dark:text-zinc-300 dark:group-open:bg-zinc-900">
                 <span class="text-base font-semibold"> {item.version}</span>
                 <svg
-                  class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-open:-rotate-180"
+                  class="h-5 w-5 shrink-0 group-open:-rotate-180 motion-safe:transition motion-safe:duration-300"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor">
+                  stroke="currentColor"
+                >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -99,14 +104,18 @@ interface TimelineEntry {
                   />
                 </svg>
               </summary>
-              <div class="leading-relaxed px-4 py-3">
-                
-                <ul class="list-disc list-inside mb-2 text-sm md:text-base">
+              <div class="px-4 py-3 leading-relaxed">
+                <ul class="mb-2 list-inside list-disc text-sm md:text-base">
                   {item.changes.map((change) => (
                     <li>{change}</li>
                   ))}
                 </ul>
-                <a class="text-blue-600 dark:text-blue-400 hover:text-blue-700 text-sm md:text-base" href={item.changelogUrl}>Full Changelogs</a>
+                <a
+                  class="text-sm text-blue-600 hover:text-blue-700 md:text-base dark:text-blue-400"
+                  href={item.changelogUrl}
+                >
+                  Full Changelogs
+                </a>
               </div>
             </details>
           </li>

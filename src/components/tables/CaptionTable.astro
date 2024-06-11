@@ -37,44 +37,38 @@ const tableData: TableItem[] = [
 
 {
   tableData.length > 0 && (
-    <div class="relative  overflow-x-auto m-2 shadow-md dark:shadow-lg dark:shadow-black rounded-lg border border-gray-300 dark:border-zinc-800">
-      <table class="w-full text-base text-left text-gray-800 dark:text-gray-300  shadow-md rounded-lg  dark:bg-zinc-950">
-        <caption class="caption-top text-start p-4 text-xl font-semibold bg-white dark:bg-zinc-950">
-            Products
-          <p class="text-base  font-normal text-gray-600 dark:text-gray-400 mt-2 mb-2">
-            This is the available stock for the products listed below as of 02/05/2024
+    <div class="relative m-2 overflow-x-auto rounded-lg border border-gray-300 shadow-md dark:border-zinc-800 dark:shadow-lg dark:shadow-black">
+      <table class="w-full rounded-lg text-left text-base text-gray-800 shadow-md dark:bg-zinc-950 dark:text-gray-300">
+        <caption class="caption-top bg-white p-4 text-start text-xl font-semibold dark:bg-zinc-950">
+          Products
+          <p class="mb-2 mt-2 text-base font-normal text-gray-600 dark:text-gray-400">
+            This is the available stock for the products listed below as of
+            02/05/2024
           </p>
         </caption>
-        <thead class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800 ">
+        <thead class="bg-gray-200 text-sm uppercase text-gray-800 dark:bg-zinc-800 dark:text-gray-300">
           <tr class="border border-gray-300 dark:border-zinc-700">
-            <th
-              scope="col"
-              class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">
               Product
             </th>
-            <th
-              scope="col"
-              class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">
               Color
             </th>
-            <th
-              scope="col"
-              class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">
               Type
             </th>
-            <th
-              scope="col"
-              class="px-6 py-3">
+            <th scope="col" class="px-6 py-3">
               Stock
             </th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-300 dark:divide-zinc-800">
           {tableData.map((item) => (
-            <tr class="odd:bg-white odd:dark:bg-zinc-950 even:bg-gray-100 even:dark:bg-zinc-900">
+            <tr class="odd:bg-white even:bg-gray-100 odd:dark:bg-zinc-950 even:dark:bg-zinc-900">
               <th
                 scope="row"
-                class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                class="whitespace-nowrap px-6 py-3 font-semibold text-gray-900 dark:text-gray-100"
+              >
                 {item.name}
               </th>
               <td class="px-6 py-3">{item.color}</td>

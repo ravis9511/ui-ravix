@@ -57,12 +57,7 @@ A simple horizontal stepper that can be used to present a series of steps and cu
 
 <section id ="SS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab2" class="hidden">
 
-<Code
-  code={StepsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={StepsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -97,13 +92,7 @@ An alternate style of static stepper with a bit more details.
 
 <section id ="AS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab2" class="hidden">
 
-<Code
-  code={AltStepsCode}
-  lang="html"
-  
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltStepsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -121,7 +110,6 @@ An alternate style of static stepper with a bit more details.
 
 </Tab>
 
-
 ## Dynamic Steps
 
 When there are a lot of steps or when the available space is limited, the non-active steps are represented with placeholder bars while the active step is expanded with additional information.
@@ -137,12 +125,7 @@ When there are a lot of steps or when the available space is limited, the non-ac
 
 <section id ="DS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab2" class="hidden">
 
-<Code
-  code={DynamicStepsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={DynamicStepsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -163,11 +146,13 @@ When there are a lot of steps or when the available space is limited, the non-ac
 **Note:** The astrojs component dynamically generates the correct visuals based on the props passed to it.
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Steps            | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Steps         | Yes  | Yes              | Yes  | Yes | Yes              |
-| Dynamic Steps           | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ----------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Steps | Yes | Yes | Yes | Yes | Yes | | Alternate
+  Steps | Yes | Yes | Yes | Yes | Yes | | Dynamic Steps | Yes | Yes | Yes | Yes
+  | Yes |
 </TableWrapper>
-Steps are effective when the order of the steps is clear and the user can easily understand the purpose of each step. 
+Steps are effective when the order of the steps is clear and the user can easily
+understand the purpose of each step.{" "}

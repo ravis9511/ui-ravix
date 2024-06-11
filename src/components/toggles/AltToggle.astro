@@ -1,66 +1,66 @@
-<div class="flex flex-wrap items-center justify-center space-x-8 h-24">
-    <label
-       for="alt-toggleOne"
-       class="flex items-center cursor-pointer   "
-       >
-       <div class="relative">
-          <input
-             type="checkbox"
-             id="alt-toggleOne"
-             class="peer sr-only"
-             role="switch"
-             aria-labelledby="Alt-Toggle-Label-1"
-             />
-             <div
-             class="block w-12 h-6 transition-colors duration-300 rounded-full dark:bg-zinc-800 dark:peer-checked:bg-zinc-500 bg-gray-300  peer-checked:bg-gray-500 peer-focus:ring-2 ring-offset-4 ring-offset-gray-50 dark:ring-offset-zinc-950 peer-focus:ring-indigo-600 "
-             ></div>
-          <div
-             class="absolute w-6 h-6 transition duration-300 bg-gray-300 rounded-full  ring-1 dark:ring-0 ring-indigo-600 ring-inset dark:bg-zinc-300   left-0 top-0  peer-checked:translate-x-full "
-             ></div>
-             <span id="Alt-Toggle-Label-1"  class="sr-only">Toggle One</span>
-       </div>
-    </label>
-    
-    <label
-       for="alt-toggleTwo"
-       class="flex items-center cursor-pointer  dark:text-white"
-       >
-       <div class="relative">
-          <input
-             type="checkbox"
-             id="alt-toggleTwo"
-             class="peer sr-only"
-             role="switch"
-             aria-labelledby="Alt-Toggle-Label-2"
-             />
-          <div
-             class="block w-12 h-4 transition-colors duration-300 rounded-full dark:bg-zinc-800 dark:peer-checked:bg-zinc-500 bg-gray-300  peer-checked:bg-gray-500 peer-focus:ring-2 ring-offset-[6px] ring-offset-gray-50 dark:ring-offset-zinc-950 peer-focus:ring-indigo-600"
-             ></div>
-          <div
-             class="absolute left-0 -top-1 w-6 h-6 transition duration-300 bg-gray-200 rounded-full ring-1 dark:ring-0 ring-indigo-600 ring-inset dark:bg-zinc-300   peer-checked:translate-x-full "
-             ></div>
-             <span id="Alt-Toggle-Label-2"  class="sr-only">Toggle Two</span>
-       </div>
-    </label>
-    <label
-       for="alt-toggleThree"
-       class="flex items-center cursor-pointer"
-       >
-       <div class="relative">
-          <input
-             type="checkbox"
-             id="alt-toggleThree"
-             class="peer sr-only"
-             role="switch"
-             aria-labelledby="Alt-Toggle-Label-3"
-             />
-          <div
-             class="block w-12 h-7 transition-colors duration-300 rounded-full dark:bg-zinc-800 dark:peer-checked:bg-zinc-500 bg-gray-300  peer-checked:bg-gray-500 peer-focus:ring-2 ring-offset-2 ring-offset-gray-50 dark:ring-offset-zinc-950 peer-focus:ring-indigo-600"
-             ></div>
-          <div
-             class="absolute left-1 top-1 w-5 h-5 transition duration-300 bg-gray-200 rounded-full  ring-1 dark:ring-0 ring-indigo-600 peer-checked:ring-0 ring-inset dark:bg-zinc-300    peer-checked:translate-x-full "
-             ></div>
-             <span id="Alt-Toggle-Label-3"  class="sr-only">Toggle Three</span>
-       </div>
-    </label>
+<div class="flex h-24 flex-wrap items-center justify-center space-x-8">
+  <label for="alt-toggleOne" class="flex cursor-pointer items-center">
+    <div class="relative">
+      <input
+        type="checkbox"
+        id="alt-toggleOne"
+        class="peer sr-only"
+        role="switch"
+        aria-labelledby="Alt-Toggle-Label-1"
+      />
+      <div
+        class="block h-6 w-12 rounded-full bg-gray-300 ring-offset-4 ring-offset-gray-50 transition-colors duration-300 peer-checked:bg-gray-500 peer-focus:ring-2 peer-focus:ring-indigo-600 dark:bg-zinc-800 dark:ring-offset-zinc-950 dark:peer-checked:bg-zinc-500"
+      >
+      </div>
+      <div
+        class="absolute left-0 top-0 h-6 w-6 rounded-full bg-gray-300 ring-1 ring-inset ring-indigo-600 transition duration-300 peer-checked:translate-x-full dark:bg-zinc-300 dark:ring-0"
+      >
+      </div>
+      <span id="Alt-Toggle-Label-1" class="sr-only">Toggle One</span>
     </div>
+  </label>
+
+  <label
+    for="alt-toggleTwo"
+    class="flex cursor-pointer items-center dark:text-white"
+  >
+    <div class="relative">
+      <input
+        type="checkbox"
+        id="alt-toggleTwo"
+        class="peer sr-only"
+        role="switch"
+        aria-labelledby="Alt-Toggle-Label-2"
+      />
+      <div
+        class="block h-4 w-12 rounded-full bg-gray-300 ring-offset-[6px] ring-offset-gray-50 transition-colors duration-300 peer-checked:bg-gray-500 peer-focus:ring-2 peer-focus:ring-indigo-600 dark:bg-zinc-800 dark:ring-offset-zinc-950 dark:peer-checked:bg-zinc-500"
+      >
+      </div>
+      <div
+        class="absolute -top-1 left-0 h-6 w-6 rounded-full bg-gray-200 ring-1 ring-inset ring-indigo-600 transition duration-300 peer-checked:translate-x-full dark:bg-zinc-300 dark:ring-0"
+      >
+      </div>
+      <span id="Alt-Toggle-Label-2" class="sr-only">Toggle Two</span>
+    </div>
+  </label>
+  <label for="alt-toggleThree" class="flex cursor-pointer items-center">
+    <div class="relative">
+      <input
+        type="checkbox"
+        id="alt-toggleThree"
+        class="peer sr-only"
+        role="switch"
+        aria-labelledby="Alt-Toggle-Label-3"
+      />
+      <div
+        class="block h-7 w-12 rounded-full bg-gray-300 ring-offset-2 ring-offset-gray-50 transition-colors duration-300 peer-checked:bg-gray-500 peer-focus:ring-2 peer-focus:ring-indigo-600 dark:bg-zinc-800 dark:ring-offset-zinc-950 dark:peer-checked:bg-zinc-500"
+      >
+      </div>
+      <div
+        class="absolute left-1 top-1 h-5 w-5 rounded-full bg-gray-200 ring-1 ring-inset ring-indigo-600 transition duration-300 peer-checked:translate-x-full peer-checked:ring-0 dark:bg-zinc-300 dark:ring-0"
+      >
+      </div>
+      <span id="Alt-Toggle-Label-3" class="sr-only">Toggle Three</span>
+    </div>
+  </label>
+</div>

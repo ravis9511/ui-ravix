@@ -52,7 +52,8 @@ A set of simple multipurpose badges.
   id="SB-Tab1-panel"
   aria-labelledby="SB-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+>
   <div class="grid px-10 py-6">
     <Badges />
   </div>
@@ -60,12 +61,7 @@ A set of simple multipurpose badges.
 
 <section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
 
-<Code
-  code={BadgesCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={BadgesCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -93,7 +89,8 @@ An alternate style for simple badges with outlines.
   id="ASB-Tab1-panel"
   aria-labelledby="ASB-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+>
   <div class="grid px-10 py-6">
     <AltBadges />
   </div>
@@ -101,12 +98,7 @@ An alternate style for simple badges with outlines.
 
 <section id ="ASB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab2" class="hidden">
 
-<Code
-  code={AltBadgesCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltBadgesCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -134,7 +126,8 @@ An alternate style for simple badges with outlines.
   id="BWI-Tab1-panel"
   aria-labelledby="BWI-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
+  data-role="tabpanel"
+>
   <div class="grid px-10 py-6">
     <BadgesWithIcon />
   </div>
@@ -142,12 +135,7 @@ An alternate style for simple badges with outlines.
 
 <section id ="BWI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BWI-Tab2" class="hidden">
 
-<Code
-  code={BadgesWithIconCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={BadgesWithIconCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -175,20 +163,16 @@ Here are some examples of using badges with other elements.
   id="BOE-Tab1-panel"
   aria-labelledby="BOE-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid px-10 py-6">
+  data-role="tabpanel"
+>
+  <div class="grid px-6 py-6">
     <BadgesOthers />
   </div>
 </section>
 
 <section id ="BOE-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BOE-Tab2" class="hidden">
 
-<Code
-  code={BadgesOthersCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={BadgesOthersCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -208,16 +192,15 @@ Here are some examples of using badges with other elements.
 
 **Accessibility Note:** The last variant uses a `motion-safe:animate-ping` class to create the pinging animation with motion-safe being a selector and animate-ping being a standard tailwind class. You can also use the `prefers-reduced-motion` media query to disable the animation if the user has reduced motion enabled. For more information about accessible animations, see [this article from W3C about pause, stop and hide animations](https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html)
 
-
-
 ## Accessibility Testing Status
-<TableWrapper>
-| Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Badge               | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Simple Badge     | Yes  | Yes              | Yes  | Yes | Yes              |
-| Badge With Icon            | Yes  | Yes              | Yes  | Yes | Yes              |
-| Badge With Other Elements  | Yes  | Yes              | Yes  | Yes | Yes              |
-</TableWrapper>
-There are no clear accessibility guidelines for the badge pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements.
 
+<TableWrapper>
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  -------------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Badge | Yes | Yes | Yes | Yes | Yes | | Alternate
+  Simple Badge | Yes | Yes | Yes | Yes | Yes | | Badge With Icon | Yes | Yes |
+  Yes | Yes | Yes | | Badge With Other Elements | Yes | Yes | Yes | Yes | Yes |
+</TableWrapper>
+There are no clear accessibility guidelines for the badge pattern described by
+WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all
+elements.

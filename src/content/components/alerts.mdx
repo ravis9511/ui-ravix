@@ -66,20 +66,16 @@ Different types of alerts are given below. Note that the last alert doesn't have
   id="SA-Tab1-panel"
   aria-labelledby="SA-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid  p-3 sm:p-6">
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
     <AltAlerts />
   </div>
 </section>
 
 <section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2" class="hidden">
 
-<Code
-  code={AltAlertsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltAlertsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -97,8 +93,6 @@ Different types of alerts are given below. Note that the last alert doesn't have
 
 </Tab>
 
-
-
 ## Alternate Simple Alerts
 
 A different style for simple alerts
@@ -109,20 +103,16 @@ A different style for simple alerts
   id="AA-Tab1-panel"
   aria-labelledby="AA-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid  p-3 sm:p-6">
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
     <Alerts />
   </div>
 </section>
 
 <section id ="AA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab2" class="hidden">
 
-<Code
-  code={AlertsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AlertsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -140,8 +130,6 @@ A different style for simple alerts
 
 </Tab>
 
-
-
 ## Alerts with Icons
 
 A variant of alerts which uses as icon to convey the type of alert. The icon is accompanied with a label for screen readers to convey the same information.
@@ -152,20 +140,16 @@ A variant of alerts which uses as icon to convey the type of alert. The icon is 
   id="AWI-Tab1-panel"
   aria-labelledby="AWI-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid  p-3 sm:p-6">
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
     <AlertsWithIcon />
   </div>
 </section>
 
 <section id ="AWI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWI-Tab2">
 
-<Code
-  code={AlertsWithIconCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AlertsWithIconCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -195,20 +179,16 @@ These alerts are designed in a way to be visually prominent and grab the user's 
   id="PA-Tab1-panel"
   aria-labelledby="PA-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid  p-3 sm:p-6">
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
     <ProminentAlerts />
   </div>
 </section>
 
 <section id ="PA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="PA-Tab2" class="hidden">
 
-<Code
-  code={ProminentAlertsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={ProminentAlertsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -238,8 +218,9 @@ This is a one off astrojs component for all the alerts above. Currently alternat
   id="AC-Tab1-panel"
   aria-labelledby="AC-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid  p-3 sm:p-6">
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
     <AllAlerts
       type="success"
       message="Congratulations! Your action was completed successfully."
@@ -283,7 +264,6 @@ import Alerts from "./Alerts.astro"; // import the component from the correct lo
   showIcon={true}
   prominent={true}
 />
-
 ```
 
 ### Component Props
@@ -315,16 +295,16 @@ If showIcon is false, the alert type is displayed as a bold text prefix to the m
 
 ## Accessibility Testing Status
 
-
 <TableWrapper>
-| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Alerts           | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Simple Alerts | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alerts with Icons       | Yes  | Yes              | Yes  | Yes | Yes              |
-| Prominent Alerts        | Yes  | Yes              | Yes  | Yes | Yes              |
-| Astrojs Component       | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ----------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Alerts | Yes | Yes | Yes | Yes | Yes | | Alternate
+  Simple Alerts | Yes | Yes | Yes | Yes | Yes | | Alerts with Icons | Yes | Yes
+  | Yes | Yes | Yes | | Prominent Alerts | Yes | Yes | Yes | Yes | Yes | |
+  Astrojs Component | Yes | Yes | Yes | Yes | Yes |
 </TableWrapper>
-The alerts adhere to the [WAI-ARIA 1.2 specification  ](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/) for alert patterns.
+The alerts adhere to the [WAI-ARIA 1.2 specification
+](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/) for alert
+patterns.
 
 Additional manual testing maybe required to ensure the alerts are accessible in your specific use case.

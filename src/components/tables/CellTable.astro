@@ -35,30 +35,60 @@ const tableData: TableItem[] = [
 ];
 ---
 
-{tableData.length > 0 && (
-  <div class="relative  overflow-x-auto m-2 shadow-md dark:shadow-lg dark:shadow-black rounded-lg ">
-    <table class="w-full  text-base text-left text-gray-800 dark:text-gray-300  shadow-md rounded-lg border border-collapse  border-gray-300 dark:border-zinc-800">
-      <thead class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800 ">
-        <tr>
-          <th scope="col" class="px-6 py-3 border border-gray-300 dark:border-zinc-700">Product</th>
-          <th scope="col" class="px-6 py-3 border border-gray-300 dark:border-zinc-700">Color</th>
-          <th scope="col" class="px-6 py-3 border border-gray-300 dark:border-zinc-700">Type</th>
-          <th scope="col" class="px-6 py-3 border border-gray-300 dark:border-zinc-700">Stock</th>
-        </tr>
-      </thead>
-      <tbody >
-        {tableData.map((item) => (
-          <tr class="odd:bg-white odd:dark:bg-zinc-950 even:bg-gray-100 even:dark:bg-zinc-900 ">
-
-            <th scope="row" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap border border-gray-300 dark:border-zinc-800">
-              {item.name}
+{
+  tableData.length > 0 && (
+    <div class="relative m-2 overflow-x-auto rounded-lg shadow-md dark:shadow-lg dark:shadow-black">
+      <table class="w-full border-collapse rounded-lg border border-gray-300 text-left text-base text-gray-800 shadow-md dark:border-zinc-800 dark:text-gray-300">
+        <thead class="bg-gray-200 text-sm uppercase text-gray-800 dark:bg-zinc-800 dark:text-gray-300">
+          <tr>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Product
             </th>
-            <td class="px-6 py-3 border border-gray-300 dark:border-zinc-800">{item.color}</td>
-            <td class="px-6 py-3 border border-gray-300 dark:border-zinc-800">{item.type}</td>
-            <td class="px-6 py-3 border border-gray-300 dark:border-zinc-800">{item.stock}</td>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Color
+            </th>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Type
+            </th>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Stock
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
+        </thead>
+        <tbody>
+          {tableData.map((item) => (
+            <tr class="odd:bg-white even:bg-gray-100 odd:dark:bg-zinc-950 even:dark:bg-zinc-900">
+              <th
+                scope="row"
+                class="whitespace-nowrap border border-gray-300 px-6 py-3 font-semibold text-gray-900 dark:border-zinc-800 dark:text-gray-100"
+              >
+                {item.name}
+              </th>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.color}
+              </td>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.type}
+              </td>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.stock}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}

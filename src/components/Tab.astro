@@ -1,156 +1,132 @@
 ---
-import DarkModeButton from "./DarkModeButton.svelte"
-import AstroImage from "../assets/astroImage.astro"
-import HTML from "../assets/html.astro"
-import Tailwind from "../assets/tailwind.astro"
-import Svelte from "../assets/svelte.astro"
-import View from "../assets/view.astro"
+import DarkModeButton from "./DarkModeButton.svelte";
+import AstroImage from "../assets/astroImage.astro";
+import HTML from "../assets/html.astro";
+import Tailwind from "../assets/tailwind.astro";
+import Svelte from "../assets/svelte.astro";
+import View from "../assets/view.astro";
 
 interface Props {
-    tabs: Array<{
-        id: string
-        name: string
-        icon: string
-    }>,
-    name?: string
+  tabs: Array<{
+    id: string;
+    name: string;
+    icon: string;
+  }>;
+  name?: string;
 }
 
-const { tabs,name } = Astro.props
+const { tabs, name } = Astro.props;
 ---
 
 <tabs-list>
-    
-    <div data-pagefind-ignore aria-label={name}
-        class="flex flex-row max-w-4xl mx-auto  w-full items-center  my-4 p-[4px] bg-gray-100 rounded-xl border-gray-400 dark:bg-zinc-950 border dark:border-zinc-800 lg:gap-x-4"
-        role="tablist" data-role="tablist">
-        {
-            tabs.map((tab, index) => (
-                <button
-                    role="tab"
-                    aria-selected={
-                        index === 0 ? "true" : "false"
-                    }
-                    aria-controls=`${tab.id}-panel`
-                    data-role="tab"
-                    id={tab.id}
-                    class=" cursor-pointer w-full px-2 md:px-6 py-3 text-base md:text-lg rounded-lg flex justify-center flex-row items-center md:space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
-                    <div class="hidden md:block" aria-hidden="true">
-                        {tab.icon === "astro" && <AstroImage />}
-                        {tab.icon === "svelte" && <Svelte />}
-                        {tab.icon === "tailwind" && <Tailwind />}
-                        {tab.icon === "html" && <HTML />}
-                        {tab.icon === "view" && <View />}
-                    </div>
-                    <span class="sr-only">{name}</span>
-                    <span>{tab.name}</span>
-                    {tab.name==="Preview" ? "" : <span class="sr-only">code</span>}
-                </button>
-            ))
-        }
-        
-        
-    </div>
+  <div
+    data-pagefind-ignore
+    aria-label={name}
+    class="mx-auto my-4 flex w-full max-w-4xl flex-row items-center rounded-xl border border-gray-400 bg-gray-50 p-[4px] font-display lg:gap-x-4 dark:border-zinc-800 dark:bg-zinc-950"
+    role="tablist"
+    data-role="tablist"
+  >
+    {
+      tabs.map((tab, index) => (
+        <button
+          role="tab"
+          aria-selected={index === 0 ? "true" : "false"}
+          aria-controls={`${tab.id}-panel`}
+          data-role="tab"
+          id={tab.id}
+          class="flex w-full cursor-pointer flex-row items-center justify-center rounded-lg px-2 py-3 text-base hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:space-x-3 md:px-6 md:text-lg dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+        >
+          <div class="hidden md:block" aria-hidden="true">
+            {tab.icon === "astro" && <AstroImage />}
+            {tab.icon === "svelte" && <Svelte />}
+            {tab.icon === "tailwind" && <Tailwind />}
+            {tab.icon === "html" && <HTML />}
+            {tab.icon === "view" && <View />}
+          </div>
+          <span class="sr-only">{name}</span>
+          <span>{tab.name}</span>
+          {tab.name === "Preview" ? "" : <span class="sr-only">code</span>}
+        </button>
+      ))
+    }
+  </div>
 
-    <div data-pagefind-ignore
-        class="not-prose  max-w-4xl  mx-auto w-full    border border-gray-400 dark:border-zinc-800  rounded-xl lg:max-h-[82dvh] overflow-auto scrollbar ">
-        <slot />
-    </div>
-    
+  <div
+    data-pagefind-ignore
+    class="not-prose scrollbar mx-auto w-full max-w-4xl overflow-auto rounded-xl border border-gray-400 lg:max-h-[82dvh] dark:border-zinc-800"
+  >
+    <slot />
+  </div>
 </tabs-list>
 
 <script>
-    class Tab extends HTMLElement {
-        constructor() {
-            super()
+  class Tab extends HTMLElement {
+    constructor() {
+      super();
 
-            const buttons =
-                this.querySelectorAll('[data-role="tab"]')
-            const panels = this.querySelectorAll(
-                '[data-role="tabpanel"]'
-            )
-            const tabList = this.querySelector('[data-role="tablist"]');
-            let tabFocus = 0;
-            tabList?.addEventListener("keydown", (keyboardEvent ) => {
-            const e = keyboardEvent as KeyboardEvent;
-            if(e.key){
-            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      const buttons = this.querySelectorAll('[data-role="tab"]');
+      const panels = this.querySelectorAll('[data-role="tabpanel"]');
+      const tabList = this.querySelector('[data-role="tablist"]');
+      let tabFocus = 0;
+      tabList?.addEventListener("keydown", (keyboardEvent) => {
+        const e = keyboardEvent as KeyboardEvent;
+        if (e.key) {
+          if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
             buttons[tabFocus].setAttribute("tabindex", "-1");
             if (e.key === "ArrowRight") {
-            tabFocus++;
-            // If we're at the end, go to the start
-            if (tabFocus >= buttons.length) {
+              tabFocus++;
+              // If we're at the end, go to the start
+              if (tabFocus >= buttons.length) {
                 tabFocus = 0;
-            }
-            // Move left
+              }
+              // Move left
             } else if (e.key === "ArrowLeft") {
-            tabFocus--;
-            // If we're at the start, move to the end
-            if (tabFocus < 0) {
+              tabFocus--;
+              // If we're at the start, move to the end
+              if (tabFocus < 0) {
                 tabFocus = buttons.length - 1;
+              }
             }
-            }
-            
+
             (buttons[tabFocus] as HTMLButtonElement).focus();
-            }}
-            if(e.key === "Tab"  ){
-                buttons.forEach((button,index) => {
-                    if(button.getAttribute("aria-selected") === "true"){    
-                        button.setAttribute("tabindex", "0");
-                        tabFocus = index;
-                    }
-                    else{
-                        button.setAttribute("tabindex", "-1");
-                    }
-                })
-                
-
-
-            }}
-            ); 
-            buttons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    buttons.forEach((btn) =>
-                        btn.setAttribute(
-                            "aria-selected",
-                            "false"
-                        )
-                    )
-                    button.setAttribute(
-                        "aria-selected",
-                        "true"
-                    )
-                    const selectedPanel = button.getAttribute("aria-controls");
-                    panels.forEach((panel) => {
-                        if(panel.id === selectedPanel){
-                           
-                            panel.classList.remove(
-                                "hidden"
-                            );
-                        }
-                        else{
-                        panel.classList.add(
-                            "hidden"
-                        )
-                        panel.setAttribute("tabindex", "-1");
-                    }
-                    })
-                    
-                   
-                })
-                button.setAttribute("tabindex", "-1");
-            })
-
-            panels.forEach((panel, index) => {
-                panel.classList.toggle(
-                    "hidden",
-                    index !== 0
-                )
-                panel.setAttribute("tabindex", "-1");
-            })
-              
-            buttons[0].setAttribute("tabindex", "0");
+          }
         }
-    }
+        if (e.key === "Tab") {
+          buttons.forEach((button, index) => {
+            if (button.getAttribute("aria-selected") === "true") {
+              button.setAttribute("tabindex", "0");
+              tabFocus = index;
+            } else {
+              button.setAttribute("tabindex", "-1");
+            }
+          });
+        }
+      });
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          buttons.forEach((btn) => btn.setAttribute("aria-selected", "false"));
+          button.setAttribute("aria-selected", "true");
+          const selectedPanel = button.getAttribute("aria-controls");
+          panels.forEach((panel) => {
+            if (panel.id === selectedPanel) {
+              panel.classList.remove("hidden");
+            } else {
+              panel.classList.add("hidden");
+              panel.setAttribute("tabindex", "-1");
+            }
+          });
+        });
+        button.setAttribute("tabindex", "-1");
+      });
 
-    customElements.define("tabs-list", Tab)
+      panels.forEach((panel, index) => {
+        panel.classList.toggle("hidden", index !== 0);
+        panel.setAttribute("tabindex", "-1");
+      });
+
+      buttons[0].setAttribute("tabindex", "0");
+    }
+  }
+
+  customElements.define("tabs-list", Tab);
 </script>

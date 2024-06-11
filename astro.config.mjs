@@ -10,7 +10,7 @@ import expressiveCode, { ExpressiveCodeTheme } from "astro-expressive-code";
 
 const jsoncString = fs.readFileSync(
   new URL(`./my-theme.jsonc`, import.meta.url),
-  "utf-8"
+  "utf-8",
 );
 const myTheme = ExpressiveCodeTheme.fromJSONString(jsoncString);
 // https://astro.build/config

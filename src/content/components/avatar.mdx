@@ -42,8 +42,6 @@ Avatar is used to represent a user or group of users using an image. It can also
   ]}
 />
 
-
-
 ## Simple Avatar
 
 A set of default avatars which can be used. The first one is a default avatar, the second one is a placeholder avatar, the third one is an avatar with name. The second row has the same types of avatars but with links.
@@ -54,20 +52,16 @@ A set of default avatars which can be used. The first one is a default avatar, t
   id="SA-Tab1-panel"
   aria-labelledby="SA-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid justify-center  p-6 w-full">
+  data-role="tabpanel"
+>
+  <div class="grid w-full justify-center p-6">
     <Avatar />
   </div>
 </section>
 
 <section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2" class="hidden">
 
-<Code
-  code={AvatarCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AvatarCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -99,20 +93,16 @@ The simple avatar but with extra state information. The states available out of 
   id="AWS-Tab1-panel"
   aria-labelledby="AWS-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid justify-center  p-6">
+  data-role="tabpanel"
+>
+  <div class="grid justify-center p-6">
     <AvatarWithState />
   </div>
 </section>
 
 <section id ="AWS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWS-Tab2" class="hidden">
 
-<Code
-  code={AvatarWithStateCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AvatarWithStateCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -140,20 +130,16 @@ These avatars are similar to the previous one, but an additional ring is added t
   id="ASR-Tab1-panel"
   aria-labelledby="ASR-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid justify-center  p-6">
+  data-role="tabpanel"
+>
+  <div class="grid justify-center p-6">
     <AvatarWithRing />
   </div>
 </section>
 
 <section id ="ASR-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASR-Tab2" class="hidden">
 
-<Code
-  code={AvatarWithRingCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AvatarWithRingCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -171,7 +157,6 @@ These avatars are similar to the previous one, but an additional ring is added t
 
 </Tab>
 
-
 ## Avatar Groups
 
 The avatar group allows you to show multiple avatars stacked together in a group. Using every avatar in the avatar group as a link is not recommended since the clickable area is limited. The recommended approach is to show the list of people when the link/button ( the +22 link in the example below) on the avatar group is clicked from which further actions can be taken.
@@ -182,20 +167,16 @@ The avatar group allows you to show multiple avatars stacked together in a group
   id="AG-Tab1-panel"
   aria-labelledby="AG-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid justify-center  p-6">
+  data-role="tabpanel"
+>
+  <div class="grid justify-center p-6">
     <AvatarGroup />
   </div>
 </section>
 
 <section id ="AG-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AG-Tab2" class="hidden">
 
-<Code
-  code={AvatarGroupCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AvatarGroupCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -214,6 +195,7 @@ The avatar group allows you to show multiple avatars stacked together in a group
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |

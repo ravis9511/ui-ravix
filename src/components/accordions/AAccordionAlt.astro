@@ -48,53 +48,56 @@ if you want more complex content, you can send the content as HTML and use a fra
 
 <div
   id="accordion-container-alt"
-  class="mb-12 divide-y divide-gray-300 dark:divide-zinc-800 rounded-lg max-w-3xl">
-  
-    {
-      panels.map((panel: AccordionPanel, index: number) => (
-        <div class="group text-zinc-900 dark:text-zinc-300  ">
-          <button
-            data-accordion="button"
-            type="button"
-            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
-            aria-expanded="false"
-            id={`${componentId}-button-${index + 1}`}
-            aria-controls={`${componentId}-panel-${index + 1}`}>
-            <h3 class="text-base md:text-lg font-medium">{panel.header}</h3>
-            <svg
-              class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-
-          <section
-            data-accordion="panel"
+  class="mb-12 max-w-3xl divide-y divide-gray-400 rounded-lg dark:divide-zinc-800"
+>
+  {
+    panels.map((panel: AccordionPanel, index: number) => (
+      <div class="group text-zinc-900 dark:text-zinc-300">
+        <button
+          data-accordion="button"
+          type="button"
+          class="group/button peer flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-4 text-start outline-gray-600 focus:outline-2 aria-expanded:bg-gray-200 motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in dark:outline-zinc-500 dark:aria-expanded:bg-zinc-900"
+          aria-expanded="false"
+          id={`${componentId}-button-${index + 1}`}
+          aria-controls={`${componentId}-panel-${index + 1}`}
+        >
+          <h3 class="text-base font-medium md:text-lg">{panel.header}</h3>
+          <svg
+            class="h-5 w-5 shrink-0 group-aria-expanded/button:-rotate-180 motion-safe:transition motion-safe:duration-300"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
             aria-hidden="true"
-            id={`${componentId}-panel-${index + 1}`}
-            class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:ease-in-out"
-            aria-labelledby={`${componentId}-button-${index + 1}`}
-            role="region">
-            <div class="px-6 text-start text-base py-4 md:py-5  rounded-lg">
-              {panel.content}
-            </div>
-          </section>
-        </div>
-      ))
-    }
-  </div>
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
 
-  <!-- Add more accordion items as needed -->
+        <section
+          data-accordion="panel"
+          aria-hidden="true"
+          id={`${componentId}-panel-${index + 1}`}
+          class="max-h-0 overflow-hidden opacity-30 peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out"
+          aria-labelledby={`${componentId}-button-${index + 1}`}
+          role="region"
+        >
+          <div class="rounded-lg px-6 py-4 text-start text-base md:py-5">
+            {panel.content}
+          </div>
+        </section>
+      </div>
+    ))
+  }
 </div>
+
+<!-- Add more accordion items as needed -->
+
 <script>
   /**
    * Sets up the accordion functionality for an accordion container with the ID "accordion-container-alt".
@@ -114,14 +117,14 @@ if you want more complex content, you can send the content as HTML and use a fra
      */
 
     const accordion = document.getElementById(
-      "accordion-container-alt"
+      "accordion-container-alt",
     ) as HTMLElement;
     if (!accordion) return;
     const buttons = accordion?.querySelectorAll(
-      '[data-accordion="button"]'
+      '[data-accordion="button"]',
     ) as NodeListOf<HTMLElement>;
     const panels = accordion?.querySelectorAll(
-      '[data-accordion="panel"]'
+      '[data-accordion="panel"]',
     ) as NodeListOf<HTMLElement>;
 
     var selectedPanel: HTMLElement;

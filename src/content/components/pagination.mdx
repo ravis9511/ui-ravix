@@ -36,8 +36,9 @@ A simple pagination component that displays the current page number and the tota
   id="SP-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="SP-Tab1">
-  <div class="p-2 flex items-center justify-center w-full">
+  aria-labelledby="SP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
     <SimplePagination />
   </div>
 </section>
@@ -77,20 +78,16 @@ An alternate boxed pagination style that displays the current page number and th
   id="AP-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="AP-Tab1">
-  <div class="p-2 flex items-center justify-center w-full">
+  aria-labelledby="AP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
     <AltPagination />
   </div>
 </section>
 
 <section id ="AP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab2" class="hidden">
 
-<Code
-  code={AltPaginationCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltPaginationCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -118,20 +115,16 @@ This is similar to the Simple Pagination style but uses ghost styling for the pa
   id="GP-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="GP-Tab1">
-  <div class="p-2 flex items-center justify-center w-full">
+  aria-labelledby="GP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
     <GhostPagination />
   </div>
 </section>
 
 <section id ="GP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GP-Tab2" class="hidden">
 
-<Code
-  code={GhostPaginationCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={GhostPaginationCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -150,11 +143,14 @@ This is similar to the Simple Pagination style but uses ghost styling for the pa
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Pagination       | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Pagination    | Yes  | Yes              | Yes  | Yes | Yes              |
-| Ghost Pagination        | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ----------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Pagination | Yes | Yes | Yes | Yes | Yes | |
+  Alternate Pagination | Yes | Yes | Yes | Yes | Yes | | Ghost Pagination | Yes
+  | Yes | Yes | Yes | Yes |
 </TableWrapper>
-While there are no specific patters from the ARIA Authoring Practices Guide for Pagination, the implementation of the pagination components follows best practices for navigational elements.
+While there are no specific patters from the ARIA Authoring Practices Guide for
+Pagination, the implementation of the pagination components follows best
+practices for navigational elements.

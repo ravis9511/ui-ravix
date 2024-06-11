@@ -28,7 +28,6 @@ import CondTableCodeAstro from "../../components/tables/CondTable.astro?raw";
 
 Tables are used to display data in a structured and organized manner. It is the most common way to display a lot of structured data in a web page. Since we use the `<table>` tag, it is accessible to the screen reader without any modification.
 
-
 ## Simple Table
 
 A simple table with a header and a body.
@@ -43,12 +42,7 @@ A simple table with a header and a body.
 
 <section id ="ST-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab2" class="hidden">
 
-<Code
-  code={SimpleTableCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={SimpleTableCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -80,12 +74,7 @@ A variation of the simple table with more thematic colors.
 
 <section id ="TT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="TT-Tab2" class="hidden">
 
-<Code
-  code={ThemeTableCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={ThemeTableCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -117,12 +106,7 @@ A variation of the simple table with cell borders.
 
 <section id ="CB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CB-Tab2" class="hidden">
 
-<Code
-  code={CellTableCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={CellTableCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -154,12 +138,7 @@ A table with a caption, done semantically with the `<caption>` tag.
 
 <section id ="CT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab2" class="hidden">
 
-<Code
-  code={CaptionTableCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={CaptionTableCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -176,7 +155,6 @@ A table with a caption, done semantically with the `<caption>` tag.
 </section>
 
 </Tab>
-
 
 ## Table With Conditional Styling
 
@@ -208,19 +186,16 @@ A table with conditional styling for cells based on the value of a column.
 
 **Accessibility Note:** While the colors are a good visual indicator, for accessibility ravixUI has added text in the table header for both visual and screen reader users. This is just one approach, you can also add another column to represent the same. The styling in this table is just a showcase of the different ways you can use conditional styling. In a real-world scenario, you would likely stick to one format for styling.
 
-
-
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Table            | Yes  | Yes              | Yes  | Yes | Yes              |
-| Thematic Table          | Yes  | Yes              | Yes  | Yes | Yes              |
-| Table With Cell Borders | Yes  | Yes              | Yes  | Yes | Yes              |
-| Table With A Caption    | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ----------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Table | Yes | Yes | Yes | Yes | Yes | | Thematic
+  Table | Yes | Yes | Yes | Yes | Yes | | Table With Cell Borders | Yes | Yes |
+  Yes | Yes | Yes | | Table With A Caption | Yes | Yes | Yes | Yes | Yes |
 </TableWrapper>
-The tables adhere to the [WCAG 2.1 AA standards](https://www.w3.org/TR/WCAG21/) for accessibility.
+The tables adhere to the [WCAG 2.1 AA standards](https://www.w3.org/TR/WCAG21/)
+for accessibility.
 
 Additional manual testing maybe required to ensure the tables are accessible in your specific use case.
-
-

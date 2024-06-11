@@ -55,20 +55,16 @@ This is a simple card that can be used to display information or content. It can
   id="SC-Tab1-panel"
   aria-labelledby="SC-Tab1"
   role="tabpanel"
-  data-role="tabpanel">
-  <div class="grid p-6 justify-center">
+  data-role="tabpanel"
+>
+  <div class="grid justify-center p-6">
     <SimpleCard />
   </div>
 </section>
 
 <section id ="SC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SC-Tab2" class="hidden">
 
-<Code
-  code={SimpleCardCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={SimpleCardCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -115,12 +111,7 @@ Horizontal card layouts display collections of similar items efficiently, adapti
 
 <section id ="HC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="HC-Tab2" class="hidden">
 
-<Code
-  code={HorizontalCardCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={HorizontalCardCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -156,12 +147,7 @@ A card for showcasing features or benefits of a product or service. It can be us
 
 <section id ="FC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="FC-Tab2" class="hidden">
 
-<Code
-  code={FeaturesCardCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={FeaturesCardCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -210,12 +196,7 @@ A card with a gradient background. The gradient used is subtle and non distracti
 
 <section id ="GC-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GC-Tab2" class="hidden">
 
-<Code
-  code={GradientCardCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={GradientCardCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -232,8 +213,6 @@ A card with a gradient background. The gradient used is subtle and non distracti
 </section>
 
 </Tab>
-
-
 
 <Accordion
   data={[
@@ -262,12 +241,7 @@ A card with a glass effect.
 
 <section id ="GL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GL-Tab2" class="hidden">
 
-<Code
-  code={GlassCardCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={GlassCardCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -299,15 +273,17 @@ A card with a glass effect.
 />
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component       | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| --------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Card     | Yes  | Yes              | Yes  | Yes | Yes              |
-| Horizontal Card | Yes  | Yes              | Yes  | Yes | Yes              |
-| Features Card   | Yes  | Yes              | Yes  | Yes | Yes              |
-| Gradient Card   | Yes  | Yes              | Yes  | Yes | Yes              |
-| Glass Card      | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  --------------- | ---- | ---------------- | ---- | --- | ---------------- | |
+  Simple Card | Yes | Yes | Yes | Yes | Yes | | Horizontal Card | Yes | Yes |
+  Yes | Yes | Yes | | Features Card | Yes | Yes | Yes | Yes | Yes | | Gradient
+  Card | Yes | Yes | Yes | Yes | Yes | | Glass Card | Yes | Yes | Yes | Yes |
+  Yes |
 </TableWrapper>
-There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards while adhering to the WCAG 2.1 AA standard.
+There are no clear accessibility guidelines for the cards pattern described by
+WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all
+elements present inside the cards while adhering to the WCAG 2.1 AA standard.
 
 While the cards out of the box in ravixUI showcase action buttons inside the cards, it's possible that the card itself can act as an action button based on context, for example, catalogs having product cards that can be clicked to view the product details or genres in a music application having a card for each genre that can be clicked to view songs of the genre.

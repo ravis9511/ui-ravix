@@ -25,25 +25,24 @@ const { currentSlug } = Astro.props;
 
 <nav
   aria-label="Site Navigation"
-  class="font-display flex max-h-[8dvh] min-h-[8dvh] flex-row items-center justify-between z-[100] px-3 sm:px-8 md:px-10 lg:px-16 xl:px-32 sticky top-0 border-b border-gray-300 dark:border-zinc-800 dark:bg-zinc-950 bg-gray-50 py-2">
+  class="sticky top-0 z-[100] flex max-h-[8dvh] min-h-[8dvh] flex-row items-center justify-between border-b border-gray-400 bg-gray-50 px-3 py-2 font-display sm:px-8 md:px-10 lg:px-16 xl:px-32 dark:border-zinc-700 dark:bg-zinc-950"
+>
   <div class="flex flex-row items-center justify-between">
     <Hamburger
       client:load
       entryMap={documentEntries}
       currentSlug={currentSlug}
     />
-    <a
-      href="/"
-      class="flex items-center justify-start mx-4">
+    <a href="/" class="mx-6 flex items-center justify-start">
       <Image
         src={LogoLightMode}
         alt="Logo"
-        class="w-8 h-8 block dark:hidden mr-1 sm:mx-4"
+        class="mr-1 block h-8 w-8 sm:mx-4 dark:hidden"
       />
       <Image
         src={LogoDarkMode}
         alt="Logo"
-        class="hidden w-8 h-8 dark:block mr-1 sm:mx-4"
+        class="mr-1 hidden h-8 w-8 sm:mx-4 dark:block"
       />
       <span class="text-xl sm:text-2xl">ravixUI</span>
     </a>
@@ -62,23 +61,22 @@ const { currentSlug } = Astro.props;
       uiOptions={{ showImages: false, excerptLength: 15 }}
     />
   </div>
-  <div class="hidden lg:block items-center h-full justify-center">
-    <div class="w-full h-full inline-flex lg:mx-3 justify-end">
-      <div class="hidden lg:inline-flex items-center h-full space-x-4">
+  <div class="block h-full items-center justify-center">
+    <div class="inline-flex h-full w-full items-center justify-end lg:mx-3">
+      <div class="hidden h-full items-center space-x-4 lg:inline-flex">
         <a
           href="/components/gettingstarted"
-          class="p-2 text-base lg:text-xl hover:text-blue-400"
-          >Docs</a
+          class="p-4 text-base hover:text-blue-400">Documentation</a
         >
-        <DarkModeButton client:load />
       </div>
+      <DarkModeButton client:load />
     </div>
   </div>
 </nav>
 
 <style is:global>
   .pagefind-ui.light {
-    --pagefind-ui-scale: 0.7;
+    --pagefind-ui-scale: 0.6;
     --pagefind-ui-primary: #12102c;
     --pagefind-ui-text: black;
     --pagefind-ui-border: slategrey;
@@ -89,7 +87,7 @@ const { currentSlug } = Astro.props;
   }
 
   .pagefind-ui.dark {
-    --pagefind-ui-scale: 0.7;
+    --pagefind-ui-scale: 0.6;
     --pagefind-ui-primary: #ffffff;
     --pagefind-ui-text: #ffffff;
     --pagefind-ui-background: #18181b;

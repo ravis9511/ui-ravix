@@ -28,7 +28,7 @@ import WCDropdownCode from "../../components/dropdowns/WCDropdown.astro?raw";
 A dropdown is a menu that appears when a user clicks on a button or link. It is a common design pattern used in websites and applications to provide additional options or functionality to the user.
 
 <Accordion
- data={[
+  data={[
     {
       name: "dropdown1",
       title: "Design Hints",
@@ -47,6 +47,7 @@ A dropdown is a menu that appears when a user clicks on a button or link. It is 
 ### Dropdown Definition
 
 The dropdown consists of two main parts:
+
 - The dropdown button: button that triggers the dropdown menu to appear.
 - The dropdown menu: A menu that appears when the dropdown button is clicked. The list of items are usually actionable, such as links or buttons. It can also contain submenus but this implementation is primarily focused on the dropdown menu without submenus.
 
@@ -65,12 +66,7 @@ A simple dropdown with a list of options.
 
 <section id ="SD-Tab2-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="SD-Tab2">
 
-<Code
-  code={DropdownCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={DropdownCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -103,12 +99,7 @@ A different style for a simple dropdown.
 
 <section id ="AD-Tab2-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AD-Tab2">
 
-<Code
-  code={AltDropdownCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltDropdownCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -238,20 +229,24 @@ Example implementation:
 
 ```astro title="YourPage.astro"
 ---
-import Dropdown from './Dropdown.astro';
+import Dropdown from "./Dropdown.astro";
 
-const menuLabel = 'Select an option';
+const menuLabel = "Select an option";
 const menuItems = [
-  { label: 'Option 1', type: 'link', href: '/option1' },
-  { label: 'Option 2', type: 'button', action: '/handle-option2' },
+  { label: "Option 1", type: "link", href: "/option1" },
+  { label: "Option 2", type: "button", action: "/handle-option2" },
   // Add more menu items as needed
 ];
-const xAlignment = 'right';
-const yAlignment = 'top';
+const xAlignment = "right";
+const yAlignment = "top";
 ---
 
-<Dropdown menuLabel={menuLabel} menuItems={menuItems} xAlignment={xAlignment} yAlignment={yAlignment} />
-
+<Dropdown
+  menuLabel={menuLabel}
+  menuItems={menuItems}
+  xAlignment={xAlignment}
+  yAlignment={yAlignment}
+/>
 ```
 
 ### Data Attributes
@@ -292,19 +287,23 @@ The Dropdown component follows accessibility best practices by using appropriate
 - The dropdown menu has **aria-orientation**, **aria-labelledby**, **role**, and **aria-hidden** attributes to provide semantic information to assistive technologies.
 - Each menu item has the role **menuitem**.
 
-
 The component is provided as-is and may require further testing and customization to fit your specific use case.
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Dropdown             | Yes  | Yes              | Yes  | Yes | Yes              |
-| Animated Dropdown           | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Animated Dropdown | Yes  | Yes              | Yes  | Yes | Yes              |
-| Astro JS Web Component      | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  --------------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Dropdown | Yes | Yes | Yes | Yes | Yes | |
+  Animated Dropdown | Yes | Yes | Yes | Yes | Yes | | Alternate Animated
+  Dropdown | Yes | Yes | Yes | Yes | Yes | | Astro JS Web Component | Yes | Yes
+  | Yes | Yes | Yes |
 </TableWrapper>
-The dropdown components are implemented with the WAI-ARIA 1.2 design patterns. The components above implement all the required functionality mention in [WAI-ARIA APG specification for menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
+The dropdown components are implemented with the WAI-ARIA 1.2 design patterns.
+The components above implement all the required functionality mention in
+[WAI-ARIA APG specification for menu
+button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG
+specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
 
 The components support keyboard navigation once the dropdown is opened:
 

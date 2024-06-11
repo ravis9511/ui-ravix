@@ -5,21 +5,22 @@
 <div class="group relative inline-flex text-left">
   <button
     type="button"
-    class="group/button peer inline-flex w-full justify-center  gap-x-1.5 rounded-md bg-white dark:bg-zinc-900 px-4 py-3 lg:py-2.5 font-semibold text-sm lg:text-base text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:ring-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
+    class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm outline-offset-4 outline-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-4 lg:py-2.5 lg:text-base dark:bg-zinc-900 dark:text-gray-100 dark:shadow-none dark:outline-white dark:ring-zinc-800 dark:hover:bg-zinc-700"
     id="menu-button-an"
     aria-expanded="false"
-    aria-haspopup="true">
+    aria-haspopup="true"
+  >
     Options
     <svg
-      class="-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 group-aria-expanded/button:-rotate-180"
+      class="-mr-1 h-5 w-5 text-gray-400 group-aria-expanded/button:-rotate-180 motion-safe:transition motion-safe:duration-500"
       viewBox="0 0 20 20"
       fill="currentColor"
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       <path
         fill-rule="evenodd"
         d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-        clip-rule="evenodd"
-      ></path>
+        clip-rule="evenodd"></path>
     </svg>
   </button>
 
@@ -27,55 +28,41 @@
     aria-orientation="vertical"
     aria-labelledby="menu-button-an"
     role="menu"
-    class="absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-500 right-0 max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100 top-11 z-10 mt-2 origin-top-right rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    class="absolute right-0 top-11 z-10 mt-2 max-h-0 min-w-max origin-top-right overflow-hidden rounded-md bg-white text-gray-800 opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none peer-aria-expanded:max-h-96 peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-in-out dark:bg-zinc-900 dark:text-gray-200"
     id="dropdown-menu-an"
     aria-hidden="true"
-    tabindex="-1">
-    <li
-      tabindex="-1"
-      role="menuitem"
-      id="an-menu-item-0">
+    tabindex="-1"
+  >
+    <li tabindex="-1" role="menuitem" id="an-menu-item-0">
       <a
         href="#"
         tabindex="-1"
-        class="block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+        class="my-1 block px-4 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
         >Account settings</a
       >
     </li>
-    <li
-      tabindex="-1"
-      role="menuitem"
-      id="an-menu-item-1">
+    <li tabindex="-1" role="menuitem" id="an-menu-item-1">
       <a
         href="#"
         tabindex="-1"
-        class="block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+        class="my-1 block px-4 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
         >Support</a
       >
     </li>
-    <li
-      tabindex="-1"
-      role="menuitem"
-      id="an-menu-item-2">
+    <li tabindex="-1" role="menuitem" id="an-menu-item-2">
       <a
         href="#"
         tabindex="-1"
-        class="block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+        class="my-1 block px-4 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
         >License</a
       >
     </li>
-    <li
-      tabindex="-1"
-      role="menuitem"
-      id="an-menu-item-3">
-      <form
-        method="POST"
-        id="an-menu-item-form-3"
-        action="#">
+    <li tabindex="-1" role="menuitem" id="an-menu-item-3">
+      <form method="POST" id="an-menu-item-form-3" action="#">
         <button
           type="submit"
           tabindex="-1"
-          class="block w-full px-4 py-3 text-sm text-start hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+          class="my-1 block w-full px-4 py-3 text-start text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
           >Sign out</button
         >
       </form>
@@ -92,13 +79,13 @@
    */
   function menuInitilization() {
     const button = document.getElementById(
-      "menu-button-an"
+      "menu-button-an",
     ) as HTMLButtonElement;
     const dropdown = document.getElementById(
-      "dropdown-menu-an"
+      "dropdown-menu-an",
     ) as HTMLUListElement;
     const dropdownItems = dropdown?.querySelectorAll(
-      "li"
+      "li",
     ) as NodeListOf<HTMLLIElement>;
     button?.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -123,7 +110,7 @@
           document.documentElement.addEventListener("click", closeMenu);
           setTimeout(() => {
             dropdownItems[0].focus();
-          }, 200);// to prevent the focus setting from causing a stutter in the animation
+          }, 200); // to prevent the focus setting from causing a stutter in the animation
           let tabFocus = 0;
 
           dropdown.addEventListener("keydown", (keyboardEvent) => {
@@ -165,14 +152,13 @@
               }
               tabFocus = tabFocus % dropdownItems.length;
               dropdownItems[tabFocus].focus();
+            } else if (e.key === "Tab" || e.key === "Shift+Tab") {
+              e.preventDefault();
+              button.focus();
             }
-            else if (e.key === "Tab" || e.key === "Shift+Tab") {
-            e.preventDefault();
-            button.focus();
-          }
           });
         }
-      }       
+      }
     });
   }
   function closeMenu() {

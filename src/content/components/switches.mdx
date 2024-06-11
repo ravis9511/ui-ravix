@@ -51,12 +51,7 @@ A simple switch input to toggle between two states.
 
 <section id ="SS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab2" class="hidden">
 
-<Code
-  code={ToggleCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={ToggleCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -89,12 +84,7 @@ An alternate style for simple switches.
 
 <section id ="AS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab2" class="hidden">
 
-<Code
-  code={ToggleAltCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={ToggleAltCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -113,12 +103,16 @@ An alternate style for simple switches.
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Switch           | Yes  | Yes              | Yes  | Yes | Partial\*        |
-| Alternate Simple Switch | Yes  | Yes              | Yes  | Yes | Partial\*        |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ----------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Switch | Yes | Yes | Yes | Yes | Partial\* | |
+  Alternate Simple Switch | Yes | Yes | Yes | Yes | Partial\* |
 </TableWrapper>
-\*The IBM Equal Access Accessibility Checker shows errors for missing aria-checked attribute even though its an input type checkbox with a role switch. If an aria-checked attribute is added, it would be double dipping since input type checkbox already conveys if it is checked or not.
+\*The IBM Equal Access Accessibility Checker shows errors for missing
+aria-checked attribute even though its an input type checkbox with a role
+switch. If an aria-checked attribute is added, it would be double dipping since
+input type checkbox already conveys if it is checked or not.
 
 For more information on the implementation of the switches, you can refer to [the ARIA Authoring Practices Guide for Switch pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/)

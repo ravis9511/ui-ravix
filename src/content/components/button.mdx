@@ -41,7 +41,7 @@ The simple yet powerful button. ravixUI has multiple types of buttons available 
       title: "Accessiblity Hints",
       content:
         "Instead of disabling buttons, consider giving feedback using alerts or modals when a user clicks a button with appropriate messages for why the user cannot proceed. Disabling it will make the button unable to receive focus which will remove its accessible nature. When modifying colored elements such as background or text, it's crucial to verify that the color contrast meets accessibility standards. Icons can be used alongside buttons, and it may be tempting to remove text from certain buttons if the icons convey all the information, but you will have to consider screen reader requirements for which there are examples available below. Choose icons which offer additional semantic meaning or familiarity for the user .You can utilize tools or browser extensions that support WCAG guidelines or use dedicated color contrast checkers. Regarding these buttons, the 'type' attribute is set to 'button' for all blocks by default. However, if these buttons are part of a form, you'll need to change the 'type' to 'submit'. ravixUI has predetermined semantic usages for green, red, and yellow colors, but you're free to modify these choices. ",
-    }
+    },
   ]}
 />
 
@@ -60,13 +60,7 @@ Simple buttons for different types of actions. Note that you will need to connec
 
 <section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
 
-<Code
-  code={NormalButtonCode}
-  lang="html"
-  
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={NormalButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -84,7 +78,7 @@ Simple buttons for different types of actions. Note that you will need to connec
 
 </Tab>
 
-**Note:** The default button uses a subtle indigo color for the shadow using the `shadow-indigo-300/40` utility. 
+**Note:** The default button uses a subtle indigo color for the shadow using the `shadow-indigo-300/40` utility.
 
 ## Simple Button With Icons
 
@@ -137,12 +131,7 @@ This is a tailwindCSS wrapper on the `<a>` tag to make it look like a button. Us
 
 <section id ="LB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="LB-Tab2" class="hidden">
 
-<Code
-  code={LinkButtonCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={LinkButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -184,12 +173,7 @@ The accessible icon only button. Useful when dealing with limited space on a web
 
 <section id ="AB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AB-Tab2" class="hidden">
 
-<Code
-  code={IconButtonCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={IconButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -233,12 +217,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 
 <section id ="SBT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBT-Tab2" class="hidden">
 
-<Code
-  code={StylizedButtonCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={StylizedButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -256,7 +235,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 
 </Tab>
 
-**Note:** The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) . 
+**Note:** The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) .
 
 <Accordion
   data={[
@@ -270,6 +249,7 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 />
 
 ## Accessibility Testing Status
+
 <TableWrapper>
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
@@ -279,6 +259,6 @@ These buttons are stylized and can be used to add a bit of flair to your page.
 | Accessible Icon Only Button| Yes  | Yes              | Yes  | Yes | Yes              |
 | Stylized Button            | Yes  | Yes              | Yes  | Yes | Yes              |
 </TableWrapper>
-ravixUI uses the semantic `<button>` element for all non link buttons and `<a>` element for link buttons. The size of the buttons meet the minimum target size for interactive elements as [defined by the WCAG 2.1 specification.](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html). The minimum target size for all the buttons in this context, i.e., with the fonts used, the outer containers of the buttons etc. is 44 x 44 px. 
+ravixUI uses the semantic `<button>` element for all non link buttons and `<a>` element for link buttons. The size of the buttons meet the minimum target size for interactive elements as [defined by the WCAG 2.1 specification.](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html). The minimum target size for all the buttons in this context, i.e., with the fonts used, the outer containers of the buttons etc. is 44 x 44 px.
 
 While the 44px X 44px target size is important, another important factor to note is that there should be ample space between clickable areas of buttons placed next to each other.

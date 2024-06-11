@@ -1,16 +1,20 @@
 <nav
-  class="flex flex-col max-h-max top-0 z-10 bg-gray-100 dark:bg-zinc-950 border border-gray-300 dark:border-zinc-800 text-zinc-700 dark:text-zinc-50">
+  class="top-0 z-10 flex max-h-max flex-col border border-gray-400 bg-gray-50 text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
+>
   <div
-    class="container mx-auto flex p-2 flex-row items-center justify-between border-b md:border-0 border-gray-300 dark:border-zinc-800">
+    class="container mx-auto flex flex-row items-center justify-between border-b border-gray-400 p-2 md:border-0 dark:border-zinc-800"
+  >
     <div
-      class="inline-flex font-medium items-center text-indigo-700 dark:text-zinc-50">
+      class="inline-flex items-center font-medium text-indigo-700 dark:text-zinc-50"
+    >
       <!-- Your logo -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"
         height="48"
         viewBox="0 0 24 24"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <path
           fill="currentColor"
           d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66c.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21"
@@ -19,47 +23,36 @@
       <!-- Your logo -->
       <span class="ml-3 text-xl">ravixUI</span>
     </div>
-    <div class="hidden md:flex items-center flex-row md:space-x-6">
-      <a
-        href="#"
-        class="hover:text-indigo-700"
-        >About</a
-      >
-      <a
-        href="#"
-        class="hover:text-indigo-700"
-        >Products</a
-      >
-      <a
-        href="#"
-        class="hover:text-indigo-700"
-        >Services</a
-      >
+    <div class="hidden flex-row items-center md:flex md:space-x-6">
+      <a href="#" class="hover:text-indigo-700">About</a>
+      <a href="#" class="hover:text-indigo-700">Products</a>
+      <a href="#" class="hover:text-indigo-700">Services</a>
 
       <button
         type="button"
-        class="px-4 py-2 rounded-lg font-semibold inline-flex gap-x-1 items-center disabled:opacity-60 bg-indigo-700 text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none">
+        class="inline-flex items-center gap-x-1 rounded-lg bg-indigo-700 px-4 py-2 font-semibold text-zinc-50 hover:bg-indigo-600 disabled:pointer-events-none disabled:opacity-60"
+      >
         <span>Contact</span>
       </button>
     </div>
 
-    <div class="group relative inline md:hidden text-start">
+    <div class="group relative inline text-start md:hidden">
       <button
         type="button"
-        class="group/button peer inline-flex w-full justify-center aria-expanded:ring ring-gray-400 dark:ring-zinc-700 rounded-md p-3 font-semibold text-sm lg:text-base text-gray-900 dark:text-gray-100 hover:bg-gray-300 aria-expanded:bg-gray-200 dark:aria-expanded:bg-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+        class="group/button peer inline-flex w-full justify-center rounded-md p-3 text-sm font-semibold text-gray-900 outline-offset-4 outline-black ring-gray-400 hover:bg-gray-300 focus:outline-4 aria-expanded:bg-gray-200 aria-expanded:ring lg:text-base dark:text-gray-100 dark:outline-white dark:ring-zinc-700 dark:hover:bg-zinc-700 dark:aria-expanded:bg-zinc-800"
         id="navastro-menu-button-an"
         aria-expanded="false"
-        aria-haspopup="true">
+        aria-haspopup="true"
+      >
         <span class="sr-only">Menu Toggle</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          aria-hidden="true">
-          <path
-            fill="currentColor"
-            d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+          aria-hidden="true"
+        >
+          <path fill="currentColor" d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
           ></path>
         </svg>
       </button>
@@ -68,55 +61,41 @@
         aria-orientation="vertical"
         aria-labelledby="navastro-menu-button-an"
         role="menu"
-        class="absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-300 right-0 max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 peer-aria-expanded:opacity-100 top-14 p-2 z-10 mt-2 origin-top-right rounded-md bg-gray-50 text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute right-0 top-14 z-10 mt-2 max-h-0 origin-top-right overflow-hidden rounded-md bg-gray-50 p-2 text-gray-800 opacity-0 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none peer-aria-expanded:max-h-96 peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out dark:bg-zinc-900 dark:text-gray-200"
         id="navastro-dropdown-menu-an"
         aria-hidden="true"
-        tabindex="-1">
-        <li
-          tabindex="-1"
-          role="menuitem"
-          id="an-navmenuastro-item-0">
+        tabindex="-1"
+      >
+        <li tabindex="-1" role="menuitem" id="an-navmenuastro-item-0">
           <a
             href="#"
             tabindex="-1"
-            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            class="my-1 block px-5 py-3 text-base outline-offset-4 outline-black hover:bg-gray-50 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
             >About</a
           >
         </li>
-        <li
-          tabindex="-1"
-          role="menuitem"
-          id="an-navmenuastro-item-1">
+        <li tabindex="-1" role="menuitem" id="an-navmenuastro-item-1">
           <a
             href="#"
             tabindex="-1"
-            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            class="my-1 block px-5 py-3 text-base outline-offset-4 outline-black hover:bg-gray-50 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
             >Products</a
           >
         </li>
-        <li
-          tabindex="-1"
-          role="menuitem"
-          id="an-navmenuastro-item-2">
+        <li tabindex="-1" role="menuitem" id="an-navmenuastro-item-2">
           <a
             href="#"
             tabindex="-1"
-            class="block px-5 py-3 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+            class="my-1 block px-5 py-3 text-base outline-offset-4 outline-black hover:bg-gray-50 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
             >Services</a
           >
         </li>
-        <li
-          tabindex="-1"
-          role="menuitem"
-          id="an-navmenuastro-item-3">
-          <form
-            method="POST"
-            id="an-navmenuastro-item-form-3"
-            action="#">
+        <li tabindex="-1" role="menuitem" id="an-navmenuastro-item-3">
+          <form method="POST" id="an-navmenuastro-item-form-3" action="#">
             <button
               type="submit"
               tabindex="-1"
-              class="block w-full px-5 py-3 text-start text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white"
+              class="my-1 block w-full px-5 py-3 text-start text-base outline-offset-4 outline-black hover:bg-gray-50 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
               >Contact</button
             >
           </form>
@@ -128,15 +107,15 @@
 <script>
   function navMenuInitilizationAstro() {
     const button = document.getElementById(
-      "navastro-menu-button-an"
+      "navastro-menu-button-an",
     ) as HTMLButtonElement;
     const dropdown = document.getElementById(
-      "navastro-dropdown-menu-an"
+      "navastro-dropdown-menu-an",
     ) as HTMLUListElement;
     const dropdownItems = dropdown?.querySelectorAll(
-      "li"
+      "li",
     ) as NodeListOf<HTMLLIElement>;
-    if(!button) return;
+    if (!button) return;
     button?.addEventListener("click", (event) => {
       event.stopPropagation();
 

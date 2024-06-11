@@ -14,18 +14,18 @@ const componentId = generateUniqueId();
 interface DialogModalProps {
   title: string;
   content: string;
- 
 }
-const { title, content} = Astro.props as DialogModalProps;
+const { title, content } = Astro.props as DialogModalProps;
 ---
 
 <dialog-modal>
   <button
     data-dialog="open-button"
     id={`${componentId}-open-button`}
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
     aria-controls="${componentId}-modal"
-    aria-expanded="false">
+    aria-expanded="false"
+  >
     Open Modal
   </button>
 
@@ -35,27 +35,23 @@ const { title, content} = Astro.props as DialogModalProps;
     aria-labelledby="${componentId}-title"
     aria-describedby="${componentId}-description"
     data-component-id={componentId}
-    class="fixed z-10 left-0 top-0 overflow-hidden w-screen h-screen bg-gray-500 backdrop-blur-xl"
+    class="fixed left-0 top-0 z-10 h-screen w-screen overflow-hidden bg-gray-500 backdrop-blur-xl"
     role="dialog"
-    aria-modal="true">
+    aria-modal="true"
+  >
     <div
-      class="bg-white rounded-lg shadow-lg p-8 m-4 max-w-xl max-h-full overflow-auto"
-      style="margin: 50px auto;">
-      <div class="flex justify-between items-center">
-        <h2
-          id="${componentId}-title"
-          class="text-xl">
+      class="m-4 max-h-full max-w-xl overflow-auto rounded-lg bg-white p-8 shadow-lg"
+      style="margin: 50px auto;"
+    >
+      <div class="flex items-center justify-between">
+        <h2 id="${componentId}-title" class="text-xl">
           {title}
         </h2>
-        <button
-          class="text-black font-bold text-lg"
-          aria-label="Close modal">
+        <button class="text-lg font-bold text-black" aria-label="Close modal">
           &times;
         </button>
       </div>
-      <div
-        id="${componentId}-description"
-        class="mt-4">
+      <div id="${componentId}-description" class="mt-4">
         {content}
       </div>
     </div>
@@ -71,19 +67,18 @@ const { title, content} = Astro.props as DialogModalProps;
     constructor() {
       super();
 
-      
       this.openButton = this.querySelector(
-        '[data-dialog="open-button"]'
+        '[data-dialog="open-button"]',
       ) as HTMLButtonElement;
       this.closeButton = this.querySelector(
-        'button[aria-label="Close modal"]'
+        'button[aria-label="Close modal"]',
       ) as HTMLButtonElement;
       this.modal = this.querySelector('[role="dialog"]') as HTMLElement;
 
       this.openButton.addEventListener("click", () => this.showModal());
       this.closeButton.addEventListener("click", () => this.hideModal());
       document.addEventListener("keydown", (e: KeyboardEvent) =>
-        this.handleKeyDown(e)
+        this.handleKeyDown(e),
       );
     }
 
@@ -102,7 +97,7 @@ const { title, content} = Astro.props as DialogModalProps;
 
     trapFocus(): void {
       const focusableElements = this.modal?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );
       const firstFocusableElement = focusableElements[0] as HTMLElement;
       const lastFocusableElement = focusableElements[

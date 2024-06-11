@@ -78,10 +78,11 @@ replace
 ---
 
 <div id="tab-container-normal">
-  <div class="text-zinc-900 dark:text-zinc-50 mb-12">
+  <div class="mb-12 text-zinc-900 dark:text-zinc-50">
     <div
-      class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
-      role="tablist">
+      class="my-4 flex w-full flex-row gap-x-4 rounded-xl border border-gray-400 bg-gray-50 p-[4px] dark:border-zinc-800 dark:bg-zinc-950"
+      role="tablist"
+    >
       {
         tabs.map((tab, index) => (
           <button
@@ -89,14 +90,16 @@ replace
             aria-selected={index === 0 ? "true" : "false"}
             aria-controls={`${name}-tab-panel-${index + 1}`}
             id={`${name}-tab-${index + 1}`}
-            class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+            class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+          >
             <span>{tab.title}</span>
           </button>
         ))
       }
     </div>
     <div
-      class="p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200">
+      class="rounded-xl border border-gray-400 bg-gray-50 p-[4px] text-zinc-800 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200"
+    >
       {
         tabs.map((tab, index) => (
           <section
@@ -104,7 +107,8 @@ replace
             id={`${name}-tab-panel-${index + 1}`}
             aria-labelledby={`${name}-tab-${index + 1}`}
             tabindex="-1"
-            class={index === 0 ? "" : "hidden"}>
+            class={index === 0 ? "" : "hidden"}
+          >
             <p class="p-4">{tab.content}</p>
           </section>
         ))
@@ -121,24 +125,23 @@ replace
    */
   function tabs() {
     const tabContainer = document.getElementById(
-      "tab-container-normal"
+      "tab-container-normal",
     ) as HTMLElement;
     const tabs = tabContainer?.querySelectorAll(
-      '[role="tab"]'
+      '[role="tab"]',
     ) as NodeListOf<HTMLButtonElement>;
     const panels = tabContainer?.querySelectorAll(
-      '[role="tabpanel"]'
+      '[role="tabpanel"]',
     ) as NodeListOf<HTMLElement>;
     const tabList = tabContainer?.querySelector(
-      '[role="tablist"]'
+      '[role="tablist"]',
     ) as HTMLElement;
     if (!tabContainer || !tabs || !panels || !tabList) {
-      
       return;
     }
 
     let tabFocus = 0;
-    
+
     tabList?.addEventListener("keydown", (e) => {
       if (e.key && tabs) {
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") {

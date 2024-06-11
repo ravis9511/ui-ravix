@@ -51,7 +51,8 @@ Simple breadcrumbs are a basic version of breadcrumbs that only show the current
   id="SB-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="SB-Tab1">
+  aria-labelledby="SB-Tab1"
+>
   <div class="grid px-10 py-6">
     <Breadcrumbs />
   </div>
@@ -59,12 +60,7 @@ Simple breadcrumbs are a basic version of breadcrumbs that only show the current
 
 <section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
 
-<Code
-  code={BreadcrumbsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={BreadcrumbsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -92,7 +88,8 @@ An alternate style for simple breadcrumbs
   id="ASB-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="ASB-Tab1">
+  aria-labelledby="ASB-Tab1"
+>
   <div class="grid px-10 py-6">
     <AltBreadcrumbs />
   </div>
@@ -100,12 +97,7 @@ An alternate style for simple breadcrumbs
 
 <section id ="ASB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab2" class="hidden">
 
-<Code
-  code={AltBreadcrumbsCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltBreadcrumbsCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -133,7 +125,8 @@ Breadcrumbs with a visible container.
   id="ST-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="ST-Tab1">
+  aria-labelledby="ST-Tab1"
+>
   <div class="grid px-10 py-6">
     <StyledBreadcrumbs />
   </div>
@@ -165,11 +158,13 @@ Breadcrumbs with a visible container.
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
-| Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
-| ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
-| Simple Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
-| Alternate Simple Breadcrumbs | Yes  | Yes              | Yes  | Yes | Yes              |
-| Styled Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
+  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
+  ---------------------------- | ---- | ---------------- | ---- | --- |
+  ---------------- | | Simple Breadcrumbs | Yes | Yes | Yes | Yes | Yes | |
+  Alternate Simple Breadcrumbs | Yes | Yes | Yes | Yes | Yes | | Styled
+  Breadcrumbs | Yes | Yes | Yes | Yes | Yes |
 </TableWrapper>
-The components above follow [WAI-ARIA APG specifications for Breadcrumb pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/). 
+The components above follow [WAI-ARIA APG specifications for Breadcrumb
+pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/).{" "}

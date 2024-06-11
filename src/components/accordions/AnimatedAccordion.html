@@ -1,23 +1,27 @@
 <div
   id="accordion-container"
-  class="border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none ">
+  class="mb-12 max-w-3xl divide-y divide-gray-400 rounded-lg border border-gray-400 shadow-sm dark:divide-zinc-800 dark:border-zinc-800 dark:shadow-none"
+>
   <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+    class="group rounded-lg bg-gray-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-300"
+  >
     <button
       data-accordion="button"
       type="button"
-      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
+      class="group/button peer flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-4 text-start outline-gray-600 focus:outline-2 aria-expanded:bg-gray-200 motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in dark:outline-zinc-500 dark:aria-expanded:bg-zinc-900"
       aria-expanded="false"
       aria-controls="acc-panel-1"
-      id="acc-header-1">
-      <h3 class="text-base md:text-lg font-medium "> Accordion Header 1</h3>
+      id="acc-header-1"
+    >
+      <h3 class="text-base font-medium md:text-lg">Accordion Header 1</h3>
       <svg
-        class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
+        class="h-5 w-5 shrink-0 group-aria-expanded/button:-rotate-180 motion-safe:transition motion-safe:duration-300"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -30,31 +34,37 @@
     <section
       id="acc-panel-1"
       aria-hidden="true"
-      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 peer-aria-expanded:overflow-visible motion-safe:ease-in-out"
+      class="max-h-0 overflow-hidden opacity-30 peer-aria-expanded:max-h-screen peer-aria-expanded:overflow-visible peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out"
       aria-labelledby="acc-header-1"
-      role="region">
-      <div class="px-6 text-start text-sm md:text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+      role="region"
+    >
+      <div
+        class="rounded-lg bg-gray-50 px-6 py-4 text-start text-sm md:py-5 md:text-base dark:bg-zinc-950"
+      >
         Panel 1 content goes here.
       </div>
     </section>
   </div>
   <div
-    class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+    class="group rounded-lg bg-gray-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-300"
+  >
     <button
       type="button"
       data-accordion="button"
-      class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between w-full px-4 py-4 cursor-pointer text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500"
+      class="group/button peer flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-4 text-start outline-gray-600 focus:outline-2 aria-expanded:bg-gray-200 motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in dark:outline-zinc-500 dark:aria-expanded:bg-zinc-900"
       aria-expanded="false"
       aria-controls="acc-panel-2"
-      id="acc-header-2">
-      <h3 class="text-base md:text-lg font-medium "> Accordion Header 2</h3>
+      id="acc-header-2"
+    >
+      <h3 class="text-base font-medium md:text-lg">Accordion Header 2</h3>
       <svg
-        class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
+        class="h-5 w-5 shrink-0 group-aria-expanded/button:-rotate-180 motion-safe:transition motion-safe:duration-300"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -67,10 +77,13 @@
     <section
       id="acc-panel-2"
       aria-hidden="true"
-      class="motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 peer-aria-expanded:overflow-visible motion-safe:ease-in-out"
+      class="max-h-0 overflow-hidden opacity-30 peer-aria-expanded:max-h-screen peer-aria-expanded:overflow-visible peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out"
       aria-labelledby="acc-header-2"
-      role="region">
-      <div class="px-6 text-start text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+      role="region"
+    >
+      <div
+        class="rounded-lg bg-gray-50 px-6 py-4 text-start text-base md:py-5 dark:bg-zinc-950"
+      >
         Users can click on a panel's header to expand or collapse its content,
         allowing for a more organized and space-efficient presentation of
         information, especially when dealing with a lot of content on a webpage.

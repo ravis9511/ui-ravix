@@ -4,25 +4,27 @@ import "../styles/global.css";
 interface Props {
   WCDropDownContent: Array<{ label: string; type: string; href?: string }>;
 }
-const {  WCDropDownContent } = Astro.props;
+const { WCDropDownContent } = Astro.props;
 ---
 
 <nav
   id="tocBar"
   aria-label="Table of Contents"
-  class="lg:hidden inline-flex max-h-max w-full text-xs gap-x-2 text-zinc-800 items-center dark:text-zinc-300 text-ellipsis text-pretty"
+  class="inline-flex max-h-max w-full items-center gap-x-2 text-ellipsis text-pretty text-xs text-zinc-950 lg:hidden dark:text-zinc-300"
 >
   <WCDropdown
-    menuLabel="Contents"
+    menuLabel="On This Page"
     menuItems={WCDropDownContent}
     xAlignment="left"
     yAlignment="top"
   />
-  <span id="currentHeader" class="text-ellipsis">{WCDropDownContent[0].label}</span>
+  <span id="currentHeader" class="text-pretty"
+    >{WCDropDownContent[0].label}</span
+  >
 </nav>
 
 <script>
-  const setCurrentHeading: IntersectionObserverCallback = (entries) => {
+  const setCurrentHeadingTOCBar: IntersectionObserverCallback = (entries) => {
     // loop to each entries (headings) in the page
     for (let entry of entries) {
       // equivalent to the slug returned from pageHeadings
@@ -38,7 +40,7 @@ const {  WCDropDownContent } = Astro.props;
       if (entry.isIntersecting) {
         const currentHeading = document.getElementById("currentHeader");
         // add active class to the currently active entry
-        
+
         if (currentHeading && tocList.textContent) {
           currentHeading.innerText = tocList.textContent;
         }
@@ -51,10 +53,10 @@ const {  WCDropDownContent } = Astro.props;
     threshold: 1,
     rootMargin: "0px 0px -50%",
   };
-  function setObserver() {
+  function setObserverTOCBar() {
     const observer = new IntersectionObserver(
-      setCurrentHeading,
-      observerOptions
+      setCurrentHeadingTOCBar,
+      observerOptions,
     );
     // select all headings to observe
     const elToObserve = document.querySelectorAll("section :is(h2,h1)");
@@ -62,6 +64,33 @@ const {  WCDropDownContent } = Astro.props;
     // finally, observe the elements
     elToObserve.forEach((el) => observer.observe(el));
   }
-  document.addEventListener("astro:before-swap", setObserver);
-  document.addEventListener("astro:page-load", setObserver);
+  function smoothScrollTOCBar() {
+    document
+      .getElementById("tocBar")
+      ?.querySelectorAll("a")
+      .forEach((anchor: HTMLAnchorElement) =>
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const scrollTarget = document.querySelector(
+            this.getAttribute("href") as string,
+          );
+
+          if (!scrollTarget) return;
+          let position = scrollTarget.getBoundingClientRect().top;
+          position += window.scrollY - 120;
+          window.scrollTo({ top: position, behavior: "smooth" });
+        }),
+      );
+  }
+  function inViewCheckTOCBar() {
+    const tocBar = document.getElementById("tocBar");
+    if (tocBar?.getClientRects().length === 0) {
+      return;
+    } else {
+      smoothScrollTOCBar();
+      setObserverTOCBar();
+    }
+  }
+  document.addEventListener("astro:page-load", inViewCheckTOCBar);
+  document.addEventListener("astro:before-swap", inViewCheckTOCBar);
 </script>

@@ -2,14 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ViewTransitions from "astro/components/ViewTransitions.astro";
 import "../styles/global.css";
-import Navbar from "../components/lists/UlistAstro.astro";
-import InfoModal from "../components/modals/SimpleModal.html";
-import WCModal from "../components/modals/WCModal.astro";
-import DStepsAstro from "../components/steps/DStepsAstro.astro";
 import Tabs from "../components/tabs/WCTabs.astro";
-
-const list = ["Item 1", "Item 2", "Item 3"];
-const description = "Your description here";
 ---
 
 <head>
@@ -18,47 +11,32 @@ const description = "Your description here";
 <Layout title="Test Page">
   <body class="min-h-[92dvh] bg-gray-100 dark:bg-zinc-950">
     <div class="self-center sm:mx-20">
-      <div class="items-center self-center mt-24 mb-20">
-        <Tabs
-          defaultActive="0"
-          orientation="horizontal">
+      <div class="mb-20 mt-24 items-center self-center">
+        <Tabs defaultActive="0" orientation="horizontal">
           <div data-tab="Overview">
             <h2>Product Overview</h2>
             <p>This is a fantastic product that solves all your problems.</p>
           </div>
           <table
             data-tab="Details"
-            class="w-full text-base text-left text-gray-800 dark:text-gray-300 shadow-md rounded-lg dark:bg-black">
+            class="w-full rounded-lg text-left text-base text-gray-800 shadow-md dark:bg-black dark:text-gray-300"
+          >
             <thead
-              class="text-sm uppercase text-gray-800 dark:text-gray-300 bg-gray-200 dark:bg-zinc-800">
+              class="bg-gray-200 text-sm uppercase text-gray-800 dark:bg-zinc-800 dark:text-gray-300"
+            >
               <tr>
-                <th
-                  scope="col"
-                  class="px-6 py-3">
-                  Product
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3">
-                  Color
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3">
-                  Type
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3">
-                  Stock
-                </th>
+                <th scope="col" class="px-6 py-3"> Product </th>
+                <th scope="col" class="px-6 py-3"> Color </th>
+                <th scope="col" class="px-6 py-3"> Type </th>
+                <th scope="col" class="px-6 py-3"> Stock </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-300 dark:divide-zinc-800">
               <tr class="bg-white dark:bg-zinc-950">
                 <th
                   scope="row"
-                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  class="whitespace-nowrap px-6 py-3 font-semibold text-gray-900 dark:text-gray-100"
+                >
                   T-Shirt
                 </th>
                 <td class="px-6 py-3"> Blue </td>
@@ -68,7 +46,8 @@ const description = "Your description here";
               <tr class="bg-gray-100 dark:bg-zinc-900">
                 <th
                   scope="row"
-                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  class="whitespace-nowrap px-6 py-3 font-semibold text-gray-900 dark:text-gray-100"
+                >
                   Jeans
                 </th>
                 <td class="px-6 py-3"> Black </td>
@@ -78,7 +57,8 @@ const description = "Your description here";
               <tr class="bg-white dark:bg-zinc-950">
                 <th
                   scope="row"
-                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  class="whitespace-nowrap px-6 py-3 font-semibold text-gray-900 dark:text-gray-100"
+                >
                   Sneakers
                 </th>
                 <td class="px-6 py-3"> White </td>
@@ -88,7 +68,8 @@ const description = "Your description here";
               <tr class="bg-gray-100 dark:bg-zinc-900">
                 <th
                   scope="row"
-                  class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                  class="whitespace-nowrap px-6 py-3 font-semibold text-gray-900 dark:text-gray-100"
+                >
                   Dress
                 </th>
                 <td class="px-6 py-3"> Red </td>
@@ -106,6 +87,5 @@ const description = "Your description here";
         </Tabs>
       </div>
     </div>
-    
   </body>
 </Layout>

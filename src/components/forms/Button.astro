@@ -1,13 +1,13 @@
-<form onsubmit="alert('Submit worked'); return false;"
-  class="flex flex-col gap-4 items-start justify-start w-full p-6 text-zinc-950 dark:text-gray-50 text-base">
-  <div class="flex flex-col w-full items-start gap-y-1">
-    <label
-      for="name6"
-      class="after:content-['*'] after:ml-1 after:text-red-500"
+<form
+  onsubmit="alert('Submit worked'); return false;"
+  class="flex w-full flex-col items-start justify-start gap-4 p-6 text-base text-zinc-950 dark:text-gray-50"
+>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="name6" class="after:ml-1 after:text-red-500 after:content-['*']"
       >Name</label
     >
     <input
-      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
       type="text"
       id="name6"
       name="name"
@@ -15,14 +15,13 @@
       required
     />
   </div>
-  <div class="flex flex-col w-full items-start gap-y-1">
+  <div class="flex w-full flex-col items-start gap-y-1">
     <label
       for="email4"
-      class="after:content-['*'] after:ml-1 after:text-red-500"
-      >Email</label
+      class="after:ml-1 after:text-red-500 after:content-['*']">Email</label
     >
     <input
-      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
       type="email"
       id="email4"
       name="email"
@@ -30,14 +29,13 @@
       required
     />
   </div>
-  <div class="flex flex-col w-full items-start gap-y-1">
+  <div class="flex w-full flex-col items-start gap-y-1">
     <label
       for="password8"
-      class="after:content-['*'] after:ml-1 after:text-red-500"
-      >Password</label
+      class="after:ml-1 after:text-red-500 after:content-['*']">Password</label
     >
     <input
-      class="border border-gray-400 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-zinc-900 text-black dark:text-white px-4 py-2 w-96 placeholder:text-gray-500 dark:placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0"
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
       type="password"
       id="password8"
       name="password"
@@ -45,15 +43,15 @@
       required
     />
   </div>
-  <div class="flex flex-row gap-4 mt-6 ">
+  <div class="mt-6 flex flex-row gap-4">
     <button
       type="submit"
-      class=" px-4 py-2 rounded-lg font-semibold text-md  disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
+      class="text-md rounded-lg bg-indigo-800 px-4 py-2 font-semibold text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none disabled:opacity-60"
       >Submit</button
     >
     <button
       type="reset"
-      class="px-4 py-2 rounded-lg font-semibold text-md  border border-gray-400 dark:border-zinc-700 text-gray-950 bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 dark:hover:border-zinc-500 dark:text-gray-50 hover:bg-white hover:border-gray-500"
+      class="text-md rounded-lg border border-gray-400 bg-gray-100 px-4 py-2 font-semibold text-gray-950 hover:border-gray-500 hover:bg-white dark:border-zinc-700 dark:bg-zinc-950 dark:text-gray-50 dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
       >Reset
     </button>
   </div>

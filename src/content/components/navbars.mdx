@@ -47,20 +47,16 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
   id="RN-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="RN-Tab1">
-  <div class="p-2 ">
+  aria-labelledby="RN-Tab1"
+>
+  <div class="p-2">
     <Navbar />
   </div>
 </section>
 
 <section id ="RN-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="RN-Tab2" class="hidden">
 
-<Code
-  code={NavBarCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={NavBarCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -91,6 +87,10 @@ This is a simple navbar. In smaller form factors (less than `md`) the links in t
 
 ## Responsive Navbar With Hamburger Menu
 
+<Alert type="warning">
+  {" "}
+  Experimental Release. Not recommended for use before proper testing{" "}
+</Alert>
 <Alert heading="Info">Requires Javascript to work.</Alert>
 
 The responsive navbar which retains the logo, brand and a navigation menu (hamburger) on smaller screens, which can be used to toggle the menu on and off. In the preview below, the second navbar is just to visualize the responsive behavior.
@@ -107,12 +107,7 @@ The responsive navbar which retains the logo, brand and a navigation menu (hambu
 
 <section id ="RH-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="RH-Tab2" class="hidden">
 
-<Code
-  code={NavbarJSCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={NavbarJSCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -131,6 +126,7 @@ The responsive navbar which retains the logo, brand and a navigation menu (hambu
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
 | Component                             | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ------------------------------------- | ---- | ---------------- | ---- | --- | ---------------- |

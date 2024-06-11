@@ -10,11 +10,13 @@ const { defaultActive = "0", orientation = "horizontal" } =
 
 <x-tabs
   data-default-active={defaultActive}
-  class="flex flex-col text-zinc-900 dark:text-zinc-50 gap-y-4">
+  class="flex flex-col gap-y-4 text-zinc-900 dark:text-zinc-50"
+>
   <div
-    class="flex flex-row w-full p-1 bg-gray-50 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
+    class="flex w-full flex-row gap-x-4 rounded-xl border border-gray-400 bg-gray-50 p-1 dark:border-zinc-800 dark:bg-zinc-950"
     role="tablist"
-    aria-orientation={orientation}>
+    aria-orientation={orientation}
+  >
   </div>
   <slot />
 </x-tabs>
@@ -58,9 +60,9 @@ const { defaultActive = "0", orientation = "horizontal" } =
     } as const;
     static readonly DEFAULT_STYLES = {
       tabButton:
-        "cursor-pointer w-full px-auto md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white",
+        "flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-200 focus:outline-4 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white md:px-6 md:text-base dark:outline-white dark:hover:bg-zinc-800",
       tabPanel:
-        "p-3 bg-gray-50 w-full rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 overflow-x-auto",
+        "w-full rounded-xl border border-gray-400 bg-gray-50 p-3 text-zinc-800 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200",
     };
     private tabList: HTMLElement;
     private panels: HTMLElement[] = [];
@@ -110,14 +112,14 @@ const { defaultActive = "0", orientation = "horizontal" } =
       }
       try {
         this.tabList.addEventListener("keydown", (e: KeyboardEvent) =>
-          this.handleKeyDown(e)
+          this.handleKeyDown(e),
         );
       } catch (error) {
         console.error("Failed to attach keydown event:", error);
       }
       try {
         this.tabs = this.tabList.querySelectorAll(
-          WCTabs.ROLES.ROLE_TAB
+          WCTabs.ROLES.ROLE_TAB,
         ) as NodeListOf<HTMLElement>;
       } catch (error) {
         console.error("Failed to query tabs:", error);
@@ -141,7 +143,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
           "md:flex-col",
           "gap-y-4",
           "h-full",
-          "md:gap-x-0"
+          "md:gap-x-0",
         );
       }
     }
@@ -177,26 +179,26 @@ const { defaultActive = "0", orientation = "horizontal" } =
       const children = Array.from(this.children).filter(
         (child): child is HTMLElement =>
           child instanceof HTMLElement &&
-          child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB)
+          child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB),
       );
       const abandonedChildren = Array.from(this.children).filter(
         (child): child is HTMLElement =>
           child instanceof HTMLElement &&
           !child.hasAttribute(WCTabs.ATTRIBUTES.DATA_TAB) &&
-          child.getAttribute("role") !== WCTabs.ROLES.TABLIST
+          child.getAttribute("role") !== WCTabs.ROLES.TABLIST,
       );
       if (abandonedChildren.length > 0) {
         abandonedChildren.forEach((abandonedChild) => {
           console.warn(
             `Removing child without 'data-tab' or role="tablist" attribute:`,
-            abandonedChild
+            abandonedChild,
           );
           abandonedChild.remove();
         });
       }
       if (children.length === 0) {
         console.error(
-          "No tabs found. Ensure each tab has a 'data-tab' attribute."
+          "No tabs found. Ensure each tab has a 'data-tab' attribute.",
         );
 
         return;
@@ -213,7 +215,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
         this.setAttribute(WCTabs.ATTRIBUTES.DEFAULT_ACTIVE, "0");
       }
       this.defaultActiveTab = this.getAttribute(
-        WCTabs.ATTRIBUTES.DEFAULT_ACTIVE
+        WCTabs.ATTRIBUTES.DEFAULT_ACTIVE,
       ) as string;
       this.contentStyler();
       children.forEach((child, index) => {
@@ -237,31 +239,32 @@ const { defaultActive = "0", orientation = "horizontal" } =
      */
     createChildTabs(child: Element, index: number) {
       const tabName: string | null = child.getAttribute(
-        WCTabs.ATTRIBUTES.DATA_TAB
+        WCTabs.ATTRIBUTES.DATA_TAB,
       );
       if (!tabName) {
         child.remove();
         return;
       }
       const tabIcon: string | null = child.getAttribute(
-        WCTabs.ATTRIBUTES.DATA_ICON
+        WCTabs.ATTRIBUTES.DATA_ICON,
       );
       const tabAltText: string =
         child.getAttribute(WCTabs.ATTRIBUTES.DATA_ALT_TEXT) ?? tabName;
-      const buttonClass: string =
+      let buttonClass: string =
         child.getAttribute(WCTabs.ATTRIBUTES.DATA_BUTTON_CLASS) ||
         WCTabs.DEFAULT_STYLES.tabButton;
-      const panelClass: string =
+      let panelClass: string =
         child.getAttribute(WCTabs.ATTRIBUTES.DATA_PANEL_CLASS) ||
         WCTabs.DEFAULT_STYLES.tabPanel;
-
+      buttonClass = this.normalizeSpaces(buttonClass);
+      panelClass = this.normalizeSpaces(panelClass);
       const uniqueId = `${this.uniqueId}-${index + 1}`;
 
       const tabButton = document.createElement("button");
       tabButton.setAttribute("role", WCTabs.ROLES.TAB);
       tabButton.setAttribute(
         WCTabs.ARIA.CONTROLS,
-        `${uniqueId}-${index + 1}-panel`
+        `${uniqueId}-${index + 1}-panel`,
       );
       tabButton.id = `${uniqueId}-${index + 1}-tab`;
       tabButton.classList.add(...buttonClass.split(" "));
@@ -270,14 +273,14 @@ const { defaultActive = "0", orientation = "horizontal" } =
         : `<span>${tabName}</span>`;
       tabButton.setAttribute(
         WCTabs.ARIA.SELECTED,
-        index.toString() === this.defaultActiveTab ? "true" : "false"
+        index.toString() === this.defaultActiveTab ? "true" : "false",
       );
       if (index.toString() === this.defaultActiveTab) {
         this.tabFocus = index;
       }
       tabButton.setAttribute(
         "tabindex",
-        index.toString() === this.defaultActiveTab ? "0" : "-1"
+        index.toString() === this.defaultActiveTab ? "0" : "-1",
       );
 
       this.tabList.appendChild(tabButton);
@@ -286,7 +289,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
       panel.setAttribute("role", WCTabs.ROLES.TABPANEL);
       panel.setAttribute(
         WCTabs.ARIA.LABELLEDBY,
-        `${uniqueId}-${index + 1}-tab`
+        `${uniqueId}-${index + 1}-tab`,
       );
       panel.id = `${uniqueId}-${index + 1}-panel`;
 
@@ -294,7 +297,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
 
       panel.classList.toggle(
         "hidden",
-        index.toString() !== this.defaultActiveTab
+        index.toString() !== this.defaultActiveTab,
       );
       panel.appendChild(child.cloneNode(true)); // Remove the original content to avoid duplication
 
@@ -306,6 +309,16 @@ const { defaultActive = "0", orientation = "horizontal" } =
       const clickHandler = this.handleTabClick(index);
       this.tabClickHandlers.push(clickHandler);
       tabButton.addEventListener("click", clickHandler);
+    }
+    /**
+     * Normalizes the spaces in the given string by trimming leading/trailing spaces and
+     * replacing consecutive spaces with a single space.
+     *
+     * @param str - The input string to normalize.
+     * @returns The normalized string.
+     */
+    normalizeSpaces(str: string) {
+      return str.trim().replace(/\s\s+/g, " ");
     }
     /**
      * Returns an event handler function for handling tab clicks.
@@ -339,7 +352,7 @@ const { defaultActive = "0", orientation = "horizontal" } =
       this.tabs?.forEach((tab, tabIndex) => {
         tab.setAttribute(
           WCTabs.ARIA.SELECTED,
-          tabIndex === index ? "true" : "false"
+          tabIndex === index ? "true" : "false",
         );
         tab.setAttribute("tabindex", tabIndex === index ? "0" : "-1");
       });

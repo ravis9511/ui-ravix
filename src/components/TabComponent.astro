@@ -1,47 +1,50 @@
 ---
 const tabs = [
-    { label: "Tab 1", content: "This is the content for Tab 1" },
-    { label: "Tab 2", content: "This is the content for Tab 2" },
-    { label: "Tab 3", content: "This is the content for Tab 3" },
+  { label: "Tab 1", content: "This is the content for Tab 1" },
+  { label: "Tab 2", content: "This is the content for Tab 2" },
+  { label: "Tab 3", content: "This is the content for Tab 3" },
 ];
 ---
-<div class="flex flex-row flex-wrap my-8" role="tablist">
-    {tabs.map((tab, index) => (
-        <>
-            <input
-                id={`tab-${index + 1}`}
-                type="radio"
-                name="tabs"
-                class="opacity-0 absolute"
-                checked={index === 0}
-            />
-            <label
-                for={`tab-${index + 1}`}
-                class={`bg-slate-300 hover:bg-slate-200 cursor-default p-4 rounded-t-lg block ${
-                    index === 0 ? "bg-amber-200" : ""
-                }`}
-                role="tab"
-                aria-selected={index === 0 ? "true" : "false"}
-                aria-controls={`tab-panel-${index + 1}`}
-                id={`tab-label-${index + 1}`}
-            >
-                {tab.label}
-            </label>
-        </>
-    ))}
 
-    <div class="basis-full h-0"></div>
-
-    {tabs.map((tab, index) => (
-        <div
-            class={`bg-amber-200 p-4 w-full ${
-                index === 0 ? "block" : "hidden"
-            }`}
-            role="tabpanel"
-            aria-labelledby={`tab-label-${index + 1}`}
-            id={`tab-panel-${index + 1}`}
+<div class="my-8 flex flex-row flex-wrap" role="tablist">
+  {
+    tabs.map((tab, index) => (
+      <>
+        <input
+          id={`tab-${index + 1}`}
+          type="radio"
+          name="tabs"
+          class="absolute opacity-0"
+          checked={index === 0}
+        />
+        <label
+          for={`tab-${index + 1}`}
+          class={`block cursor-default rounded-t-lg bg-slate-300 p-4 hover:bg-slate-200 ${
+            index === 0 ? "bg-amber-200" : ""
+          }`}
+          role="tab"
+          aria-selected={index === 0 ? "true" : "false"}
+          aria-controls={`tab-panel-${index + 1}`}
+          id={`tab-label-${index + 1}`}
         >
-            {tab.content}
-        </div>
-    ))}
+          {tab.label}
+        </label>
+      </>
+    ))
+  }
+
+  <div class="h-0 basis-full"></div>
+
+  {
+    tabs.map((tab, index) => (
+      <div
+        class={`w-full bg-amber-200 p-4 ${index === 0 ? "block" : "hidden"}`}
+        role="tabpanel"
+        aria-labelledby={`tab-label-${index + 1}`}
+        id={`tab-panel-${index + 1}`}
+      >
+        {tab.content}
+      </div>
+    ))
+  }
 </div>

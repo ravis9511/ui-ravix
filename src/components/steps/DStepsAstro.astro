@@ -24,7 +24,8 @@ const { stepTitle, stepNumber, stepTotal, stepDescription } =
 ---
 
 <ol
-  class="flex w-full flex-row items-start justify-center space-x-1 text-black dark:text-white mt-2 mb-4">
+  class="mb-4 mt-2 flex w-full flex-row items-start justify-center space-x-1 text-black dark:text-white"
+>
   {
     Array.from({ length: stepTotal }, (_, index) => {
       const currentStep = index + 1;
@@ -33,16 +34,17 @@ const { stepTitle, stepNumber, stepTotal, stepDescription } =
           {currentStep === stepNumber && (
             <li
               aria-current="step"
-              class="flex-0 flex flex-col items-start space-y-1 rounded-lg w-full h-full text-indigo-700 dark:text-indigo-400">
-              <span class="h-2 bg-indigo-500 dark:bg-indigo-900 w-full"> </span>
+              class="flex-0 flex h-full w-full flex-col items-start space-y-1 rounded-lg text-indigo-700 dark:text-indigo-400"
+            >
+              <span class="h-2 w-full bg-indigo-500 dark:bg-indigo-900"> </span>
               <span class="text-lg font-semibold">{stepTitle}</span>
             </li>
           )}
           {currentStep < stepNumber && (
-            <li class="h-2 bg-green-500 dark:bg-green-800 w-[calc(1/4*100%)]"></li>
+            <li class="h-2 w-[calc(1/4*100%)] bg-green-500 dark:bg-green-800" />
           )}
           {currentStep > stepNumber && (
-            <li class="h-2 bg-gray-500 dark:bg-gray-700 w-[calc(1/4*100%)]"></li>
+            <li class="h-2 w-[calc(1/4*100%)] bg-gray-500 dark:bg-gray-700" />
           )}
         </>
       );
@@ -52,8 +54,9 @@ const { stepTitle, stepNumber, stepTotal, stepDescription } =
 <h3 class="text-xl">
   <span class="sr-only">Step</span>
   <span
-    class="size-10 bg-indigo-500 dark:bg-indigo-900 inline-flex rounded-full text-center text-white justify-center items-center">
+    class="inline-flex size-10 items-center justify-center rounded-full bg-indigo-500 text-center text-white dark:bg-indigo-900"
+  >
     {stepNumber}</span
   > of {stepTotal}
-  <span class="ml-2 text-xl sm:text-2xl font-semibold">{stepDescription}</span>
+  <span class="ml-2 text-xl font-semibold sm:text-2xl">{stepDescription}</span>
 </h3>

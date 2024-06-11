@@ -20,7 +20,7 @@ import CustomListCodeAstro from "../../components/lists/ClistAstro.astro?raw";
 
 # Lists
 
-Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options.  Lists can be used inside content blocks like cards, paragraphs, or even inside other lists. They can also be nested lists inside each list item.
+Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options. Lists can be used inside content blocks like cards, paragraphs, or even inside other lists. They can also be nested lists inside each list item.
 
 ## Unordered Lists
 
@@ -37,18 +37,23 @@ Unordered lists are used to present a list of items in no particular order. They
 
 <section id ="UL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab2" class="hidden">
 
-<Code code={UListCode} lang="html"  wrap="true" data-pagefind-ignore/>
+<Code code={UListCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
 <section id ="UL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab3" class="hidden">
 
-<Code code={UListCodeAstro} lang="astro" title="UList.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={UListCodeAstro}
+  lang="astro"
+  title="UList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 </Tab>
-
 
 ## Ordered Lists
 
@@ -65,13 +70,19 @@ Ordered lists are great for presenting a series of items in a particular order. 
 
 <section id ="OL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab2" class="hidden">
 
-<Code code={OListCode} lang="html"  wrap="true" data-pagefind-ignore/>
+<Code code={OListCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
 <section id ="OL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab3" class="hidden">
 
-<Code code={OListCodeAstro} lang="astro" title="OList.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={OListCodeAstro}
+  lang="astro"
+  title="OList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
@@ -92,19 +103,26 @@ A custom list marker adds an svg inline in the list. Useful for adding a custom 
 
 <section id ="CL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab2" class="hidden">
 
-<Code code={CustomListCode} lang="html"  wrap="true" data-pagefind-ignore/>
+<Code code={CustomListCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
 <section id ="CL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab3" class="hidden">
 
-<Code code={CustomListCodeAstro} lang="astro" title="CustomList.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={CustomListCodeAstro}
+  lang="astro"
+  title="CustomList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
 | Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
@@ -113,4 +131,3 @@ A custom list marker adds an svg inline in the list. Useful for adding a custom 
 | Custom Marked List          | Yes  | Yes              | Yes  | Yes | Yes              |
 </TableWrapper>
 Since we use the `<ul>` element for the unordered list and `<ol>` element for the ordered list, the component is accessible out of the box. However, the custom list marker uses an accessible `<svg>` element by giving it the role of `img` and aria-labelled by `title`.
-

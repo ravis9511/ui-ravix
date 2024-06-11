@@ -16,7 +16,7 @@ const tabs = [
     icon: "compare",
   },
 ];
-const name="exampleTab1"; // Name for unique aria labels
+const name = "exampleTab1"; // Name for unique aria labels
 
 /*
 This uses conditional rendering to render the SVGs, but generally you would import them from a separate file like so :
@@ -37,10 +37,11 @@ This will aid in the separation of concerns and make the code more maintainable.
 ---
 
 <div id="tab-container-gradient">
-  <div class="text-zinc-900 dark:text-zinc-50 mb-12">
+  <div class="mb-12 text-zinc-900 dark:text-zinc-50">
     <div
-      class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
-      role="tablist">
+      class="my-4 flex w-full flex-row gap-x-4 rounded-xl border border-gray-400 bg-gray-50 p-[4px] dark:border-zinc-800 dark:bg-zinc-950"
+      role="tablist"
+    >
       {
         tabs.map((tab, index) => (
           <button
@@ -48,15 +49,16 @@ This will aid in the separation of concerns and make the code more maintainable.
             aria-selected={index === 0 ? "true" : "false"}
             aria-controls={`${name}-tab-panel-${index + 1}`}
             id={`${name}-tab-${index + 1}`}
-        
-            class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+            class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-200 focus:outline-4 aria-selected:bg-gradient-to-l aria-selected:from-purple-500 aria-selected:via-purple-800 aria-selected:to-purple-900 aria-selected:text-white md:px-6 md:text-base dark:outline-white dark:hover:bg-zinc-800"
+          >
             {tab.icon === "product" && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                aria-hidden="true">
+                aria-hidden="true"
+              >
                 <path
                   fill="currentColor"
                   d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2s-.9-2-2-2M1 2v2h2l3.6 7.59l-1.35 2.45c-.16.28-.25.61-.25.96c0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12l.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2s2-.9 2-2s-.9-2-2-2"
@@ -69,7 +71,8 @@ This will aid in the separation of concerns and make the code more maintainable.
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                aria-hidden="true">
+                aria-hidden="true"
+              >
                 <path
                   fill="currentColor"
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m1 15h-2v-6h2zm0-8h-2V7h2z"
@@ -82,7 +85,8 @@ This will aid in the separation of concerns and make the code more maintainable.
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                aria-hidden="true">
+                aria-hidden="true"
+              >
                 <path
                   fill="currentColor"
                   d="M9.01 14H2v2h7.01v3L13 15l-3.99-4zm5.98-1v-3H22V8h-7.01V5L11 9z"
@@ -96,7 +100,8 @@ This will aid in the separation of concerns and make the code more maintainable.
       }
     </div>
     <div
-      class="p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200">
+      class="rounded-xl border border-gray-400 bg-gray-50 p-[4px] text-zinc-800 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200"
+    >
       {
         tabs.map((tab, index) => (
           <section
@@ -104,7 +109,8 @@ This will aid in the separation of concerns and make the code more maintainable.
             id={`${name}-tab-panel-${index + 1}`}
             aria-labelledby={`${name}-tab-${index + 1}`}
             tabindex="0"
-            class={index === 0 ? "" : "hidden"}>
+            class={index === 0 ? "" : "hidden"}
+          >
             <p class="p-4">{tab.content}</p>
           </section>
         ))
@@ -120,16 +126,16 @@ This will aid in the separation of concerns and make the code more maintainable.
    */
   function gradientTabs() {
     const tabContainer = document.getElementById(
-      "tab-container-gradient"
+      "tab-container-gradient",
     ) as HTMLElement;
     const tabs = tabContainer?.querySelectorAll(
-      '[role="tab"]'
+      '[role="tab"]',
     ) as NodeListOf<HTMLButtonElement>;
     const panels = tabContainer?.querySelectorAll(
-      '[role="tabpanel"]'
+      '[role="tabpanel"]',
     ) as NodeListOf<HTMLElement>;
     const tabList = tabContainer?.querySelector(
-      '[role="tablist"]'
+      '[role="tablist"]',
     ) as HTMLElement;
     if (!tabContainer || !tabs || !panels || !tabList) {
       return;

@@ -11,7 +11,7 @@ const componentId = generateUniqueId();
 // The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
 interface Props {
   description: string;
-  list: Array<{ listItem: string; type: "tick" | "cross" | string; }>;
+  list: Array<{ listItem: string; type: "tick" | "cross" | string }>;
 }
 // You can add more types of list markers if you want based on your use case by adding them to the type property.
 
@@ -37,14 +37,13 @@ const { description, list } = Astro.props as Props;
     ---
      <Clist description={description} list={list} />
 **/
-
 ---
 
-<div class="text-zinc-900 dark:text-gray-100 text-base md:text-lg">
-  <p class="mx-4 my-6 max-w-2xl text-md leading-normal text-start w-full">
+<div class="text-base text-zinc-900 md:text-lg dark:text-gray-100">
+  <p class="text-md mx-4 my-6 w-full max-w-2xl text-start leading-normal">
     {description}
   </p>
-  <ul class="mx-4 mb-6 list-outside list-none space-y-3 max-w-2xl">
+  <ul class="mx-4 mb-6 max-w-2xl list-outside list-none space-y-3">
     {
       list.map((item, index) => (
         <li class="flex flex-row items-start leading-snug">
@@ -55,8 +54,9 @@ const { description, list } = Astro.props as Props;
               role="img"
               height="24"
               viewBox="0 0 24 24"
-              class="flex-shrink-0 text-green-700 dark:text-green-400 mr-3"
-              aria-labelledby={`${componentId}-item-${index}`}>
+              class="mr-3 flex-shrink-0 text-green-700 dark:text-green-400"
+              aria-labelledby={`${componentId}-item-${index}`}
+            >
               <title id={`${componentId}-item-${index}`}>{item.type}</title>
               <path
                 fill="currentColor"
@@ -71,8 +71,9 @@ const { description, list } = Astro.props as Props;
               role="img"
               height="24"
               viewBox="0 0 24 24"
-              class="flex-shrink-0 text-red-700 dark:text-red-500 mr-3"
-              aria-labelledby={`${componentId}-item-${index}`}>
+              class="mr-3 flex-shrink-0 text-red-700 dark:text-red-500"
+              aria-labelledby={`${componentId}-item-${index}`}
+            >
               <title id={`${componentId}-item-${index}`}>{item.type}</title>
               <path
                 fill="currentColor"

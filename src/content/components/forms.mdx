@@ -9,7 +9,7 @@ import Accordion from "../../components/Accordion.astro";
 import Tab from "../../components/Tab.astro";
 import Alert from "../../components/Alert.astro";
 import Text from "../../components/forms/Text.astro";
-import TextCode from "../../components/forms/Text.astro?raw"; 
+import TextCode from "../../components/forms/Text.astro?raw";
 import TextCodeAstro from "../../components/forms/Text.astro?raw";
 import Select from "../../components/forms/Select.astro";
 import SelectCode from "../../components/forms/Select.astro?raw";
@@ -25,6 +25,7 @@ import ButtonCode from "../../components/forms/Button.astro?raw";
 import ButtonCodeAstro from "../../components/forms/Button.astro?raw";
 
 # Forms
+
 <Alert type="warning">Experimental Feature. Still in development.</Alert>
 
 Forms are used to collect data from users. They are an essential part of any website or application, as they allow users to input and submit data. They are also used to make filters, searches, and other actions.
@@ -33,25 +34,21 @@ Forms are crucial in web development as they enable users to input and submit da
 
 For a deeper understanding of how to make forms accessible, you can refer to the [tutorial on forms provided by W3C](https://www.w3.org/WAI/tutorials/forms/). Since forms require user input and data, there maybe some additional considerations that need to be satisfied based on the use case.
 
-
-
-## Form Components 
+## Form Components
 
 Forms are usually made up of labels and input fields with action buttons. Some of the commonly used form components are:
 
-- **Text Fields:**  Used to collect data in text format from users.
+- **Text Fields:** Used to collect data in text format from users.
 - **Select Fields:** Used when you want to limit the user's input to a specific set of options.
 - **Checkbox Fields:** Used to collect user preferences or when a user can select multiple options.
 - **Radio Buttons:** Used to collect data in a radio button format from users.
 - **Buttons:** Used to submit/reset the form or trigger another type of action.
-
 
 **Note: ravixUI only provides the basic form components out of the box. It does not provide any validation, sanization, or error handling. You will need to implement these yourself including connecting the form to a backend.**
 
 ## Text Fields
 
 Text fields are multipurpose input fields that can be used for collecting text data from users. Some of the commonly used text fields are given below:
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
@@ -64,13 +61,19 @@ Text fields are multipurpose input fields that can be used for collecting text d
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={TextCode} lang="html"  wrap="true" data-pagefind-ignore/>
+<Code code={TextCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={TextCodeAstro} lang="astro" title="TextVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={TextCodeAstro}
+  lang="astro"
+  title="TextVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
@@ -81,7 +84,6 @@ Text fields are multipurpose input fields that can be used for collecting text d
 ## Select Fields
 
 Select fields are used when you want to limit the user's input when there are multiple options to choose from.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
@@ -94,13 +96,25 @@ Select fields are used when you want to limit the user's input when there are mu
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={SelectCode} lang="html" title="SelectVariants.html" wrap="true" data-pagefind-ignore/>
+<Code
+  code={SelectCode}
+  lang="html"
+  title="SelectVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={SelectCodeAstro} lang="astro" title="SelectVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={SelectCodeAstro}
+  lang="astro"
+  title="SelectVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
@@ -109,7 +123,6 @@ Select fields are used when you want to limit the user's input when there are mu
 ## Checkbox Fields
 
 Checkbox fields are used to collect user preferences or when a user can select multiple options.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
@@ -122,23 +135,33 @@ Checkbox fields are used to collect user preferences or when a user can select m
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={CheckboxCode} lang="html" title="CheckboxVariants.html" wrap="true" data-pagefind-ignore/>
+<Code
+  code={CheckboxCode}
+  lang="html"
+  title="CheckboxVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={CheckboxCodeAstro} lang="astro" title="CheckboxVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={CheckboxCodeAstro}
+  lang="astro"
+  title="CheckboxVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 </Tab>
 
-
 ## Radio Buttons
 
 Radio buttons are a great way to ensure the user selects only one option from a group of choices.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
@@ -151,13 +174,25 @@ Radio buttons are a great way to ensure the user selects only one option from a 
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={RadioCode} lang="html" title="RadioVariants.html" wrap="true" data-pagefind-ignore/>
+<Code
+  code={RadioCode}
+  lang="html"
+  title="RadioVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={RadioCodeAstro} lang="astro" title="RadioVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={RadioCodeAstro}
+  lang="astro"
+  title="RadioVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
@@ -166,7 +201,6 @@ Radio buttons are a great way to ensure the user selects only one option from a 
 ## Form Buttons
 
 A few buttons which have types assigned to them for reset and submit.
-
 
 <Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
 
@@ -179,13 +213,25 @@ A few buttons which have types assigned to them for reset and submit.
 
 <section id ="Tab2-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ButtonCode} lang="html" title="ButtonVariants.html" wrap="true" data-pagefind-ignore/>
+<Code
+  code={ButtonCode}
+  lang="html"
+  title="ButtonVariants.html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
 <section id ="Tab3-panel" role="tabpanel" data-role="tabpanel">
 
-<Code code={ButtonCodeAstro} lang="astro" title="ButtonVariants.astro" wrap="true" data-pagefind-ignore/>
+<Code
+  code={ButtonCodeAstro}
+  lang="astro"
+  title="ButtonVariants.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 

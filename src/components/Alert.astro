@@ -12,7 +12,8 @@ const { type } = Astro.props;
   ${type === "warning" ? "bg-yellow-300 dark:bg-yellow-700/50 text-black dark:text-white" : ""}
   ${type === "error" ? "bg-red-300 dark:bg-red-950 text-black dark:text-white" : ""}
   ${type === "info" || type === "success" || type === "warning" || type === "error" ? "" : "bg-indigo-100 dark:bg-indigo-950 text-indigo-950 dark:text-white"}
-  `}>
+  `}
+>
   {
     type === "info" && (
       <>
@@ -22,7 +23,8 @@ const { type } = Astro.props;
           height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300">
+          class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300"
+        >
           <path
             fill="currentColor"
             d="M11 17h2v-6h-2zm1-8q.425 0 .713-.288T13 8t-.288-.712T12 7t-.712.288T11 8t.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
@@ -41,7 +43,8 @@ const { type } = Astro.props;
           height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="mr-3 shrink-0 text-green-800 dark:text-green-300">
+          class="mr-3 shrink-0 text-green-800 dark:text-green-300"
+        >
           <path
             fill="currentColor"
             d="M9 16.2L4.8 12l-1.4 1.4L9 19L21 7l-1.4-1.4z"
@@ -60,7 +63,8 @@ const { type } = Astro.props;
           height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="mr-3 shrink-0 text-yellow-800 dark:text-yellow-300">
+          class="mr-3 shrink-0 text-yellow-800 dark:text-yellow-300"
+        >
           <path
             fill="currentColor"
             d="M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z"
@@ -79,7 +83,8 @@ const { type } = Astro.props;
           height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="mr-3 shrink-0 text-red-800 dark:text-red-300">
+          class="mr-3 shrink-0 text-red-800 dark:text-red-300"
+        >
           <path
             fill="currentColor"
             d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m1 15h-2v-2h2zm0-4h-2V7h2z"
@@ -98,7 +103,8 @@ const { type } = Astro.props;
           height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300">
+          class="mr-3 shrink-0 text-indigo-800 dark:text-indigo-300"
+        >
           <path
             fill="currentColor"
             d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75s-.75-.34-.75-.75s.34-.75.75-.75M9.1 17H7v-2.14l5.96-5.96l2.12 2.12zm7.75-7.73l-1.06 1.06l-2.12-2.12l1.06-1.06c.2-.2.51-.2.71 0l1.41 1.41c.2.2.2.51 0 .71"

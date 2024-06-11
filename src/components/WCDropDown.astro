@@ -7,7 +7,7 @@ const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
  If crypto is unsupported, we can use the following code to generate unique IDs.
  **/
 
- const generateUniqueId = () => {
+const generateUniqueId = () => {
   const timestamp = Date.now().toString().slice(-6);
   const randomNum = Math.floor(Math.random() * 10000)
     .toString()
@@ -36,8 +36,12 @@ interface DropDown {
   yAlignment?: "top" | "bottom";
 }
 
-const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro.props as DropDown;
-
+const {
+  menuLabel,
+  menuItems,
+  xAlignment = "right",
+  yAlignment = "top",
+} = Astro.props as DropDown;
 ---
 
 <x-dropdown-ravix>
@@ -45,21 +49,22 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
     <button
       data-dropdown="button"
       type="button"
-      class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-50 dark:bg-zinc-900 px-4 py-1 font-semibold text-sm  text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:ring-zinc-800 dark:hover:bg-zinc-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white dark:shadow-none"
+      class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-50 py-1 pl-4 pr-2 text-sm font-semibold text-gray-900 shadow-sm outline-offset-4 outline-black ring-1 ring-inset ring-gray-400 hover:bg-gray-50 focus:outline-4 dark:bg-zinc-950 dark:text-gray-100 dark:shadow-none dark:outline-white dark:ring-zinc-800 dark:hover:bg-zinc-700"
       id={componentId}
       aria-expanded="false"
-      aria-haspopup="true">
+      aria-haspopup="true"
+    >
       {menuLabel}
       <svg
-        class="-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 -rotate-90 group-aria-expanded/button:-rotate-0"
+        class="-mr-1 h-5 w-5 -rotate-90 text-gray-500 group-aria-expanded/button:-rotate-0 motion-safe:transition motion-safe:duration-500"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         <path
           fill-rule="evenodd"
           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-          clip-rule="evenodd"
-        ></path>
+          clip-rule="evenodd"></path>
       </svg>
     </button>
 
@@ -73,29 +78,34 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       ${yAlignment === "top" ? "top-8" : "bottom-14"}`}
       id={`${componentId}-menu`}
       aria-hidden="true"
-      tabindex="-1">
+      tabindex="-1"
+    >
       {
         menuItems.map((item, index) => (
           <li
             tabindex="-1"
             role="menuitem"
-            id={`${componentId}-menu-item-${index + 1}`}>
+            id={`${componentId}-menu-item-${index + 1}`}
+          >
             {item.type === "link" ? (
               <a
                 href={item.href ? item.href : "#"}
                 tabindex="-1"
-                class="block px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+                class="my-1 block px-4 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
+              >
                 {item.label}
               </a>
             ) : (
               <form
                 method="POST"
                 id={`${componentId}-menu-item-form-${index + 1}`}
-                action={item.action ? item.action : "#"}>
+                action={item.action ? item.action : "#"}
+              >
                 <button
                   type="button"
                   tabindex="-1"
-                  class="block w-full px-4 py-3 text-sm text-start hover:bg-gray-100 dark:hover:bg-zinc-700 my-1 focus:outline-4 outline-offset-4 outline-black dark:outline-white">
+                  class="my-1 block w-full px-4 py-3 text-start text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
+                >
                   {item.label}
                 </button>
               </form>
@@ -131,13 +141,13 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       super();
 
       this.button = this.querySelector(
-        '[data-dropdown="button"]'
+        '[data-dropdown="button"]',
       ) as HTMLButtonElement;
       this.menu = this.querySelector(
-        '[data-dropdown="menu"]'
+        '[data-dropdown="menu"]',
       ) as HTMLUListElement;
       this.menuItems = this.querySelectorAll(
-        '[data-dropdown="menu"] li'
+        '[data-dropdown="menu"] li',
       ) as NodeListOf<HTMLLIElement>;
     }
     /**
@@ -172,7 +182,7 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
         if (this.menuItems) {
           document.documentElement.addEventListener(
             "click",
-            this.closeMenu.bind(this)
+            this.closeMenu.bind(this),
           );
           setTimeout(() => {
             this.menuItems[0].focus();
@@ -249,6 +259,7 @@ const { menuLabel, menuItems, xAlignment = "right", yAlignment = "top" } = Astro
       this.menu?.removeEventListener("keydown", this.keyDownHandler);
       document.documentElement.removeEventListener("click", this.closeMenu);
     }
+
     /**
      * Removes event listeners and cleans up the dropdown menu when the component is disconnected.
      */

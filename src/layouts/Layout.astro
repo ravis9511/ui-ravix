@@ -12,7 +12,6 @@ interface Props {
   currentSlug?: string;
   keywords?: string;
   skipLinkId?: string;
-  
 }
 
 const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
@@ -63,14 +62,14 @@ const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
 
     <ViewTransitions fallback="animate" />
   </head>
-  <body 
-    class="z-0 bg-fixed bg-gray-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-200"
+  <body
+    class="z-0 bg-gray-100 bg-fixed text-zinc-950 dark:bg-zinc-950 dark:text-zinc-200"
   >
-    <main class="relative z-0" >
+    <main class="relative z-0">
       {
         skipLinkId && (
           <a
-            class=" -z-[9999] focus:z-[9999] fixed top-3 left-2 opacity-0  focus:opacity-100 bg-indigo-400 text-black dark:text-white dark:bg-indigo-800 px-4 py-2 rounded-md text-xl font-medium"
+            class="fixed left-2 top-3 -z-[9999] rounded-md bg-indigo-400 px-4 py-2 text-xl font-medium text-black opacity-0 focus:z-[9999] focus:opacity-100 dark:bg-indigo-800 dark:text-white"
             href={`#${skipLinkId}`}
           >
             Skip to main content

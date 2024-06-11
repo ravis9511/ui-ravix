@@ -62,25 +62,28 @@ if you want more complex content, you can send the content as HTML and use a fra
   <div
     data-accordion="container"
     id={`${componentId}-accordion`}
-    class="border mb-12 border-gray-300 divide-y divide-gray-300 dark:border-zinc-800 dark:divide-zinc-800 rounded-lg max-w-3xl shadow-sm dark:shadow-none">
+    class="mb-12 max-w-3xl divide-y divide-gray-400 rounded-lg border border-gray-400 shadow-sm dark:divide-zinc-800 dark:border-zinc-800 dark:shadow-none"
+  >
     {
       panels.map((panel: AccordionPanel, index: number) => (
-        <div class="group text-zinc-900 dark:text-zinc-300 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+        <div class="group rounded-lg bg-gray-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-300">
           <button
             data-accordion="button"
             type="button"
-            class="group/button peer flex items-center motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in justify-between px-4 py-4 cursor-pointer w-full text-start rounded-lg dark:aria-expanded:bg-zinc-900 aria-expanded:bg-gray-200 focus:outline-2 outline-gray-600 dark:outline-zinc-500 "
+            class="group/button peer flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-4 text-start outline-gray-600 focus:outline-2 aria-expanded:bg-gray-200 motion-safe:transition-colors motion-safe:duration-300 motion-safe:ease-in dark:outline-zinc-500 dark:aria-expanded:bg-zinc-900"
             aria-expanded="false"
             id={`${componentId}-button-${index + 1}`}
-            aria-controls={`${componentId}-panel-${index + 1}`}>
-            <h3 class="text-base md:text-lg font-medium">{panel.header}</h3>
+            aria-controls={`${componentId}-panel-${index + 1}`}
+          >
+            <h3 class="text-base font-medium md:text-lg">{panel.header}</h3>
             <svg
-              class="w-5 h-5 shrink-0 motion-safe:transition motion-safe:duration-300 group-aria-expanded/button:-rotate-180"
+              class="h-5 w-5 shrink-0 group-aria-expanded/button:-rotate-180 motion-safe:transition motion-safe:duration-300"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              aria-hidden="true">
+              aria-hidden="true"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -94,10 +97,11 @@ if you want more complex content, you can send the content as HTML and use a fra
             data-accordion="panel"
             aria-hidden="true"
             id={`${componentId}-panel-${index + 1}`}
-            class=" motion-safe:transition-all opacity-30 motion-safe:duration-300 max-h-0 overflow-hidden peer-aria-expanded:max-h-screen peer-aria-expanded:opacity-100 peer-aria-expanded:overflow-visible motion-safe:ease-in-out"
+            class="max-h-0 overflow-hidden opacity-30 peer-aria-expanded:max-h-screen peer-aria-expanded:overflow-visible peer-aria-expanded:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out"
             aria-labelledby={`${componentId}-button-${index + 1}`}
-            role="region">
-            <div class="px-6 text-start text-base py-4 md:py-5 bg-gray-100 dark:bg-zinc-950 rounded-lg">
+            role="region"
+          >
+            <div class="rounded-lg bg-gray-50 px-6 py-4 text-start text-base md:py-5 dark:bg-zinc-950">
               {panel.content}
             </div>
           </section>
@@ -115,14 +119,13 @@ if you want more complex content, you can send the content as HTML and use a fra
    * and "aria-hidden" attributes on the buttons and panels respectively.
    */
   class Accordion extends HTMLElement {
-    
     static readonly ARIA = {
       EXPANDED: "aria-expanded",
       CONTROLS: "aria-controls",
       LABELLEDBY: "aria-labelledby",
-      HIDDEN : "aria-hidden",
+      HIDDEN: "aria-hidden",
     } as const;
-   
+
     private panels: HTMLElement[];
     private buttons: NodeListOf<HTMLButtonElement>;
     private accordionContainer: HTMLElement;
@@ -131,14 +134,14 @@ if you want more complex content, you can send the content as HTML and use a fra
     constructor() {
       super();
       this.accordionContainer = this.querySelector(
-        '[data-accordion="container"]'
+        '[data-accordion="container"]',
       ) as HTMLElement;
       this.buttons = this.accordionContainer?.querySelectorAll(
-        '[data-accordion="button"]'
+        '[data-accordion="button"]',
       );
       this.panels = Array.from(
         this.accordionContainer?.querySelectorAll('[data-accordion="panel"]') ||
-          []
+          [],
       ) as HTMLElement[];
       if (!this.accordionContainer) {
         console.error("Accordion container not found");
@@ -154,7 +157,7 @@ if you want more complex content, you can send the content as HTML and use a fra
       } catch (e) {
         console.error(e);
         console.error(
-          "Error attaching click handlers. Please check if the buttons and panels are present in the accordion container."
+          "Error attaching click handlers. Please check if the buttons and panels are present in the accordion container.",
         );
       }
     }
@@ -173,9 +176,9 @@ if you want more complex content, you can send the content as HTML and use a fra
     /// @param button - The button element that was clicked.
     /// @param index - The index of the button within the accordion.
     /// @returns A function that can be used as a click event handler for the button.
-   handleButtonClick(
+    handleButtonClick(
       button: HTMLButtonElement,
-      index: number
+      index: number,
     ): (e: Event) => void {
       return (e: Event) => {
         e.preventDefault();
@@ -199,7 +202,10 @@ if you want more complex content, you can send the content as HTML and use a fra
         button.setAttribute(Accordion.ARIA.EXPANDED, "true");
       }
       this.panels?.forEach((panel, i) => {
-        if (i === index && button.getAttribute(Accordion.ARIA.EXPANDED) === "true") {
+        if (
+          i === index &&
+          button.getAttribute(Accordion.ARIA.EXPANDED) === "true"
+        ) {
           panel.setAttribute(Accordion.ARIA.HIDDEN, "false");
         } else {
           panel.setAttribute(Accordion.ARIA.HIDDEN, "true");

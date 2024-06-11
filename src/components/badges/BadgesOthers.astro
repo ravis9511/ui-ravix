@@ -1,24 +1,26 @@
 <div
-  class="flex flex-wrap sm:flex-row gap-12 py-4 overflow-auto w-full justify-center">
+  class="flex w-full flex-wrap justify-center gap-12 overflow-auto py-4 sm:flex-row"
+>
   <button
     type="button"
-    class="relative px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
+    class="relative inline-flex rounded-lg bg-indigo-800 px-4 py-3 text-sm font-semibold text-gray-50 shadow-lg shadow-indigo-300/40 outline-offset-4 outline-black hover:bg-indigo-700 focus:outline-4 lg:py-2.5 lg:text-base dark:shadow-none dark:outline-white"
     >Open Messages
     <span
-      class="absolute inline-flex items-center rounded-full -top-2 -right-2 bg-indigo-300 px-1 py-1 text-xs font-medium text-black"
+      class="absolute -right-2 -top-2 inline-flex items-center rounded-full bg-indigo-300 px-1 py-1 text-xs font-medium text-black"
       >18</span
     >
     <span class="sr-only">messages</span>
   </button>
   <button
     type="button"
-    class="p-2 relative rounded-lg font-semibold text-base disabled:opacity-60 bg-gray-100 dark:bg-zinc-950 border border-gray-500 dark:border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-gray-200 dark:hover:bg-zinc-900 disabled:pointer-events-none"
+    class="relative rounded-lg border border-gray-500 bg-gray-100 p-2 text-base font-semibold text-indigo-600 hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-60 dark:border-indigo-600 dark:bg-zinc-950 dark:text-indigo-400 dark:hover:bg-zinc-900"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.5rem"
       height="1.5rem"
       viewBox="0 0 24 24"
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       <path
         fill="currentColor"
         d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2s-.9-2-2-2M1 2v2h2l3.6 7.59l-1.35 2.45c-.16.28-.25.61-.25.96c0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12l.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2s2-.9 2-2s-.9-2-2-2"
@@ -26,22 +28,21 @@
     </svg>
     <span class="sr-only">cart</span>
     <span
-      class="absolute inline-flex items-center rounded-full -top-3 -right-3 bg-red-700 px-[9px] py-1 text-xs font-medium text-white"
+      class="absolute -right-3 -top-3 inline-flex items-center rounded-full bg-red-700 px-[9px] py-1 text-xs font-medium text-white"
       >3</span
     ><span class="sr-only">Items in cart</span>
-    </button
-  >
+  </button>
   <button
     type="button"
-    class="relative px-4 py-3 lg:py-2.5 rounded-lg inline-flex font-semibold text-sm lg:text-base bg-indigo-800 text-gray-50 hover:bg-indigo-700 focus:outline-4 outline-offset-4 outline-black dark:outline-white shadow-lg shadow-indigo-300/40 dark:shadow-none"
+    class="relative inline-flex rounded-lg bg-indigo-800 px-4 py-3 text-sm font-semibold text-gray-50 shadow-lg shadow-indigo-300/40 outline-offset-4 outline-black hover:bg-indigo-700 focus:outline-4 lg:py-2.5 lg:text-base dark:shadow-none dark:outline-white"
     >Fix Now
     <span
       aria-hidden="true"
-      class="absolute inline-flex items-center rounded-full -top-1 -right-1 bg-red-700 p-2 font-medium text-white motion-safe:animate-ping"
+      class="absolute -right-1 -top-1 inline-flex items-center rounded-full bg-red-700 p-2 font-medium text-white motion-safe:animate-ping"
     ></span>
     <span
       aria-hidden="true"
-      class="absolute inline-flex items-center rounded-full -top-1 -right-1 bg-red-700 p-2 font-medium text-white"
+      class="absolute -right-1 -top-1 inline-flex items-center rounded-full bg-red-700 p-2 font-medium text-white"
     ></span></button
   >
 </div>

@@ -8,8 +8,7 @@
   export let currentSlug: string = "";
 
   import "../styles/global.css";
-  import DarkModeButton from "./DarkModeButton.svelte";
-  import { quintOut } from "svelte/easing";
+  import { quintInOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import { fade } from "svelte/transition";
   let menuOpen = false;
@@ -22,33 +21,31 @@
     }
     clearTimeout(menuTimeout);
     menuOpen = true;
-    menuTimeout =setTimeout(() => {
-      if(currentSelected){
-      currentSelected.scrollIntoView({
-        behavior: "instant",
-        block: "center",
-        inline: "center",
-      });
-    }
+    menuTimeout = setTimeout(() => {
+      if (currentSelected) {
+        currentSelected.scrollIntoView({
+          behavior: "instant",
+          block: "center",
+          inline: "center",
+        });
+      }
       document.body.addEventListener("click", handleMenuClose);
+      document.body.classList.add("overflow-hidden");
     }, 1);
-    
   }
-  function handleMenuClose(event: Event) {
+  function handleMenuClose() {
     clearTimeout(menuTimeout);
     menuOpen = false;
-
+    document.body.classList.remove("overflow-hidden");
     document.body.removeEventListener("click", handleMenuClose);
   }
- 
-  
 </script>
 
 <button
   aria-label="Navigation Menu Toggle"
   on:click={handleMenuOpen}
   type="button"
-  class="block lg:hidden rounded-lg font-semibold text-xl text-indigo-700 dark:text-zinc-50 p-2"
+  class="block rounded-lg p-2 text-xl font-semibold text-indigo-700 lg:hidden dark:text-zinc-50"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -63,38 +60,39 @@
 </button>
 {#if menuOpen}
   <div
-    transition:fade
-    class="fixed top-0 lg:hidden left-0 w-full h-dvh bg-black bg-opacity-70 z-40 font-display"
+    in:fade={{ duration: 500, easing: quintInOut }}
+    out:fade={{ duration: 300, easing: quintInOut }}
+    class="fixed left-0 top-0 z-40 h-full w-full backdrop-blur-sm lg:hidden"
   ></div>
   <div
     in:fly={{
       duration: 500,
-      delay : 1,
+      delay: 1,
       x: "-100%",
-      opacity: 0.5,
-      easing: quintOut,
+      opacity: 0.1,
+      easing: quintInOut,
     }}
     out:fly={{
-      duration: 300,
+      duration: 200,
       x: "-100%",
       opacity: 0,
-      easing: quintOut,
+      easing: quintInOut,
     }}
-    class="flex flex-col fixed lg:hidden w-3/4 top-0 left-0 text-end z-[200] shadow-lg bg-white dark:bg-zinc-900 p-3 justify-end justify-items-end h-screen overflow-y-auto"
+    class="fixed left-0 top-0 z-[200] flex h-dvh w-3/4 flex-col justify-end justify-items-end overflow-y-auto bg-white p-3 text-end shadow-lg lg:hidden dark:bg-zinc-950"
   >
     <nav
       aria-label="Documentation Navigation"
-      class="flex flex-col text-lg text-start pb-4 w-full px-4 overflow-y-auto scrollbar text-nowrap"
+      class="scrollbar flex w-full flex-col overflow-y-auto text-nowrap px-4 pb-4 text-start text-lg"
     >
-      <div class="flex flex-col font-display pb-4 w-full">
+      <div class="flex w-full flex-col pb-4 font-display">
         <button
           on:click={handleMenuClose}
-          class=" px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-md lg:text-lg justify-center bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none"
-          ><span>Close Menu</span>
+          class="inline-flex items-center justify-center gap-x-2 rounded-lg border border-gray-500 bg-white px-4 py-3 text-center text-lg text-gray-950 outline-offset-4 outline-black hover:border-gray-500 hover:bg-gray-200 focus:outline-4 dark:border-zinc-700 dark:bg-zinc-950 dark:text-gray-50 dark:outline-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+          >Close Menu
         </button>
         <a
           href="/"
-          class="flex flex-row items-center font-bold my-4 text-indigo-700 dark:text-indigo-100"
+          class="mb-2 mt-6 flex flex-row items-center font-bold text-indigo-700 dark:text-indigo-100"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -102,11 +100,11 @@
             viewBox="0 0 24 24"
           >
             <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
-          </svg><span class="text-2xl ml-2">Home</span></a
+          </svg><span class="ml-2 text-2xl">Home</span></a
         >
-        <DarkModeButton />
-        <h3 class="text-xl font-bold mt-4 mb-2 text-nowrap">Getting Started</h3>
-        <ul class="text-lg w-full">
+
+        <h3 class="mb-2 mt-4 text-nowrap text-xl font-bold">Getting Started</h3>
+        <ul class="w-full text-lg">
           {#each entryMap as links}
             {#if links.type === "Introduction"}
               <li class="flex py-[1px]">
@@ -117,8 +115,8 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}
@@ -128,8 +126,8 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}
@@ -139,8 +137,8 @@
             {/if}
           {/each}
         </ul>
-        <h3 class="text-xl font-bold mt-4 mb-2">Basic</h3>
-        <ul class="text-lg w-full">
+        <h3 class="mb-2 mt-4 text-xl font-bold">Basic</h3>
+        <ul class="w-full text-lg">
           {#each entryMap as links}
             {#if links.type === "Building"}
               <li class="flex py-[1px]">
@@ -151,14 +149,14 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}
                     {#if links.title === "Forms"}
                       <span
-                        class="text-sm ml-2 text-yellow-700 dark:text-yellow-400"
+                        class="ml-2 text-sm text-yellow-700 dark:text-yellow-400"
                         >Unstable</span
                       >
                     {/if}
@@ -168,14 +166,14 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}
                     {#if links.title === "Forms"}
                       <span
-                        class="text-sm ml-2 text-yellow-700 dark:text-yellow-400"
+                        class="ml-2 text-sm text-yellow-700 dark:text-yellow-400"
                         >Unstable</span
                       >
                     {/if}
@@ -185,8 +183,8 @@
             {/if}
           {/each}
         </ul>
-        <h3 class="text-xl font-bold mt-4 mb-2">Navigation</h3>
-        <ul class="text-lg w-full">
+        <h3 class="mb-2 mt-4 text-xl font-bold">Navigation</h3>
+        <ul class="w-full text-lg">
           {#each entryMap as links}
             {#if links.type === "Navigation"}
               <li class="flex py-[1px]">
@@ -197,8 +195,8 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}
@@ -208,8 +206,8 @@
                     href={links.slug}
                     class={`${
                       currentSlug === links.slug
-                        ? "currentSlug dark:text-indigo-400 text-indigo-700 font-bold bg-indigo-100 dark:bg-zinc-800 hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
-                        : "hover:bg-indigo-100 dark:hover:bg-zinc-800 px-4 py-2 rounded-md w-full"
+                        ? " my-1 w-full rounded-md bg-indigo-300 px-4 py-2 font-bold text-black hover:bg-indigo-400 dark:bg-indigo-900 dark:text-white dark:hover:bg-indigo-800"
+                        : "my-1 w-full rounded-md px-4 py-2 hover:bg-indigo-200 dark:hover:bg-indigo-950"
                     }`}
                   >
                     {links.title}

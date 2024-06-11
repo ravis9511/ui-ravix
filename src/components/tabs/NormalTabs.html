@@ -1,14 +1,16 @@
 <div id="tab-container-normal-alt">
-  <div class="text-zinc-900 dark:text-zinc-50 mb-12">
+  <div class="mb-12 text-zinc-900 dark:text-zinc-50">
     <div
-      class="flex flex-row w-full my-4 p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 gap-x-4"
-      role="tablist">
+      class="my-4 flex w-full flex-row gap-x-4 rounded-xl border border-gray-400 bg-gray-50 p-[4px] dark:border-zinc-800 dark:bg-zinc-950"
+      role="tablist"
+    >
       <button
         role="tab"
         aria-selected="true"
         aria-controls="tab-panel-1"
         id="tab-1"
-        class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
         <span>Product</span>
       </button>
 
@@ -17,7 +19,8 @@
         aria-selected="false"
         aria-controls="tab-panel-2"
         id="tab-2"
-        class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
         <span>Info</span>
       </button>
       <button
@@ -25,30 +28,21 @@
         aria-selected="false"
         aria-controls="tab-panel-3"
         id="tab-3"
-        class="cursor-pointer w-full px-2 md:px-6 py-3 text-sm md:text-base rounded-lg flex justify-center flex-row items-center space-x-3 hover:bg-gray-200 dark:hover:bg-zinc-800 aria-selected:bg-indigo-700 dark:aria-selected:bg-indigo-900 aria-selected:text-gray-100">
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
         <span>Compare</span>
       </button>
     </div>
     <div
-      class="p-[4px] bg-gray-100 rounded-xl border-gray-300 dark:bg-zinc-950 border dark:border-zinc-800 text-zinc-800 dark:text-zinc-200">
-      <section
-        role="tabpanel"
-        id="tab-panel-1"
-        tabindex="0">
+      class="rounded-xl border border-gray-400 bg-gray-50 p-[4px] text-zinc-800 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200"
+    >
+      <section role="tabpanel" id="tab-panel-1" tabindex="0">
         <p class="p-4">This is placeholder content for the product tab</p>
       </section>
-      <section
-        role="tabpanel"
-        id="tab-panel-2"
-        tabindex="0"
-        class="hidden">
+      <section role="tabpanel" id="tab-panel-2" tabindex="0" class="hidden">
         <p class="p-4">This is placeholder content for the info tab</p>
       </section>
-      <section
-        role="tabpanel"
-        id="tab-panel-3"
-        tabindex="0"
-        class="hidden">
+      <section role="tabpanel" id="tab-panel-3" tabindex="0" class="hidden">
         <p class="p-4">This is placeholder content for the compare tab</p>
       </section>
     </div>
