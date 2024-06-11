@@ -14,6 +14,8 @@ import ToggleCodeAstro from "../../components/toggles/Toggle.astro?raw";
 import ToggleAlt from "../../components/toggles/AltToggle.astro";
 import ToggleAltCode from "../../components/toggles/AltToggle.astro?raw";
 import ToggleAltCodeAstro from "../../components/toggles/AltToggle.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Switch
 
@@ -105,10 +107,12 @@ An alternate style for simple switches.
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ----------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Switch | Yes | Yes | Yes | Yes | Partial\* | |
-  Alternate Simple Switch | Yes | Yes | Yes | Yes | Partial\* |
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Switch           | Yes  | Yes              | Yes  | Yes | Partial\*        |
+| Alternate Simple Switch | Yes  | Yes              | Yes  | Yes | Partial\*        |
+
 </TableWrapper>
 \*The IBM Equal Access Accessibility Checker shows errors for missing
 aria-checked attribute even though its an input type checkbox with a role

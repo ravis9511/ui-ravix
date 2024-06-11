@@ -18,11 +18,12 @@ import CollapseTimelineCodeAstro from "../../components/timeline/CollapseTimelin
 import AltTimeline from "../../components/timeline/AltTimeline.astro";
 import AltTimelineCode from "../../components/timeline/AltTimeline.html?raw";
 import AltTimelineCodeAstro from "../../components/timeline/AltTimeline.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Timeline
 
 Timelines can be used to display a series of events in a chronological order. They can be used to convey information about a project, a process, or a sequence of events.
-
 
 <Accordion
   data={[
@@ -47,20 +48,16 @@ A simple vertical time line with a list of events.
   id="ST-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="ST-Tab1">
-  <div class="p-2 ">
+  aria-labelledby="ST-Tab1"
+>
+  <div class="p-2">
     <SimpleTimeline />
   </div>
 </section>
 
 <section id ="ST-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab2" class="hidden">
 
-<Code
-  code={SimpleTimelineCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={SimpleTimelineCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -88,8 +85,9 @@ A simple timeline with collapsible event descriptions.
   id="CT-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="CT-Tab1">
-  <div class="p-2 ">
+  aria-labelledby="CT-Tab1"
+>
+  <div class="p-2">
     <CollapseTimeline />
   </div>
 </section>
@@ -129,20 +127,16 @@ An alternate style for timelines.
   id="AT-Tab1-panel"
   role="tabpanel"
   data-role="tabpanel"
-  aria-labelledby="AT-Tab1">
-  <div class="p-2 ">
+  aria-labelledby="AT-Tab1"
+>
+  <div class="p-2">
     <AltTimeline />
   </div>
 </section>
 
 <section id ="AT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AT-Tab2" class="hidden">
 
-<Code
-  code={AltTimelineCode}
-  lang="html"
-  wrap="true"
-  data-pagefind-ignore
-/>
+<Code code={AltTimelineCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
@@ -161,11 +155,14 @@ An alternate style for timelines.
 </Tab>
 
 ## Accessibility Testing Status
+
 <TableWrapper>
+
 | Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Simple Timeline   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Collapse Timeline | Yes  | Yes              | Yes  | Yes | Yes              |
 | Alt Timeline      | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 While there is no pattern for timelines by the authoring practice guide from w3c, the components above follow standard practices for accessibility for displaying the content.

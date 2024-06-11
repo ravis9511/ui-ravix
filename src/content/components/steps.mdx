@@ -20,6 +20,8 @@ import VerticalStepsCodeAstro from "../../components/steps/VerticalSteps.astro?r
 import DynamicSteps from "../../components/steps/DynamicSteps.astro";
 import DynamicStepsCode from "../../components/steps/DynamicSteps.astro?raw";
 import DynamicStepsCodeAstro from "../../components/steps/DStepsAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Steps
 
@@ -148,11 +150,13 @@ When there are a lot of steps or when the available space is limited, the non-ac
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ----------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Steps | Yes | Yes | Yes | Yes | Yes | | Alternate
-  Steps | Yes | Yes | Yes | Yes | Yes | | Dynamic Steps | Yes | Yes | Yes | Yes
-  | Yes |
+
+| Component      | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Steps   | Yes  | Yes              | Yes  | Yes | Yes              |
+| AlternateSteps | Yes  | Yes              | Yes  | Yes | Yes              |
+| Dynamic Steps  | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 Steps are effective when the order of the steps is clear and the user can easily
 understand the purpose of each step.{" "}

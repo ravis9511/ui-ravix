@@ -56,12 +56,19 @@
 </dialog>
 
 <script>
+  /**
+   * Initializes the functionality of a simple modal dialog.
+   *
+   * This function sets up event listeners for the modal's open, confirm, and cancel buttons.
+   * When the open button is clicked, the modal is displayed. When the confirm or cancel
+   * buttons are clicked, the modal is closed.
+   */
   function modalInitilization() {
     const modal = document.getElementById("modal-container-htm");
     const confirmButton = document.getElementById("modal-confirm-htm");
     const cancelButton = document.getElementById("modal-cancel-htm");
     const openModalButton = document.getElementById("modal-open-htm");
-
+    if (!modal || !openModalButton || !cancelButton || !confirmButton) return; // Should be changed according to your modal
     openModalButton?.addEventListener("click", () => {
       modal?.showModal();
     });
@@ -75,5 +82,5 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", modalInitilization);
+ modalInitilization();
 </script>

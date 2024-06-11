@@ -20,6 +20,8 @@ import AnimatedDropdownCode from "../../components/dropdowns/AnDropdown.astro?ra
 import AnimatedDropdownCodeAstro from "../../components/dropdowns/AnDropdown.astro?raw";
 import WCDropdown from "../../components/dropdowns/WCDropdown.astro";
 import WCDropdownCode from "../../components/dropdowns/WCDropdown.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Dropdown
 
@@ -292,12 +294,14 @@ The component is provided as-is and may require further testing and customizatio
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  --------------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Dropdown | Yes | Yes | Yes | Yes | Yes | |
-  Animated Dropdown | Yes | Yes | Yes | Yes | Yes | | Alternate Animated
-  Dropdown | Yes | Yes | Yes | Yes | Yes | | Astro JS Web Component | Yes | Yes
-  | Yes | Yes | Yes |
+
+| Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Dropdown             | Yes  | Yes              | Yes  | Yes | Yes              |
+| Animated Dropdown           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Animated Dropdown | Yes  | Yes              | Yes  | Yes | Yes              |
+| Astro JS Web Component      | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 The dropdown components are implemented with the WAI-ARIA 1.2 design patterns.
 The components above implement all the required functionality mention in

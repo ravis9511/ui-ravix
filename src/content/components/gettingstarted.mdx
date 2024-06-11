@@ -4,6 +4,9 @@ order: 1
 type: "Introduction"
 ---
 
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
 # Introduction
 
 ravixUI is an accessibility focused AstroJS based component starter kit which gives you all the code directly out of the box including the JavaScript implementation.
@@ -25,7 +28,8 @@ Currently the component starter kit is in the early stages of development and th
 
 - Code may require testing and customization to fit your specific use case.
 - The Forms components is still in a development stage and is not recommended for any usage.
-- The component starter kit does not provide unit tests and hence it is recommended to use only after thorough testing if the particular component depends on JavaScript. Waiting for Astro Container API to become stable before adding unit tests. To know more about Astro Container API, visit the [Astrojs Official Documentation on Astro Container API here.](https://docs.astro.build/en/reference/container-reference/)
+- The component starter kit does not provide unit tests and hence it is recommended to use only after thorough testing if the particular component depends on JavaScript. 
+
 
 There are a few more things which are noteworthy :
 

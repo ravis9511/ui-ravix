@@ -45,12 +45,27 @@
 </dialog>
 
 <script>
+  /**
+   * Initializes the information modal functionality.
+   *
+   * This function sets up the event listeners for the modal's open and close buttons,
+   * as well as the logic to close the modal when the user clicks outside of it.
+   *
+   * The function first retrieves the necessary DOM elements, including the modal container,
+   * the close button, and the open button. If any of these elements are not found, the
+   * function returns early.
+   *
+   * The open button's click event listener shows the modal and adds a click event listener
+   * to the document to close the modal when the user clicks outside of it.
+   *
+   * The close button's click event listener simply closes the modal.
+   */
   function modalInitilizationInfo() {
     console.log("modalInitilizationInfo");
     const modal = document.getElementById("modal-container-info-htm");
     const closeButton = document.getElementById("modal-close-info-htm");
     const openModalButton = document.getElementById("modal-open-info-htm");
-
+    if (!modal || !openModalButton || !closeButton) return;
     openModalButton?.addEventListener("click", (event) => {
       event.stopPropagation();
       modal?.showModal();
@@ -62,6 +77,15 @@
     });
   }
 
+  /**
+   * Closes the information modal when the user clicks outside of it.
+   *
+   * This function is called when the user clicks anywhere on the document. It checks if the
+   * click target is outside of the modal content area, and if so, it closes the modal and
+   * removes the click event listener.
+   *
+   * @param {MouseEvent} event - The click event object.
+   */
   function closeWhenClickedOutside(event) {
     const modal = document.getElementById("modal-container-info-htm");
     const modalArea = document.getElementById("modal-content-info-area-htm");

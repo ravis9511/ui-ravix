@@ -17,6 +17,8 @@ import AltBreadcrumbsCodeAstro from "../../components/breadcrumbs/AltBreadcrumbs
 import StyledBreadcrumbs from "../../components/breadcrumbs/StyledBreadcrumbs.astro";
 import StyledBreadcrumbsCode from "../../components/breadcrumbs/StyledBreadcrumbs.astro?raw";
 import StyledBreadcrumbsCodeAstro from "../../components/breadcrumbs/StyledBreadcrumbs.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Breadcrumbs
 
@@ -160,11 +162,12 @@ Breadcrumbs with a visible container.
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ---------------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Breadcrumbs | Yes | Yes | Yes | Yes | Yes | |
-  Alternate Simple Breadcrumbs | Yes | Yes | Yes | Yes | Yes | | Styled
-  Breadcrumbs | Yes | Yes | Yes | Yes | Yes |
+
+| Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Breadcrumbs | Yes  | Yes              | Yes  | Yes | Yes              |
+| Styled Breadcrumbs           | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
-The components above follow [WAI-ARIA APG specifications for Breadcrumb
-pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/).{" "}
+The components above follow [WAI-ARIA APG specifications for Breadcrumb pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/).{" "}

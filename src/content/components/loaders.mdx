@@ -14,6 +14,8 @@ import SkeletonCodeAstro from "../../components/loaders/Skeleton.astro?raw";
 import Spinner from "../../components/loaders/Spinner.astro";
 import SpinnerCode from "../../components/loaders/Spinner.astro?raw";
 import SpinnerCodeAstro from "../../components/loaders/Spinner.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Loaders
 
@@ -123,10 +125,12 @@ Skeleton is perfect for giving user an idea of what type of content they can exp
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
-  | Skeleton | Yes | Yes | Yes | Yes | Yes | | Spinner | Yes | Yes | Yes | Yes |
-  Yes |
+
+| Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Skeleton  | Yes  | Yes              | Yes  | Yes | Yes              |
+| Spinner   | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 The accessibility requirements for the loader depend on the type of content
 being loaded. If the content is critical, use aria-live="assertive" instead of

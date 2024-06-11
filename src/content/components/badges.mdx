@@ -20,6 +20,8 @@ import BadgesWithIconCodeAstro from "../../components/badges/BadgesWithIcon.astr
 import BadgesOthers from "../../components/badges/BadgesOthers.astro";
 import BadgesOthersCode from "../../components/badges/BadgesOthers.astro?raw";
 import BadgesOthersCodeAstro from "../../components/badges/BadgesOthers.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Badges
 
@@ -195,11 +197,14 @@ Here are some examples of using badges with other elements.
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  -------------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Badge | Yes | Yes | Yes | Yes | Yes | | Alternate
-  Simple Badge | Yes | Yes | Yes | Yes | Yes | | Badge With Icon | Yes | Yes |
-  Yes | Yes | Yes | | Badge With Other Elements | Yes | Yes | Yes | Yes | Yes |
+
+| Component                 | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Badge              | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Badge    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Icon           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Other Elements | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 There are no clear accessibility guidelines for the badge pattern described by
 WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all

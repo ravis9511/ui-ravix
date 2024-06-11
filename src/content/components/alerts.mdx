@@ -23,6 +23,8 @@ import ProminentAlertsCode from "../../components/alerts/ProminentAlerts.astro?r
 import ProminentAlertsCodeAstro from "../../components/alerts/ProminentAlerts.astro?raw";
 import AllAlerts from "../../components/alerts/AllAlerts.astro";
 import AllAlertsCode from "../../components/alerts/AllAlerts.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Alerts
 
@@ -296,12 +298,15 @@ If showIcon is false, the alert type is displayed as a bold text prefix to the m
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ----------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Alerts | Yes | Yes | Yes | Yes | Yes | | Alternate
-  Simple Alerts | Yes | Yes | Yes | Yes | Yes | | Alerts with Icons | Yes | Yes
-  | Yes | Yes | Yes | | Prominent Alerts | Yes | Yes | Yes | Yes | Yes | |
-  Astrojs Component | Yes | Yes | Yes | Yes | Yes |
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Alerts           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Alerts | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alerts with Icons       | Yes  | Yes              | Yes  | Yes | Yes              |
+| Prominent Alerts        | Yes  | Yes              | Yes  | Yes | Yes              |
+| Astrojs Component       | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 The alerts adhere to the [WAI-ARIA 1.2 specification
 ](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/) for alert

@@ -23,6 +23,8 @@ import CaptionTableCode from "../../components/tables/CaptionTable.html?raw";
 import CaptionTableCodeAstro from "../../components/tables/CaptionTable.astro?raw";
 import CondTable from "../../components/tables/CondTable.astro";
 import CondTableCodeAstro from "../../components/tables/CondTable.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Table
 
@@ -189,11 +191,14 @@ A table with conditional styling for cells based on the value of a column.
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  ----------------------- | ---- | ---------------- | ---- | --- |
-  ---------------- | | Simple Table | Yes | Yes | Yes | Yes | Yes | | Thematic
-  Table | Yes | Yes | Yes | Yes | Yes | | Table With Cell Borders | Yes | Yes |
-  Yes | Yes | Yes | | Table With A Caption | Yes | Yes | Yes | Yes | Yes |
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Table            | Yes  | Yes              | Yes  | Yes | Yes              |
+| Thematic Table          | Yes  | Yes              | Yes  | Yes | Yes              |
+| Table With Cell Borders | Yes  | Yes              | Yes  | Yes | Yes              |
+| Table With A Caption    | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 The tables adhere to the [WCAG 2.1 AA standards](https://www.w3.org/TR/WCAG21/)
 for accessibility.

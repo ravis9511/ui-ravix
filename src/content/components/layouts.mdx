@@ -6,6 +6,8 @@ type: "Introduction"
 
 import Alerts from "../../components/Alert.astro";
 import TableWrapper from "../../components/TableWrapper.astro";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Layouts
 
@@ -16,6 +18,7 @@ Out of the box, the preferred layout is the grid system for the pages. The grid 
 ravixUI uses a the 12 point grid system to give fine tuned control for placing blocks on the page. The table below has the specifications used for the layout.
 
 <TableWrapper>
+
 | Breakpoint | Minimum Width | Tailwind Class                | Margins and Padding                          |
 | :--------- | :------------ | :---------------------------- | :------------------------------------------- |
 | 2xl        | 1536px        | grid grid-cols-12 gap-4 mx-40 | 160px of horizontal margin with 16px padding |
@@ -24,6 +27,7 @@ ravixUI uses a the 12 point grid system to give fine tuned control for placing b
 | md         | 768px         | grid grid-cols-12 gap-4 mx-12 | 48px of horizontal margin with 16px padding  |
 | sm         | 640px         | grid grid-cols-12 gap-4 mx-10 | 40px of horizontal margin with 16px padding  |
 | < 640px    | 0px           | grid grid-cols-12 gap-4 mx-4  | 16px of horizontal margin with 16px padding  |
+
 </TableWrapper>
 Well, that's not responsive at all, is it now? To make it responsive your code would be something like this :
 

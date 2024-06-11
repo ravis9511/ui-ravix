@@ -23,6 +23,8 @@ import GlassCardCodeAstro from "../../components/cards/GLCardAstro.astro?raw";
 import FeaturesCard from "../../components/cards/FeaturesCard.astro";
 import FeaturesCardCode from "../../components/cards/FeaturesCard.astro?raw";
 import FeaturesCardCodeAstro from "../../components/cards/FCardAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Card
 
@@ -275,15 +277,18 @@ A card with a glass effect.
 ## Accessibility Testing Status
 
 <TableWrapper>
-  | Component | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access | |
-  --------------- | ---- | ---------------- | ---- | --- | ---------------- | |
-  Simple Card | Yes | Yes | Yes | Yes | Yes | | Horizontal Card | Yes | Yes |
-  Yes | Yes | Yes | | Features Card | Yes | Yes | Yes | Yes | Yes | | Gradient
-  Card | Yes | Yes | Yes | Yes | Yes | | Glass Card | Yes | Yes | Yes | Yes |
-  Yes |
+
+| Component       | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Card     | Yes  | Yes              | Yes  | Yes | Yes              |
+| Horizontal Card | Yes  | Yes              | Yes  | Yes | Yes              |
+| Features Card   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Gradient Card   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Glass Card      | Yes  | Yes              | Yes  | Yes | Yes              |
+| Yes             |
+
 </TableWrapper>
-There are no clear accessibility guidelines for the cards pattern described by
-WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all
-elements present inside the cards while adhering to the WCAG 2.1 AA standard.
+
+There are no clear accessibility guidelines for the cards pattern described by WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all elements present inside the cards while adhering to the WCAG 2.1 AA standard.
 
 While the cards out of the box in ravixUI showcase action buttons inside the cards, it's possible that the card itself can act as an action button based on context, for example, catalogs having product cards that can be clicked to view the product details or genres in a music application having a card for each genre that can be clicked to view songs of the genre.

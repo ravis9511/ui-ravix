@@ -23,6 +23,8 @@ import GradientTabsCode from "../../components/tabs/GradientTabs.html?raw";
 import GradientTabsCodeAstro from "../../components/tabs/GradientTabs.astro?raw";
 import WCTabs from "../../components/tabs/WCTabs.astro";
 import WCTabsCodeAstro from "../../components/tabs/WCTabs.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Tabs
 
@@ -252,7 +254,7 @@ This is an astrojs web component implementation of the tabs. It allows for any s
 
 The Tabs above are created using the Web Components API along with Astrojs. It follows the standard patterns for [tabs as defined by the WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
-**Note:** The styling used above is a showcase of the component's options and not really recommended for direct use.
+**Note:** The tabs are responsive in nature, that means the vertical tabs will become horizontal below the breakpoint `md` . The styling used above is a showcase of the component's options and not really recommended for direct use.
 
 ### Usage
 
@@ -348,12 +350,14 @@ Please keep in mind that the Tabs component is provided as-is and may require fu
 
 ## Accessibility Testing Status
 <TableWrapper>
+
 | Component                  | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
 | -------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
 | Normal Tabs                | Yes  | Yes              | Yes  | Yes | Yes              |
 | Normal Tabs With Icons     | Yes  | Yes              | Yes  | Yes | Yes              |
 | Gradient Tabs With Icons   | Yes  | Yes              | Yes  | Yes | Yes              |
 | Astrojs Web Component Tabs | Yes  | Yes              | Yes  | Yes | Yes              |
+
 </TableWrapper>
 ravixUI follows the tabs pattern from [WAI-ARIA APG which is available here](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). This specifically follows the Tabs with Manual Activation pattern.
 
