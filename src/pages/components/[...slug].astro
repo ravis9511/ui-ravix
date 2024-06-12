@@ -1,11 +1,16 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 import TOCBar from "../../components/TOCBar.astro";
 import MarkDownLayout from "../../layouts/MarkDownLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
 import TOC from "../../components/TOC.astro";
+
+interface Props {
+  entry: CollectionEntry<'components'>;
+}
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("components");
@@ -51,6 +56,8 @@ const WCDropDownContent = headings
   title={entry.data.title}
   currentSlug={`/components/${entry.slug}`}
   skipLinkId={headings[0].slug}
+  keywords={entry.data.keywords}
+  description={entry.data.description}
 >
   <div
     class="sticky left-0 top-[8dvh] z-[80] flex w-full border-b border-gray-400 bg-gray-50 px-4 py-1 lg:hidden dark:border-zinc-700 dark:bg-zinc-950"

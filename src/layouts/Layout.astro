@@ -4,7 +4,7 @@ import { ViewTransitions } from "astro:transitions";
 import Navigation from "../components/Navigation.astro";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/figtree";
-
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 import "../styles/global.css";
 interface Props {
   title: string;
@@ -22,13 +22,23 @@ const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
+    <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Ravi Shankar" />
-    <meta property="og:site_name" content="Ravi Shankar" />
-    <meta name="viewport" content="width=device-width" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" />
+    <link rel="canonical" href={canonicalURL} />  
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://ravixui.com/favicon.png" />
+    <meta property="og:image:alt" content="ravixUI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ravix_ui" />
+    <meta name="twitter:title" content="ravixUI" />
+    <meta name="twitter:description" content="ravixUI is an accessible UI component starter kit for Astrojs based on Tailwind." />
+    <meta name="twitter:image" content="https://ravixui.com/favicon.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
       document.addEventListener("astro:page-load", () => {

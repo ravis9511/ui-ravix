@@ -6,6 +6,9 @@ const componentCollection = defineCollection({
     title: z.string(),
     order: z.number(),
     type: z.string(),
+    description : z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    keywords : z.string().optional(),
   }),
 });
 
