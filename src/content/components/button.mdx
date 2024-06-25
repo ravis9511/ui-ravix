@@ -1,224 +1,271 @@
 ---
 title: "Button"
-order: 6
+order: 12
+type: "Building"
+description: "Documentation and examples for buttons in ravixUI"
+tags: ["button", "button-examples","ravixUI","WCAG 2.1","WAI-ARIA 1.2"]
+keywords: "button, ravixUI, AstroJS, TailwindCSS"
 ---
-import { Code } from 'astro-expressive-code/components';
-import Accordion from "../../components/Accordion.astro"
-import Tab from "../../components/Tab.astro"
-import NormalButton from "../../components/buttons/NormalButton.astro"
-import NormalButtonCode from "../../components/buttons/NormalButton.astro?raw"
-import NormalButtonCodeAstro from "../../components/buttons/NButtonAstro.astro?raw"
-import NormalButtonWithIcons from "../../components/buttons/NormalButtonWithIcons.astro"
-import NormalButtonWithIconsCode from "../../components/buttons/NormalButtonWithIcons.astro?raw"
-import NormalButtonWithIconsCodeAstro from "../../components/buttons/NButtonWithIconsAstro.astro?raw"
-import IconButton from "../../components/buttons/IconButton.astro"
-import IconButtonCode from "../../components/buttons/IconButton.astro?raw"
-import IconButtonCodeAstro from "../../components/buttons/IButtonAstro.astro?raw"
-import LinkButton from "../../components/buttons/LinkButton.astro"
-import LinkButtonCode from "../../components/buttons/LinkButton.astro?raw"
-import LinkButtonCodeAstro from "../../components/buttons/LButtonAstro.astro?raw"
-import StylizedButton from "../../components/buttons/StylizedButton.astro"
-import StylizedButtonCode from "../../components/buttons/StylizedButton.astro?raw"
-import StylizedButtonCodeAstro from "../../components/buttons/SButtonAstro.astro?raw"
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import NormalButton from "../../components/buttons/NormalButton.astro";
+import NormalButtonCode from "../../components/buttons/NormalButton.astro?raw";
+import NormalButtonCodeAstro from "../../components/buttons/NButtonAstro.astro?raw";
+import NormalButtonWithIcons from "../../components/buttons/NormalButtonWithIcons.astro";
+import NormalButtonWithIconsCode from "../../components/buttons/NormalButtonWithIcons.astro?raw";
+import NormalButtonWithIconsCodeAstro from "../../components/buttons/NButtonWithIconsAstro.astro?raw";
+import IconButton from "../../components/buttons/IconButton.astro";
+import IconButtonCode from "../../components/buttons/IconButton.astro?raw";
+import IconButtonCodeAstro from "../../components/buttons/IButtonAstro.astro?raw";
+import LinkButton from "../../components/buttons/LinkButton.astro";
+import LinkButtonCode from "../../components/buttons/LinkButton.astro?raw";
+import LinkButtonCodeAstro from "../../components/buttons/LButtonAstro.astro?raw";
+import StylizedButton from "../../components/buttons/StylizedButton.astro";
+import StylizedButtonCode from "../../components/buttons/StylizedButton.astro?raw";
+import StylizedButtonCodeAstro from "../../components/buttons/SButtonAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Button
 
 The simple yet powerful button. ravixUI has multiple types of buttons available out of the box.
 
 <Accordion
-    data={[
-        {
-            title: "Design Hints",
-            content:
-                "Buttons serve as interactive elements that allow users to engage with web pages or websites. While colors can be customized to align with a website's branding, it's important to consider the potential semantic meanings associated with certain hues. For instance, colors like yellow, green, and red can convey additional context about the action a button will perform. Incorporating icons alongside buttons can provide additional information when appropriate.Hover effects can be used to indicate button states, but it's worth noting that this functionality will not translate to touchscreen interfaces. If an action is hard to reverse or irreversible, add confirmation screens or modals to prevent accidental actions.",
-        },
-        {
-            title: "Accessiblity Hints",
-            content:
-                "When modifying colored elements such as background or text, it's crucial to verify that the color contrast meets accessibility standards. Icons can be used alongside buttons, and it may be tempting to remove text from certain buttons if the icons convey all the information, but you will have to consider screen reader requirements for which there are examples available below. Choose icons which offer additional semantic meaning or familiarity for the user .You can utilize tools or browser extensions that support WCAG guidelines or use dedicated color contrast checkers like WebAIM. Regarding these buttons, the 'type' attribute is set to 'button' for all blocks by default. However, if these buttons are part of a form, you'll need to change the 'type' to 'submit'. ravixUI has predetermined semantic usages for green, red, and yellow colors, but you're free to modify these choices. Lastly, ensure that the button text accurately represents the action that clicking the button will perform.",
-        }
-    ]}
+  data={[
+    {
+      name: "button1",
+      title: "Design Hints",
+      content:
+        "Buttons serve as interactive elements that allow users to engage with web pages or websites. While colors can be customized to align with a website's branding, it's important to consider the potential semantic meanings associated with certain hues. For instance, colors like yellow, green, and red can convey additional context about the action a button will perform. Incorporating icons alongside buttons can provide additional information when appropriate. Hover effects can be used to indicate button states, but it's worth noting that this functionality will not translate to touchscreen interfaces. If an action is hard to reverse or irreversible, add confirmation screens or modals to prevent accidental actions.",
+    },
+    {
+      name: "button1",
+      title: "Accessiblity Hints",
+      content:
+        "Instead of disabling buttons, consider giving feedback using alerts or modals when a user clicks a button with appropriate messages for why the user cannot proceed. Disabling it will make the button unable to receive focus which will remove its accessible nature. When modifying colored elements such as background or text, it's crucial to verify that the color contrast meets accessibility standards. Icons can be used alongside buttons, and it may be tempting to remove text from certain buttons if the icons convey all the information, but you will have to consider screen reader requirements for which there are examples available below. Choose icons which offer additional semantic meaning or familiarity for the user .You can utilize tools or browser extensions that support WCAG guidelines or use dedicated color contrast checkers. Regarding these buttons, the 'type' attribute is set to 'button' for all blocks by default. However, if these buttons are part of a form, you'll need to change the 'type' to 'submit'. ravixUI has predetermined semantic usages for green, red, and yellow colors, but you're free to modify these choices. ",
+    },
+  ]}
 />
 
-Note: All the icons used in this section are from Google Material Icons provided by iconify.design. 
+**Note:** All the icons used in this section are [available in iconify.design](https://iconify.design/).
 
-## Normal Button
+## Simple Button
 
 Simple buttons for different types of actions. Note that you will need to connect actions to the button using javascript or using a javascript framework.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Simple Button" tabs={[{ "name" : "Preview", "id" : "SB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SB-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="SB-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab1">
 <NormalButton />
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
 
-<Code code={NormalButtonCode} lang="html" title="NormalButtonVariants.html" wrap="true"/>
-
-</section>
-
-<section id ="Tab3" role="tabpanel">
-
-<Code code={NormalButtonCodeAstro} lang="astro" title="NormalButtonVariants.astro" wrap="true"/>
+<Code code={NormalButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
+<section id ="SB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab3" class="hidden">
 
+<Code
+  code={NormalButtonCodeAstro}
+  title="ButtonVariants.astro"
+  lang="astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
 
 </Tab>
 
+**Note:** The default button uses a subtle indigo color for the shadow using the `shadow-indigo-300/40` utility.
 
-Note:  ```disabled``` attribute is used on the button to make it disabled. You will need to use JavaScript to enable the button again by removing the ```disabled``` attribute.
+## Simple Button With Icons
 
+The Simple button with icons.
 
-## Normal Button With Icons
+<Tab name="Simple Button With Icons" tabs={[{ "name" : "Preview", "id" : "SBI-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SBI-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SBI-Tab3", "icon" : "astro"}]}>
 
-The normal button with icons.
-
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
-
-<section id ="Tab1" role="tabpanel">
+<section id ="SBI-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBI-Tab1">
 <NormalButtonWithIcons />
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="SBI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBI-Tab2" class="hidden">
 
-<Code code={NormalButtonWithIconsCode} lang="html" title="NormalButtonWithIcons.html" wrap="true"/>
+<Code
+  code={NormalButtonWithIconsCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
 
-<section id ="Tab3" role="tabpanel">
+<section id ="SBI-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBI-Tab3" class="hidden">
 
-<Code code={NormalButtonWithIconsCodeAstro} lang="astro" title="NormalButtonVariants.astro" wrap="true"/>
+<Code
+  code={NormalButtonWithIconsCodeAstro}
+  lang="astro"
+  title="ButtonWithIcons.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
 
 </section>
-
-
 
 </Tab>
 
-Note: ``` aria-hidden=true ``` is added to the svg icons as an attribute to hide it from screen readers to prevent duplication for screen readers since we have button labels explaining the button's action.
-
-
+**Note:** `aria-hidden=true` is added to the svg icons as an attribute to hide it from screen readers to prevent duplication for screen readers since we have button labels explaining the button's action.
 
 ## Link Button
 
-This is a tailwindCSS wrapper around ```<a>``` anchor tag to make it look like a button. Useful for internal navigation to different parts of a page and also between different pages in your project.
+This is a tailwindCSS wrapper on the `<a>` tag to make it look like a button. Useful for internal navigation to different parts of a page and also between different pages in your project.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Link Button" tabs={[{ "name" : "Preview", "id" : "LB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "LB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "LB-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="LB-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="LB-Tab1">
 <LinkButton />
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="LB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="LB-Tab2" class="hidden">
 
-<Code code={LinkButtonCode} lang="html" title="NormalButtonWithIcons.html" wrap="true"/>
-
-</section>
-
-<section id ="Tab3" role="tabpanel">
-
-<Code code={LinkButtonCodeAstro} lang="astro" title="NormalButtonVariants.astro" wrap="true"/>
+<Code code={LinkButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
+<section id ="LB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="LB-Tab3" class="hidden">
 
+<Code
+  code={LinkButtonCodeAstro}
+  lang="astro"
+  title="LinkButtons.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
 
 </Tab>
 
-
 <Accordion
-    data={[
-        {
-            title: "Design Hints",
-            content:
-                "Using icons is recommended for navigational buttons.  For external links leading to other websites, it is preferable to employ inline anchor tags accompanied by underlined text. If you choose to adopt a button-like appearance for anchor tags directing users to external sites, ensure that there are clear indicators on the button that clicking it will redirect the user away from your website.",
-        }
-    ]}
+  data={[
+    {
+      name: "button2",
+      title: "Design Hints",
+      content:
+        "Using icons is recommended for navigational buttons.  For external links leading to other websites, it is preferable to employ inline anchor tags accompanied by underlined text. If you choose to adopt a button-like appearance for anchor tags directing users to external sites, ensure that there are clear indicators on the button that clicking it will redirect the user away from your website.",
+    },
+  ]}
 />
-
-
 
 ## Accessible Icon Only Button
 
 The accessible icon only button. Useful when dealing with limited space on a webpage.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Accessible Icon Only Button" tabs={[{ "name" : "Preview", "id" : "AB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AB-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="AB-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AB-Tab1">
 <IconButton />
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="AB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AB-Tab2" class="hidden">
 
-<Code code={IconButtonCode} lang="html" title="NormalButtonWithIcons.html" wrap="true"/>
-
-</section>
-
-<section id ="Tab3" role="tabpanel">
-
-<Code code={IconButtonCodeAstro} lang="astro" title="NormalButtonVariants.astro" wrap="true"/>
+<Code code={IconButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
+<section id ="AB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AB-Tab3" class="hidden">
 
+<Code
+  code={IconButtonCodeAstro}
+  lang="astro"
+  title="IconOnlyButton.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
 
 </Tab>
 
-Note: We use ```title=""``` attribute to create a tooltip to give additional information to the user when they hover over the button and ```aria-label=""``` attribute for screenreaders. Most screenreaders will only callout aria-label attribute and not the title attribute .  ``` aria-hidden=true ``` is added to the svg icons as an attribute to hide it from screen readers to prevent duplicate callouts. 
+**Note:** We use `title=""` attribute to create a tooltip to give additional information to the user when they hover over the button and `aria-label=""` attribute for screenreaders. Most screenreaders will only callout aria-label attribute or the title attribute . `aria-hidden=true` is added to the svg icons as an attribute to hide it from screen readers to prevent duplicate callouts.
 
 <Accordion
-    data={[
-        {
-            title: "Design Hints",
-            content:
-                "For actions that are widely recognized, such as settings, favorites, or sharing, it is recommended to utilize familiar icons. However, in scenarios where an icon-only button triggers an uncommon action on touchscreen devices, where tooltips are not functional, it may be necessary to provide a tutorial for first-time users and a dedicated help section for returning users. Additionally, adding a confirmation modal for such buttons can help prevent unintentional actions by users. The Restore Defaults button above serves as a good example of an action that, while potentially familiar to users, warrants additional confirmation before execution.",
-        }
-    ]}
+  data={[
+    {
+      name: "button3",
+      title: "Design Hints",
+      content:
+        "For actions that are widely recognized, such as settings, favorites, or sharing, it is recommended to utilize familiar icons. However, in scenarios where an icon-only button triggers an uncommon action on touchscreen devices, where tooltips are not functional, it may be necessary to provide a tutorial for first-time users and a dedicated help section for returning users. Additionally, adding a confirmation modal for such buttons can help prevent unintentional actions by users. The Restore Defaults button above serves as a good example of an action that, while potentially familiar to users, warrants additional confirmation before execution.",
+    },
+  ]}
 />
-
 
 ## Stylized Buttons
 
-These buttons are stylized and can be used to add a bit of flair to your page. 
+These buttons are stylized and can be used to add a bit of flair to your page.
 
-<Tab tabs={[{ "name" : "Preview", "id" : "Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "Tab3", "icon" : "astro"}]}>
+<Tab name="Stylized Buttons" tabs={[{ "name" : "Preview", "id" : "SBT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SBT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SBT-Tab3", "icon" : "astro"}]}>
 
-<section id ="Tab1" role="tabpanel">
+<section id ="SBT-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBT-Tab1">
 <StylizedButton />
 
 </section>
 
-<section id ="Tab2" role="tabpanel">
+<section id ="SBT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBT-Tab2" class="hidden">
 
-<Code code={StylizedButtonCode} lang="html" title="NormalButtonWithIcons.html" wrap="true"/>
-
-</section>
-
-<section id ="Tab3" role="tabpanel">
-
-<Code code={StylizedButtonCodeAstro} lang="astro" title="NormalButtonVariants.astro" wrap="true"/>
+<Code code={StylizedButtonCode} lang="html" wrap="true" data-pagefind-ignore />
 
 </section>
 
+<section id ="SBT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SBT-Tab3" class="hidden">
 
+<Code
+  code={StylizedButtonCodeAstro}
+  lang="astro"
+  title="StylizedButton.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
 
 </Tab>
 
-Note : The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) . For the second row buttons, the effect is produced by using the shadow property with arbitrary values. 
+**Note:** The gradients are easy to modify using tailwind. For the second row buttons, shadow ( box shadow ) is used with arbitrary value to produce the effects. To easily visualize and customize the gradients you can use the [Tailwind Gradient Generator](https://tailwindcomponents.com/gradient-generator/) .
 
 <Accordion
-    data={[
-        {
-            title: "Design Hints",
-            content:
-                "While these buttons are accessible, use them sparingly since it can distract the user away from the content. The perfect use case would be a one off button like a CTA. Remember, with great power comes great responsibility.",
-        }
-    ]}
+  data={[
+    {
+      name: "button4",
+      title: "Design Hints",
+      content:
+        "While these buttons are accessible, use them sparingly since it can distract the user away from the content. The perfect use case would be a one off button like a CTA.",
+    },
+  ]}
 />
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Button               | Yes  | Yes              | Yes  | Yes | Yes              |
+| Simple Button With Icons    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Link Button                 | Yes  | Yes              | Yes  | Yes | Yes              |
+| Accessible Icon Only Button | Yes  | Yes              | Yes  | Yes | Yes              |
+| Stylized Button             | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+ravixUI uses the semantic `<button>` element for all non link buttons and `<a>` element for link buttons. The size of the buttons meet the minimum target size for interactive elements as [defined by the WCAG 2.1 specification.](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html). The minimum target size for all the buttons in this context, i.e., with the fonts used, the outer containers of the buttons etc. is 44 x 44 px.
+
+While the 44px X 44px target size is important, another important factor to note is that there should be ample space between clickable areas of buttons placed next to each other.

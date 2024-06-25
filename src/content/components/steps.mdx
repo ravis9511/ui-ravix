@@ -1,0 +1,165 @@
+---
+title: "Steps"
+order: 20
+type: "Building"
+description: "Documentation and examples for steps in ravixUI"
+tags: ["steps", "steps-examples","ravixUI","Astrojs"]
+keywords: "steps, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Steps from "../../components/steps/Steps.astro";
+import StepsCode from "../../components/steps/Steps.astro?raw";
+import StepsCodeAstro from "../../components/steps/Steps.astro?raw";
+import AltSteps from "../../components/steps/AltSteps.astro";
+import AltStepsCode from "../../components/steps/AltSteps.astro?raw";
+import AltStepsCodeAstro from "../../components/steps/AltSteps.astro?raw";
+import VerticalSteps from "../../components/steps/VerticalSteps.astro";
+import VerticalStepsCode from "../../components/steps/VerticalSteps.astro?raw";
+import VerticalStepsCodeAstro from "../../components/steps/VerticalSteps.astro?raw";
+import DynamicSteps from "../../components/steps/DynamicSteps.astro";
+import DynamicStepsCode from "../../components/steps/DynamicSteps.astro?raw";
+import DynamicStepsCodeAstro from "../../components/steps/DStepsAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Steps
+
+Steps can be used in multiple ways, but they are most commonly used to present a series of steps that a user must finish in order to complete a task or achieve a goal. They can be used to guide users through a process, to provide feedback on their progress, or to indicate the current step in a multi-step process.
+
+<Accordion
+  data={[
+    {
+      name: "steps1",
+      title: "Design Hints",
+      content:
+        "Steps are a powerful tool for enhancing the user experience. It gives the user a clear indication of the user's progress, an approximate idea about the length of the process and give the user an idea of what data they will need to enter in future steps.",
+    },
+    {
+      name: "steps1",
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it's important to ensure that there are proper visible labels for each step. The current step should be indicated by using aria-current=step for those who may not be able to see the visual differences between the currently active and inactive steps.",
+    },
+  ]}
+/>
+
+## Simple Steps
+
+A simple horizontal stepper that can be used to present a series of steps and current step.
+
+<Tab name="Simple Steps" tabs={[{ "name" : "Preview", "id" : "SS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SS-Tab3", "icon" : "astro"}]}>
+
+<section id ="SS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab1">
+<div class="flex flex-col items-center justify-center p-4 sm:p-12 gap-y-6">
+<Steps />
+</div>
+
+</section>
+
+<section id ="SS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab2" class="hidden">
+
+<Code code={StepsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SS-Tab3" class="hidden">
+
+<Code
+  code={StepsCodeAstro}
+  lang="astro"
+  title="SimpleSteps.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** You can enhance the stepper by adding navigation buttons to the stepper to allow the user to move between steps.
+
+## Alternate Steps
+
+An alternate style of static stepper with a bit more details.
+
+<Tab name="Alternate Steps" tabs={[{ "name" : "Preview", "id" : "AS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AS-Tab3", "icon" : "astro"}]}>
+
+<section id ="AS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab1">
+<div class="flex items-center justify-center p-6">
+<AltSteps />
+</div>
+
+</section>
+
+<section id ="AS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab2" class="hidden">
+
+<Code code={AltStepsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AS-Tab3" class="hidden">
+
+<Code
+  code={AltStepsCodeAstro}
+  lang="astro"
+  title="AltSteps.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Dynamic Steps
+
+When there are a lot of steps or when the available space is limited, the non-active steps are represented with placeholder bars while the active step is expanded with additional information.
+
+<Tab name="Dynamic Steps" tabs={[{ "name" : "Preview", "id" : "DS-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "DS-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "DS-Tab3", "icon" : "astro"}]}>
+
+<section id ="DS-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab1">
+<div class="flex items-center justify-center p-6">
+<DynamicSteps />
+</div>
+
+</section>
+
+<section id ="DS-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab2" class="hidden">
+
+<Code code={DynamicStepsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="DS-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="DS-Tab3" class="hidden">
+
+<Code
+  code={DynamicStepsCodeAstro}
+  lang="astro"
+  title="DynamicSteps.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The astrojs component dynamically generates the correct visuals based on the props passed to it.
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component      | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Steps   | Yes  | Yes              | Yes  | Yes | Yes              |
+| AlternateSteps | Yes  | Yes              | Yes  | Yes | Yes              |
+| Dynamic Steps  | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+Steps are effective when the order of the steps is clear and the user can easily
+understand the purpose of each step.{" "}

@@ -1,0 +1,378 @@
+---
+title: "Accordion"
+order: 8
+type: "Building"
+description: "Documentation and examples for accordions in ravixUI"
+tags: ["accordion", "accordion-examples","ravixUI","AstroJS"]
+keywords: "accordion, web component, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Alert from "../../components/Alert.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Tab from "../../components/Tab.astro";
+import TabsAstroCode from "../../components/tabs/NTabsAstro.astro?raw";
+import NormalAccordion from "../../components/accordions/NormalAccordion.astro";
+import NormalAccordionCode from "../../components/accordions/NormalAccordion.astro?raw";
+import NormalAccordionCodeAstro from "../../components/accordions/AccComponent.astro?raw";
+import AnimatedAccordion from "../../components/accordions/AnimatedAccordion.astro";
+import AnimatedAccordionCode from "../../components/accordions/AnimatedAccordion.html?raw";
+import AnimatedAccordionCodeAstro from "../../components/accordions/AnimatedAccordion.astro?raw";
+import AnimatedAccordionAlt from "../../components/accordions/AAccordionAlt.astro";
+import AnimatedAccordionAltCode from "../../components/accordions/AAccordionAlt.html?raw";
+import AnimatedAccordionAltCodeAstro from "../../components/accordions/AAccordionAlt.astro?raw";
+import WebComponentAccordion from "../../components/accordions/WCAccordion.astro";
+import WebComponentAccordionCode from "../../components/accordions/WCAccordion.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Accordion
+
+The Accordion component is a user interface element that allows users to expand and collapse content sections. It provides an organized and space-efficient way to present information, displaying only headers or titles by default and revealing the associated content when a header is clicked.
+
+This interactive and collapsible nature makes the Accordion ideal for scenarios where displaying all content simultaneously would be overwhelming or cluttered, enabling users to focus on one section at a time while still providing easy access to related content.
+
+<Accordion
+  data={[
+    {
+      name: "accordion1",
+      title: "Design Hints",
+      content:
+        "Accordions are a great way to progressively reveal content to the user. However, it is important to ensure that only non critical information is hidden inside the accordion. When using accordions, ensuring sufficient clickable area for the headers is crucial since there are no gaps between them.",
+    },
+    {
+      name: "accordion1",
+      title: "Accessbility Hints",
+      content:
+        "For the first accordion in the components below, we use the semantic HTML tag details for implementation and hence it is accessible out of the box. But for the other accordions, ravixUI uses a combination of aria-controls, aria-expanded, aria-labelledby and aria-hidden to make it accessible.",
+    },
+  ]}
+/>
+
+## Accordion Definition
+
+An accordion consists of two main parts :
+
+- The accordion container : The container that holds multiple accordion items inside it. Only one accordion item can be expanded at a time.
+- The accordion item : Each accordion item comprises two core elements: a header and a panel. Clicking on the header allows users to expand or collapse the associated panel, revealing or hiding its contents. The accordion components are implemented with the expectation that the panels will house textual information. You are free to customize the content of the panels as per your requirements.
+
+## Simple Accordion
+
+A simple accordion capable of containing numerous accordion items implemented using the `<details>` tag.
+
+**Note:** The autoclose others accordion items when an item is opened is not supported for `details` tag in Firefox at this moment. To check compatibility of the `<details>` tag in different browsers, you can check [this link which leads to caniuse.com/details](https://caniuse.com/details).
+
+<Tab name="Simple Accordion" tabs={[{ "name" : "Preview", "id" : "SA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SA-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="SA-Tab1-panel"
+  aria-labelledby="SA-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+  class="min-h-[26rem]"
+>
+  <div class="grid p-4 md:px-10 md:py-4">
+    <NormalAccordion />
+  </div>
+</section>
+
+<section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2" class="hidden">
+
+<Code code={NormalAccordionCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab3" class="hidden">
+
+<Code
+  code={NormalAccordionCodeAstro}
+  lang="astro"
+  title="Accordion.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** Since we are using the details tag, the component above is accessible out of the box. We use the `name` attribute to control the auto closing of the accordion, but that does not work in Firefox. In case you don't want the autoclosing functionality you can just remove the name attribute .For an accordion which works in all browsers with the auto close feature and animations you can use the component below which uses javascript.
+
+## Animated Accordion
+
+<Alert type="info">Requires Javascript to work.</Alert>
+
+An accordion item with animations and auto closing functionality.
+
+<Tab name="Animated Accordion" tabs={[{ "name" : "Preview", "id" : "AA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AA-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AA-Tab1-panel"
+  aria-labelledby="AA-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+  class="min-h-[34rem]"
+>
+  <div class="grid p-4 md:px-10 md:py-4">
+    <AnimatedAccordion
+      panels={[
+        {
+          header: "Panel 1 Header",
+          content:
+            "Content inside the accordion panel is only visible when the panel is expanded.",
+        },
+        {
+          header: "Panel 2 Header",
+          content:
+            "The content is expected to be text for these accordion panels.",
+        },
+        {
+          header: "Panel 3 Header",
+          content:
+            "Accordions can be used to create clean and organized content sections.",
+        },
+        // Add more panels as needed
+      ]}
+    />
+  </div>
+</section>
+
+<section id ="AA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab2" class="hidden">
+
+<Code
+  code={AnimatedAccordionCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="AA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab3" class="hidden">
+
+<Code
+  code={AnimatedAccordionCodeAstro}
+  lang="astro"
+  title="AnimatedAccordion.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** We use the group and peer attributes to control the autoclosing of the accordion and only have to track one state variable which is `aria-expanded` which controls the state of the panels and the buttons.
+
+## Alternate Animated Accordion
+
+<Alert type="info">Requires Javascript to work.</Alert>
+
+An alternate style for animated accordion.
+
+<Tab name="Alternate Animated Accordion" tabs={[{ "name" : "Preview", "id" : "AL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AL-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AL-Tab1-panel"
+  aria-labelledby="AL-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+  class="min-h-[34rem]"
+>
+  <div class="grid p-4 md:px-10 md:py-4">
+    <AnimatedAccordionAlt
+      panels={[
+        {
+          header: "First Panel Header",
+          content:
+            "Content inside the accordion panel is only visible when the panel is expanded.",
+        },
+        {
+          header: "Second Panel Header",
+          content:
+            "The content is expected to be text for these accordion panels.",
+        },
+        {
+          header: "Third Panel Header",
+          content:
+            "Accordions can be used to create clean and organized content sections.",
+        },
+        // Add more panels as needed
+      ]}
+    />
+  </div>
+</section>
+
+<section id ="AL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab2" class="hidden">
+
+<Code
+  code={AnimatedAccordionAltCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="AL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AL-Tab3" class="hidden">
+
+<Code
+  code={AnimatedAccordionAltCodeAstro}
+  lang="astro"
+  title="AnimatedAccordionAlt.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** We use the group and peer attributes to control the autoclosing of the accordion and only have to track one state variable which is `aria-expanded` which controls the state of the panels and the buttons.
+
+## Astrojs Web Component
+
+<Alert type="info">Requires Astrojs to work.</Alert>
+
+The animated accordion is available as a web component in ravixUI. You can find the implementation and code below. The current implementation is focused on the panel having only text content.
+
+<Tab name="Astro JS Web Component" tabs={[{ "name" : "Preview", "id" : "WC-Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "WC-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="WC-Tab1-panel"
+  aria-labelledby="WC-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+  class="min-h-[34rem]"
+>
+  <div class="grid p-4 md:px-10 md:py-4">
+    <WebComponentAccordion
+      panels={[
+        {
+          header: "What are Web Components?",
+          content:
+            "Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.",
+        },
+        {
+          header: "Why use Web Components?",
+          content:
+            "Instead of searching the whole page using document.querySelector(), you can use this.querySelector(), which only searches within the current custom element instance. This makes it easier to work with only the children of one component instance at a time. It also removes the need to attach event listeners to the document and allows for better encapsulation of the component's functionality.",
+        },
+
+        {
+          header: "What benefits does Web Components offer?",
+          content:
+            "Web Components allow you to create reusable custom elements which can be used multiple times throughout your application. They also allow you to attach and detach elements from the DOM based on the state of your application, making it a cleaner and more efficient way to build your web pages.",
+        },
+      ]}
+    />
+
+  </div>
+</section>
+
+<section id ="WC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="WC-Tab3" class="hidden">
+
+<Code
+  code={WebComponentAccordionCode}
+  lang="astro"
+  title="WebComponentAccordion.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+The Accordion is implemented using web component api that creates an expandable and collapsible accordion UI element. It allows you to display a list of panels with headers and corresponding content. Learn more about web components [in the MDN web docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
+
+### Usage
+
+To use the Accordion component in your Astro project, follow these steps below after copying the code into a component file:
+
+- Import the Accordion component into your Astro page.
+- Define an array of accordion panels with their headers and content.
+- Render the Accordion component in your Astro page, passing the panels array as a prop.
+
+Example implementation is given below:
+
+```astro title="YourPage.astro"
+---
+import Accordion from "./Accordion.astro"; // Refer the correct location of the component in your project
+const panels = [
+  {
+    header: "Panel 1 Header",
+    content: "This is the content for Panel 1.",
+  },
+  {
+    header: "Panel 2 Header",
+    content: "This is the content for Panel 2. ",
+  },
+  {
+    header: "Panel 3 Header",
+    content: "This is the content for Panel 3.",
+  },
+  // Add more panels as needed
+];
+---
+
+<Accordion panels={panels} />
+```
+
+### Data Attributes
+
+The data-accordion attribute is a custom attribute used to identify and control the behavior of the accordion component. It is applied to different elements within the accordion structure, and its value specifies the role of the element. The following values are used:
+
+- **data-accordion="container":** This value is applied to the outermost container element that encompasses the entire accordion component. It serves as a way to uniquely identify the accordion container, allowing for easy selection and manipulation of the accordion structure.
+
+- **data-accordion="button":** This value is applied to the button elements that serve as toggles for the accordion panels. The button elements should have the aria-expanded attribute set to "false" initially, indicating that the associated panel content is initially collapsed. Additionally, the button elements should have an aria-controls attribute that references the unique identifier of the corresponding panel content element.
+
+- **data-accordion="panel":** This value is applied to the container elements that hold the collapsible content for each accordion panel. The panel elements should have a unique identifier that matches the aria-controls attribute of the corresponding button element. By default, the panel content should be hidden, and it should become visible when the associated button is clicked or activated.
+
+The data-accordion attribute serves as a way to semantically identify the different components of the accordion structure, making it easier to target and manipulate them using JavaScript or CSS selectors. This approach promotes maintainability and extensibility by separating the functional logic from the presentational markup.
+
+### Component Props
+
+The Accordion component accepts the prop `panels (required)`: An array of accordion panel objects. Each panel object should have the following properties:
+
+| Property  | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `header`  | `string` | The header text for the panel.  |
+| `content` | `string` | The content text for the panel. |
+
+### Customization
+
+The Accordion component is styled using Tailwind CSS classes. You can customize the appearance of the component by modifying the classes in the component's HTML structure.
+
+### JavaScript Functionality
+
+The Accordion component includes a JavaScript class that handles the toggling of accordion panels. When a panel header button is clicked, the corresponding panel is expanded or collapsed, and the aria-expanded attribute is updated accordingly. Only one panel can be expanded at a time, and clicking on an expanded panel will collapse it.
+
+### Note
+
+If you want to include more complex content in the accordion panels, you can pass the content as HTML and use an Astro `<Fragment>` component to render it. However, this approach can open up security vulnerabilities and may cause unexpected behavior. Use it with caution.
+
+`{panel.content} <!-- Replace with --> <Fragment set:html={panel.content} />`
+
+Please keep in mind that the Accordion component is provided as-is and may require further testing and customization to fit your specific use case. Also it doesn't support self nesting of accordions, i.e, the panel can't contain another accordion inside it.
+
+## Accessibility Testing Status
+
+While every effort is made to ensure the components are accessible, it's crucial to evaluate their accessibility within the context of your specific application and use case. The current testing environment may not cover all potential scenarios, so it's recommended to conduct additional accessibility assessments tailored to your particular implementation. Except for the Astrojs Web Component which automatically assigns unique IDs for ARIA attributes, you will have to ensure that unique IDs are assigned wherever applicable.
+
+The usage of the `<details>` tag to implement an accordion-like behavior has been a subject of debate. While it provides similar functionality to an accordion, it does not strictly conform to the WAI-ARIA guidelines for the accordion pattern, but it is accessible nonetheless.
+
+<TableWrapper>
+
+| Component                    | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ---------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Accordion             | Yes  | Yes              | Yes  | Yes | Yes              |
+| Animated Accordion           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Animated Accordion | Yes  | Yes              | Yes  | Yes | Yes              |
+| Web Component Accordion      | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+As mentioned in the Introduction section, the component adheres to the WAI-ARIA design patterns where possible. The Accordion components above implement all the required functionality mention in [WAI-ARIA 1.2 specification](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/). Optional functionality as specified in the document such as <kbd>Up arrow</kbd>, <kbd> Down arrow</kbd>, <kbd> Home</kbd> and <kbd>End</kbd> key support is currently not implemented.
+
+The components also respect the `prefers-reduced-motion` media query implemented using the tailwind selector `motion-safe` and will not show the animations when the user has reduced motion enabled.

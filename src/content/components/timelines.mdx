@@ -1,0 +1,172 @@
+---
+title: "Timeline"
+order: 23
+type: "Building"
+description: "Documentation and examples for timelines in ravixUI"
+tags: ["timelines", "timelines-examples","ravixUI","Astrojs"]
+keywords: "timelines, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Alert from "../../components/Alert.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import SimpleTimeline from "../../components/timeline/SimpleTimeline.astro";
+import SimpleTimelineCode from "../../components/timeline/SimpleTimeline.html?raw";
+import SimpleTimelineCodeAstro from "../../components/timeline/SimpleTimeline.astro?raw";
+import CollapseTimeline from "../../components/timeline/CollapseTimeline.astro";
+import CollapseTimelineCode from "../../components/timeline/CollapseTimeline.html?raw";
+import CollapseTimelineCodeAstro from "../../components/timeline/CollapseTimeline.astro?raw";
+import AltTimeline from "../../components/timeline/AltTimeline.astro";
+import AltTimelineCode from "../../components/timeline/AltTimeline.html?raw";
+import AltTimelineCodeAstro from "../../components/timeline/AltTimeline.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Timeline
+
+Timelines can be used to display a series of events in a chronological order. They can be used to convey information about a project, a process, or a sequence of events.
+
+<Accordion
+  data={[
+    {
+      name: "timeline1",
+      title: "Design Hints",
+      content:
+        "Timelines are useful for displaying a series of events in a chronological order. They can be used to convey information about a project, a process, or a sequence of events. Timelines can be used to show the progress of a project, the timeline of a process, or the sequence of events that occurred over time.",
+    },
+  ]}
+/>
+
+**Note:** The timeline components below assume that the data sent as props is sorted beforehand. The timeline will work even otherwise, but it may not be as effective in conveying chronological information to the user.
+
+## Simple Timeline
+
+A simple vertical time line with a list of events.
+
+<Tab name="Simple Timeline" tabs={[{ "name" : "Preview", "id" : "ST-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ST-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ST-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="ST-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="ST-Tab1"
+>
+  <div class="p-2">
+    <SimpleTimeline />
+  </div>
+</section>
+
+<section id ="ST-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab2" class="hidden">
+
+<Code code={SimpleTimelineCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="ST-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ST-Tab3" class="hidden">
+
+<Code
+  code={SimpleTimelineCodeAstro}
+  lang="astro"
+  title="SimpleTimeline.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Timeline with Collapsible Event Descriptions
+
+A simple timeline with collapsible event descriptions.
+
+<Tab name="Collapse Timeline" tabs={[{ "name" : "Preview", "id" : "CT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "CT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "CT-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="CT-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="CT-Tab1"
+>
+  <div class="p-2">
+    <CollapseTimeline />
+  </div>
+</section>
+
+<section id ="CT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab2" class="hidden">
+
+<Code
+  code={CollapseTimelineCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="CT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CT-Tab3" class="hidden">
+
+<Code
+  code={CollapseTimelineCodeAstro}
+  lang="astro"
+  title="CollapseTimeline.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Timeline
+
+An alternate style for timelines.
+
+<Tab name="Alt Timeline" tabs={[{ "name" : "Preview", "id" : "AT-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AT-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AT-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AT-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="AT-Tab1"
+>
+  <div class="p-2">
+    <AltTimeline />
+  </div>
+</section>
+
+<section id ="AT-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AT-Tab2" class="hidden">
+
+<Code code={AltTimelineCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AT-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AT-Tab3" class="hidden">
+
+<Code
+  code={AltTimelineCodeAstro}
+  lang="astro"
+  title="AltTimeline.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Timeline   | Yes  | Yes              | Yes  | Yes | Yes              |
+| Collapse Timeline | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alt Timeline      | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+
+While there is no pattern for timelines by the authoring practice guide from w3c, the components above follow standard practices for accessibility for displaying the content.

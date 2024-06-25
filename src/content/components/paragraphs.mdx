@@ -1,0 +1,108 @@
+---
+title: "Paragraphs"
+order: 5
+type: "Introduction"
+description: "Documentation and examples for paragraphs in ravixUI"
+tags: ["paragraphs", "paragraphs-examples","ravixUI","Astrojs"]
+keywords: "paragraphs, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Tab from "../../components/Tab.astro";
+import Accordion from "../../components/Accordion.astro";
+import Alerts from "../../components/Alert.astro";
+import Card from "../../components/examples/Card.astro";
+import Paragraph from "../../components/paragraphs/Paragraphs.astro";
+import ParagraphCode from "../../components/paragraphs/Paragraphs.astro?raw";
+import ParagraphCodeAstro from "../../components/paragraphs/Paragraphs.astro?raw";
+import AltParagraph from "../../components/paragraphs/AltParagraphs.astro";
+import AltParagraphCode from "../../components/paragraphs/AltParagraphs.astro?raw";
+import AltParagraphCodeAstro from "../../components/paragraphs/AltParagraphs.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Paragraphs
+
+<Alerts type="info">This is not required for any component to work.</Alerts>
+
+Paragraphs are the building blocks of most web pages. They are used to break up text into smaller, more digestible chunks. Paragraphs can be used to introduce new sections, provide additional information, or simply to add some breathing room to the page.
+
+## General Guidelines
+
+While, there are no hard and fast rules for paragraphs, some commonly used guidelines are based on width and spacing. The sweet spot for paragraph width is between 600px and 800px for large screens, which is commonly seen in the most popular blogs, articles, content pieces, etc. For smaller screens like mobile, width doesn't matter as much, but margins and padding should be used to create white space and make the text more readable.
+
+Pro Tip: Don't justify paragraphs when it is part of body content like blogposts, articles, documentation or other similar content. Justified text may look great, but it can be very difficult to read.
+
+## Contrast and Spacing
+
+The contrast between the text and the background is important for readability. Using pure black/white text on pure white/black text maybe tempting, but people with dyslexia can find it very difficult to read. It can also cause eye strain for readers.
+
+Here a comparison of using pure white/black background with pure black/white text and using an off white/black background with off black/white text based on light/dark mode.
+
+<Card />
+
+Here are some pre-styled parapgraphs to get you started.
+
+<Tab name="Simple Paragraph" tabs={[{ "name" : "Preview", "id" : "SP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SP-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="SP-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="SP-Tab1"
+>
+  <Paragraph />
+</section>
+
+<section id ="SP-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="SP-Tab2" class="hidden">
+
+<Code code={ParagraphCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SP-Tab3-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="SP-Tab3" class="hidden">
+
+<Code
+  code={ParagraphCodeAstro}
+  lang="astro"
+  title="Paragraph.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+<Tab name="Paragraph With Links and Bold Text" tabs={[{ "name" : "Preview", "id" : "PWL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "PWL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "PWL-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="PWL-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="PWL-Tab1"
+>
+  <AltParagraph />
+</section>
+
+<section id ="PWL-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="PWL-Tab2" class="hidden">
+
+<Code code={AltParagraphCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="PWL-Tab3-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="PWL-Tab3" class="hidden">
+
+<Code
+  code={AltParagraphCodeAstro}
+  lang="astro"
+  title="AltParagraph.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+While you can use `font-bold` class or `<strong>` tags to make the text bold, but if you want to emphasize the text to screen readers you should use the `<strong>` tag .

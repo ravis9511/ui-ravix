@@ -1,0 +1,214 @@
+---
+title: "Badges"
+order: 11
+type: "Building"
+description: "Documentation and examples for badges in ravixUI"
+tags: ["badge", "badge-examples","ravixUI","WCAG 2.1","WAI-ARIA 1.2"]
+keywords: "badge, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Badges from "../../components/badges/Badges.astro";
+import BadgesCode from "../../components/badges/Badges.astro?raw";
+import BadgesCodeAstro from "../../components/badges/Badges.astro?raw";
+import AltBadges from "../../components/badges/AltBadges.astro";
+import AltBadgesCode from "../../components/badges/AltBadges.astro?raw";
+import AltBadgesCodeAstro from "../../components/badges/AltBadges.astro?raw";
+import BadgesWithIcon from "../../components/badges/BadgesWithIcon.astro";
+import BadgesWithIconCode from "../../components/badges/BadgesWithIcon.astro?raw";
+import BadgesWithIconCodeAstro from "../../components/badges/BadgesWithIcon.astro?raw";
+import BadgesOthers from "../../components/badges/BadgesOthers.astro";
+import BadgesOthersCode from "../../components/badges/BadgesOthers.astro?raw";
+import BadgesOthersCodeAstro from "../../components/badges/BadgesOthers.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Badges
+
+Badges are used to provide extra non critical information to the user. They can be used to indicate the number of items, the state of a task, or the importance of an action. Badges can be used inside other blocks.
+
+<Accordion
+  data={[
+    {
+      name: "badge1",
+      title: "Design Hints",
+      content:
+        "Badges are a great way to add extra information to a block. You can indicate state, availability, importance or any other small piece of information. They tend to catch the user's attention and can be used to draw attention to important information without using the alert role.",
+    },
+    {
+      name: "badge2",
+      title: "Accessibility Hints",
+      content:
+        "The badge should not receive focus. If using icons inside the badge, ensure that the icon is hidden from screen readers and screen reader only text using sr-only class is used to convey the information which the icon represents. aria-label attribute will not work for non-interactive elements like badges.",
+    },
+  ]}
+/>
+
+## Simple Badge
+
+A set of simple multipurpose badges.
+
+<Tab name="Simple Badge" tabs={[{ "name" : "Preview", "id" : "SB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SB-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="SB-Tab1-panel"
+  aria-labelledby="SB-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid px-10 py-6">
+    <Badges />
+  </div>
+</section>
+
+<section id ="SB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab2" class="hidden">
+
+<Code code={BadgesCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SB-Tab3" class="hidden">
+
+<Code
+  code={BadgesCodeAstro}
+  lang="astro"
+  title="Badges.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Simple Badge
+
+An alternate style for simple badges with outlines.
+
+<Tab name="Alternate Simple Badge" tabs={[{ "name" : "Preview", "id" : "ASB-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "ASB-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "ASB-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="ASB-Tab1-panel"
+  aria-labelledby="ASB-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid px-10 py-6">
+    <AltBadges />
+  </div>
+</section>
+
+<section id ="ASB-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab2" class="hidden">
+
+<Code code={AltBadgesCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="ASB-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="ASB-Tab3" class="hidden">
+
+<Code
+  code={AltBadgesCodeAstro}
+  lang="astro"
+  title="AltBadges.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Badge With Icon
+
+An alternate style for simple badges with outlines.
+
+<Tab name="Badge With Icon" tabs={[{ "name" : "Preview", "id" : "BWI-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "BWI-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "BWI-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="BWI-Tab1-panel"
+  aria-labelledby="BWI-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid px-10 py-6">
+    <BadgesWithIcon />
+  </div>
+</section>
+
+<section id ="BWI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BWI-Tab2" class="hidden">
+
+<Code code={BadgesWithIconCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="BWI-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BWI-Tab3" class="hidden">
+
+<Code
+  code={BadgesWithIconCodeAstro}
+  lang="astro"
+  title="BadgesWithIcon.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Badge With Other Elements
+
+Here are some examples of using badges with other elements.
+
+<Tab name="Badge With Other Elements" tabs={[{ "name" : "Preview", "id" : "BOE-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "BOE-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "BOE-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="BOE-Tab1-panel"
+  aria-labelledby="BOE-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid px-6 py-6">
+    <BadgesOthers />
+  </div>
+</section>
+
+<section id ="BOE-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BOE-Tab2" class="hidden">
+
+<Code code={BadgesOthersCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="BOE-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="BOE-Tab3" class="hidden">
+
+<Code
+  code={BadgesOthersCodeAstro}
+  lang="astro"
+  title="BadgesOtherElements.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Accessibility Note:** The last variant uses a `motion-safe:animate-ping` class to create the pinging animation with motion-safe being a selector and animate-ping being a standard tailwind class. You can also use the `prefers-reduced-motion` media query to disable the animation if the user has reduced motion enabled. For more information about accessible animations, see [this article from W3C about pause, stop and hide animations](https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html)
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component                 | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Badge              | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Badge    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Icon           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Badge With Other Elements | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+There are no clear accessibility guidelines for the badge pattern described by
+WAI-ARIA, so ravixUI implements basic accessbility patterns applicable to all
+elements.

@@ -1,0 +1,116 @@
+<div id="tab-container-normal-alt">
+  <div class="mb-12 text-zinc-900 dark:text-zinc-50">
+    <div
+      class="my-4 flex w-full flex-row gap-x-4 rounded-xl border border-gray-400 bg-gray-50 p-[4px] dark:border-zinc-800 dark:bg-zinc-950"
+      role="tablist"
+    >
+      <button
+        role="tab"
+        aria-selected="true"
+        aria-controls="tab-panel-1"
+        id="tab-1"
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
+        <span>Product</span>
+      </button>
+
+      <button
+        role="tab"
+        aria-selected="false"
+        aria-controls="tab-panel-2"
+        id="tab-2"
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
+        <span>Info</span>
+      </button>
+      <button
+        role="tab"
+        aria-selected="false"
+        aria-controls="tab-panel-3"
+        id="tab-3"
+        class="flex w-full cursor-pointer flex-row items-center justify-center space-x-3 rounded-lg px-2 py-3 text-sm hover:bg-gray-200 aria-selected:bg-indigo-700 aria-selected:text-gray-100 md:px-6 md:text-base dark:hover:bg-zinc-800 dark:aria-selected:bg-indigo-900"
+      >
+        <span>Compare</span>
+      </button>
+    </div>
+    <div
+      class="rounded-xl border border-gray-400 bg-gray-50 p-[4px] text-zinc-800 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-200"
+    >
+      <section role="tabpanel" id="tab-panel-1" tabindex="0">
+        <p class="p-4">This is placeholder content for the product tab</p>
+      </section>
+      <section role="tabpanel" id="tab-panel-2" tabindex="0" class="hidden">
+        <p class="p-4">This is placeholder content for the info tab</p>
+      </section>
+      <section role="tabpanel" id="tab-panel-3" tabindex="0" class="hidden">
+        <p class="p-4">This is placeholder content for the compare tab</p>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+  /**
+   * Handles keyboard navigation and click events for a set of tabs and their corresponding panels.
+   *
+   * The function sets up event listeners for the tab list, handling arrow key navigation and tab key focus.
+   * It also sets up click event listeners for each tab, which update the selected tab and show/hide the corresponding panel.
+   *
+   * @param {HTMLElement} tabContainer - The container element for the tabs and panels.
+   */
+  const tabContainer = document.getElementById("tab-container-normal-alt");
+  const tabs = tabContainer.querySelectorAll('[role="tab"]');
+  const panels = tabContainer.querySelectorAll('[role="tabpanel"]');
+  const tabList = tabContainer.querySelector('[role="tablist"]');
+  let tabFocus = 0;
+  tabList?.addEventListener("keydown", (e) => {
+    if (e.key && tabs) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        tabs[tabFocus]?.setAttribute("tabindex", "-1");
+        if (e.key === "ArrowRight") {
+          tabFocus++;
+          // If we're at the end, go to the start
+          if (tabFocus >= tabs.length) {
+            tabFocus = 0;
+          }
+          // Move left
+        } else if (e.key === "ArrowLeft") {
+          tabFocus--;
+          // If we're at the start, move to the end
+          if (tabFocus < 0) {
+            tabFocus = tabs.length - 1;
+          }
+        }
+        tabs[tabFocus].setAttribute("tabindex", "0");
+        tabs[tabFocus].focus();
+      }
+      if (e.key === "Tab") {
+        tabs.forEach((tabs, index) => {
+          if (tabs.getAttribute("aria-selected") === "true") {
+            tabs.setAttribute("tabindex", "0");
+            tabFocus = index;
+          } else {
+            tabs.setAttribute("tabindex", "-1");
+          }
+        });
+      }
+    }
+  });
+  tabs?.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((tab) => {
+        tab.setAttribute("aria-selected", "false");
+        tab.setAttribute("tabindex", "-1");
+      });
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
+      const selectedPanel = tab.getAttribute("aria-controls");
+      panels?.forEach((panel) => {
+        if (panel.id === selectedPanel) {
+          panel.classList.remove("hidden");
+        } else {
+          panel.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>

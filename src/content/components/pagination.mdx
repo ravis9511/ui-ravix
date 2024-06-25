@@ -1,0 +1,163 @@
+---
+title: "Pagination"
+order: 26
+type: "Navigation"
+description: "Documentation and examples for pagination in ravixUI"
+tags: ["pagination", "pagination-examples","ravixUI","Astrojs"]
+keywords: "pagination, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Alert from "../../components/Alert.astro";
+import SimplePagination from "../../components/pagination/SimplePagination.astro";
+import SimplePaginationCode from "../../components/pagination/SimplePagination.astro?raw";
+import SimplePaginationCodeAstro from "../../components/pagination/SimplePagination.astro?raw";
+import AltPagination from "../../components/pagination/AltPagination.astro";
+import AltPaginationCode from "../../components/pagination/AltPagination.astro?raw";
+import AltPaginationCodeAstro from "../../components/pagination/AltPagination.astro?raw";
+import GhostPagination from "../../components/pagination/GhostPagination.astro";
+import GhostPaginationCode from "../../components/pagination/GhostPagination.astro?raw";
+import GhostPaginationCodeAstro from "../../components/pagination/GhostPagination.astro?raw";
+import InputPagination from "../../components/pagination/InputPagination.astro";
+import InputPaginationCode from "../../components/pagination/InputPagination.astro?raw";
+import InputPaginationCodeAstro from "../../components/pagination/InputPagination.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Pagination
+
+Pagination is a navigation system that allows users to navigate through a set of content in smaller, more manageable chunks. It is commonly used in websites and applications that display large amounts of data or content.
+
+## Simple Pagination
+
+A simple pagination component that displays the current page number and the total number of pages.
+
+<Tab name="Simple Pagination" tabs={[{ "name" : "Preview", "id" : "SP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SP-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="SP-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="SP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
+    <SimplePagination />
+  </div>
+</section>
+
+<section id ="SP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab2" class="hidden">
+
+<Code
+  code={SimplePaginationCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="SP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SP-Tab3" class="hidden">
+
+<Code
+  code={SimplePaginationCodeAstro}
+  lang="astro"
+  title="SimplePagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Pagination Style
+
+An alternate boxed pagination style that displays the current page number and the total number of pages.
+
+<Tab name="Alternate Pagination Style" tabs={[{ "name" : "Preview", "id" : "AP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AP-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AP-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="AP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
+    <AltPagination />
+  </div>
+</section>
+
+<section id ="AP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab2" class="hidden">
+
+<Code code={AltPaginationCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AP-Tab3" class="hidden">
+
+<Code
+  code={AltPaginationCodeAstro}
+  lang="astro"
+  title="AltPagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Ghost Pagination Style
+
+This is similar to the Simple Pagination style but uses ghost styling for the pagination buttons.
+
+<Tab name="Ghost Pagination Style" tabs={[{ "name" : "Preview", "id" : "GP-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "GP-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "GP-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="GP-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="GP-Tab1"
+>
+  <div class="flex w-full items-center justify-center p-2">
+    <GhostPagination />
+  </div>
+</section>
+
+<section id ="GP-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GP-Tab2" class="hidden">
+
+<Code code={GhostPaginationCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="GP-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="GP-Tab3" class="hidden">
+
+<Code
+  code={GhostPaginationCodeAstro}
+  lang="astro"
+  title="GhostPagination.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component            | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| -------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Pagination    | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Pagination | Yes  | Yes              | Yes  | Yes | Yes              |
+| Ghost Pagination     | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+While there are no specific patters from the ARIA Authoring Practices Guide for
+Pagination, the implementation of the pagination components follows best
+practices for navigational elements.

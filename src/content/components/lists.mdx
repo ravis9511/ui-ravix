@@ -1,0 +1,140 @@
+---
+title: "Lists"
+order: 16
+type: "Building"
+description: "Documentation and examples for lists in ravixUI"
+tags: ["list", "list-examples","ravixUI","Astrojs"]
+keywords: "list, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import UList from "../../components/lists/UList.astro";
+import UListCode from "../../components/lists/UList.astro?raw";
+import UListCodeAstro from "../../components/lists/UlistAstro.astro?raw";
+import OList from "../../components/lists/OList.astro";
+import OListCode from "../../components/lists/OList.astro?raw";
+import OListCodeAstro from "../../components/lists/OlistAstro.astro?raw";
+import CustomList from "../../components/lists/CustomList.astro";
+import CustomListCode from "../../components/lists/CustomList.astro?raw";
+import CustomListCodeAstro from "../../components/lists/ClistAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Lists
+
+Lists are used to present a series of items in a specific order. They can be used to display a list of items, a list of tasks, or a list of options. Lists can be used inside content blocks like cards, paragraphs, or even inside other lists. They can also be nested lists inside each list item.
+
+## Unordered Lists
+
+Unordered lists are used to present a list of items in no particular order. They can be used to display a list of items, a list of tasks, or a list of options.
+
+<Tab name="Unordered Lists" tabs={[{ "name" : "Preview", "id" : "UL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "UL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "UL-Tab3", "icon" : "astro"}]}>
+
+<section id ="UL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab1">
+<div class="flex items-center justify-center p-6">
+<UList />
+</div>
+
+</section>
+
+<section id ="UL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab2" class="hidden">
+
+<Code code={UListCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="UL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="UL-Tab3" class="hidden">
+
+<Code
+  code={UListCodeAstro}
+  lang="astro"
+  title="UList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Ordered Lists
+
+Ordered lists are great for presenting a series of items in a particular order. It's a great way to organize information which needs to be presented in a step-by-step manner.
+
+<Tab name="Ordered Lists" tabs={[{ "name" : "Preview", "id" : "OL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "OL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "OL-Tab3", "icon" : "astro"}]}>
+
+<section id ="OL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab1">
+<div class="flex items-center justify-center p-6">
+<OList />
+</div>
+
+</section>
+
+<section id ="OL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab2" class="hidden">
+
+<Code code={OListCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="OL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="OL-Tab3" class="hidden">
+
+<Code
+  code={OListCodeAstro}
+  lang="astro"
+  title="OList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Custom Marked Lists
+
+A custom list marker adds an svg inline in the list. Useful for adding a custom icon to the list.
+
+<Tab name="Custom Marked Lists" tabs={[{ "name" : "Preview", "id" : "CL-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "CL-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "CL-Tab3", "icon" : "astro"}]}>
+
+<section id ="CL-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab1" >
+<div class="flex w-full items-center justify-center p-6">
+<CustomList />
+</div>
+
+</section>
+
+<section id ="CL-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab2" class="hidden">
+
+<Code code={CustomListCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="CL-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="CL-Tab3" class="hidden">
+
+<Code
+  code={CustomListCodeAstro}
+  lang="astro"
+  title="CustomList.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component          | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ------------------ | ---- | ---------------- | ---- | --- | ---------------- |
+| Unordered List     | Yes  | Yes              | Yes  | Yes | Yes              |
+| Ordered List       | Yes  | Yes              | Yes  | Yes | Yes              |
+| Custom Marked List | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+Since we use the `<ul>` element for the unordered list and `<ol>` element for the ordered list, the component is accessible out of the box. However, the custom list marker uses an accessible `<svg>` element by giving it the role of `img` and aria-labelled by `title`.

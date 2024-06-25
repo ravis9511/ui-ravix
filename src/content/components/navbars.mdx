@@ -1,0 +1,153 @@
+---
+title: "Navbar"
+order: 25
+type: "Navigation"
+description: "Documentation and examples for navbars in ravixUI"
+tags: ["navbar", "navbar-examples","ravixUI","Astrojs"]
+keywords: "navbar, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Alert from "../../components/Alert.astro";
+import Navbar from "../../components/navbars/NavbarDisplay.astro";
+import NavBarCode from "../../components/navbars/Navbar.astro?raw";
+import NavBarCodeAstro from "../../components/navbars/NBarAstro.astro?raw";
+import NavbarJS from "../../components/navbars/NavbarJSDisplay.astro";
+import NavbarJSCode from "../../components/navbars/NavbarJS.html?raw";
+import NavbarJSCodeAstro from "../../components/navbars/NbarJSAstro.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Navbar
+
+Navbars or navigation bars are used to provide actions to users within a website. They are typically used at the top of a page to help users navigate between different sections of the website. Navbars can also include search bars, logos, and other branding elements.
+
+<Accordion
+  data={[
+    {
+      name: "navbar1",
+      title: "Design Hints",
+      content:
+        "Navbars are a great way to provide users with quick access to important information and actions on a website. They are also a tool which can be used for branding as they tend to be consistent across the website.",
+    },
+    {
+      name: "navbar1",
+      title: "Accessiblity Hints",
+      content:
+        "For accessibility, it is important to ensure that the blocks inside the navbar like links, buttons, search input etc., are accessible. This can be achieved by using appropriate color contrast, clear and concise language, and hiding the aria for logos if other branding elements like name are present or providing alternate text.  Links and Buttons should also have descriptive text to provide context and help users.",
+    },
+  ]}
+/>
+
+## Responsive Navbar With Logo and Links
+
+This is a simple navbar. In smaller form factors (less than `md`) the links in the middle will go into the next line. There is no javascript required for this to work. In the preview below, the second navbar is just to visualize the responsive behavior.
+
+<Tab name="Responsive Navbar With Logos and Links"  tabs={[{ "name" : "Preview", "id" : "RN-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "RN-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "RN-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="RN-Tab1-panel"
+  role="tabpanel"
+  data-role="tabpanel"
+  aria-labelledby="RN-Tab1"
+>
+  <div class="p-2">
+    <Navbar />
+  </div>
+</section>
+
+<section id ="RN-Tab2-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="RN-Tab2" class="hidden">
+
+<Code code={NavBarCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="RN-Tab3-panel" role="tabpanel"  data-role="tabpanel" aria-labelledby="RN-Tab3" class="hidden">
+
+<Code
+  code={NavBarCodeAstro}
+  lang="astro"
+  title="Navbar.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+<Accordion
+  data={[
+    {
+      name: "navbar2",
+      title: "Design Hints",
+      content:
+        "While this maybe suitable for certain websites, it is important to consider that if the links go on to another line in smaller devices, you may lose a lot of space for the rest of the content on the page. Consider using a navbar with a hamburger menu for actions and links on smaller screens.",
+    },
+  ]}
+/>
+
+## Responsive Navbar With Hamburger Menu
+
+<Alert type="warning">
+  {" "}
+  Experimental Release. Not recommended for use before proper testing{" "}
+</Alert>
+<Alert heading="Info">Requires Javascript to work.</Alert>
+
+The responsive navbar which retains the logo, brand and a navigation menu (hamburger) on smaller screens, which can be used to toggle the menu on and off. In the preview below, the second navbar is just to visualize the responsive behavior.
+
+<Tab name="Responsive Navbar With Hamburger Menu" tabs={[{ "name" : "Preview", "id" : "RH-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "RH-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "RH-Tab3", "icon" : "astro"}]}>
+
+<section id ="RH-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="RH-Tab1">
+<div class="grid  p-2 h-[32rem]">
+
+<NavbarJS />
+
+</div>
+</section>
+
+<section id ="RH-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="RH-Tab2" class="hidden">
+
+<Code code={NavbarJSCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="RH-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="RH-Tab3" class="hidden">
+
+<Code
+  code={NavbarJSCodeAstro}
+  lang="astro"
+  title="NavbarWithJS.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component                             | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ------------------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Responsive Navbar With Logo and Links | Yes  | Yes              | Yes  | Yes | Yes              |
+| Responsive Navbar With Hamburger Menu | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+Since we use the `<nav>` element, it is accessible out of the box. The hamburger menu component is implemented with the WAI-ARIA 1.2 design pattern. The components above implement all the required functionality mention in [WAI-ARIA APG specification for menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
+
+The menu supports the following keyboard navigation once opened:
+
+| Keyboard Navigation                                 | Description                                                |
+| --------------------------------------------------- | ---------------------------------------------------------- |
+| <kbd>Arrow Up/Down</kbd>                            | Moves the focus to the previous/next menu item.            |
+| <kbd>Escape</kbd>                                   | Closes the dropdown menu.                                  |
+| <kbd>Enter</kbd>                                    | Triggers the action associated with the focused menu item. |
+| <kbd>Arrow Left/Right</kbd>                         | Moves the focus to the first/last menu item.               |
+| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus out of the menu and into the menu button.  |

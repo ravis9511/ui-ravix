@@ -1,0 +1,107 @@
+---
+const timelineData = [
+  {
+    date: "2024-05-20",
+    version: "v1.0.0",
+    changelogUrl: "#",
+    changes: ["Added a new feature", "Fixed a bug", "Improved performance"],
+  },
+  {
+    date: "2024-04-10",
+    version: "v0.9.0",
+    changelogUrl: "#",
+    changes: ["Added a new feature", "Improved performance"],
+  },
+  {
+    date: "2024-03-11",
+    version: "v0.8.0",
+    changelogUrl: "#",
+    changes: ["Fixed a bug"],
+  },
+  {
+    date: "2024-02-10",
+    version: "v0.0.1",
+    changelogUrl: "#",
+    changes: [
+      "Initial Release",
+      "Fully Tested",
+      "Documentation",
+      "Ready for Production",
+    ],
+  },
+];
+/**
+To accept these as props you can use the following syntax:
+ 
+interface TimelineEntry {
+  date: string;
+  version: string;
+  changelogUrl: string;
+  changes: string[];
+  }
+  interface TimelineData {
+    timelineData: TimelineEntry[];
+  }
+  const { timelineData } = Astro.props as TimelineData;
+
+  To call the component you can use the following syntax:
+  ---
+  import SimpleTimeline from "path/to/components/SimpleTimeline.astro";
+  // Fetch data from a file or API. Or use a static array of data similar to the one above.
+  ---
+  <SimpleTimeline timelineData={timelineData} />
+ */
+---
+
+<div
+  class="flex w-full flex-wrap items-start justify-start justify-items-start py-2 text-gray-900 md:px-5 dark:text-gray-100"
+>
+  <div class="flex w-full flex-wrap">
+    <ol class="w-full">
+      {
+        timelineData.map((item, index) => (
+          <li class="relative flex items-center justify-center py-4">
+            <div class="w-1/6 pl-2 pr-3 text-end text-sm md:text-base">
+              <time datetime={item.date}>
+                {new Date(item.date).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </time>
+            </div>
+            {index !== timelineData.length - 1 && (
+              <div class="absolute left-[calc(100%/6)] top-1/2 flex h-[calc(60%)] w-3 items-center justify-center">
+                <div class="h-full w-[2px] bg-indigo-400 dark:bg-indigo-900" />
+              </div>
+            )}
+            {index !== 0 && (
+              <div class="absolute bottom-1/2 left-[calc(100%/6)] flex h-[calc(60%)] w-3 items-center justify-center">
+                <div class="h-full w-[2px] bg-indigo-400 dark:bg-indigo-900" />
+              </div>
+            )}
+            <div class="relative z-10 h-3 w-3 items-center justify-center rounded-full bg-indigo-400 dark:bg-indigo-900" />
+            <div class="ml-3 flex flex-grow flex-col rounded-lg border border-gray-400 p-4 dark:border-zinc-800">
+              <h2 class="mb-1 text-sm font-medium tracking-wider">
+                {item.version}
+                <a
+                  class="ml-1 text-blue-600 hover:text-blue-700 dark:text-blue-400"
+                  href={item.changelogUrl}
+                >
+                  Full Changelogs
+                </a>
+              </h2>
+              <div class="leading-relaxed">
+                <ul class="list-inside list-disc text-sm md:text-base">
+                  {item.changes.map((change) => (
+                    <li>{change}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>

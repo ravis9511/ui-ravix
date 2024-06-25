@@ -1,13 +1,26 @@
 ---
 title: "Layouts"
 order: 4
+type: "Introduction"
+description: "Documentation for layouts in ravixUI"
+tags: ["layouts", "accordion-examples","ravixUI","AstroJS"]
+keywords: "layouts, ravixUI, AstroJS, TailwindCSS"
 ---
+
+import Alerts from "../../components/Alert.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Layouts
 
-Out of the box, the preferred layout is the grid system. The grid system allows to have fine control over UI elements and utilize media breakpoints for responsiveness. The design guide also has layouts available for the grid system.
+<Alerts type="info">This is not required for any component to work.</Alerts>
+
+Out of the box, the preferred layout is the grid system for the pages. The grid system allows to have fine control over UI elements and utilize media breakpoints for responsiveness. The design guide also has layouts available for the grid system.
 
 ravixUI uses a the 12 point grid system to give fine tuned control for placing blocks on the page. The table below has the specifications used for the layout.
+
+<TableWrapper>
 
 | Breakpoint | Minimum Width | Tailwind Class                | Margins and Padding                          |
 | :--------- | :------------ | :---------------------------- | :------------------------------------------- |
@@ -18,16 +31,19 @@ ravixUI uses a the 12 point grid system to give fine tuned control for placing b
 | sm         | 640px         | grid grid-cols-12 gap-4 mx-10 | 40px of horizontal margin with 16px padding  |
 | < 640px    | 0px           | grid grid-cols-12 gap-4 mx-4  | 16px of horizontal margin with 16px padding  |
 
+</TableWrapper>
 Well, that's not responsive at all, is it now? To make it responsive your code would be something like this :
+
+## Code
 
 ```html title="index.html"
 <!-- head,scripts,etc. here-->
 <body>
-    <div
-        class="mx-4 grid grid-cols-12 gap-4 sm:mx-10 md:mx-12 lg:mx-20 xl:mx-32 2xl:mx-40"
-    >
-        <!-- Your page, blocks, content, etc. here -->
-    </div>
+  <div
+    class="mx-4 grid grid-cols-12 gap-4 sm:mx-10 md:mx-12 lg:mx-20 xl:mx-32 2xl:mx-40"
+  >
+    <!-- Your page, blocks, content, etc. here -->
+  </div>
 </body>
 <!-- footer,scripts,etc. here -->
 ```

@@ -1,0 +1,79 @@
+<form
+  class="flex w-full flex-col items-start justify-start gap-4 p-6 text-base text-zinc-950 dark:text-gray-50"
+>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="name1"
+      >Name<span class="ml-1 text-red-500" aria-hidden="true">*</span></label
+    >
+    <input
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+      type="text"
+      id="name1"
+      name="name"
+      required
+      aria-describedby="name1-details"
+    />
+    <span id="name1-details" class="text-sm text-gray-500 dark:text-zinc-400"
+      >Between 3 and 20 characters.</span
+    >
+  </div>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="email1"
+      >Email<span class="ml-1 text-red-500" aria-hidden="true">*</span></label
+    >
+    <input
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+      type="email"
+      id="email1"
+      name="email"
+      required
+      aria-describedby="email1-details"
+    />
+    <span id="email1-details" class="text-sm text-gray-500 dark:text-zinc-400"
+      >format: name@example.com</span
+    >
+  </div>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="password1"
+      >Password<span class="ml-1 text-red-500" aria-hidden="true">*</span
+      ></label
+    >
+    <input
+      class="w-96 rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+      type="password"
+      id="password1"
+      name="password"
+      required
+    />
+    <div
+      id="password1-details"
+      aria-hidden="true"
+      class="text-sm text-gray-500 dark:text-zinc-400"
+    >
+      Must be between 6 and 20 characters.
+    </div>
+  </div>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="age1">Age</label>
+    <input
+      class="min-w-max rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+      type="number"
+      id="age1"
+      name="age"
+      min="18"
+      max="99"
+      minlength="1"
+      maxlength="2"
+      required
+    />
+  </div>
+  <div class="flex w-full flex-col items-start gap-y-1">
+    <label for="comments1">Comments using textarea field</label>
+    <textarea
+      class="w-full rounded-md border border-gray-400 bg-gray-50 px-4 py-2 text-black placeholder:text-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-0 focus:ring-indigo-500 focus:ring-opacity-25 focus:ring-offset-0 dark:border-gray-600 dark:bg-zinc-900 dark:text-white dark:placeholder:text-zinc-500"
+      id="comments1"
+      name="comments"
+      placeholder="Your feedback is important to us"
+      style="resize: none"></textarea>
+  </div>
+</form>

@@ -1,0 +1,102 @@
+---
+import "../styles/global.css";
+interface Props {
+  pageHeadings: Array<{ depth: number; text: string; slug: string }>;
+}
+const { pageHeadings } = Astro.props;
+---
+
+<aside id="toc" aria-label="Table of Contents" class="hidden lg:block">
+  <div class="hidden lg:block">
+    <a
+      href={`#${pageHeadings[0].slug}`}
+      class="my-4 text-lg font-medium hover:text-indigo-600"
+      >{pageHeadings[0].text}</a
+    >
+    <ul class="ml-1 list-none space-y-4 text-gray-700 dark:text-zinc-400">
+      {
+        pageHeadings.map((heading) => (
+          <li>
+            <a
+              class={`${heading.depth === 2 ? "hover:text-indigo-700 dark:hover:text-indigo-400" : "hidden"} aria-[current=true]:font-bold aria-[current=true]:text-indigo-700 dark:aria-[current=true]:text-indigo-400`}
+              href={`#${heading.slug}`}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</aside>
+
+<script>
+  const setCurrentHeading: IntersectionObserverCallback = (entries) => {
+    // loop to each entries (headings) in the page
+    for (let entry of entries) {
+      // equivalent to the slug returned from pageHeadings
+      const { id } = entry.target;
+
+      // get the TOC link's element for the current entry
+      const tocList = document
+        .getElementById("toc")
+        ?.querySelector(` a[href='#${id}']`);
+
+      if (!tocList) return;
+      // check if the entry is intersecting
+      if (entry.isIntersecting) {
+        // remove active class from all links
+        document
+          .getElementById("toc")
+          ?.querySelectorAll("a")
+          .forEach((e) => e.setAttribute("aria-current", "false"));
+
+        // add active class to the currently active entry
+        tocList.setAttribute("aria-current", "true");
+      }
+    }
+  };
+  const observerOptions = {
+    threshold: 1,
+    rootMargin: "0px 0px -50%",
+  };
+  function setObserver() {
+    const observer = new IntersectionObserver(
+      setCurrentHeading,
+      observerOptions,
+    );
+    // select all headings to observe
+    const elToObserve = document.querySelectorAll("section :is(h2)");
+
+    // finally, observe the elements
+    elToObserve.forEach((el) => observer.observe(el));
+  }
+  function smoothScroll() {
+    document
+      .getElementById("toc")
+      ?.querySelectorAll("a")
+      .forEach((anchor: HTMLAnchorElement) =>
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document
+            .querySelector(this.getAttribute("href") as string)
+            ?.scrollIntoView({
+              behavior: "smooth",
+            });
+        }),
+      );
+  }
+  function inViewCheck() {
+    const toc = document.getElementById("toc");
+
+    if (toc?.getClientRects().length === 0) {
+      return;
+    } else {
+      smoothScroll();
+      setObserver();
+    }
+  }
+  document.addEventListener("astro:page-load", inViewCheck);
+  document.addEventListener("astro:before-swap", inViewCheck);
+</script>

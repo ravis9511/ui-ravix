@@ -1,0 +1,273 @@
+---
+/** 
+import { randomUUID } from "node:crypto";
+const componentId = randomUUID().replace(/-/g, "").slice(0, 16);
+
+
+ If crypto is unsupported, we can use the following code to generate unique IDs.
+ **/
+
+const generateUniqueId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  return timestamp + randomNum;
+};
+
+const componentId = generateUniqueId();
+// The above code generates a unique ID for the component for ARIA attributes. The above code can be delegated to a global component which will return the unqiue ID.
+
+/**
+ * Defines the shape of a dropdown menu.
+ *
+ * @property {string} menuLabel - The label to display for the dropdown menu.
+ * @property {Array<{ label: string, type: 'link' | 'button', href?: string, action?: string }>} menuItems - An array of menu items, where each item has a label, a type (either 'link' or 'button'), and an optional href or action.
+ */
+interface DropDown {
+  menuLabel: string;
+  menuItems: Array<{
+    label: string;
+    type: "link" | "button";
+    href?: string;
+    action?: string;
+  }>;
+  xAlignment?: "left" | "right";
+  yAlignment?: "top" | "bottom";
+}
+
+const {
+  menuLabel,
+  menuItems,
+  xAlignment = "right",
+  yAlignment = "top",
+} = Astro.props as DropDown;
+---
+
+<x-dropdown>
+  <div class="group relative inline-flex text-left">
+    <button
+      data-dropdown="button"
+      type="button"
+      class="group/button peer inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm outline-offset-4 outline-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-4 lg:py-2.5 lg:text-base dark:bg-zinc-900 dark:text-gray-100 dark:shadow-none dark:outline-white dark:ring-zinc-800 dark:hover:bg-zinc-700"
+      id={componentId}
+      aria-expanded="false"
+      aria-haspopup="true"
+    >
+      {menuLabel}
+      <svg
+        class={`-mr-1 h-5 w-5 motion-safe:transition motion-safe:duration-500 text-gray-400 
+                ${yAlignment === "bottom" ? "-rotate-180 group-aria-expanded/button:-rotate-0" : "group-aria-expanded/button:-rotate-180"}`}
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+
+    <ul
+      data-dropdown="menu"
+      aria-orientation="vertical"
+      aria-labelledby={componentId}
+      role="menu"
+      class={`absolute motion-safe:transition-all motion-safe:ease-in-out motion-safe:duration-500  max-h-0 overflow-hidden opacity-0 peer-aria-expanded:max-h-96 min-w-max peer-aria-expanded:opacity-100  z-10 mt-2  rounded-md bg-white text-gray-800 dark:text-gray-200 dark:bg-zinc-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+      ${xAlignment === "left" ? "left-0" : "right-0"}
+      ${yAlignment === "bottom" ? "bottom-12" : "top-11"}`}
+      id={`${componentId}-menu`}
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      {
+        menuItems.map((item, index) => (
+          <li
+            tabindex="-1"
+            role="menuitem"
+            id={`${componentId}-menu-item-${index + 1}`}
+          >
+            {item.type === "link" ? (
+              <a
+                href={item.href ? item.href : "#"}
+                tabindex="-1"
+                class="my-1 block px-4 py-3 text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <form
+                method="POST"
+                id={`${componentId}-menu-item-form-${index + 1}`}
+                action={item.action ? item.action : "#"}
+              >
+                <button
+                  type="button"
+                  tabindex="-1"
+                  class="my-1 block w-full px-4 py-3 text-start text-sm outline-offset-4 outline-black hover:bg-gray-100 focus:outline-4 dark:outline-white dark:hover:bg-zinc-700"
+                >
+                  {item.label}
+                </button>
+              </form>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</x-dropdown>
+
+<script>
+  /**
+   * A custom HTML element that implements a dropdown menu with keyboard navigation.
+   *
+   * The dropdown menu is triggered by clicking the button element with the `data-dropdown="button"` attribute.
+   * The menu items are contained within a `<ul>` element with the `data-dropdown="menu"` attribute.
+   *
+   *
+   */
+  class XDropdown extends HTMLElement {
+    menuItems: NodeListOf<HTMLLIElement>;
+    button: HTMLButtonElement;
+    menu: HTMLUListElement;
+    tabFocus: number = 0;
+
+    /**
+     * The constructor for the `XDropdown` custom HTML element.
+     *
+     * This constructor initializes the necessary properties for the dropdown menu functionality, including the button, menu, and menu items.
+     */
+    constructor() {
+      super();
+
+      this.button = this.querySelector(
+        '[data-dropdown="button"]',
+      ) as HTMLButtonElement;
+      this.menu = this.querySelector(
+        '[data-dropdown="menu"]',
+      ) as HTMLUListElement;
+      this.menuItems = this.querySelectorAll(
+        '[data-dropdown="menu"] li',
+      ) as NodeListOf<HTMLLIElement>;
+    }
+    /**
+     * Initializes the button click handler for the dropdown menu.
+     *
+     * This method is called when the custom `XDropdown` element is connected to the DOM. It sets up the event listener for the dropdown button, which toggles the visibility of the dropdown menu.
+     */
+    connectedCallback() {
+      try {
+        this.button?.addEventListener("click", this.handleButtonClick);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+    }
+    /**
+     * Handles the click event on the dropdown button, toggling the visibility of the dropdown menu.
+     *
+     * When the button is clicked, this method checks the current state of the button's `aria-expanded` attribute. If it is "true", the method calls `closeMenu()` to hide the dropdown menu. Otherwise, it sets the `aria-expanded` attribute to "true" and shows the dropdown menu by setting the `aria-hidden` attribute of the menu element to "false". It then adds a click event listener to the document to close the menu when the user clicks outside of it, and sets the focus to the first menu item after a short delay to prevent a visual stutter.
+     *
+     * @param event - The mouse event object.
+     */
+    handleButtonClick = (event: MouseEvent) => {
+      event.stopPropagation();
+      if (this.button?.getAttribute("aria-expanded") === "true") {
+        this.closeMenu();
+        return;
+      }
+      this.button?.setAttribute("aria-expanded", "true");
+      if (this.menu) {
+        this.menu.setAttribute("aria-hidden", "false");
+        if (this.menuItems) {
+          document.documentElement.addEventListener(
+            "click",
+            this.closeMenu.bind(this),
+          );
+          setTimeout(() => {
+            this.menuItems[0].focus();
+          }, 200); // to prevent the focus setting from causing a stutter in the animation
+          this.menu.addEventListener("keydown", this.keyDownHandler);
+        }
+      }
+    };
+    /**
+     * Handles keyboard events for the dropdown menu.
+     *
+     * This method is called when a key is pressed while the dropdown menu is open. It handles the following key events:
+     *
+     * - `ArrowUp` and `ArrowDown`: Moves the focus to the previous or next menu item, wrapping around to the beginning or end of the list.
+     * - `Escape`: Closes the dropdown menu.
+     * - `Enter`: Clicks the currently focused menu item and closes the dropdown menu.
+     * - `ArrowLeft` and `ArrowRight`: Moves the focus to the first or last menu item.
+     * - `Tab` and `Shift+Tab`: Moves the focus back to the dropdown button.
+     *
+     * @param keyboardEvent - The keyboard event object.
+     */
+    keyDownHandler = (keyboardEvent: KeyboardEvent) => {
+      const e = keyboardEvent as KeyboardEvent;
+      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+        this.menuItems[this.tabFocus].setAttribute("tabindex", "-1");
+        if (e.key === "ArrowDown") {
+          this.tabFocus++;
+          // If we're at the end, go to the start
+          if (this.tabFocus >= this.menuItems.length) {
+            this.tabFocus = 0;
+          }
+          // Move left
+        } else if (e.key === "ArrowUp") {
+          this.tabFocus--;
+          // If we're at the start, move to the end
+          if (this.tabFocus < 0) {
+            this.tabFocus = this.menuItems.length - 1;
+          }
+        }
+        this.tabFocus = this.tabFocus % this.menuItems.length;
+        this.menuItems[this.tabFocus].focus();
+      } else if (e.key === "Escape") {
+        this.closeMenu();
+        return;
+      } else if (e.key === "Enter") {
+        (this.menuItems[this.tabFocus].children[0] as HTMLElement)?.click();
+        this.closeMenu();
+        return;
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
+
+        if (e.key === "ArrowRight") {
+          this.tabFocus = this.menuItems.length - 1;
+        } else if (e.key === "ArrowLeft") {
+          this.tabFocus = 0;
+        }
+        this.tabFocus = this.tabFocus % this.menuItems.length;
+        this.menuItems[this.tabFocus].focus();
+      } else if (e.key === "Tab" || e.key === "Shift+Tab") {
+        e.preventDefault();
+        this.button.focus();
+      }
+    };
+
+    /**
+     * Closes the dropdown menu and resets the focus to the dropdown button.
+     */
+    closeMenu() {
+      this.tabFocus = 0;
+      this.button?.setAttribute("aria-expanded", "false");
+      this.menu?.setAttribute("aria-hidden", "true");
+      this.button?.focus();
+      this.menu?.removeEventListener("keydown", this.keyDownHandler);
+      document.documentElement.removeEventListener("click", this.closeMenu);
+    }
+    /**
+     * Removes event listeners and cleans up the dropdown menu when the component is disconnected.
+     */
+    disconnectedCallback() {
+      this.button?.removeEventListener("click", this.handleButtonClick);
+      this.menu?.removeEventListener("keydown", this.keyDownHandler);
+      document.documentElement.removeEventListener("click", this.closeMenu);
+    }
+  }
+  customElements.define("x-dropdown", XDropdown);
+</script>

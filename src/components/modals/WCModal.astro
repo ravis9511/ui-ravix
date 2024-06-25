@@ -1,0 +1,134 @@
+---
+// DialogModal.astro
+
+const generateUniqueId = () => {
+  const timestamp = Date.now().toString().slice(-6);
+  const randomNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  return timestamp + randomNum;
+};
+
+const componentId = generateUniqueId();
+
+interface DialogModalProps {
+  title: string;
+  content: string;
+}
+const { title, content } = Astro.props as DialogModalProps;
+---
+
+<dialog-modal>
+  <button
+    data-dialog="open-button"
+    id={`${componentId}-open-button`}
+    class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+    aria-controls="${componentId}-modal"
+    aria-expanded="false"
+  >
+    Open Modal
+  </button>
+
+  <div
+    id="${componentId}-modal"
+    class="hidden"
+    aria-labelledby="${componentId}-title"
+    aria-describedby="${componentId}-description"
+    data-component-id={componentId}
+    class="fixed left-0 top-0 z-10 h-screen w-screen overflow-hidden bg-gray-500 backdrop-blur-xl"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="m-4 max-h-full max-w-xl overflow-auto rounded-lg bg-white p-8 shadow-lg"
+      style="margin: 50px auto;"
+    >
+      <div class="flex items-center justify-between">
+        <h2 id="${componentId}-title" class="text-xl">
+          {title}
+        </h2>
+        <button class="text-lg font-bold text-black" aria-label="Close modal">
+          &times;
+        </button>
+      </div>
+      <div id="${componentId}-description" class="mt-4">
+        {content}
+      </div>
+    </div>
+  </div>
+</dialog-modal>
+
+<script>
+  class DialogModal extends HTMLElement {
+    private openButton: HTMLButtonElement;
+    private closeButton: HTMLButtonElement;
+    private modal: HTMLElement;
+
+    constructor() {
+      super();
+
+      this.openButton = this.querySelector(
+        '[data-dialog="open-button"]',
+      ) as HTMLButtonElement;
+      this.closeButton = this.querySelector(
+        'button[aria-label="Close modal"]',
+      ) as HTMLButtonElement;
+      this.modal = this.querySelector('[role="dialog"]') as HTMLElement;
+
+      this.openButton.addEventListener("click", () => this.showModal());
+      this.closeButton.addEventListener("click", () => this.hideModal());
+      document.addEventListener("keydown", (e: KeyboardEvent) =>
+        this.handleKeyDown(e),
+      );
+    }
+
+    showModal(): void {
+      this.modal.classList.replace("hidden", "visible");
+      this.openButton.setAttribute("aria-expanded", "true");
+      this.closeButton?.focus();
+      this.trapFocus();
+    }
+
+    hideModal(): void {
+      this.modal.classList.replace("visible", "hidden");
+      this.openButton.setAttribute("aria-expanded", "false");
+      this.openButton.focus();
+    }
+
+    trapFocus(): void {
+      const focusableElements = this.modal?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      const firstFocusableElement = focusableElements[0] as HTMLElement;
+      const lastFocusableElement = focusableElements[
+        focusableElements.length - 1
+      ] as HTMLElement;
+
+      const trapTabKey = (e: KeyboardEvent): void => {
+        if (e.key === "Tab") {
+          if (e.shiftKey) {
+            if (document.activeElement === firstFocusableElement) {
+              lastFocusableElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastFocusableElement) {
+              firstFocusableElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      this.addEventListener("keydown", trapTabKey);
+    }
+
+    handleKeyDown(e: KeyboardEvent): void {
+      if (e.key === "Escape") {
+        this.hideModal();
+      }
+    }
+  }
+
+  customElements.define("dialog-modal", DialogModal);
+</script>

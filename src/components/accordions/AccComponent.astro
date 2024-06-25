@@ -1,0 +1,53 @@
+---
+/**
+ * Defines the shape of the data prop passed to the Astro component.
+ *
+ * @property {string} title - The title of the accordion item.
+ * @property {string} content - The content of the accordion item. String, but you can also send an object if you want to have a more complex structure inside the accordion.
+ * @property {string} [name] - An optional name for the accordion item.If not provided, the accordion items will not have autoclose functionality.
+ */
+
+interface Props {
+  data: Array<{
+    title: string;
+    content: string;
+    name?: string;
+  }>;
+}
+const { data } = Astro.props;
+---
+
+<div
+  class="mb-12 max-w-3xl divide-y divide-gray-400 rounded-lg border border-gray-400 shadow-sm dark:divide-zinc-800 dark:border-zinc-800 dark:shadow-none"
+>
+  {
+    data.map((item) => (
+      <details class="group" open={false} name={item.name}>
+        <summary
+          class="flex cursor-pointer items-center justify-between rounded-lg bg-gray-50 px-4 py-4 text-zinc-900 outline-gray-600 focus:outline-2 group-open:bg-gray-200 dark:bg-zinc-950 dark:text-zinc-300 dark:outline-zinc-500 dark:group-open:bg-zinc-900"
+          tabindex="0"
+        >
+          <h3 class="text-base font-medium md:text-lg">{item.title}</h3>
+          <svg
+            class="h-5 w-5 shrink-0 duration-300 group-open:-rotate-180 motion-safe:transition"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </summary>
+
+        <section class="bg-gray-50 px-6 py-4 text-start text-base md:py-5 dark:bg-zinc-950">
+          {item.content}
+        </section>
+      </details>
+    ))
+  }
+</div>

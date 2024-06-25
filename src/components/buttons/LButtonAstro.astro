@@ -1,33 +1,50 @@
----
-const { props }=Astro.props;
----
-<div class="flex flex-col gap-4 p-6 overflow-auto">
-    <div class="flex flex-row gap-4">
-        <a href="#"
-            
-            class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-xl disabled:opacity-60 bg-indigo-800 text-gray-50 hover:bg-indigo-700 disabled:pointer-events-none">
-            <span>Get Started</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z" />
-            </svg>
-        </a>
-        <a href="#"
-            
-            class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-xl dark:bg-zinc-200 dark:text-zinc-950 bg-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-50 text-gray-50">
-            <span>Read More</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-        </a>
-        <a
-            href="#"
-            class="px-4 py-3 rounded-lg font-semibold inline-flex gap-x-2 items-center text-xl bg-gray-700 text-white hover:bg-gray-600"
-            ><span>Next Page</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
-        </a>
-    </div>
-
+<div class="flex flex-wrap justify-center gap-6 p-6 sm:gap-12">
+  <a
+    href="#"
+    class="inline-flex items-center gap-x-2 rounded-lg bg-indigo-800 px-4 py-3 text-sm font-semibold text-gray-50 shadow-lg outline-offset-4 outline-black hover:bg-indigo-700 focus:outline-4 lg:text-base dark:shadow-none dark:outline-white"
+  >
+    <span>Get Started</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path>
+    </svg>
+  </a>
+  <a
+    href="#"
+    class="inline-flex items-center gap-x-2 rounded-lg bg-zinc-900 px-4 py-3 text-sm font-semibold text-gray-50 shadow-lg outline-offset-4 outline-black hover:bg-zinc-800 focus:outline-4 lg:text-base dark:bg-zinc-200 dark:text-zinc-950 dark:shadow-none dark:outline-white dark:hover:bg-zinc-50"
+  >
+    <span>Read More</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"></path>
+    </svg>
+  </a>
+  <a
+    href="#"
+    class="inline-flex items-center gap-x-2 rounded-lg bg-gray-700 px-4 py-3 text-sm font-semibold text-white shadow-lg outline-offset-4 outline-black hover:bg-gray-600 focus:outline-4 lg:text-base dark:shadow-none dark:outline-white"
+    ><span>Next Page</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        fill="currentColor"
+        d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"></path>
+    </svg>
+  </a>
 </div>
-

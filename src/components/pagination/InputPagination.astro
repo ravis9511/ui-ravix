@@ -1,0 +1,205 @@
+---
+/*
+To make this dynamic, you can use the following code:
+
+const pages = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5"];
+<ul>
+    {pages.map((page,index) => (
+        <li tabindex="-1" id={`menu-item-${index}`}>
+            <a href="#" class="block px-5 py-2.5 text-base hover:bg-gray-100 dark:hover:bg-zinc-700 my-1">{page}</a>
+        </li>
+    ))}
+</ul>
+You can generate the pages array dynamically also using astro pagination which you can find in the following link:
+https://docs.astro.build/en/guides/routing/#pagination
+
+The button text can be updated to selected page by getting the current page url and setting the button text with the page number.
+You can see the method to get the current page url in the following link:
+https://docs.astro.build/en/reference/api-reference/#astrourl
+
+
+*/
+---
+
+<nav class="flex items-center justify-between p-4">
+  <div class="flex items-center space-x-2 text-base">
+    <a
+      href="#"
+      aria-label="Previous"
+      class="flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-indigo-600 outline-black hover:bg-gray-100 hover:text-indigo-700 focus:outline dark:border-zinc-700 dark:bg-black dark:text-indigo-400 dark:outline-white dark:hover:bg-zinc-900 dark:hover:text-indigo-400"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          fill="currentColor"
+          d="M15.41 7.41L14 6l-6 6l6 6l1.41-1.41L10.83 12z"></path>
+      </svg><span aria-hidden="true">Prev</span></a
+    >
+
+    <div class="relative inline-flex text-left">
+      <button
+        type="button"
+        class="group inline-flex w-full justify-center gap-x-1.5 rounded-lg border border-gray-300 bg-white px-3 py-2 text-indigo-600 outline-black hover:bg-gray-100 hover:text-indigo-700 focus:outline dark:border-zinc-700 dark:bg-black dark:text-indigo-400 dark:outline-white dark:hover:bg-zinc-900 dark:hover:text-indigo-400"
+        id="menu-button"
+        aria-expanded="false"
+        aria-haspopup="true"
+      >
+        Page 1
+        <svg
+          class="-mr-1 h-5 w-5 text-gray-400 transition group-aria-expanded:-rotate-180"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+      <ul
+        class="absolute right-0 top-8 z-10 mt-3 w-auto origin-top-right rounded-md bg-white text-indigo-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-zinc-900 dark:text-indigo-200"
+        id="dropdown-menu"
+        style="display: none;"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabindex="-1"
+      >
+        <li tabindex="-1" id="menu-item-0">
+          <a
+            href="#"
+            tabindex="-1"
+            class="my-1 block px-5 py-2.5 text-base hover:bg-gray-100 dark:hover:bg-zinc-700"
+            >Page 1</a
+          >
+        </li>
+        <li tabindex="-1" id="menu-item-1">
+          <a
+            href="#"
+            tabindex="-1"
+            class="my-1 block px-5 py-2.5 text-base hover:bg-gray-100 dark:hover:bg-zinc-700"
+          >
+            Page 2</a
+          >
+        </li>
+        <li tabindex="-1" id="menu-item-2">
+          <a
+            href="#"
+            tabindex="-1"
+            class="my-1 block px-5 py-2.5 text-base hover:bg-gray-100 dark:hover:bg-zinc-700"
+            >Page 3</a
+          >
+        </li>
+        <li tabindex="-1" id="menu-item-3">
+          <a
+            href="#"
+            tabindex="-1"
+            class="my-1 block px-5 py-2.5 text-base hover:bg-gray-100 dark:hover:bg-zinc-700"
+            >Page 4</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <a
+      href="#"
+      aria-label="Next Page"
+      class="flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-indigo-600 outline-black hover:bg-gray-100 hover:text-indigo-700 focus:outline dark:border-zinc-700 dark:bg-black dark:text-indigo-400 dark:outline-white dark:hover:bg-zinc-900 dark:hover:text-indigo-400"
+      ><span aria-hidden="true">Next</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          fill="currentColor"
+          d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"></path>
+      </svg></a
+    >
+  </div>
+</nav>
+
+<script>
+  function menuInitilization() {
+    const button = document.getElementById("menu-button");
+    const dropdown = document.getElementById("dropdown-menu");
+    const dropdownItems = dropdown?.querySelectorAll("li");
+    button?.addEventListener("click", () => {
+      button.getAttribute("aria-expanded") === "true"
+        ? button.setAttribute("aria-expanded", "false")
+        : button.setAttribute("aria-expanded", "true");
+
+      if (dropdown) {
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+        dropdown.focus();
+        if (dropdownItems) {
+          let tabFocus = 0;
+
+          dropdown.addEventListener("keydown", (keyboardEvent) => {
+            const e = keyboardEvent as KeyboardEvent;
+
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+              e.preventDefault();
+              if (e.key === "ArrowDown") {
+                tabFocus++;
+                // If we're at the end, go to the start
+                if (tabFocus >= dropdownItems.length) {
+                  tabFocus = 0;
+                }
+                // Move left
+              } else if (e.key === "ArrowUp") {
+                tabFocus--;
+                // If we're at the start, move to the end
+                if (tabFocus < 0) {
+                  tabFocus = dropdownItems.length - 1;
+                }
+              }
+              tabFocus = tabFocus % dropdownItems.length;
+              (dropdownItems[tabFocus] as HTMLLIElement).focus();
+            } else if (e.key === "Escape") {
+              dropdown.setAttribute("aria-hidden", "true");
+              button.setAttribute("aria-expanded", "false");
+              document.documentElement.removeEventListener("click", closeMenu);
+            } else if (e.key === "Enter") {
+              (dropdownItems[tabFocus].children[0] as HTMLElement)?.click();
+              dropdown.setAttribute("aria-hidden", "true");
+              button.setAttribute("aria-expanded", "false");
+              document.documentElement.removeEventListener("click", closeMenu);
+            } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+              e.preventDefault();
+
+              if (e.key === "ArrowRight") {
+                tabFocus = dropdownItems.length - 1;
+              } else if (e.key === "ArrowLeft") {
+                tabFocus = 0;
+              }
+              tabFocus = tabFocus % dropdownItems.length;
+              dropdownItems[tabFocus].focus();
+            }
+          });
+        }
+      }
+      document.documentElement.addEventListener("click", closeMenu);
+    });
+  }
+  function closeMenu(event: Event) {
+    const button = document.getElementById("menu-button");
+    const menu = document.getElementById("dropdown-menu");
+    if (!button?.contains(event.target as Node)) {
+      button?.setAttribute("aria-expanded", "false");
+      if (menu) {
+        menu.style.display = "none";
+      }
+      document.documentElement.removeEventListener("click", closeMenu);
+    }
+  }
+  document.addEventListener("astro:before-swap", menuInitilization);
+  document.addEventListener("astro:page-load", menuInitilization);
+</script>

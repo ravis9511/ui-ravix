@@ -1,36 +1,46 @@
 ---
-title: "Getting Started"
+title: "Introduction"
 order: 1
+type: "Introduction"
+description: "Documentation for the introduction of the component starter kit"
+tags: ["introduction", "starter-kit","AstroJS","component-starter-kit"]
+keywords: "introduction, starter-kit, AstroJS, TailwindCSS"
 ---
 
-# Getting Started
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
-If you are an absolute beginner at web development, I would recommend learning basic HTML, CSS and JavaScript basics before starting. But if you don't have the time or just want to setup something like a portfolio or a blog or a landing screen, you can follow this guide where you can follow each step and create a website from scratch.
+# Introduction
 
-### What can you expect?
+ravixUI is an accessibility-focused component starter kit for Astrojs made with Tailwind, which gives you all the code directly out of the box including the JavaScript implementation.
 
-There are HTML and TailwindCSS wrappers for each and every building block you would need to build a page and a few examples you can copy and paste into your project. If a block cannot function with JavaScript it will be mentioned at the top of the block. Out of the box, the design guide has the specifications for all the blocks in ravixUI. For blocks which cannot function without JavaScript, there will be code blocks available in astrojs and svelte. There are hints for accessibility for every block.
+## Why is the code directly available?
 
-### Prerequisites
+ravixUI embraces the belief that accessibility is contextual. By providing the source code directly, we empower you to tailor the components to your unique use cases. Semantic HTML is our preferred implementation approach whenever feasible. However, when certain functionalities cannot be achieved with semantic elements alone, our components adhere to the WAI-ARIA design patterns, ensuring WCAG 2.1 AA level conformance. In scenarios where no WAI-ARIA Authoring Practices and Guidance patterns exist, we judiciously employ ARIA attributes and roles, ensuring a logical and accessible experience for the specific component.
 
--   A project with TailwindCSS installed.
--   Basic HTML5, CSS and JavaScript knowledge.
+The idea is to set you up with a starting point for building your own accessible website and components.
 
-### How can I use this?
+## Prerequisites
 
-However you see fit. The recommended usage is to save a lot of design, documentation and development effort by using the design guide and the blocks as a starting point and build your own system and components.
+- An AstroJS project with TailwindCSS installed. For AstroJS installation, please refer to the [official documentation](https://docs.astro.build/en/install/auto/). For installation of TailwindCSS integration, please refer to the [@astrojs/tailwind integration documentation](https://docs.astro.build/en/guides/integrations-guide/tailwind/).
+- Basic HTML5, CSS, TailwindCSS and JavaScript knowledge.
 
-An example use pattern for a designer and developer using it directly out of the box for a landing page would be something like this :
+## Limitations
 
--   Pick a layout for your web page (grid, flex or a combination of both).
--   Pick a navbar block and customize it.
--   Pick a hero block and customize it or use smaller blocks like Headings, Paragraphs, Buttons and backgrounds to make a the Hero section of your landing page.
--   Pick a feature block and customize it to describe about the product/service/project or use a card block and customize it.
--   Pick a pricing block and customize it to your requirement.
--   Pick a footer block and customize it.
+Currently the component starter kit is in the early stages of development and there are a few caveats to be aware of :
 
-There are design and developer hints for every block available.
+- Code may require testing and customization to fit your specific use case.
+- The Forms components is still in a development stage and is not recommended for any usage.
+- The component starter kit does not provide unit tests and hence it is recommended to use only after thorough testing if the particular component depends on JavaScript. 
+- The testing with astro container API and Vitest is currently in early stages.
 
-### Guide
+There are a few more things which are noteworthy :
 
-There is a comprehensive guide available in both written and video format, designed specifically for beginners. This guide covers everything from setting up a code editor to deploying a fully functional website on Cloudflare using Astro.js, a modern static site generator which supports many modern JS frameworks.
+- It is built using the cloudflare integration (Shouldn't be a issue for most environments. All the pages are static in nature and should translate well regardless of the environment).
+- It is tested on Chrome, Firefox, Brave and Edge.(Not tested on Safari yet. Planned for the future)
+- It is made with astroJS in mind and uses astroJS for the build process, so it may not work with other frameworks or static site generators.
+
+## Disclaimer 
+
+While all efforts have been made to ensure that the components are accessible out of the box, there may be cases where it may not be accessible when you use it in your project. In case you encounter any such cases, please raise an issue on the [GitHub repository](https://github.com/ravis9511/ui-ravix/).
+

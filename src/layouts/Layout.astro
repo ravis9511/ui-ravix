@@ -1,17 +1,20 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+
 import Navigation from "../components/Navigation.astro";
-import '@fontsource-variable/inter';
-import '@fontsource-variable/figtree';
+import "@fontsource-variable/inter";
+import "@fontsource-variable/figtree";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
-  toc?: Array<object>;
+  currentSlug?: string;
   keywords?: string;
+  skipLinkId?: string;
 }
 
-const { title, toc, description, keywords } = Astro.props;
+const { title, description, keywords, currentSlug, skipLinkId } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,13 +22,23 @@ const { title, toc, description, keywords } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
+    <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="Ravi Shankar" />
-    <meta property="og:site_name" content="Ravi Shankar" />
-    <meta name="viewport" content="width=device-width" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" />
+    <link rel="canonical" href={canonicalURL} />  
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://ravixui.com/favicon.png" />
+    <meta property="og:image:alt" content="ravixUI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ravix_ui" />
+    <meta name="twitter:title" content="ravixUI" />
+    <meta name="twitter:description" content="ravixUI is an accessible UI component starter kit for Astrojs based on Tailwind." />
+    <meta name="twitter:image" content="https://ravixui.com/favicon.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
       document.addEventListener("astro:page-load", () => {
@@ -35,7 +48,6 @@ const { title, toc, description, keywords } = Astro.props;
             window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
           document.documentElement.classList.add("dark");
-          document.documentElement.setAttribute("data-theme", "tokyo-night");
         }
       });
       document.addEventListener("astro:before-swap", (ev) => {
@@ -45,7 +57,6 @@ const { title, toc, description, keywords } = Astro.props;
             window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
           ev.newDocument.documentElement.classList.add("dark");
-          document.documentElement.setAttribute("data-theme", "catppuccin-latte");
         }
       });
       if (
@@ -54,20 +65,28 @@ const { title, toc, description, keywords } = Astro.props;
           window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");
-        document.documentElement.setAttribute("data-theme", "tokyo-night");
       } else {
         document.documentElement.classList.remove("dark");
-        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
       }
     </script>
+
     <ViewTransitions fallback="animate" />
   </head>
   <body
-    class="w-full z-0 md:mx-auto bg-fixed dark:bg-black bg-white dark:bg-[linear-gradient(to_right,#312e812e_1px,transparent_1px),linear-gradient(to_bottom,#312e812e_1px,transparent_1px)] dark:bg-[size:24px_24px] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] text-zinc-950 dark:text-zinc-200 justify-center items-center"
+    class="z-0 bg-gray-100 bg-fixed text-zinc-950 dark:bg-zinc-950 dark:text-zinc-200"
   >
-    <main class="justify-center z-10">
-      <div id="progress"></div>
-      <Navigation />
+    <main class="relative z-0">
+      {
+        skipLinkId && (
+          <a
+            class="fixed left-2 top-3 -z-[9999] rounded-md bg-indigo-400 px-4 py-2 text-xl font-medium text-black opacity-0 focus:z-[9999] focus:opacity-100 dark:bg-indigo-800 dark:text-white"
+            href={`#${skipLinkId}`}
+          >
+            Skip to main content
+          </a>
+        )
+      }
+      <Navigation currentSlug={currentSlug} />
       <slot />
     </main>
   </body>

@@ -1,0 +1,94 @@
+---
+interface TableItem {
+  name: string;
+  color: string;
+  type: string;
+  stock: string;
+}
+/* You can use this interface above to define the structure of your data and receive it as a prop */
+
+const tableData: TableItem[] = [
+  {
+    name: "T-Shirt",
+    color: "Blue",
+    type: "Tops",
+    stock: "15",
+  },
+  {
+    name: "Jeans",
+    color: "Black",
+    type: "Bottoms",
+    stock: "32",
+  },
+  {
+    name: "Sneakers",
+    color: "White",
+    type: "Shoes",
+    stock: "23",
+  },
+  {
+    name: "Dress",
+    color: "Red",
+    type: "Dresses",
+    stock: "11",
+  },
+];
+---
+
+{
+  tableData.length > 0 && (
+    <div class="relative m-2 overflow-x-auto rounded-lg shadow-md dark:shadow-lg dark:shadow-black">
+      <table class="w-full border-collapse rounded-lg border border-gray-300 text-left text-base text-gray-800 shadow-md dark:border-zinc-800 dark:text-gray-300">
+        <thead class="bg-gray-200 text-sm uppercase text-gray-800 dark:bg-zinc-800 dark:text-gray-300">
+          <tr>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Product
+            </th>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Color
+            </th>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Type
+            </th>
+            <th
+              scope="col"
+              class="border border-gray-300 px-6 py-3 dark:border-zinc-700"
+            >
+              Stock
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((item) => (
+            <tr class="odd:bg-white even:bg-gray-100 odd:dark:bg-zinc-950 even:dark:bg-zinc-900">
+              <th
+                scope="row"
+                class="whitespace-nowrap border border-gray-300 px-6 py-3 font-semibold text-gray-900 dark:border-zinc-800 dark:text-gray-100"
+              >
+                {item.name}
+              </th>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.color}
+              </td>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.type}
+              </td>
+              <td class="border border-gray-300 px-6 py-3 dark:border-zinc-800">
+                {item.stock}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}

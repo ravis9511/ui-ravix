@@ -1,0 +1,118 @@
+---
+title: "Modal"
+order: 18
+type: "Building"
+description: "Documentation and examples for modals in ravixUI"
+tags: ["modal", "modal-examples","ravixUI","Astrojs"]
+keywords: "modal, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Alert from "../../components/Alert.astro";
+import Modal from "../../components/modals/SimpleModal.astro";
+import ModalCode from "../../components/modals/SimpleModal.html?raw";
+import ModalCodeAstro from "../../components/modals/SimpleModal.astro?raw";
+import InfoModal from "../../components/modals/InfoModal.astro";
+import InfoModalCode from "../../components/modals/InfoModal.html?raw";
+import InfoModalCodeAstro from "../../components/modals/InfoModal.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Modal
+
+<Alert type="info">Requires JavaScript to work</Alert>
+
+Modals are used to display important information and can be used to ask users for confirmation on important actions. The modals below don't use form tags, but they can be used with them.
+
+## Modal Specifications
+
+A modal contains the following important parts :
+
+- **Modal Activator** : The button that opens the modal
+- **Modal Dialog** : The alert window that contains a heading, a clearly defined message and action buttons. Cancel and Confirm buttons are the most common actions.
+
+**Note:** ravixUI used the semantic HTML `<dialog>` element with a `showModal()` which is makes the rest of the page inert(non-interactive) until the modal dialog is closed. To see the support for browsers you can [check caniuse dialog](https://caniuse.com/?search=dialog).
+
+## Simple Modal
+
+This is a simple modal that displays a message on screen, with two action buttons and a close button. Click the button below to open the modal.
+
+<Tab name="Simple Modal" tabs={[{ "name" : "Preview", "id" : "SM-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SM-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SM-Tab3", "icon" : "astro"}]}>
+
+<section id ="SM-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab1">
+<div class="flex p-6 justify-center w-full">
+<Modal />
+</div>
+
+</section>
+
+<section id ="SM-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab2" class="hidden">
+
+<Code code={ModalCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SM-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SM-Tab3" class="hidden">
+
+<Code
+  code={ModalCodeAstro}
+  lang="astro"
+  title="SimpleModal.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Information Modal
+
+This modal type serves as a means to convey critical information to the user. While it can accommodate actions within its confines, it is also capable of functioning without them but requires a close button to dismiss it. The modal dismisses itself when the user interacts with the area outside its boundaries or activates the designated close button.
+
+<Tab name="Information Modal" tabs={[{ "name" : "Preview", "id" : "IM-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "IM-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "IM-Tab3", "icon" : "astro"}]}>
+
+<section id ="IM-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab1">
+<div class="flex p-6 justify-center w-full">
+<InfoModal />
+</div>
+
+</section>
+
+<section id ="IM-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab2" class="hidden">
+
+<Code code={InfoModalCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="IM-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="IM-Tab3" class="hidden">
+
+<Code
+  code={InfoModalCodeAstro}
+  lang="astro"
+  title="InfoModal.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** To ensure best user experience, it is recommended to have a close button in the modal. This will help users to dismiss the modal in all cases.
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component         | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Modal      | Yes  | Yes              | Yes  | Yes | Yes              |
+| Information Modal | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+
+The modals above make the content behind them inaccessible until the modal is closed and is very disruptive to the user experience, so ensure that the modal is only used when the content is critical and requires user interaction or critical information needs to be conveyed.

@@ -1,34 +1,47 @@
 ---
 title: "Guidelines"
 order: 3
+type: "Introduction"
+description: "Documentation for the guidelines for ravixUI"
+tags: ["guidelines", "starter-kit","AstroJS","ravixUI"]
+keywords: "guidelines, ravixUI, AstroJS, TailwindCSS"
 ---
+import Alerts from "../../components/Alert.astro";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
 
 # Guidelines
 
 These are the guidelines to make the design and development process easier when using ravixUI.
 
-### Layout
+## Usage 
 
-To make the layout responsive the recommended approach is using grid system which is supported both in figma and TailwindCSS. The breakpoints like sm, md, lg, xl and 2xl are used in TailwindCSS and this design system uses the same breakpoints. For detailed layout specifications and code, you can click here
+ravixUI assumes the standard project structure for Astrojs projects. The components in ravixUI are expected to be copied into the components folder and accessed from other components or pages inside the pages folder. The `.astro` name convention is used for Astrojs components.
 
-### Colors
+Expected steps to add a new component to the project:
 
-The colors employed in this design system are sourced from the TailwindCSS palette, which provides a comprehensive array of options for customizing the design and branding elements. If you require custom colors beyond those offered, you'll need to incorporate them into TailwindCSS. You can explore the entire color palette and learn how to customize it by visiting the TailwindCSS website. Color choices can significantly influence the overall design aesthetic, either enhancing or detracting from it. ravixUI utilizes a base color palette, which you can readily adopt as is or modify to suit your preferences.
+- Identify the component you want to add.
+- Create a `ComponentName.astro` file inside the `components` folder. (Can be in a subfolder inside the components folder too)
+- Copy the code for the particular component you want to use over to the file you created.
+- Call the component from another component or page inside the `pages` folder with appropriate props and `data-*` attributes where applicable.
+- Check if the component works properly and is following expected behaviour described in the documentation.
+- Run accessibility tests on your page using one or multiple tools mentioned in the accessibility section of the documentation or any of the tools listed by WCAG in their [Web Accessibility Evaluation Tools List](https://www.w3.org/WAI/test-evaluate/tools/list/)
+- Manually testing using screenreaders is also recommended after the step before to ensure that the component is accessible.
 
-### Accessibility
+## Layout
 
-All building blocks are accessible straight out of the box. However certain blocks will require JavaScript to be fully accessible. When customizing the components and using them, you can use tools to check for contrast, readability and ensure that ARIA roles and attributes are assigned properly where applicable.
+<Alerts type="info">This is not required for any component to work.</Alerts>
 
-### Icons and Typography
+To make the layout responsive the recommended approach is using grid system which is supported in TailwindCSS. The breakpoints like sm, md, lg, xl and 2xl are used in TailwindCSS . For detailed layout specifications and code, you can check the layout section of the documentation.
 
-ravixUI is non opinionated when it comes to icons and typography. It follows the same sizing which is used in TailwindCSS available here. For a good collection of open source fonts which are easy to use and install you can use fontsource. For icons, you can find a large collection of icons using the iconify.design website. They have a vast number of icons from multiple sources available for different use cases and it is simple to use. Generally, it is best to stick to icons from the same source to ensure uniformity. (Please check license details before using any icon or icon pack)
+## Colors
 
-### Margins, Padding and Spacing
+The colors employed in this design system are sourced from the TailwindCSS palette, which provides a comprehensive array of options for customizing the design and branding elements. If you require custom colors beyond those offered, you'll need to incorporate them into TailwindCSS. You can explore the entire color palette and learn how to customize it by visiting the [TailwindCSS websites page on Customizing Colors](https://tailwindcss.com/docs/customizing-colors). Color choices can significantly influence the overall design aesthetic, either enhancing or detracting from it. ravixUI utilizes an indigo color palette, which you can readily adopt as is or modify to suit your preferences.
 
-There are no hard and fast rules for margins, paddings or spacing in ravixUI for blocks. However, there are some general guidelines to make your design and development process easier available here.
+## Icons and Typography
 
-That's all the boring text, you can now jump in and start using ravixUI.
+ravixUI is non opinionated when it comes to icons and typography. It follows the base sizing which is used in TailwindCSS [available in the tailwind documentation](https://tailwindcss.com/docs/font-size). A good collection of open source fonts which are easy to install and is available at [fontsource](https://fontsource.org/). For more information on installation of fonts in your Astrojs project, you can visit the AstroJS [official documentation on using custom fonts](https://docs.astro.build/en/guides/fonts/). The icons used in the project are from [iconify which is available here](https://iconify.design/). They have a vast number of icons from multiple sources available for different use cases and it is simple to use. (Please check license details before using any icon or icon pack)
 
-### Dark Mode
+## Dark Mode
 
-All components by default have dark mode support enabled. You can use the visit this page in the tailwind website to understand how to enable dark mode for your application. The components will function with both darkMode options: 'selector' and 'class'
+All components by default have dark mode support enabled. You can use the visit this page in the tailwind website to understand [how to enable dark mode support for tailwind](https://tailwindcss.com/docs/dark-mode) in your application. The components will function with both darkMode options: 'selector' and 'class'.

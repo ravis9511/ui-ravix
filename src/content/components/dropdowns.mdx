@@ -1,0 +1,323 @@
+---
+title: "Dropdown"
+order: 14
+type: "Building"
+description: "Documentation and examples for dropdowns in ravixUI"
+tags: ["dropdown", "dropdown-examples","ravixUI","WCAG 2.1","WAI-ARIA 1.2"]
+keywords: "dropdown, web component, ravixUI, AstroJS, TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Alert from "../../components/Alert.astro";
+import Dropdown from "../../components/dropdowns/Dropdown.astro";
+import DropdownCode from "../../components/dropdowns/Dropdown.html?raw";
+import DropdownCodeAstro from "../../components/dropdowns/Dropdown.astro?raw";
+import AltDropdown from "../../components/dropdowns/AltDropdown.astro";
+import AltDropdownCode from "../../components/dropdowns/AltDropdown.html?raw";
+import AltDropdownCodeAstro from "../../components/dropdowns/AltDropdown.astro?raw";
+import AnimatedDropdown from "../../components/dropdowns/AnDropdown.astro";
+import AnimatedDropdownCode from "../../components/dropdowns/AnDropdown.astro?raw";
+import AnimatedDropdownCodeAstro from "../../components/dropdowns/AnDropdown.astro?raw";
+import WCDropdown from "../../components/dropdowns/WCDropdown.astro";
+import WCDropdownCode from "../../components/dropdowns/WCDropdown.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Dropdown
+
+<Alert type="info">Requires Javascript to work.</Alert>
+
+A dropdown is a menu that appears when a user clicks on a button or link. It is a common design pattern used in websites and applications to provide additional options or functionality to the user.
+
+<Accordion
+  data={[
+    {
+      name: "dropdown1",
+      title: "Design Hints",
+      content:
+        "Dropdown menus are commonly used in websites and applications to provide additional options or functionality to the user. They are also an opportunity to use branding colors and typography to create a consistent and recognizable design. Dropdown menus can be used to filter content, display additional information, or provide a list of actions that the user can take.",
+    },
+    {
+      name: "dropdown1",
+      title: "Accessiblity Hints",
+      content:
+        "The component in ravixUI follows the accessibility patterns guidelines provided by WAI-ARIA APG specification for menubutton and menu. Dropdown is different from input select because it is not a form element.",
+    },
+  ]}
+/>
+
+### Dropdown Definition
+
+The dropdown consists of two main parts:
+
+- The dropdown button: button that triggers the dropdown menu to appear.
+- The dropdown menu: A menu that appears when the dropdown button is clicked. The list of items are usually actionable, such as links or buttons. It can also contain submenus but this implementation is primarily focused on the dropdown menu without submenus.
+
+## Simple Dropdown
+
+A simple dropdown with a list of options.
+
+<Tab name="Simple Dropdown" tabs={[{ "name" : "Preview", "id" : "SD-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SD-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SD-Tab3", "icon" : "astro"}]}>
+
+<section id ="SD-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SD-Tab1">
+<div class="flex h-72 p-6 items-start justify-center">
+<Dropdown />
+</div>
+
+</section>
+
+<section id ="SD-Tab2-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="SD-Tab2">
+
+<Code code={DropdownCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SD-Tab3-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="SD-Tab3">
+
+<Code
+  code={DropdownCodeAstro}
+  lang="astro"
+  title="SimpleDropdown.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Dropdown
+
+A different style for a simple dropdown.
+
+<Tab name="Alternate Dropdown" tabs={[{ "name" : "Preview", "id" : "AD-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AD-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AD-Tab3", "icon" : "astro"}]}>
+
+<section id ="AD-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AD-Tab1">
+<div class="flex h-72 p-6 items-start justify-center">
+<AltDropdown />
+</div>
+
+</section>
+
+<section id ="AD-Tab2-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AD-Tab2">
+
+<Code code={AltDropdownCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AD-Tab3-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AD-Tab3">
+
+<Code
+  code={AltDropdownCodeAstro}
+  lang="astro"
+  title="AltDropdown.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Animated Dropdown
+
+The simple dropdown with animations.
+
+<Tab name="Animated Dropdown" tabs={[{ "name" : "Preview", "id" : "AN-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AN-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AN-Tab3", "icon" : "astro"}]}>
+
+<section id ="AN-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AN-Tab1">
+<div class="flex h-72 p-6 items-start justify-center">
+<AnimatedDropdown />
+</div>
+
+</section>
+
+<section id ="AN-Tab2-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AN-Tab2">
+
+<Code
+  code={AnimatedDropdownCode}
+  lang="html"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+<section id ="AN-Tab3-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AN-Tab3">
+
+<Code
+  code={AnimatedDropdownCodeAstro}
+  lang="astro"
+  title="AnimatedDropdown.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Astrojs Web Component Dropdown
+
+<Alert heading="Info">Requires Astrojs to work.</Alert>
+
+The animated dropdown is available as a web component in ravixUI. You can find the implementation and code below.
+
+<Tab name="Astrojs Web Component Dropdown" tabs={[{ "name" : "Preview", "id" : "AWC-Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "AWC-Tab3", "icon" : "astro"}]}>
+
+<section id ="AWC-Tab1-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWC-Tab1">
+<div class="flex h-96 p-6 items-start justify-center">
+<WCDropdown menuLabel="Dropdown" menuItems={[ {
+    label: "Account Settings",
+    type: "link",
+    href: "#",
+  },
+  {
+    label: "Profile",
+    type: "link",
+    href: "#",
+  },
+  {
+    label: "Settings",
+    type: "link",
+    href: "#",
+  },
+  {
+    label: "Notifications",
+    type: "link",
+    href: "#",
+  },
+  {
+    label: "Help",
+    type: "link",
+    href: "#",
+  },
+  {
+    label: "Logout",
+    type: "button",
+    action: "#",
+  },
+]} xAlignment="right" yAlignment="top"/>
+</div>
+
+</section>
+
+<section id ="AWC-Tab3-panel" role="tabpanel" data-role="tabpanel" class="hidden" aria-labelledby="AWC-Tab3">
+
+<Code
+  code={AnimatedDropdownCodeAstro}
+  lang="astro"
+  title="WebComponentDropdown.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+The Dropdown is implemented using the Web Components API, which creates a customizable and interactive dropdown menu. It allows you to display a button that, when clicked, reveals a list of menu items. Learn more about Web Components in the MDN Web Docs.
+
+### Usage
+
+To use the Dropdown component in your Astro project, follow these steps:
+
+- Copy the code into a component file (e.g., Dropdown.astro).
+- Import the Dropdown component into your Astro page.
+- Define the necessary props for the dropdown menu.
+- Render the Dropdown component in your Astro page, passing the required props.
+
+Example implementation:
+
+```astro title="YourPage.astro"
+---
+import Dropdown from "./Dropdown.astro";
+
+const menuLabel = "Select an option";
+const menuItems = [
+  { label: "Option 1", type: "link", href: "/option1" },
+  { label: "Option 2", type: "button", action: "/handle-option2" },
+  // Add more menu items as needed
+];
+const xAlignment = "right";
+const yAlignment = "top";
+---
+
+<Dropdown
+  menuLabel={menuLabel}
+  menuItems={menuItems}
+  xAlignment={xAlignment}
+  yAlignment={yAlignment}
+/>
+```
+
+### Data Attributes
+
+The data-dropdown attribute is a custom attribute used to identify and control the behavior of the dropdown component. It is applied to different elements within the dropdown structure, and its value specifies the role of the element. The following values are used:
+
+- **data-dropdown="button"**: This value is applied to the button element that serves as the trigger for the dropdown menu. The button should have the aria-expanded attribute set to "false" initially, indicating that the dropdown menu is collapsed.
+
+- **data-dropdown="menu"**: This value is applied to the `<ul>` element that represents the dropdown menu. It should have the aria-hidden attribute set to "true" initially, indicating that the menu is hidden.
+
+### Component Props
+
+The component accepts the following props:
+
+- `menuLabel` (required): The label text for the dropdown menu of type string.
+- `xAlignment` : The horizontal alignment of the dropdown menu. Can be either `left` or `right` (The default value is `right`).
+- `yAlignment` : The vertical alignment of the dropdown menu. Can be either `top` or `bottom` (The default value is `top`)
+- `menuItems` (required): An array of menu item objects. Each object should have the following properties:
+
+| Property | Type                | Description                                                                                       |
+| -------- | ------------------- | ------------------------------------------------------------------------------------------------- |
+| `label`  | `string` (required) | The text for the menu item.                                                                       |
+| `type`   | `string` (required) | The type of the menu item. Can be either `link` or `button`.                                      |
+| `href`   | `string`            | The URL for the link menu item. Only used if `type` is `link`.                                    |
+| `action` | `string`            | The action to be performed when the button menu item is clicked. Only used if `type` is `button`. |
+
+For customization of `action` you will need to modify the form component controlling the button and change the action to the desired function.
+
+### JavaScript Functionality
+
+The Dropdown component includes a JavaScript class (XDropdown) that handles the toggling of the dropdown menu. When the dropdown button is clicked, the menu is expanded or collapsed, and the aria-expanded attribute is updated accordingly. The menu can be closed by clicking outside the dropdown or by pressing the Escape key.
+
+### Accessibility
+
+The Dropdown component follows accessibility best practices by using appropriate ARIA attributes:
+
+- The dropdown button has **aria-expanded** and **aria-haspopup** attributes to indicate the state of the dropdown menu and also inform of the popup menu.
+- The dropdown menu has **aria-orientation**, **aria-labelledby**, **role**, and **aria-hidden** attributes to provide semantic information to assistive technologies.
+- Each menu item has the role **menuitem**.
+
+The component is provided as-is and may require further testing and customization to fit your specific use case.
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component                   | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| --------------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Dropdown             | Yes  | Yes              | Yes  | Yes | Yes              |
+| Animated Dropdown           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Animated Dropdown | Yes  | Yes              | Yes  | Yes | Yes              |
+| Astro JS Web Component      | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+The dropdown components are implemented with the WAI-ARIA 1.2 design patterns.
+The components above implement all the required functionality mention in
+[WAI-ARIA APG specification for menu
+button](https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/) and [WAI-ARIA APG
+specification for menu](https://www.w3.org/WAI/ARIA/apg/patterns/menu/).
+
+The components support keyboard navigation once the dropdown is opened:
+
+| Keyboard Navigation                                 | Description                                                |
+| --------------------------------------------------- | ---------------------------------------------------------- |
+| <kbd>Arrow Up/Down</kbd>                            | Moves the focus to the previous/next menu item.            |
+| <kbd>Escape</kbd>                                   | Closes the dropdown menu.                                  |
+| <kbd>Enter</kbd>                                    | Triggers the action associated with the focused menu item. |
+| <kbd>Arrow Left/Right</kbd>                         | Moves the focus to the first/last menu item.               |
+| <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus out of the menu and into the menu button.  |

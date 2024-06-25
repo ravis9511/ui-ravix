@@ -1,0 +1,318 @@
+---
+title: "Alerts"
+order: 9
+type: "Building"
+description: "Documentation and examples for alerts in ravixUI"
+tags: ["alerts", "alerts-examples","ravixUI","WCAG 2.1","WAI-ARIA 1.2"]
+keywords: "alerts, ravixUI, AstroJS,TailwindCSS"
+---
+
+import { Code } from "astro-expressive-code/components";
+import Accordion from "../../components/Accordion.astro";
+import Tab from "../../components/Tab.astro";
+import TableWrapper from "../../components/TableWrapper.astro";
+import Alert from "../../components/Alert.astro";
+import Alerts from "../../components/alerts/Alerts.astro";
+import AlertsCode from "../../components/alerts/Alerts.astro?raw";
+import AlertsCodeAstro from "../../components/alerts/Alerts.astro?raw";
+import AltAlerts from "../../components/alerts/AlternateAlerts.astro";
+import AltAlertsCode from "../../components/alerts/AlternateAlerts.astro?raw";
+import AltAlertsCodeAstro from "../../components/alerts/AlternateAlerts.astro?raw";
+import AlertsWithIcon from "../../components/alerts/AlertsWithIcon.astro";
+import AlertsWithIconCode from "../../components/alerts/AlertsWithIcon.astro?raw";
+import AlertsWithIconCodeAstro from "../../components/alerts/AlertsWithIcon.astro?raw";
+import ProminentAlerts from "../../components/alerts/ProminentAlerts.astro";
+import ProminentAlertsCode from "../../components/alerts/ProminentAlerts.astro?raw";
+import ProminentAlertsCodeAstro from "../../components/alerts/ProminentAlerts.astro?raw";
+import AllAlerts from "../../components/alerts/AllAlerts.astro";
+import AllAlertsCode from "../../components/alerts/AllAlerts.astro?raw";
+import LinkCleaner from "../../components/LinkCleaner.astro";
+export const components = {a : LinkCleaner};
+
+# Alerts
+
+Alerts are a way to display important information to the user. They are typically used to give feedback to the user about an action that has been completed or an error that has occurred. It can also be used to warn or provide important extra information to the user before an action is taken.
+
+<Accordion
+  data={[
+    {
+      name: "alerts1",
+      title: "Design Hints",
+      content:
+        "While, alerts are a great way to provide feedback to the user, it is important to ensure that they are used appropriately and sparingly. Too many alerts can be overwhelming and distracting to the user. The less alerts the user sees, the more likely they are to pay attention to the alert.",
+    },
+    {
+      name: "alerts1",
+      title: "Accessiblity Hints",
+      content:
+        "The role alert is used only for information that requires a user's immediate attention. Remember, this is a very intrusive role and should be used sparingly. The alert should contain all the information required to understand the issue in textual form. If using an icon without a text to convey alert type, ensure that the icon is hidden from screen readers using aria-hidden and use an sr-only class text to convey the alert type which is only visible to screen readers.",
+    },
+  ]}
+/>
+
+## Alerts Specification
+
+An alert contains two main parts :
+
+- The alert container : The container that holds the alert message and any additional content. This container should have a role of alert if immediate user attention is required.
+- The alert message : The message that is displayed in the alert container. This message should be informative and provide the user with a clear understanding of the issue or action that needs to be taken.
+
+Colors enhance alert messages but should complement, not replace, clear textual information that conveys the alert's primary content.
+
+To know more you can refer to [MDN documentation for the aria role=alert](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
+
+## Simple Alerts
+
+Different types of alerts are given below. Note that the last alert doesn't have an alert role and instead uses a note role, but can be used to convey important information without interrupting the user experience.
+
+<Tab name="Simple Alerts" tabs={[{ "name" : "Preview", "id" : "SA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "SA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "SA-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="SA-Tab1-panel"
+  aria-labelledby="SA-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
+    <AltAlerts />
+  </div>
+</section>
+
+<section id ="SA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab2" class="hidden">
+
+<Code code={AltAlertsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="SA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="SA-Tab3" class="hidden">
+
+<Code
+  code={AltAlertsCodeAstro}
+  lang="astro"
+  title="SimpleAlerts.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alternate Simple Alerts
+
+A different style for simple alerts
+
+<Tab name="Alternate Simple Alerts" tabs={[{ "name" : "Preview", "id" : "AA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AA-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AA-Tab1-panel"
+  aria-labelledby="AA-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
+    <Alerts />
+  </div>
+</section>
+
+<section id ="AA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab2" class="hidden">
+
+<Code code={AlertsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AA-Tab3" class="hidden">
+
+<Code
+  code={AlertsCodeAstro}
+  lang="astro"
+  title="SimpleAlertsAlt.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Alerts with Icons
+
+A variant of alerts which uses as icon to convey the type of alert. The icon is accompanied with a label for screen readers to convey the same information.
+
+<Tab name="Alerts with Icons" tabs={[{ "name" : "Preview", "id" : "AWI-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "AWI-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "AWI-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AWI-Tab1-panel"
+  aria-labelledby="AWI-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
+    <AlertsWithIcon />
+  </div>
+</section>
+
+<section id ="AWI-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWI-Tab2">
+
+<Code code={AlertsWithIconCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="AWI-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AWI-Tab3" class="hidden">
+
+<Code
+  code={AlertsWithIconCodeAstro}
+  lang="astro"
+  title="AlertsWithIcon.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+**Note:** The alerts above use `aria-hidden="true"` to hide the icons from screen readers and a `<span class="sr-only">` to provide the text which is only visible to screen readers.
+
+## Prominent Alerts
+
+These alerts are designed in a way to be visually prominent and grab the user's attention immediately. These only represent a higher visual prominence, not a higher semantic prominence with respect to accessibility compared to the alerts above.
+
+<Tab name="Prominent Alerts" tabs={[{ "name" : "Preview", "id" : "PA-Tab1", "icon" : "view"},{ "name" : "HTML", "id" : "PA-Tab2", "icon" : "html"}, { "name" : "Astrojs", "id" : "PA-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="PA-Tab1-panel"
+  aria-labelledby="PA-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
+    <ProminentAlerts />
+  </div>
+</section>
+
+<section id ="PA-Tab2-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="PA-Tab2" class="hidden">
+
+<Code code={ProminentAlertsCode} lang="html" wrap="true" data-pagefind-ignore />
+
+</section>
+
+<section id ="PA-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="PA-Tab3" class="hidden">
+
+<Code
+  code={ProminentAlertsCodeAstro}
+  lang="astro"
+  title="ProminentAlerts.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+## Astrojs Component
+
+<Alert heading="Info">Requires Astrojs to work.</Alert>
+
+This is a one off astrojs component for all the alerts above. Currently alternate style for simple alerts is not implemented in this component.
+
+<Tab name="Astrojs Component" tabs={[{ "name" : "Preview", "id" : "AC-Tab1", "icon" : "view"}, { "name" : "Astrojs", "id" : "AC-Tab3", "icon" : "astro"}]}>
+
+<section
+  id="AC-Tab1-panel"
+  aria-labelledby="AC-Tab1"
+  role="tabpanel"
+  data-role="tabpanel"
+>
+  <div class="grid p-3 sm:p-6">
+    <AllAlerts
+      type="success"
+      message="Congratulations! Your action was completed successfully."
+      showIcon={true}
+      prominent={true}
+    />
+  </div>
+</section>
+
+<section id ="AC-Tab3-panel" role="tabpanel" data-role="tabpanel" aria-labelledby="AC-Tab3" class="hidden">
+
+<Code
+  code={AllAlertsCode}
+  lang="astro"
+  title="Alerts.astro"
+  wrap="true"
+  data-pagefind-ignore
+/>
+
+</section>
+
+</Tab>
+
+### Usage
+
+To call the alerts component in your astro project, follow these steps below after copying the code into a component file:
+
+- Import the component from the correct location in your project.
+- Call the component with the required props.
+
+Example implementation is given below:
+
+```astro
+---
+import Alerts from "./Alerts.astro"; // import the component from the correct location in your project
+---
+
+<Alerts
+  type="success"
+  message="Congratulations! Your action was completed successfully."
+  showIcon={true}
+  prominent={true}
+/>
+```
+
+### Component Props
+
+The component accepts the following props which are all required:
+
+| Prop        | Type      | Description                                                                                                                                                                                                                            |
+| ----------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`      | `string`  | Specifies the type of the alert. Possible values: 'info', 'success', 'warning', 'error' which sets the aria role alert. If no type is specified or another value is given, the type defaults to 'note' and aria role is set to 'note'. |
+| `message`   | `string`  | The message content to be displayed in the alert.                                                                                                                                                                                      |
+| `showIcon`  | `boolean` | Determines whether to display an icon corresponding to the alert type.                                                                                                                                                                 |
+| `prominent` | `boolean` | Indicates if the alert should have a prominent style. There is only visual changes and no semantic changes for the alert.                                                                                                              |
+
+### Styling
+
+The component uses Tailwind CSS classes for styling. The alert container has a rounded shape with padding and margin. The background color and text color of the alert vary based on the type and prominent props. If prominent is true and the type is not one of the four allowed types, it will have no effect.
+
+### Accessibility:
+
+The alert container has a role attribute set to 'alert' for all defined types and set to 'note' for values which are outside the defined types. The aria-label attribute is set to the value of the type prop to provide an accessible name for the alert.
+
+### Icon Display:
+
+If showIcon is true, an SVG icon corresponding to the alert type is displayed. The icon is positioned to the left of the message content. The icon color varies based on the type and prominent props.
+
+### Message Display:
+
+If showIcon is false, the alert type is displayed as a bold text prefix to the message. The message content is displayed after the icon or type prefix.
+
+## Accessibility Testing Status
+
+<TableWrapper>
+
+| Component               | NVDA | Windows Narrator | WAVE | Axe | IBM Equal Access |
+| ----------------------- | ---- | ---------------- | ---- | --- | ---------------- |
+| Simple Alerts           | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alternate Simple Alerts | Yes  | Yes              | Yes  | Yes | Yes              |
+| Alerts with Icons       | Yes  | Yes              | Yes  | Yes | Yes              |
+| Prominent Alerts        | Yes  | Yes              | Yes  | Yes | Yes              |
+| Astrojs Component       | Yes  | Yes              | Yes  | Yes | Yes              |
+
+</TableWrapper>
+The alerts adhere to the [WAI-ARIA 1.2 specification
+](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/) for alert
+patterns.
+
+Additional manual testing maybe required to ensure the alerts are accessible in your specific use case.

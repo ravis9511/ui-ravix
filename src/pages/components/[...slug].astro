@@ -1,47 +1,145 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
+import TOCBar from "../../components/TOCBar.astro";
 import MarkDownLayout from "../../layouts/MarkDownLayout.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
+import TOC from "../../components/TOC.astro";
+
+interface Props {
+  entry: CollectionEntry<'components'>;
+}
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('components');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getCollection("components");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 const { entry } = Astro.props;
 const blogEntries = await getCollection("components");
-const currentSlug= entry.slug;
-const entryMap= blogEntries.map((entry => ({slug : entry.slug, title : entry.data.title, order : entry.data.order})));
+const entryMap = blogEntries.map((entry) => ({
+  slug: "/components/" + entry.slug,
+  title: entry.data.title,
+  order: entry.data.order,
+  type: entry.data.type,
+}));
 entryMap.sort((a, b) => a.order - b.order);
+
 if (entry === undefined) {
   return Astro.redirect("/404");
 }
+// Find the index of the current entry
+const currentIndex = entryMap.findIndex(
+  (e) => e.slug === `/components/${entry.slug}`,
+);
+
+// Get the previous and next entries
+const previousEntry = currentIndex > 0 ? entryMap[currentIndex - 1] : null;
+const nextEntry =
+  currentIndex < entryMap.length - 1 ? entryMap[currentIndex + 1] : null;
 
 const { Content, headings } = await entry.render();
-
+const WCDropDownContent = headings
+  .filter((heading) => heading.depth === 2 || heading.depth === 1)
+  .map((heading) => ({
+    label: heading.text,
+    type: "link",
+    href: `#${heading.slug}`,
+  }));
 ---
 
-<Layout title={entry.data.title}  toc={headings} >
-  
-  <main class="bg-fixed  bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/20 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/10">
-    <div class="grid grid-cols-12  self-center ">
+<Layout
+  title={entry.data.title}
+  currentSlug={`/components/${entry.slug}`}
+  skipLinkId={headings[0].slug}
+  keywords={entry.data.keywords}
+  description={entry.data.description}
+>
+  <div
+    class="sticky left-0 top-[8dvh] z-[80] flex w-full border-b border-gray-400 bg-gray-50 px-4 py-1 lg:hidden dark:border-zinc-700 dark:bg-zinc-950"
+  >
+    {WCDropDownContent && <TOCBar WCDropDownContent={WCDropDownContent} />}
+  </div>
+  <div data-pagefind-body class="bg-gray-50 bg-fixed dark:bg-zinc-950">
+    <div class="ml-4 gap-4 lg:ml-8 lg:grid lg:grid-cols-12 xl:ml-16 2xl:ml-32">
       <div
-        class="col-start-1 col-span-2 pl-16 h-[92dvh] overflow-y-auto overflow-x-hidden scrollbar  border-r dark:border-zinc-900 border-gray-300 "
+        class="scrollbar hidden h-[92dvh] overflow-y-auto overflow-x-hidden border-r border-gray-300 lg:col-span-2 lg:col-start-1 lg:block dark:border-zinc-900"
       >
-        <Sidebar entryMap={entryMap} currentSlug={currentSlug}/>
+        <Sidebar entryMap={entryMap} currentSlug=`/components/${entry.slug}` />
       </div>
-      <div class="relative grid grid-cols-8 col-start-3 col-span-10 h-[92vh] px-6 overflow-auto bg-gradient-to-r from-gray-100/100 via-gray-100/100 to-gray-50/30 dark:bg-gradient-to-r dark:from-zinc-950/100 dark:via-zinc-950/100 dark:to-zinc-950/40 py-4">
-        <div class="col-start-1 col-span-6 mt-2">
-        <MarkDownLayout >
-          <Content />
-        </MarkDownLayout>
+      <div
+        class="overflow-auto py-6 pr-4 lg:relative lg:col-span-10 lg:col-start-3 lg:flex lg:h-[92dvh] lg:flex-row lg:justify-between lg:pr-8 xl:pr-16 2xl:pr-32"
+      >
+        <div class="mx-3 md:mx-6 lg:pr-8">
+          <MarkDownLayout>
+            <Content />
+          </MarkDownLayout>
+          <div
+            class="flex w-full flex-row justify-between space-x-8 pb-12 lg:space-x-0"
+          >
+            {
+              previousEntry && (
+                <a
+                  href={previousEntry?.slug}
+                  class="flex w-3/5 flex-col items-start justify-start gap-y-1 self-start rounded-lg border border-gray-400 bg-gray-50 px-4 py-3 text-base font-semibold text-zinc-950 shadow-md outline-offset-4 outline-black hover:border-gray-500 hover:bg-gray-200 focus:outline-4 sm:text-lg lg:w-1/3 dark:border-zinc-700 dark:bg-zinc-950 dark:text-gray-50 dark:shadow-black dark:outline-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+                >
+                  <span class="inline-flex w-full items-center justify-start text-sm text-gray-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z"
+                      />
+                    </svg>
+                    Prev
+                  </span>
+                  <span>{previousEntry?.title}</span>
+                </a>
+              )
+            }
+            {!previousEntry && <span class="w-full" />}
+            {
+              nextEntry && (
+                <a
+                  href={nextEntry?.slug}
+                  class="flex w-3/5 flex-col items-end justify-end gap-y-1 self-end rounded-lg border border-gray-400 bg-gray-50 px-4 py-3 text-base font-semibold text-zinc-950 shadow-md outline-offset-4 outline-black hover:border-gray-500 hover:bg-gray-200 focus:outline-4 sm:text-lg lg:w-1/3 dark:border-zinc-700 dark:bg-zinc-950 dark:text-gray-50 dark:shadow-black dark:outline-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+                >
+                  <span class="inline-flex w-full items-center justify-end text-sm text-gray-500">
+                    Next
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"
+                      />
+                    </svg>
+                  </span>
+                  <span>{nextEntry?.title}</span>
+                </a>
+              )
+            }
+          </div>
+        </div>
+        <div
+          class="sticky top-0 items-start justify-items-start lg:mr-8 lg:max-h-[86dvh] lg:max-w-[200px] lg:flex-1 xl:mr-12"
+        >
+          <TOC pageHeadings={headings} />
+        </div>
       </div>
-        <div class="col-start-7 col-span-2 h-[92dvh] sticky top-4 ">red</div>
-      </div>
-      
     </div>
-  </main>
+  </div>
 </Layout>
