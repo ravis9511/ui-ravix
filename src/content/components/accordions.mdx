@@ -351,7 +351,7 @@ The Accordion component includes a JavaScript class that handles the toggling of
 
 ### Note
 
-If you want to include more complex content in the accordion panels, you can pass the content as HTML and use an Astro `<Fragment>` component to render it. However, this approach has not been thoroughly tested and may cause unexpected behavior. Use it with caution.
+If you want to include more complex content in the accordion panels, you can pass the content as HTML and use an Astro `<Fragment>` component to render it. However, this approach can open up security vulnerabilities and may cause unexpected behavior. Use it with caution.
 
 `{panel.content} <!-- Replace with --> <Fragment set:html={panel.content} />`
 
